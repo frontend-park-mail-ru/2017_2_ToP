@@ -1,0 +1,46 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class="content">
+        <div class="inner-bg">
+            <div class="row">
+                <div class="text">
+                    <h1><strong><fest:value>json.title</fest:value></strong><fest:space/>игра</h1>
+                    <div class="description">
+                        <p>
+                            Описание нашей <fest:space/><strong>захватывающей</strong><fest:space/> игры
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mycol">
+                    <div class="form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Регистрация</h3>
+                                <p>Заполните следующие поля:</p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" id="registration-form">
+                                <input type="text" name="form-username" placeholder="Логин..." id="form-username" class="reginput"/>
+                                <input type="text" name="form-email" placeholder="Email..." id="form-email" class="reginput"/>
+                                <input type="password" name="form-password" placeholder="Пароль..." id="form-password" class="reginput"/>
+                                <input type="password" name="form-repeat-password" placeholder="Повторите пароль..." id="form-repeat-password" class="reginput"/>
+                                <button type="button" id="registrationSubmit">Зарегистрироваться!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="footer-border"></div>
+            <p>&copy <fest:space/><strong>Наше название</strong>, 2017</p>
+        </div>
+    </footer>
+</fest:template>
