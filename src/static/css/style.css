@@ -1,0 +1,194 @@
+/*@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500);*/
+
+body {
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: 300;
+    color: #888;
+    line-height: 30px;
+    text-align: center;
+}
+
+strong { font-weight: 500; }
+
+h1, h2 {
+	margin-top: 10px;
+	font-size: 38px;
+    font-weight: 100;
+    color: #555;
+    line-height: 50px;
+}
+
+h3 {
+	font-size: 22px;
+    font-weight: 300;
+    color: #555;
+    line-height: 30px;
+}
+
+::selection { background: #19b9e7; color: #fff; text-shadow: none; }
+
+
+/***** content *****/
+
+.inner-bg {
+    padding: 50px 0 80px 0;
+}
+
+.content .text {
+	color: #fff;
+}
+
+.content .text h1 { color: #fff; }
+
+.content .description {
+	margin: 20px 0 10px 0;
+}
+
+.content .description p { opacity: 0.8; }
+
+.form-box {
+	margin-top: 70px;
+}
+
+.form-top {
+	overflow: hidden;
+	padding: 0 20px 0px 25px;
+	background: #444;
+	background: rgba(0, 0, 0, 0.35);
+	border-radius: 4px 4px 0 0;
+	text-align: left;
+}
+
+.form-top-left {
+	float: left;
+	width: 75%;
+	padding-top: 25px;
+}
+
+.mycol{
+	margin: auto;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.row{
+	margin-right: -15px;
+	margin-left: -15px;
+	clear: both;
+}
+
+.form-top-left h3 { margin-top: 0; color: #fff; }
+.form-top-left p { opacity: 0.8; color: #fff; }
+
+.form-top-right {
+	float: right;
+	width: 25%;
+	padding-top: 5px;
+	font-size: 66px;
+	color: #fff;
+	line-height: 100px;
+	text-align: right;
+	opacity: 0.3;
+}
+
+.form-bottom {
+	padding: 25px 25px 30px 30px;
+	background: #444;
+	background: rgba(0, 0, 0, 0.3);
+	border-radius: 0 0 4px 4px;
+	text-align: left;
+}
+
+.form-bottom form button {
+	cursor: pointer;
+	width: 100%;
+}
+
+.form-bottom form input {
+	box-sizing: border-box;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.form-bottom form .input-error {
+	border-color: red/*#19b9e7;*/
+}
+
+/***** Элементы формы ******/
+
+input[type="text"], 
+input[type="password"]{
+	height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+    background: #fff;
+    border: 3px solid #fff;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #888;
+    border-radius: 4px;
+    box-shadow: none;
+    transition: all .3s;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus{
+	outline: 0;
+	background: #fff;
+    border: 3px solid #fff;
+    box-shadow: none;
+}
+
+button {
+	height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+    background: #19b9e7;
+    border: 0;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+    color: #fff;
+    border-radius: 4px;
+    text-shadow: none;
+    box-shadow: none;
+    transition: all .3s;
+}
+
+button:hover { opacity: 0.8; color: #fff; }
+
+button:active { outline: 0; opacity: 0.6; color: #fff; box-shadow: none; }
+
+button:focus { outline: 0; opacity: 0.8; background: #19b9e7; color: #fff; }
+
+button:active:focus, button.active:focus { outline: 0; opacity: 0.6; background: #19b9e7; color: #fff; }
+
+
+/***** Footer *****/
+
+
+footer {
+	padding-bottom: 70px;
+	color: #fff;
+}
+
+footer .footer-border {
+	width: 200px;
+	margin: 0 auto;
+	border-top: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+footer p { opacity: 0.8; }
+
+/***** Media queries *****/
+
+@media (min-width: 850px) {
+  .mycol{
+    width: 40%;
+  }
+}
