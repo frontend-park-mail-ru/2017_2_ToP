@@ -29,7 +29,7 @@
                                 <input type="text" name="form-email" placeholder="Email..." id="form-email" class="reginput"/>
                                 <input type="password" name="form-password" placeholder="Пароль..." id="form-password" class="reginput"/>
                                 <input type="password" name="form-repeat-password" placeholder="Повторите пароль..." id="form-repeat-password" class="reginput"/>
-                                <button type="button" id="registrationSubmit">Зарегистрироваться!</button>
+                                <button type="button" class="registrationSubmit" id="registrationSubmit">Зарегистрироваться!</button>
                             </form>
                         </div>
                     </div>
