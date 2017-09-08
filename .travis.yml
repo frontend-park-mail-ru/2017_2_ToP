@@ -13,10 +13,11 @@ deploy:
     secure: $key
   app: gametes
   on:
-    repo: pryahin/2017_2_ToP
+    repo: frontend-park-mail-ru/2017_2_ToP
     branch: develop
   skip_cleanup: true
 
 script:
   - npm i
+  - npm run eslint
   - npm run webpack
