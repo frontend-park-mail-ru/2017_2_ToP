@@ -1,4 +1,4 @@
-# Apoj
+# Apoj - [Heroku](https://gametes.herokuapp.com)
 
 * [Описание](#description)
 * [Установка](#install)
