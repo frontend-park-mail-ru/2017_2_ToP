@@ -3,7 +3,7 @@ import signIn from './signIn.xml';
 export default class Login {
 
     init() {
-        const main = document.getElementById('main');
+        const main = document.getElementsByClassName('main')[0];
         main.innerHTML = signIn({ title: 'Наша' });
 
         [...main.getElementsByClassName('loginput')].forEach(element => {
@@ -24,7 +24,7 @@ export default class Login {
             });
 
             if (valid) {
-                main.forms['registration-form'].submit();
+                document.forms.loginForm.submit();
             }
         });
     }

@@ -3,7 +3,7 @@ import signUp from './signUp.xml';
 export default class Registration {
 
     init() {
-        const main = document.getElementById('main');
+        const main = document.getElementsByClassName('main')[0];
         main.innerHTML = signUp({ title: 'Наша' });
 
         [...main.getElementsByClassName('reginput')].forEach(element => {
@@ -24,7 +24,7 @@ export default class Registration {
             });
 
             if (valid) {
-                main.forms['registration-form'].submit();
+                document.forms.registrationForm.submit();
             }
         });
     }

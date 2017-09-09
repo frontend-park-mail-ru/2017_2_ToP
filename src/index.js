@@ -5,7 +5,7 @@ import SignIn from './views/registration/signIn/signIn';
 import Router from './modules/router/router';
 
 
-const main = document.getElementById('main');
+const main = document.getElementsByClassName('main')[0];
 
 // background
 main.style.background = `url(static/img/backgrounds/${Math.floor(Math.random() * 3)}.jpg) no-repeat center fixed`;

@@ -7,7 +7,7 @@ export default class Main {
     }
 
     init() {
-        const main = document.getElementById('main');
+        const main = document.getElementsByClassName('main')[0];
         main.innerHTML = mainPage({ title: 'Наша' });
 
         [...main.getElementsByTagName('button')].forEach( element => {

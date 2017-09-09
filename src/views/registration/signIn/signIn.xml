@@ -24,9 +24,9 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" id="login-form">
-                                <input type="text" name="form-username" placeholder="Логин..." id="form-username" class="loginput"/>
-                                <input type="password" name="form-password" placeholder="Пароль..." id="form-password" class="loginput"/>
+                            <form role="form" action="" method="post" name="loginForm">
+                                <input type="text" name="form-username" placeholder="Логин..." class="loginput"/>
+                                <input type="password" name="form-password" placeholder="Пароль..." class="loginput"/>
                                 <button type="button" class="loginSubmit">Войти!</button>
                             </form>
                         </div>

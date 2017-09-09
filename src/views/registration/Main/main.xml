@@ -15,7 +15,7 @@
                 <div class="mycol">
                     <div class="form-box">
                         <div class="form-bottom">
-                            <form role="form" action="" id="start-form">
+                            <form role="form" action="" name="startForm">
                                 <button type="button" data-url="/signin">Авторизация</button>
                                 <button type="button" data-url="/signup">Регистрация</button>
                             </form>

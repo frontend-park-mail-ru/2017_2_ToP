@@ -24,11 +24,11 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" id="registration-form">
-                                <input type="text" name="form-username" placeholder="Логин..." id="form-username" class="reginput"/>
-                                <input type="text" name="form-email" placeholder="Email..." id="form-email" class="reginput"/>
-                                <input type="password" name="form-password" placeholder="Пароль..." id="form-password" class="reginput"/>
-                                <input type="password" name="form-repeat-password" placeholder="Повторите пароль..." id="form-repeat-password" class="reginput"/>
+                            <form role="form" action="" method="post" name="registrationForm">
+                                <input type="text" name="form-username" placeholder="Логин..." class="reginput"/>
+                                <input type="text" name="form-email" placeholder="Email..." class="reginput"/>
+                                <input type="password" name="form-password" placeholder="Пароль..." class="reginput"/>
+                                <input type="password" name="form-repeat-password" placeholder="Повторите пароль..." class="reginput"/>
                                 <button type="button" class="registrationSubmit">Зарегистрироваться!</button>
                             </form>
                         </div>
