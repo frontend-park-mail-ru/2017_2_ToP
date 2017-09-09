@@ -14,20 +14,10 @@
             <div class="row">
                 <div class="mycol">
                     <div class="form-box">
-                        <div class="form-top">
-                            <div class="form-top-left">
-                                <h3>Авторизация</h3>
-                                <p>Заполните следующие поля:</p>
-                            </div>
-                            <div class="form-top-right">
-                                <i class="fa fa-lock"></i>
-                            </div>
-                        </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" id="login-form">
-                                <input type="text" name="form-username" placeholder="Логин..." id="form-username" class="loginput"/>
-                                <input type="password" name="form-password" placeholder="Пароль..." id="form-password" class="loginput"/>
-                                <button type="button" class="loginSubmit">Войти!</button>
+                            <form role="form" action="" id="start-form">
+                                <a href="/signin"><button type="button">Авторизация</button></a>
+                                <a href="/signup"><button type="button">Регистрация</button></a>
                             </form>
                         </div>
                     </div>
