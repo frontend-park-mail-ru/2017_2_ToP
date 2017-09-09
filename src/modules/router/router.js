@@ -9,11 +9,12 @@ export default class Router {
     }
 
     start() {
-        Object.keys(this.routes).forEach((_path) => {
+        Object.keys(this.routes).forEach(_path => {
             let currentPath = window.location.pathname.toString().toLowerCase();
 
-            if (currentPath[currentPath.length-1] === '/')
-                currentPath = currentPath.slice(0,-1);
+            if (currentPath[currentPath.length - 1] === '/') {
+                currentPath = currentPath.slice(0, -1);
+            }
 
             if (_path === currentPath) {
                 this.routes[_path].init();

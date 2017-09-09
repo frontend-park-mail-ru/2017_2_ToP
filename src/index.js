@@ -1,6 +1,6 @@
 import Main from './views/registration/Main/main';
-import signUp from './views/registration/signUp/signUp';
-import signIn from './views/registration/signIn/signIn';
+import SignUp from './views/registration/signUp/signUp';
+import SignIn from './views/registration/signIn/signIn';
 
 import Router from './modules/router/router';
 
@@ -14,6 +14,6 @@ main.style.backgroundSize = 'cover';
 const router = new Router();
 
 router.add('', new Main());
-router.add('/signup', new signUp());
-router.add('/signin', new signIn());
+router.add('/signup', new SignUp());
+router.add('/signin', new SignIn());
 router.start();
