@@ -1,4 +1,4 @@
-import signUp from './registration.xml';
+import signUp from './signUp.xml';
 
 export default class Registration {
 
