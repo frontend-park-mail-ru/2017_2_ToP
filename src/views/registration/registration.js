@@ -1,7 +1,9 @@
 import signUp from './registration.xml';
 
 export default class Registration {
-    createRegistration(main) {
+
+    init() {
+        const main = document.getElementById('main');
         main.innerHTML = signUp({ title: 'Наша' });
 
         const inp = main.getElementsByClassName('reginput');

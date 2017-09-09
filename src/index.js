@@ -10,8 +10,8 @@ main.style.background = `url(static/img/backgrounds/${Math.floor(Math.random() *
 main.style.backgroundSize = 'cover';
 
 const signUp = new Registration();
-signUp.createRegistration(main);
 
 const router = new Router();
-router.go('index.html');
 
+router.add('/signup', new Registration());
+router.start();
