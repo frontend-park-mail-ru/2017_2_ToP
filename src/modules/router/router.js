@@ -34,6 +34,6 @@ export default class Router {
 
     go(path) {
         window.history.pushState({}, '', path);
-        this.start();
+        this.onRoute();
     }
 }
