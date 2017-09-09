@@ -16,8 +16,8 @@
                     <div class="form-box">
                         <div class="form-bottom">
                             <form role="form" action="" id="start-form">
-                                <a href="/signin"><button type="button">Авторизация</button></a>
-                                <a href="/signup"><button type="button">Регистрация</button></a>
+                                <button type="button" data-url="/signin">Авторизация</button>
+                                <button type="button" data-url="/signup">Регистрация</button>
                             </form>
                         </div>
                     </div>

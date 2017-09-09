@@ -13,7 +13,8 @@ main.style.backgroundSize = 'cover';
 
 const router = new Router();
 
-router.add('', new Main());
-router.add('/signup', new SignUp());
-router.add('/signin', new SignIn());
-router.start();
+router
+    .use('', new Main(router))
+    .use('/signup', new SignUp())
+    .use('/signin', new SignIn())
+    .start();

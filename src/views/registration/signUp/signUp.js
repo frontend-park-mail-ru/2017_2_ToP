@@ -6,22 +6,20 @@ export default class Registration {
         const main = document.getElementById('main');
         main.innerHTML = signUp({ title: 'Наша' });
 
-        const inp = main.getElementsByClassName('reginput');
-
-        Object.keys(inp).forEach(el => {
-            inp[el].addEventListener('focus', () => {
-                inp[el].classList.remove('input-error');
+        [...main.getElementsByClassName('reginput')].forEach(element => {
+            element.addEventListener('focus', () => {
+                element.classList.remove('input-error');
             }, false);
         });
 
         main.getElementsByClassName('registrationSubmit')[0].addEventListener('click', () => {
             let valid = true;
-            Object.keys(inp).forEach(el => {
-                if (inp[el].value === '') {
-                    inp[el].classList.add('input-error');
+            [...main.getElementsByClassName('reginput')].forEach(element => {
+                if (element.value === '') {
+                    element.classList.add('input-error');
                     valid = false;
                 } else {
-                    inp[el].classList.remove('input-error');
+                    element.classList.remove('input-error');
                 }
             });
 

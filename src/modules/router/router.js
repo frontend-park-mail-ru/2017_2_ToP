@@ -4,11 +4,21 @@ export default class Router {
         this.routes = [];
     }
 
-    add(path, view) {
+    use(path, view) {
         this.routes[path] = view;
+
+        return this;
     }
 
     start() {
+        window.onpopstate = () => {
+            this.onRoute();
+        }
+
+        this.onRoute();
+    }
+
+    onRoute(){
         Object.keys(this.routes).forEach(_path => {
             let currentPath = window.location.pathname.toString().toLowerCase();
 
@@ -24,5 +34,6 @@ export default class Router {
 
     go(path) {
         window.history.pushState({}, '', path);
+        this.start();
     }
 }
