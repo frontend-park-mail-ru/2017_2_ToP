@@ -2,7 +2,7 @@ import mainPage from './main.xml';
 
 export default class Main {
 
-    constructor(router){
+    constructor(router) {
         this._router = router;
     }
 
@@ -10,9 +10,9 @@ export default class Main {
         const main = document.getElementsByClassName('main')[0];
         main.innerHTML = mainPage({ title: 'Наша' });
 
-        [...main.getElementsByTagName('button')].forEach( element => {
+        [...main.getElementsByTagName('button')].forEach(element => {
             element.addEventListener('click', () => {
-                this._router.go(element.getAttribute('data-url'))
+                this._router.go(element.getAttribute('data-url'));
             });
         });
     }

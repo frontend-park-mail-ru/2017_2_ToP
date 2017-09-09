@@ -13,12 +13,12 @@ export default class Router {
     start() {
         window.onpopstate = () => {
             this.onRoute();
-        }
+        };
 
         this.onRoute();
     }
 
-    onRoute(){
+    onRoute() {
         Object.keys(this.routes).forEach(_path => {
             let currentPath = window.location.pathname.toString().toLowerCase();
 
