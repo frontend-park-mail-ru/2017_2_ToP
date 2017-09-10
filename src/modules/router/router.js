@@ -35,13 +35,9 @@ export default class Router {
     }
 
     getPath() {
-        let currentPath = window.location.pathname.toString().toLowerCase();
+        const currentPath = window.location.pathname.toString().toLowerCase();
 
-        if (currentPath[currentPath.length - 1] === '/') {
-            currentPath = currentPath.slice(0, -1);
-        }
-
-        return currentPath;
+        return currentPath[currentPath.length - 1] === '/' ? currentPath.slice(0, -1) : currentPath;
     }
 
     go(path) {
