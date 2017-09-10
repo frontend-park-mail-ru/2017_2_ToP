@@ -20,4 +20,3 @@ deploy:
 script:
   - npm i
   - npm run eslint
-  - npm run webpack
