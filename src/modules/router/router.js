@@ -2,7 +2,13 @@ import Route from './route';
 
 export default class Router {
     constructor() {
+        if (Router.__instance) {
+            return Router.__instance;
+        }
+
         this.routes = [];
+
+        Router.__instance = this;
     }
 
     use(path, view) {
@@ -14,17 +20,17 @@ export default class Router {
 
     start() {
         window.onpopstate = () => {
-            this.onRoute();
+            this._onRoute();
         };
 
-        this.onRoute();
+        this._onRoute();
     }
 
     getRoute(path) {
         return this.routes.find(route => route.isPath(path));
     }
 
-    onRoute() {
+    _onRoute() {
         const route = this.getRoute(this.getPath());
 
         if (!route) {
@@ -42,6 +48,6 @@ export default class Router {
 
     go(path) {
         window.history.pushState({}, '', path);
-        this.onRoute();
+        this._onRoute();
     }
 }
