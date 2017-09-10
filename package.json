@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server/server.js",
     "webpack": "./node_modules/.bin/webpack",
     "eslint": "./node_modules/.bin/eslint ./src/**/*.js",
     "eslint-fix": "./node_modules/.bin/eslint --fix ./src/**/*.js",
