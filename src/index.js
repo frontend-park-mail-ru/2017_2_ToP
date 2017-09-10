@@ -1,6 +1,6 @@
-import Main from './views/registration/Main/main';
-import SignUp from './views/registration/signUp/signUp';
-import SignIn from './views/registration/signIn/signIn';
+import Main from './views/Main/main';
+import SignUp from './views/signUp/signUp';
+import SignIn from './views/signIn/signIn';
 
 import Router from './modules/router/router';
 
