@@ -1,11 +1,10 @@
-
 export default class Router {
     constructor() {
-        this.routes = [];
+        this.routes = new Map();
     }
 
     use(path, view) {
-        this.routes[path] = view;
+        this.routes.set(path, view);
 
         return this;
     }
@@ -19,17 +18,19 @@ export default class Router {
     }
 
     onRoute() {
-        Object.keys(this.routes).forEach(_path => {
-            let currentPath = window.location.pathname.toString().toLowerCase();
+        let currentPath = window.location.pathname.toString().toLowerCase();
 
-            if (currentPath[currentPath.length - 1] === '/') {
-                currentPath = currentPath.slice(0, -1);
-            }
+        if (currentPath[currentPath.length - 1] === '/') {
+            currentPath = currentPath.slice(0, -1);
+        }
 
-            if (_path === currentPath) {
-                this.routes[_path].init();
-            }
-        });
+        const route = this.routes.get(currentPath);
+
+        if (!route) {
+            return;
+        }
+
+        route.init();
     }
 
     go(path) {
