@@ -8,7 +8,8 @@
     "webpack": "./node_modules/.bin/webpack",
     "eslint": "./node_modules/.bin/eslint ./src/**/*.js",
     "eslint-fix": "./node_modules/.bin/eslint --fix ./src/**/*.js",
-    "webpack-dev": "./node_modules/.bin/webpack --watch"
+    "webpack-dev": "./node_modules/.bin/webpack --watch",
+    "postinstall": "npm run webpack"
   },
   "author": "",
   "license": "ISC",
