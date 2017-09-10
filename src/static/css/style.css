@@ -161,7 +161,7 @@ input[type="password"]:focus {
 
 button {
     height: 50px;
-    margin: 0;
+    margin: 10px 0px 0px 0px;
     padding: 0 20px;
     vertical-align: middle;
     background: #19b9e7;
