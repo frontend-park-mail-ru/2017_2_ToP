@@ -14,9 +14,9 @@ main.style.backgroundSize = 'cover';
 const router = new Router();
 
 router
-    .use('', new Main())
-    .use('/signup', new SignUp())
-    .use('/signin', new SignIn())
+    .use('', Main)
+    .use('/signup', SignUp)
+    .use('/signin', SignIn)
     .start();
 
 window.addEventListener('click', event => {

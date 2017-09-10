@@ -1,10 +1,13 @@
+import Route from './route';
+
 export default class Router {
     constructor() {
-        this.routes = new Map();
+        this.routes = [];
     }
 
     use(path, view) {
-        this.routes.set(path, view);
+        const route = new Route(path, view);
+        this.routes.push(route);
 
         return this;
     }
@@ -17,20 +20,28 @@ export default class Router {
         this.onRoute();
     }
 
+    getRoute(path) {
+        return this.routes.find(route => route.isPath(path));
+    }
+
     onRoute() {
+        const route = this.getRoute(this.getPath());
+
+        if (!route) {
+            return;
+        }
+
+        route.createView();
+    }
+
+    getPath() {
         let currentPath = window.location.pathname.toString().toLowerCase();
 
         if (currentPath[currentPath.length - 1] === '/') {
             currentPath = currentPath.slice(0, -1);
         }
 
-        const route = this.routes.get(currentPath);
-
-        if (!route) {
-            return;
-        }
-
-        route.init();
+        return currentPath;
     }
 
     go(path) {
