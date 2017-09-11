@@ -1,11 +1,13 @@
+const path = require('path');
+
 module.exports = {
     entry: {
         bundle: "./src/index.js"
     },
 
     output: {
-        path: __dirname + '/src/built',
-        filename: "[name].js"
+        filename: "[name].js",
+        path: path.join(__dirname, '..', 'src/built')
     },
 
     resolve: {
@@ -28,7 +30,5 @@ module.exports = {
                 loader: 'tp-fest-loader'
             }
         ]
-    },
-
-    devtool: 'source-map'
+    }
 };
