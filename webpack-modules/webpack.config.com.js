@@ -28,6 +28,14 @@ module.exports = {
             {
                 test: /\.xml/,
                 loader: 'tp-fest-loader'
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
             }
         ]
     }
