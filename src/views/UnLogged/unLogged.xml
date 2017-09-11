@@ -1,0 +1,29 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class="content">
+        <div class="inner-bg">
+            <div class="row">
+                <div class="text">
+                    <h1><strong>Наше</strong><fest:space/>игра</h1>
+                    <div class="description">
+                        <p>
+                            Описание нашей <fest:space/><strong>захватывающей</strong><fest:space/> игры
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mycol">
+                    <div class="form-box">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="footer-border"></div>
+            <p>&copy <fest:space/><strong>Наше название</strong>, 2017</p>
+        </div>
+    </footer>
+</fest:template>
