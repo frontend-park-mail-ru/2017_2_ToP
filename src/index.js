@@ -4,7 +4,6 @@ import SignIn from './views/SignIn/signIn';
 
 import Router from './modules/router/router';
 
-
 const main = document.getElementsByClassName('main')[0];
 
 // background
