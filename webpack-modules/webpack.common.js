@@ -7,7 +7,7 @@ module.exports = {
 
     output: {
         filename: "[name].js",
-        path: path.resolve(__dirname, 'src/built')
+        path: path.join(__dirname, '..', 'src/built')
     },
 
     resolve: {
