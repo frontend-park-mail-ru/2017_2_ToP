@@ -1,10 +1,34 @@
+const path = require('path');
+
 module.exports = {
     entry: {
         bundle: "./src/index.js"
     },
 
     output: {
-        path: __dirname + '/src/built',
-        filename: "[name].js"
+        filename: "[name].js",
+        path: path.resolve(__dirname, 'src/built')
+    },
+
+    resolve: {
+        extensions: ['.js']
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015']
+                    }
+                }
+            },
+            {
+                test: /\.xml/,
+                loader: 'tp-fest-loader'
+            }
+        ]
     }
 };
