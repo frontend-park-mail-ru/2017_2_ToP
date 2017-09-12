@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/server.js",
     "webpack": "./node_modules/.bin/webpack -p --config webpack.config.prod.js",
-    "webpack-dev": "./node_modules/.bin/webpack --config webpack.config.dev.js",
+    "webpack-dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.dev.js",
     "eslint": "./node_modules/.bin/eslint ./src/**/*.js",
     "eslint-fix": "./node_modules/.bin/eslint --fix ./src/**/*.js",
     "postinstall": "npm run webpack"
@@ -26,6 +26,7 @@
     "source-map-loader": "^0.2.1",
     "tp-fest-loader": "^1.0.0",
     "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1",
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
