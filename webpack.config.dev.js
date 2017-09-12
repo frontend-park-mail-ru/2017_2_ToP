@@ -3,5 +3,12 @@ const merge = require('webpack-merge');
 
 module.exports = merge(common, {
     watch: true,
-    devtool: 'source-map'
+    devtool: 'source-map',
+
+    devServer: {
+        contentBase: './src/',
+        publicPath: '/built/',
+        open: true,
+        port: 10000
+    }
 });
