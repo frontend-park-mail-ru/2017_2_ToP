@@ -5,7 +5,7 @@ export default class Login {
 
     init() {
         const main = document.getElementsByClassName('main')[0];
-        main.innerHTML = UnLogged({title: 'Наша'});
+        main.innerHTML = UnLogged();
         main.getElementsByClassName('form-box')[0].innerHTML = this._createForm();
         this._validation(main);
     }
