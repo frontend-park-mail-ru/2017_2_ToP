@@ -20,9 +20,9 @@ router
     .start();
 
 window.addEventListener('click', event => {
-    const element = event.target;
-    if (!element.getAttribute('data-url')) {
+    const url = event.target.getAttribute('data-url');
+    if (!url || url === '') {
         return;
     }
-    router.go(element.getAttribute('data-url'));
+    router.go(url);
 });
