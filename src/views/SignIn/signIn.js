@@ -1,13 +1,15 @@
 import UnLogged from '../UnLogged/unLogged.xml';
 import Form from '../../components/Form/form.xml';
+import TopComponent from '../../components/TopComponent/topComponent';
 
-export default class Login {
+export default class SignIn extends TopComponent {
 
     init() {
         const main = document.getElementsByClassName('main')[0];
-        main.innerHTML = UnLogged();
-        main.getElementsByClassName('form-box')[0].innerHTML = this._createForm();
-        this._validation(main);
+        this.getElement().innerHTML = UnLogged();
+        this.getElement().getElementsByClassName('form-box')[0].innerHTML = this._createForm();
+        this._validation(this.getElement());
+        main.appendChild(this.render());
     }
 
     _validation(main) {

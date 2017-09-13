@@ -6,8 +6,16 @@ export default class Route {
     }
 
     createView() {
-        this._view = new this._viewType();
-        this._view.init();
+        if (!this._view) {
+            this._view = new this._viewType();
+            this._view.init();
+        } else {
+            this._view.show();
+        }
+    }
+
+    getView() {
+        return this._view;
     }
 
     isPath(path) {
