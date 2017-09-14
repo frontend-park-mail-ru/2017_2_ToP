@@ -3,7 +3,6 @@ import SignUp from './views/SignUp/signUp';
 import SignIn from './views/SignIn/signIn';
 
 import Router from './modules/router/router';
-import './static/css/global.scss';
 
 const main = document.getElementsByClassName('main')[0];
 
