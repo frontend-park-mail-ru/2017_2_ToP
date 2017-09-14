@@ -1,10 +1,12 @@
 /*@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500);*/
 
+@import "_theme";
+
 body {
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: 300;
-    color: #888;
+    color: $primary-color;
     line-height: 30px;
     text-align: center;
 }
@@ -17,43 +19,40 @@ h1, h2 {
     margin-top: 10px;
     font-size: 38px;
     font-weight: 100;
-    color: #555;
+    color: $gray;
     line-height: 50px;
 }
 
 h3 {
     font-size: 22px;
     font-weight: 300;
-    color: #555;
+    color: $gray;
     line-height: 30px;
 }
 
 ::selection {
-    background: #19b9e7;
-    color: #fff;
+    background: $blue;
+    color: $white;
     text-shadow: none;
 }
 
 /***** content *****/
 
-.inner-bg {
+.content {
     padding: 50px 0 80px 0;
-}
 
-.content .text {
-    color: #fff;
-}
-
-.content .text h1 {
-    color: #fff;
-}
-
-.content .description {
-    margin: 20px 0 10px 0;
-}
-
-.content .description p {
-    opacity: 0.8;
+    .text {
+        color: $white;
+        h1 {
+            color: $white;
+        }
+    }
+    .description {
+        margin: 20px 0 10px 0;
+        p {
+            opacity: 0.8;
+        }
+    }
 }
 
 .form-box {
@@ -63,8 +62,8 @@ h3 {
 .form-top {
     overflow: hidden;
     padding: 0 20px 0px 25px;
-    background: #444;
-    background: rgba(0, 0, 0, 0.35);
+    background: $dark-gray;
+    background: $black;
     border-radius: 4px 4px 0 0;
     text-align: left;
 }
@@ -73,6 +72,15 @@ h3 {
     float: left;
     width: 75%;
     padding-top: 25px;
+
+    h3 {
+        margin-top: 0;
+        color: $white;
+    }
+    p {
+        opacity: 0.8;
+        color: $white;
+    }
 }
 
 .mycol {
@@ -82,28 +90,12 @@ h3 {
     padding-left: 15px;
 }
 
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
-    clear: both;
-}
-
-.form-top-left h3 {
-    margin-top: 0;
-    color: #fff;
-}
-
-.form-top-left p {
-    opacity: 0.8;
-    color: #fff;
-}
-
 .form-top-right {
     float: right;
     width: 25%;
     padding-top: 5px;
     font-size: 66px;
-    color: #fff;
+    color: $white;
     line-height: 100px;
     text-align: right;
     opacity: 0.3;
@@ -111,112 +103,105 @@ h3 {
 
 .form-bottom {
     padding: 25px 25px 30px 30px;
-    background: #444;
-    background: rgba(0, 0, 0, 0.3);
+    background: $dark-gray;
+    background: $black;
     border-radius: 0 0 4px 4px;
     text-align: left;
+
+    form button {
+        cursor: pointer;
+        width: 100%;
+    }
+    form input {
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    form {
+        .input-error {
+            border-color: $red;
+        }
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
 }
 
-.form-bottom form button {
-    cursor: pointer;
-    width: 100%;
-}
-
-.form-bottom form input {
-    box-sizing: border-box;
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-.form-bottom form .input-error {
-    border-color: red /*#19b9e7;*/
-}
 
 /***** Элементы формы ******/
 
-input[type="text"],
-input[type="password"] {
+%form-element {
     height: 50px;
-    margin: 0;
     padding: 0 20px;
     vertical-align: middle;
-    background: #fff;
-    border: 3px solid #fff;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 50px;
-    color: #888;
     border-radius: 4px;
     box-shadow: none;
     transition: all .3s;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-    outline: 0;
-    background: #fff;
+%form-text {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 50px;
+}
+
+input[type="text"],
+input[type="password"] {
+    @extend %form-element;
+    @extend %form-text;
+    background: $white;
     border: 3px solid #fff;
-    box-shadow: none;
+    color: $primary-color;
+    &:focus {
+        outline: 0;
+    }
 }
 
 button {
-    height: 50px;
+    @extend %form-text;
+    @extend %form-element;
     margin: 10px 0px 0px 0px;
-    padding: 0 20px;
-    vertical-align: middle;
-    background: #19b9e7;
+    background: $blue;
     border: 0;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 50px;
-    color: #fff;
-    border-radius: 4px;
+    color: $white;
     text-shadow: none;
-    box-shadow: none;
-    transition: all .3s;
-}
-
-button:hover {
-    opacity: 0.8;
-    color: #fff;
-}
-
-button:active {
-    outline: 0;
-    opacity: 0.6;
-    color: #fff;
-    box-shadow: none;
-}
-
-button:focus {
-    outline: 0;
-    opacity: 0.8;
-    background: #19b9e7;
-    color: #fff;
+    &:hover {
+        opacity: 0.8;
+    }
+    &:active {
+        outline: 0;
+        opacity: 0.6;
+    }
+    &:focus {
+        outline: 0;
+        opacity: 0.8;
+    }
 }
 
 button:active:focus, button.active:focus {
     outline: 0;
     opacity: 0.6;
-    background: #19b9e7;
-    color: #fff;
+    background: $blue;
+    color: $white;
 }
 
 /***** Footer *****/
 
 footer {
     padding-bottom: 70px;
-    color: #fff;
-}
+    color: $white;
 
-footer .footer-border {
-    width: 200px;
-    margin: 0 auto;
-    border-top: 1px solid rgba(255, 255, 255, 0.6);
-}
+    .footer-border {
+        width: 200px;
+        margin: 0 auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.6);
+    }
 
-footer p {
-    opacity: 0.8;
+    p {
+        opacity: 0.8;
+    }
 }
 
 /***** Media queries *****/
