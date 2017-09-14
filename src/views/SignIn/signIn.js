@@ -1,14 +1,16 @@
-import UnLogged from '../UnLogged/unLogged.xml';
-import Form from '../../components/Form/form.xml';
+import Form from '../../components/Form/form';
 import TopComponent from '../../components/TopComponent/topComponent';
 
 export default class SignIn extends TopComponent {
+    constructor() {
+        super();
+        this._form = new Form();
+    }
 
     init() {
-        this._createBackground();
         this._createForm();
         this._validation();
-        document.getElementsByClassName('main')[0].appendChild(this.render());
+        document.getElementsByClassName('form-box')[0].appendChild(this.render());
     }
 
     _validation() {
@@ -34,10 +36,6 @@ export default class SignIn extends TopComponent {
                 document.forms.loginForm.submit();
             }
         });
-    }
-
-    _createBackground() {
-        this.getElement().innerHTML = UnLogged();
     }
 
     _createForm() {
@@ -68,7 +66,9 @@ export default class SignIn extends TopComponent {
             ]
         };
 
-        this.getElement().getElementsByClassName('form-box')[0].innerHTML = Form(data);
+        this._form.init(data);
+
+        this.getElement().appendChild(this._form.render());
     }
 }
 
