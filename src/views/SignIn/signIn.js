@@ -5,14 +5,14 @@ import TopComponent from '../../components/TopComponent/topComponent';
 export default class SignIn extends TopComponent {
 
     init() {
-        const main = document.getElementsByClassName('main')[0];
-        this.getElement().innerHTML = UnLogged();
-        this.getElement().getElementsByClassName('form-box')[0].innerHTML = this._createForm();
-        this._validation(this.getElement());
-        main.appendChild(this.render());
+        this._createBackground();
+        this._createForm();
+        this._validation();
+        document.getElementsByClassName('main')[0].appendChild(this.render());
     }
 
-    _validation(main) {
+    _validation() {
+        const main = this.getElement();
         [...main.getElementsByClassName('loginput')].forEach(element => {
             element.addEventListener('focus', () => {
                 element.classList.remove('input-error');
@@ -36,8 +36,12 @@ export default class SignIn extends TopComponent {
         });
     }
 
+    _createBackground() {
+        this.getElement().innerHTML = UnLogged();
+    }
+
     _createForm() {
-        return Form({
+        const data = {
             title: 'Авторизация',
             icon: 'fa fa-lock',
             method: 'post',
@@ -62,7 +66,9 @@ export default class SignIn extends TopComponent {
                     text: 'Войти!'
                 }
             ]
-        });
+        };
+
+        this.getElement().getElementsByClassName('form-box')[0].innerHTML = Form(data);
     }
 }
 

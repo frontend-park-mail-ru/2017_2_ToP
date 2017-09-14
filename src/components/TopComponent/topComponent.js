@@ -1,6 +1,6 @@
 export default class TopComponent {
-    constructor() {
-        this._component = document.createElement('div');
+    constructor(name = 'div') {
+        this._component = document.createElement(name);
     }
 
     hide() {
@@ -12,7 +12,7 @@ export default class TopComponent {
     }
 
     render() {
-        return this._component;
+        return this.getElement();
     }
 
     remove() {

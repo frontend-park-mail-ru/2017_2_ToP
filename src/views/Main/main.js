@@ -5,14 +5,13 @@ import TopComponent from '../../components/TopComponent/topComponent';
 export default class Main extends TopComponent {
 
     init() {
-        const main = document.getElementsByClassName('main')[0];
-        this.getElement().innerHTML = UnLogged();
-        this.getElement().getElementsByClassName('form-box')[0].innerHTML = this._createForm();
-        main.appendChild(this.render());
+        this._createBackground();
+        this._createForm();
+        document.getElementsByClassName('main')[0].appendChild(this.render());
     }
 
     _createForm() {
-        return Form({
+        const data = {
             method: 'get',
             name: 'startForm',
             buttons: [
@@ -25,6 +24,12 @@ export default class Main extends TopComponent {
                     url: '/signup'
                 }
             ]
-        });
+        };
+
+        this.getElement().getElementsByClassName('form-box')[0].innerHTML = Form(data);
+    }
+
+    _createBackground() {
+        this.getElement().innerHTML = UnLogged();
     }
 }
