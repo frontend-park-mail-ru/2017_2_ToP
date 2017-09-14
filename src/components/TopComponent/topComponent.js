@@ -22,9 +22,5 @@ export default class TopComponent {
     getElement() {
         return this._component;
     }
-
-    getFormBox() {
-        return document.getElementsByClassName('form-box')[0];
-    }
 }
 
