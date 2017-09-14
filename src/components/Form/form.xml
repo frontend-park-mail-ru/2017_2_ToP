@@ -2,13 +2,11 @@
     <fest:if test="json.title">
         <div class="form-top">
             <div class="form-top-left">
-                <h3>
-                    <fest:value>json.title</fest:value>
-                </h3>
+                <h3><fest:value>json.title</fest:value></h3>
                 <p>Заполните следующие поля:</p>
             </div>
             <div class="form-top-right">
-                <i class="{json.icon}"></i>
+                <i class="{json.icon}"/>
             </div>
         </div>
     </fest:if>
