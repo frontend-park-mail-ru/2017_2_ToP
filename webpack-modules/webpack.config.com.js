@@ -7,7 +7,10 @@ const extractSass = new ExtractTextPlugin({
 
 module.exports = {
     entry: {
-        bundle: "./src/index.js"
+        main: [
+            "./src/index.js",
+            "./src/static/css/main.scss"
+        ]
     },
 
     output: {
