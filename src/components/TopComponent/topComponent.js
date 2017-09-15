@@ -25,5 +25,9 @@ export default class TopComponent {
     getElement() {
         return this._component;
     }
+
+    renderTo(className) {
+        document.getElementsByClassName(className)[0].appendChild(this.render());
+    }
 }
 

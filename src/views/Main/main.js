@@ -1,5 +1,4 @@
 import Form from '../../components/Form/form';
-import TopComponent from '../../components/TopComponent/topComponent';
 
 const data = {
     method: 'get',
@@ -20,6 +19,6 @@ export default class Main extends Form {
 
     init() {
         this.createForm(data);
-        document.getElementsByClassName('mycol')[0].appendChild(this.render());
+        this.renderTo('mycol');
     }
 }

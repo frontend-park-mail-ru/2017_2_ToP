@@ -44,7 +44,7 @@ export default class SignUp extends Form {
     init() {
         this.createForm(data);
         this._validation();
-        document.getElementsByClassName('mycol')[0].appendChild(this.render());
+        this.renderTo('mycol');
     }
 
     _validation() {
