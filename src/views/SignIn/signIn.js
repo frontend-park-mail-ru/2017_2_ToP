@@ -1,16 +1,38 @@
 import Form from '../../components/Form/form';
-import TopComponent from '../../components/TopComponent/topComponent';
 
-export default class SignIn extends TopComponent {
-    constructor() {
-        super();
-        this._form = new Form();
-    }
+const data = {
+    title: 'Авторизация',
+    icon: 'fa fa-lock',
+    method: 'post',
+    name: 'loginForm',
+    fields: [
+        {
+            type: 'text',
+            name: 'form-username',
+            placeholder: 'Логин...',
+            class: 'loginput'
+        },
+        {
+            type: 'password',
+            name: 'form-password',
+            placeholder: 'Пароль...',
+            class: 'loginput'
+        }
+    ],
+    buttons: [
+        {
+            class: 'loginSubmit',
+            text: 'Войти!'
+        }
+    ]
+};
+
+export default class SignIn extends Form {
 
     init() {
-        this._createForm();
+        this.createForm(data);
         this._validation();
-        document.getElementsByClassName('form-box')[0].appendChild(this.render());
+        document.getElementsByClassName('mycol')[0].appendChild(this.render());
     }
 
     _validation() {
@@ -36,39 +58,6 @@ export default class SignIn extends TopComponent {
                 document.forms.loginForm.submit();
             }
         });
-    }
-
-    _createForm() {
-        const data = {
-            title: 'Авторизация',
-            icon: 'fa fa-lock',
-            method: 'post',
-            name: 'loginForm',
-            fields: [
-                {
-                    type: 'text',
-                    name: 'form-username',
-                    placeholder: 'Логин...',
-                    class: 'loginput'
-                },
-                {
-                    type: 'password',
-                    name: 'form-password',
-                    placeholder: 'Пароль...',
-                    class: 'loginput'
-                }
-            ],
-            buttons: [
-                {
-                    class: 'loginSubmit',
-                    text: 'Войти!'
-                }
-            ]
-        };
-
-        this._form.init(data);
-
-        this.getElement().appendChild(this._form.render());
     }
 }
 
