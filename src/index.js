@@ -4,7 +4,7 @@ import SignIn from './views/SignIn/signIn';
 
 import Router from './modules/router/router';
 
-import BackgroundKostyl from './views/UnLogged/background';
+import BackgroundKostyl from './components/Background/background';
 
 const main = document.getElementsByClassName('main')[0];
 
