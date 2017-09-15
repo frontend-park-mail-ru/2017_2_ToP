@@ -1,0 +1,28 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <fest:if test="json.title">
+        <div class="form-top">
+            <div class="form-top-left">
+                <h3>
+                    <fest:value>json.title</fest:value>
+                </h3>
+                <p>Заполните следующие поля:</p>
+            </div>
+            <div class="form-top-right">
+                <i class="{json.icon}"></i>
+            </div>
+        </div>
+    </fest:if>
+    <div class="form-bottom">
+        <form role="form" action="" method="{json.method}" name="{json.name}">
+            <fest:for iterate="json.fields" index="i">
+                <input type="{json.fields[i].type}" name="{json.fields[i].name}" placeholder="{json.fields[i].placeholder}" class="{json.fields[i].class}"/>
+            </fest:for>
+            <fest:for iterate="json.buttons" index="i">
+                <button type="button" class="{json.buttons[i].class}" data-url="{json.buttons[i].url}">
+                    <fest:value>json.buttons[i].text</fest:value>
+                </button>
+            </fest:for>
+        </form>
+    </div>
+</fest:template>
+
