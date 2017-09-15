@@ -189,6 +189,17 @@ button:active:focus, button.active:focus {
     color: $white;
 }
 
+.menu {
+    @extend .form-box;
+    @extend .form-bottom;
+    border-radius: 4px;
+
+    button {
+        cursor: pointer;
+        width: 100%;
+    }
+}
+
 /***** Footer *****/
 
 footer {

@@ -1,4 +1,4 @@
-import Form from '../../components/Form/form';
+import Menu from '../../components/Menu/menu';
 
 const data = {
     method: 'get',
@@ -15,10 +15,10 @@ const data = {
     ]
 };
 
-export default class Main extends Form {
+export default class Main extends Menu {
 
     init() {
-        this.createForm(data);
+        this.createMenu(data);
         this.renderTo('mycol');
     }
 }
