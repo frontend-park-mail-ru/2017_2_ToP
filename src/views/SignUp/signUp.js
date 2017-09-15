@@ -1,16 +1,21 @@
-import UnLogged from '../UnLogged/unLogged.xml';
-import Form from '../../components/Form/form.xml';
+import Form from '../../components/Form/form';
+import TopComponent from '../../components/TopComponent/topComponent';
 
-export default class Registration {
+export default class SignUp extends TopComponent {
 
-    init() {
-        const main = document.getElementsByClassName('main')[0];
-        main.innerHTML = UnLogged();
-        main.getElementsByClassName('form-box')[0].innerHTML = this._createForm();
-        this._validation(main);
+    constructor() {
+        super();
+        this._form = new Form();
     }
 
-    _validation(main) {
+    init() {
+        this._createForm();
+        this._validation();
+        document.getElementsByClassName('form-box')[0].appendChild(this.render());
+    }
+
+    _validation() {
+        const main = this.getElement();
         [...main.getElementsByClassName('reginput')].forEach(element => {
             element.addEventListener('focus', () => {
                 element.classList.remove('input-error');
@@ -35,7 +40,7 @@ export default class Registration {
     }
 
     _createForm() {
-        return Form({
+        const data = {
             title: 'Регистрация',
             icon: 'fa fa-pencil',
             method: 'post',
@@ -72,6 +77,10 @@ export default class Registration {
                     text: 'Зарегистрироваться!'
                 }
             ]
-        });
+        };
+
+        this._form.init(data);
+
+        this.getElement().appendChild(this._form.render());
     }
 }

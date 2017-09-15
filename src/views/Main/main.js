@@ -1,16 +1,20 @@
-import UnLogged from '../UnLogged/unLogged.xml';
-import Form from '../../components/Form/form.xml';
+import Form from '../../components/Form/form';
+import TopComponent from '../../components/TopComponent/topComponent';
 
-export default class Main {
+export default class Main extends TopComponent {
+
+    constructor() {
+        super();
+        this._menu = new Form();
+    }
 
     init() {
-        const main = document.getElementsByClassName('main')[0];
-        main.innerHTML = UnLogged();
-        main.getElementsByClassName('form-box')[0].innerHTML = this._createForm();
+        this._createForm();
+        document.getElementsByClassName('form-box')[0].appendChild(this.render());
     }
 
     _createForm() {
-        return Form({
+        const data = {
             method: 'get',
             name: 'startForm',
             buttons: [
@@ -23,6 +27,10 @@ export default class Main {
                     url: '/signup'
                 }
             ]
-        });
+        };
+
+        this._menu.init(data);
+
+        this.getElement().appendChild(this._menu.render());
     }
 }

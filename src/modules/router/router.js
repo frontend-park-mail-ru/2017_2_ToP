@@ -37,6 +37,7 @@ export default class Router {
             return;
         }
 
+        this.hideAll();
         route.createView();
     }
 
@@ -49,5 +50,15 @@ export default class Router {
     go(path) {
         window.history.pushState({}, '', path);
         this._onRoute();
+    }
+
+    // temp func
+    hideAll() {
+        this.routes.forEach(route => {
+            if (route.getView()) {
+                console.log(route);
+                route.getView().hide();
+            }
+        });
     }
 }

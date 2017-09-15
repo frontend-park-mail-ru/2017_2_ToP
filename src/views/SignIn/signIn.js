@@ -1,16 +1,20 @@
-import UnLogged from '../UnLogged/unLogged.xml';
-import Form from '../../components/Form/form.xml';
+import Form from '../../components/Form/form';
+import TopComponent from '../../components/TopComponent/topComponent';
 
-export default class Login {
-
-    init() {
-        const main = document.getElementsByClassName('main')[0];
-        main.innerHTML = UnLogged();
-        main.getElementsByClassName('form-box')[0].innerHTML = this._createForm();
-        this._validation(main);
+export default class SignIn extends TopComponent {
+    constructor() {
+        super();
+        this._form = new Form();
     }
 
-    _validation(main) {
+    init() {
+        this._createForm();
+        this._validation();
+        document.getElementsByClassName('form-box')[0].appendChild(this.render());
+    }
+
+    _validation() {
+        const main = this.getElement();
         [...main.getElementsByClassName('loginput')].forEach(element => {
             element.addEventListener('focus', () => {
                 element.classList.remove('input-error');
@@ -35,7 +39,7 @@ export default class Login {
     }
 
     _createForm() {
-        return Form({
+        const data = {
             title: 'Авторизация',
             icon: 'fa fa-lock',
             method: 'post',
@@ -60,7 +64,11 @@ export default class Login {
                     text: 'Войти!'
                 }
             ]
-        });
+        };
+
+        this._form.init(data);
+
+        this.getElement().appendChild(this._form.render());
     }
 }
 
