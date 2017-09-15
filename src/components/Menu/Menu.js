@@ -1,5 +1,5 @@
-import menu from './menu.xml';
-import TopComponent from '../TopComponent/topComponent';
+import menu from './Menu.xml';
+import TopComponent from '../TopComponent/TopComponent';
 
 export default class Menu extends TopComponent {
     constructor() {

@@ -1,4 +1,4 @@
-import Form from '../../components/Form/form';
+import Form from '../../components/Form/Form';
 
 const data = {
     title: 'Регистрация',

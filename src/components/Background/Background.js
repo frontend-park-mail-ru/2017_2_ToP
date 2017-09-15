@@ -1,4 +1,4 @@
-import background from './background.xml';
+import background from './Background.xml';
 
 export default function BackgroundKostyl(main) {
     main.innerHTML = background();

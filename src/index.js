@@ -1,8 +1,8 @@
-import Main from './views/Main/main';
-import SignUp from './views/SignUp/signUp';
-import SignIn from './views/SignIn/signIn';
+import Main from './views/Main/Main';
+import SignUp from './views/SignUp/SignUp';
+import SignIn from './views/SignIn/SignIn';
 
-import Router from './modules/router/router';
+import Router from './modules/Router/Router';
 
 import BackgroundKostyl from './components/Background/background';
 

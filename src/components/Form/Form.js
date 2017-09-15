@@ -1,5 +1,5 @@
-import form from './form.xml';
-import TopComponent from '../TopComponent/topComponent';
+import form from './Form.xml';
+import TopComponent from '../TopComponent/TopComponent';
 
 export default class FormView extends TopComponent {
     constructor() {
