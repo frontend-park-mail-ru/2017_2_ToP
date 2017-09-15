@@ -1,6 +1,9 @@
 export default class TopComponent {
-    constructor(name = 'div') {
+    constructor(name = 'div', _class = '') {
         this._component = document.createElement(name);
+        if (_class) {
+            this._component.classList.add(_class);
+        }
     }
 
     hide() {
