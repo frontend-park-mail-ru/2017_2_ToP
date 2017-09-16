@@ -40,35 +40,9 @@ const data = {
 };
 
 export default class SignUp extends Form {
-
     init() {
         this.createForm(data);
-        this._validation();
+        this.validation('reginput', 'registrationSubmit', 'registrationForm');
         this.renderTo('content');
-    }
-
-    _validation() {
-        const main = this.getElement();
-        [...main.getElementsByClassName('reginput')].forEach(element => {
-            element.addEventListener('focus', () => {
-                element.classList.remove('input-error');
-            }, false);
-        });
-
-        main.getElementsByClassName('registrationSubmit')[0].addEventListener('click', () => {
-            let valid = true;
-            [...main.getElementsByClassName('reginput')].forEach(element => {
-                if (element.value === '') {
-                    element.classList.add('input-error');
-                    valid = false;
-                } else {
-                    element.classList.remove('input-error');
-                }
-            });
-
-            if (valid) {
-                document.forms.registrationForm.submit();
-            }
-        });
     }
 }
