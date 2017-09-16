@@ -114,10 +114,6 @@ h3 {
     border-radius: 0 0 4px 4px;
     text-align: left;
 
-    form button {
-        cursor: pointer;
-        width: 100%;
-    }
     form input {
         box-sizing: border-box;
         width: 100%;
@@ -165,14 +161,16 @@ input[type="password"] {
     }
 }
 
-button {
+.button {
     @extend %form-text;
     @extend %form-element;
     margin: 10px 0px 0px 0px;
     background: $blue;
     border: 0;
     color: $white;
+    text-align: center;
     text-shadow: none;
+    box-sizing: border-box;
     &:hover {
         opacity: 0.8;
     }
@@ -186,13 +184,6 @@ button {
     }
 }
 
-button:active:focus, button.active:focus {
-    outline: 0;
-    opacity: 0.6;
-    background: $blue;
-    color: $white;
-}
-
 /***** Menu ****/
 
 .menu {
@@ -200,7 +191,7 @@ button:active:focus, button.active:focus {
     @extend .form-bottom;
     border-radius: 4px;
 
-    button {
+    .button {
         cursor: pointer;
         width: 100%;
     }
@@ -209,12 +200,13 @@ button:active:focus, button.active:focus {
 /***** Footer *****/
 
 footer {
-    padding: 80px 0 70px 0;
+    padding-top: 50px;
     color: $white;
 
     .footer-border {
         width: 200px;
         margin: 0 auto;
+        padding-bottom: 10px;
         border-top: 1px solid rgba(255, 255, 255, 0.6);
     }
 

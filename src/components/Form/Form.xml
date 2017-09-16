@@ -16,9 +16,9 @@
                 <input type="{json.fields[i].type}" name="{json.fields[i].name}" placeholder="{json.fields[i].placeholder}" class="{json.fields[i].class}"/>
             </fest:for>
             <fest:for iterate="json.buttons" index="i">
-                <button type="button" class="{json.buttons[i].class}" data-url="{json.buttons[i].url}">
+                <div class="button {json.buttons[i].class}" data-url="{json.buttons[i].url}">
                     <fest:value>json.buttons[i].text</fest:value>
-                </button>
+                </div>
             </fest:for>
         </form>
     </div>
