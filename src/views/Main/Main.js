@@ -17,6 +17,6 @@ export default class Main extends Menu {
 
     init() {
         this.createMenu(data);
-        this.renderTo('mycol');
+        this.renderTo('content');
     }
 }

@@ -32,7 +32,7 @@ export default class SignIn extends Form {
     init() {
         this.createForm(data);
         this._validation();
-        this.renderTo('mycol');
+        this.renderTo('content');
     }
 
     _validation() {

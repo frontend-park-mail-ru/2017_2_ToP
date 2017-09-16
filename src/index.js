@@ -13,7 +13,8 @@ main.style.background = `url(static/img/backgrounds/${Math.floor(Math.random() *
 main.style.backgroundSize = 'cover';
 
 // header, description, footer
-BackgroundKostyl(main);
+const background = new BackgroundKostyl();
+background.createBackground();
 
 const router = new Router();
 
