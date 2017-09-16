@@ -1,8 +1,6 @@
 import Menu from '../../components/Menu/Menu';
 
 const data = {
-    method: 'get',
-    name: 'startForm',
     buttons: [
         {
             text: 'Авторизация',
