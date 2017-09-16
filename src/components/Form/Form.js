@@ -3,7 +3,7 @@ import TopComponent from '../TopComponent/TopComponent';
 
 export default class FormView extends TopComponent {
     constructor() {
-        super('div', 'form-box');
+        super('div', { 'class': 'form-box' });
     }
 
     createForm(data) {

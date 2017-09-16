@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 
 export default class Menu extends TopComponent {
     constructor() {
-        super('div', 'menu');
+        super('div', { 'class': 'menu' });
         // this.buttons = [];
     }
     createMenu(data) {

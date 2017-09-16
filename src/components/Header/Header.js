@@ -3,7 +3,7 @@ import TopComponent from '../TopComponent/TopComponent';
 
 export default class Header extends TopComponent {
     constructor() {
-        super('div', 'header');
+        super('div', { 'class': 'header' });
 
         this.getElement().innerHTML = header();
     }

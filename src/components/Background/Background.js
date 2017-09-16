@@ -16,7 +16,7 @@ export default class Background {
     }
 
     _createContent() {
-        const content = new TopComponent('div', 'content');
+        const content = new TopComponent('div', { 'class': 'content' });
         content.renderTo('main');
     }
 

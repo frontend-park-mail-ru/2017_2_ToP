@@ -1,8 +1,9 @@
 export default class TopComponent {
-    constructor(name = 'div', _class = '') {
-        this._component = document.createElement(name);
-        if (_class) {
-            this._component.classList.add(_class);
+    constructor(tagName = 'div', attrs = {}) {
+        this._component = document.createElement(tagName);
+
+        for (let name in attrs) {
+            this._component.setAttribute(name, attrs[name]);
         }
     }
 
