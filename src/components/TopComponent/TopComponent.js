@@ -29,5 +29,9 @@ export default class TopComponent {
     renderTo(className) {
         document.getElementsByClassName(className)[0].appendChild(this.render());
     }
+
+    append(element) {
+        this.getElement().appendChild(element);
+    }
 }
 
