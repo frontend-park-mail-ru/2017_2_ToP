@@ -2,12 +2,13 @@ import form from './Form.xml';
 import TopComponent from '../TopComponent/TopComponent';
 
 export default class FormView extends TopComponent {
-    constructor() {
-        super('div', { 'class': 'form-box' });
+    constructor(data) {
+        super('div', { 'class': 'form-box' }, data);
     }
 
-    createForm(data) {
-        this.getElement().innerHTML = form(data);
+    render() {
+        this._innerHTML(form(this.getData()));
+        return this.getElement();
     }
 
     validation(input, submit, formName) {

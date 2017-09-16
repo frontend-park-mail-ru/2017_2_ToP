@@ -1,10 +1,20 @@
 export default class TopComponent {
-    constructor(tagName = 'div', attrs = {}) {
+    constructor(tagName = 'div', attrs = {}, data = {}) {
         this._component = document.createElement(tagName);
 
         for (let name in attrs) {
             this._component.setAttribute(name, attrs[name]);
         }
+
+        this.setData(data);
+    }
+
+    setData(data) {
+        this._data = data;
+    }
+
+    getData() {
+        return this._data;
     }
 
     setText(text) {
@@ -37,5 +47,9 @@ export default class TopComponent {
 
     append(element) {
         this.getElement().appendChild(element);
+    }
+
+    _innerHTML(template) {
+        this._component.innerHTML = template;
     }
 }

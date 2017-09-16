@@ -14,9 +14,11 @@ const data = {
 };
 
 export default class Main extends Menu {
+    constructor() {
+        super(data);
+    }
 
     init() {
-        this.createMenu(data);
         this.renderTo('content');
     }
 }
