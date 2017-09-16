@@ -1,8 +1,5 @@
 import Router from '../Router/Router';
-
-export function appendChilds(parentName, childComponents) {
-    childComponents.forEach((child) => child.renderTo(parentName));
-}
+import {appendChilds} from '../../components/TopComponent/TopComponent';
 
 export default function CreateTopRouter(className, componentsRoutes, defaultComponents) {
     const classObject = document.getElementsByClassName(className)[0];

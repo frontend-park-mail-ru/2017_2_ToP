@@ -39,3 +39,7 @@ export default class TopComponent {
         this.getElement().appendChild(element);
     }
 }
+
+export function appendChilds(parentName, childComponents) {
+    childComponents.forEach((child) => child.renderTo(parentName));
+}
