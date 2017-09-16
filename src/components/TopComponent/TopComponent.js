@@ -7,6 +7,10 @@ export default class TopComponent {
         }
     }
 
+    setText(text) {
+        this._component.textContent = text;
+    }
+
     hide() {
         this._component.style.display = 'none';
     }
@@ -35,4 +39,3 @@ export default class TopComponent {
         this.getElement().appendChild(element);
     }
 }
-
