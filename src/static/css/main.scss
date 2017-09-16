@@ -4,6 +4,13 @@
 
 @import "_theme.scss";
 
+@function randomNum($min, $max) {
+    $rand: random();
+    $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+    @return $randomNum;
+}
+
 body {
     font-family: 'Roboto';
     font-size: 16px;
@@ -11,6 +18,8 @@ body {
     color: $primary-color;
     line-height: 30px;
     text-align: center;
+    background: url('../img/backgrounds/#{randomNum(0, 2)}.jpg') no-repeat center fixed;
+    background-size: cover;
 }
 
 strong {

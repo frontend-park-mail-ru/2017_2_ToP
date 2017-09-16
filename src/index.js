@@ -2,28 +2,32 @@ import Main from './views/Main/Main';
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
 
-import Router from './modules/Router/Router';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import TopComponent from './components/TopComponent/TopComponent';
 
-import BackgroundKostyl from './components/Background/Background';
+import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
 
-const main = document.getElementsByClassName('main')[0];
+const componentsRoutes = [
+    {
+        path: '',
+        component: Main
+    },
+    {
+        path: '/signup',
+        component: SignUp
+    },
+    {
+        path: '/signin',
+        component: SignIn
+    }
+];
 
-// background
-main.style.background = `url(static/img/backgrounds/${Math.floor(Math.random() * 3)}.jpg) no-repeat center fixed`;
-main.style.backgroundSize = 'cover';
+const header = new Header();
+const footer = new Footer();
+const content = new TopComponent('div', { 'class': 'content' });
 
-// header, description, footer
-const background = new BackgroundKostyl();
-background.createBackground();
-
-const router = new Router();
-
-router
-    .use('', Main)
-    .use('/signup', SignUp)
-    .use('/signin', SignIn)
-    .start();
-
+const router = CreateTopRouter('main', componentsRoutes, [ header, content, footer ]);
 
 window.addEventListener('click', event => {
     const url = event.target.getAttribute('data-url');
