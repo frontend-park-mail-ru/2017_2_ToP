@@ -1,10 +1,10 @@
-import Main from './views/Main/main';
-import SignUp from './views/SignUp/signUp';
-import SignIn from './views/SignIn/signIn';
+import Main from './views/Main/Main';
+import SignUp from './views/SignUp/SignUp';
+import SignIn from './views/SignIn/SignIn';
 
-import Router from './modules/router/router';
+import Router from './modules/Router/Router';
 
-import BackgroundKostyl from './components/Background/background';
+import BackgroundKostyl from './components/Background/Background';
 
 const main = document.getElementsByClassName('main')[0];
 
@@ -13,7 +13,8 @@ main.style.background = `url(static/img/backgrounds/${Math.floor(Math.random() *
 main.style.backgroundSize = 'cover';
 
 // header, description, footer
-BackgroundKostyl(main);
+const background = new BackgroundKostyl();
+background.createBackground();
 
 const router = new Router();
 

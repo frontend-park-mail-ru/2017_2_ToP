@@ -1,4 +1,4 @@
-import Route from './route';
+import Route from './Route';
 
 export default class Router {
     constructor() {

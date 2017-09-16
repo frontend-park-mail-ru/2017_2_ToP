@@ -38,10 +38,10 @@ h3 {
     text-shadow: none;
 }
 
-/***** content *****/
+/***** Header *****/
 
-.content {
-    padding: 50px 0 80px 0;
+.header {
+    padding-top: 25px;
 
     .text {
         color: $white;
@@ -56,6 +56,17 @@ h3 {
         }
     }
 }
+
+/**** content ****/
+
+.content {
+    margin: auto;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/**** Форма ****/
 
 .form-box {
     margin-top: 70px;
@@ -85,13 +96,6 @@ h3 {
     }
 }
 
-.mycol {
-    margin: auto;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
 .form-top-right {
     float: right;
     width: 25%;
@@ -106,7 +110,7 @@ h3 {
 .form-bottom {
     padding: 25px 25px 30px 30px;
     background: $dark-gray;
-    background: $black;
+    background: $light-black;
     border-radius: 0 0 4px 4px;
     text-align: left;
 
@@ -189,10 +193,23 @@ button:active:focus, button.active:focus {
     color: $white;
 }
 
+/***** Menu ****/
+
+.menu {
+    @extend .form-box;
+    @extend .form-bottom;
+    border-radius: 4px;
+
+    button {
+        cursor: pointer;
+        width: 100%;
+    }
+}
+
 /***** Footer *****/
 
 footer {
-    padding-bottom: 70px;
+    padding: 80px 0 70px 0;
     color: $white;
 
     .footer-border {
@@ -209,7 +226,7 @@ footer {
 /***** Media queries *****/
 
 @media (min-width: 850px) {
-    .mycol {
+    .content {
         width: 40%;
     }
 }
