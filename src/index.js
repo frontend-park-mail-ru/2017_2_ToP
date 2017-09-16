@@ -2,12 +2,11 @@ import Main from './views/Main/Main';
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
 
-import BackgroundKostyl from './components/Background/Background';
-import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import TopComponent from './components/TopComponent/TopComponent';
 
-// header, description, footer
-const background = new BackgroundKostyl();
-background.createBackground();
+import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
 
 const componentsRoutes = [
     {
@@ -24,7 +23,11 @@ const componentsRoutes = [
     }
 ];
 
-const router = CreateTopRouter('main', componentsRoutes, {});
+const header = new Header();
+const footer = new Footer();
+const content = new TopComponent('div', { 'class': 'content' });
+
+const router = CreateTopRouter('main', componentsRoutes, [ header, content, footer ]);
 
 window.addEventListener('click', event => {
     const url = event.target.getAttribute('data-url');
