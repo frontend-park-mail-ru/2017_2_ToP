@@ -8,10 +8,6 @@ import BackgroundKostyl from './components/Background/Background';
 
 const main = document.getElementsByClassName('main')[0];
 
-// background
-main.style.background = `url(static/img/backgrounds/${Math.floor(Math.random() * 3)}.jpg) no-repeat center fixed`;
-main.style.backgroundSize = 'cover';
-
 // header, description, footer
 const background = new BackgroundKostyl();
 background.createBackground();
