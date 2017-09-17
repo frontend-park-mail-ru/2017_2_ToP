@@ -40,9 +40,12 @@ const data = {
 };
 
 export default class SignUp extends Form {
+    constructor() {
+        super(data);
+    }
+
     init() {
-        this.createForm(data);
-        this.validation('reginput', 'registrationSubmit', 'registrationForm');
         this.renderTo('content');
+        this.validation('reginput', 'registrationSubmit', 'registrationForm');
     }
 }

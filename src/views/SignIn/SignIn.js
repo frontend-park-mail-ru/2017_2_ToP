@@ -28,10 +28,13 @@ const data = {
 };
 
 export default class SignIn extends Form {
+    constructor() {
+        super(data);
+    }
+
     init() {
-        this.createForm(data);
-        this.validation('loginput', 'loginSubmit', 'loginForm');
         this.renderTo('content');
+        this.validation('loginput', 'loginSubmit', 'loginForm');
     }
 }
 
