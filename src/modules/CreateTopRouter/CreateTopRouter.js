@@ -6,8 +6,8 @@ export default function CreateTopRouter(className, componentsRoutes, defaultComp
     const router = new Router();
 
     appendChilds(className, defaultComponents);
-
     componentsRoutes.forEach((route) => router.use(route.path, route.component));
-    router.start();
+    router.connectRouting(window);
+
     return router;
 }

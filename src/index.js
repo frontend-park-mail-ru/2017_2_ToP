@@ -8,7 +8,7 @@ import TopComponent from './components/TopComponent/TopComponent';
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
 
-const componentsRoutes = [
+const router = CreateTopRouter('main', [
     {
         path: '',
         component: Main
@@ -21,18 +21,6 @@ const componentsRoutes = [
         path: '/signin',
         component: SignIn
     }
-];
+], [ new Header(), new TopComponent('div', { 'class': 'content' }), new Footer() ]);
 
-const header = new Header();
-const footer = new Footer();
-const content = new TopComponent('div', { 'class': 'content' });
-
-const router = CreateTopRouter('main', componentsRoutes, [ header, content, footer ]);
-
-window.addEventListener('click', event => {
-    const url = event.target.getAttribute('data-url');
-    if (!url || url === '') {
-        return;
-    }
-    router.go(url);
-});
+router.start();
