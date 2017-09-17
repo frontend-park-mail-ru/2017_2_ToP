@@ -48,6 +48,12 @@ module.exports = {
                     // use style-loader in development
                     fallback: "style-loader"
                 })
+            },
+            {
+                test: /\.(png|jpg|gid|svg)$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
     },

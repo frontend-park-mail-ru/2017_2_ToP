@@ -53,3 +53,7 @@ export default class TopComponent {
         this._component.innerHTML = template;
     }
 }
+
+export function appendChilds(parentName, childComponents) {
+    childComponents.forEach((child) => child.renderTo(parentName));
+}
