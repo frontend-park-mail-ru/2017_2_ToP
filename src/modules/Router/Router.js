@@ -61,4 +61,15 @@ export default class Router {
             }
         });
     }
+
+    connectRouting(objectListener) {
+        objectListener.addEventListener('click', event => {
+            const url = event.target.getAttribute('data-url');
+
+            if (!url || url === '') {
+                return;
+            }
+            this.go(url);
+        });
+    }
 }

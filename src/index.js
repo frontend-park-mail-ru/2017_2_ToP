@@ -23,10 +23,4 @@ const router = CreateTopRouter('main', [
     }
 ], [ new Header(), new TopComponent('div', { 'class': 'content' }), new Footer() ]);
 
-window.addEventListener('click', event => {
-    const url = event.target.getAttribute('data-url');
-    if (!url || url === '') {
-        return;
-    }
-    router.go(url);
-});
+router.start();
