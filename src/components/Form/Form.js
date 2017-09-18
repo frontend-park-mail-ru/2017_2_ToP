@@ -3,7 +3,8 @@ import TopComponent from '../TopComponent/TopComponent';
 
 export default class FormView extends TopComponent {
     constructor(data) {
-        super('div', { 'class': 'form-box' }, data);
+        super('div', {'class': 'form-box'}, data);
+        this.errors = {};
     }
 
     render() {
@@ -11,101 +12,144 @@ export default class FormView extends TopComponent {
         return this.getElement();
     }
 
-    _passwordValidation(input, error) {
+    _errorOutput(formElements, errorsElements) {
+        formElements.forEach(element => {
+            if (this.errors[element.name]) {
+                errorsElements[element.name].innerHTML = this.errors[element.name];
+                element.classList.add('input-error');
+                errorsElements[element.name].classList.add('active');
+            }
+            else {
+                element.classList.remove('input-error');
+                errorsElements[element.name].classList.remove('active');
+                errorsElements[element.name].innerHTML = '';
+            }
+        });
+    }
+
+    _resetErrors(formElements) {
+        this.errors = {};
+        formElements.forEach(element => {
+            element.addEventListener('focus', () => {
+                element.classList.remove('input-error');
+            }, false);
+        });
+    }
+
+    _passwordValidation(input) {
         let valid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(input);
         if (!valid) {
-            if (input.length > 20)
-                error.innerHTML = 'Пароль должен быть меньше 20 символов!';
-            else if (input.length < 6)
-                error.innerHTML = 'Пароль должен быть от 6 символов!';
-            else
-                error.innerHTML = 'Пароль должен содержать буквы разных регистров и как минимум 1 цифру!';
+            if (input.length > 20) {
+                this.errors.password = 'Пароль должен быть меньше 20 символов!';
+            }
+            else if (input.length < 6) {
+                this.errors.password = 'Пароль должен быть от 6 символов!';
+            }
+            else {
+                this.errors.password = 'Пароль должен содержать буквы разных регистров и как минимум 1 цифру!';
+            }
+        }
+        else {
+            this.errors.password = '';
         }
         return valid;
     }
 
-    _repeatPasswordValidation(input, error) {
+    _repeatPasswordValidation(input) {
         const password = document.forms[this.getData().name].elements.password.value;
         let valid = password === input;
-        if(!valid) {
-            error.innerHTML = 'Пароли не совпадают!';
+        if (!valid) {
+            this.errors.repeatPassword = 'Пароли не совпадают!';
+        }
+        else {
+            this.errors.repeatPassword = '';
         }
         return valid;
     }
 
-    _loginValidation(input, error) {
+    _loginValidation(input) {
         let valid = /^[a-z0-9_-]{3,15}$/.test(input);
         if (!valid) {
-            if (input.length < 3)
-                error.innerHTML = 'Логин должен быть от 3 символов!';
-            else if (input.length > 15)
-                error.innerHTML = 'Логин должен быть до 15 символов!';
-            else
-                error.innerHTML = 'Логин должен быть только из цифр и нижних букв английского алфавита!';
+            if (input.length < 3) {
+                this.errors.login = 'Логин должен быть от 3 символов!';
+            }
+            else if (input.length > 15) {
+                this.errors.login = 'Логин должен быть до 15 символов!';
+            }
+            else {
+                this.errors.login = 'Логин должен быть только из цифр и нижних букв английского алфавита!';
+            }
+        }
+        else {
+            this.errors.login = '';
         }
         return valid;
     }
 
-    _emailValidation(input, error) {
+    _emailValidation(input) {
         let valid = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/.test(input);
         if (!valid) {
-            error.innerHTML = 'Введите корректный email!';
+            this.errors.email = 'Введите корректный email!';
+        }
+        else {
+            this.errors.email = '';
         }
         return valid;
+    }
+
+    _basicValidation(element) {
+        let valid = !(element.value === '');
+        if (!valid) {
+            this.errors[element.name] = 'Пожалуйста, введите данные!';
+        }
+        else {
+            this.errors[element.name] = '';
+        }
+        return valid;
+    }
+
+    _isValid() {
+        for (let error of Object.values(this.errors)) {
+            if (error) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     validation(input, submit, formName) {
         const main = this.getElement();
         const errors = main.getElementsByClassName('error');
+        const formElements = [...main.getElementsByClassName(input)];
 
-        [...main.getElementsByClassName(input)].forEach(element => {
-            element.addEventListener('focus', () => {
-                element.classList.remove('input-error');
-            }, false);
-        });
+        this._resetErrors(formElements);
 
         main.getElementsByClassName(submit)[0].addEventListener('click', () => {
-            let formValid = true;
-            let valid = true;
-            let i = 0;
+            formElements.forEach(element => {
+                let formValid = this._basicValidation(element);
 
-            [...main.getElementsByClassName(input)].forEach(element => {
-                const error = errors[i];
-                if (element.value === '') {
-                    error.innerHTML = 'Пожалуйста, введите данные!';
-                    formValid = false;
-                }
-                else {
-                    switch(element.name) {
+                if (formValid) {
+                    switch (element.name) {
                         case 'login':
-                            formValid = this._loginValidation(element.value, error);
+                            this._loginValidation(element.value);
                             break;
                         case 'email':
-                            formValid = this._emailValidation(element.value, error);
+                            this._emailValidation(element.value);
                             break;
                         case 'password':
-                            formValid = this._passwordValidation(element.value, error);
+                            this._passwordValidation(element.value);
                             break;
                         case 'repeat-password':
-                            formValid = this._repeatPasswordValidation(element.value, error);
+                            this._repeatPasswordValidation(element.value);
                             break;
                     }
                 }
-
-                if (!formValid) {
-                    element.classList.add('input-error');
-                    error.classList.add('active');
-                    valid = false;
-                }
-                else {
-                    element.classList.remove('input-error');
-                    error.classList.remove('active');
-                    error.innerHTML = '';
-                }
-                i++;
             });
 
-            if (valid) {
+            this._errorOutput(formElements, errors);
+
+            if (this._isValid()) {
                 document.forms[formName].submit();
             }
         });
