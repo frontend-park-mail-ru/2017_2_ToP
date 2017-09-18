@@ -8,25 +8,25 @@ const data = {
     fields: [
         {
             type: 'text',
-            name: 'form-username',
+            name: 'login',
             placeholder: 'Логин...',
             class: 'reginput'
         },
         {
-            type: 'text',
-            name: 'form-email',
+            type: 'email',
+            name: 'email',
             placeholder: 'Email...',
             class: 'reginput'
         },
         {
             type: 'password',
-            name: 'form-password',
+            name: 'password',
             placeholder: 'Пароль...',
             class: 'reginput'
         },
         {
             type: 'password',
-            name: 'form-repeat-password',
+            name: 'repeat-password',
             placeholder: 'Повторите пароль...',
             class: 'reginput'
         }

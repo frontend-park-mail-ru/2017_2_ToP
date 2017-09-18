@@ -127,13 +127,15 @@ h3 {
     margin-bottom: 15px;
   }
   form {
+    position: relative;
     .input-error {
       border-color: $red;
     }
     input {
       box-sizing: border-box;
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 0px;
+      margin-top: 7px;
     }
   }
 }
@@ -156,11 +158,12 @@ h3 {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"]{
   @extend %form-element;
   @extend %form-text;
   background: $white;
-  border: 3px solid #fff;
+  border: 3px solid $white;
   color: $primary-color;
   &:focus {
     outline: 0;
@@ -187,6 +190,25 @@ input[type="password"] {
   &:focus {
     outline: 0;
     opacity: 0.8;
+  }
+}
+
+.error {
+  height: 30%;
+  width  : 100%;
+  padding: 0;
+
+  font-size: 85%;
+
+  color: $white;
+  background-color: $error-background;
+  margin-top: 4px;
+  margin-bottom: 7px;
+
+  border-radius: 4px;
+  box-sizing: border-box;
+  &.active {
+    padding: 0.3em;
   }
 }
 

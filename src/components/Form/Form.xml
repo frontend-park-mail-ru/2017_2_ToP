@@ -13,7 +13,8 @@
     <div class="form-bottom">
         <form role="form" action="" method="{json.method}" name="{json.name}">
             <fest:for iterate="json.fields" index="i">
-                <input type="{json.fields[i].type}" name="{json.fields[i].name}" placeholder="{json.fields[i].placeholder}" class="{json.fields[i].class}"/>
+                <input type="{json.fields[i].type}" name="{json.fields[i].name}" placeholder="{json.fields[i].placeholder}" class="{json.fields[i].class}"  pattern="{json.fields[i].pattern}"/>
+                <div class="error"></div>
             </fest:for>
             <fest:for iterate="json.buttons" index="i">
                 <div class="button {json.buttons[i].class}" data-url="{json.buttons[i].url}">
