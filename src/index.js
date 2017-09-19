@@ -11,15 +11,15 @@ import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
 const router = CreateTopRouter('main', [
     {
         path: '',
-        component: Main
+        component: new Main()
     },
     {
         path: '/signup',
-        component: SignUp
+        component: new SignUp()
     },
     {
         path: '/signin',
-        component: SignIn
+        component: new SignIn()
     }
 ], [ new Header(), new TopComponent('div', { 'class': 'content' }), new Footer() ]);
 

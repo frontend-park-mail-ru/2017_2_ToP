@@ -49,14 +49,14 @@ export default class FormView extends TopComponent {
         return true;
     }
 
-    validation(input, submit) {
+    validation() {
         const main = this.getElement();
         const errors = main.getElementsByClassName('error');
-        const formElements = [...main.getElementsByClassName(input)];
+        const formElements = [...main.getElementsByClassName(this.getData().fields[0].class)];
 
         this._resetErrors(formElements);
 
-        main.getElementsByClassName(submit)[0].addEventListener('click', () => {
+        main.getElementsByClassName(this.getData().buttons[0].class)[0].addEventListener('click', () => {
             const values = {};
 
             formElements.forEach(element => {

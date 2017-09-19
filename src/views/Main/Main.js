@@ -1,4 +1,5 @@
 import Menu from '../../components/Menu/Menu';
+import TopComponent from '../../components/TopComponent/TopComponent';
 
 const data = {
     buttons: [
@@ -13,12 +14,14 @@ const data = {
     ]
 };
 
-export default class Main extends Menu {
+export default class Main extends TopComponent {
     constructor() {
-        super(data);
+        super('div', {}, data);
     }
 
-    init() {
-        this.renderTo('content');
+    build() {
+        this.main = [ new Menu(this.getData()) ];
+        this.main.forEach(element => element.renderTo('content'));
+        return this.main;
     }
 }
