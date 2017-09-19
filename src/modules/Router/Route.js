@@ -9,7 +9,7 @@ export default class Route {
         if (!this._view) {
             this._view = this._viewType.build();
         } else {
-            this._view.forEach((element) => element.show());
+            this._view.forEach(element => element.show());
         }
     }
 
