@@ -5,7 +5,7 @@ const Validation = (values, errors) => {
         BasicValidation(values[value], errors);
     }
 
-    if(values['repeat-password']) {
+    if (values['repeat-password']) {
         repeatPassword(values['password'].value, values['repeat-password'].value, errors);
     }
 

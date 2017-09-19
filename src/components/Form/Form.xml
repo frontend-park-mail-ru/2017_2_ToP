@@ -2,7 +2,9 @@
     <fest:if test="json.title">
         <div class="form-top">
             <div class="form-top-left">
-                <h3><fest:value>json.title</fest:value></h3>
+                <h3>
+                    <fest:value>json.title</fest:value>
+                </h3>
                 <p>Заполните следующие поля:</p>
             </div>
             <div class="form-top-right">
@@ -13,7 +15,8 @@
     <div class="form-bottom">
         <form role="form" action="" method="{json.method}" name="{json.name}">
             <fest:for iterate="json.fields" index="i">
-                <input type="{json.fields[i].type}" name="{json.fields[i].name}" placeholder="{json.fields[i].placeholder}" class="{json.fields[i].class}"/>
+                <input type="{json.fields[i].type}" name="{json.fields[i].name}"
+                       placeholder="{json.fields[i].placeholder}" class="{json.fields[i].class}"/>
                 <div class="error" name="{json.fields[i].name}"></div>
             </fest:for>
             <fest:for iterate="json.buttons" index="i">

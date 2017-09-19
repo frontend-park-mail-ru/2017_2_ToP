@@ -8,7 +8,7 @@ export default function BasicValidation(element, errors) {
         errors[element.name] = 'Пожалуйста, введите данные!';
     }
     else {
-        switch(element.name) {
+        switch (element.name) {
             case 'login':
                 LoginValidation(element.value, errors);
                 break;
