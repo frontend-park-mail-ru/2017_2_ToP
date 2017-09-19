@@ -22,7 +22,7 @@ export default class Transport {
         xhr.open(method, url, true);
         xhr.withCredentials = true;
 
-        xhr.addEventListener('readystatechange', Transport._readystatechange.bind(this, xhr, callback), false);
+        xhr.addEventListener('readystatechange', Transport._readystatechange.bind(null, xhr, callback), false);
 
         if (body) {
             xhr.setRequestHeader(REQ_HEADER.HEADER, REQ_HEADER.VALUE);
