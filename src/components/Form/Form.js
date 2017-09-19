@@ -1,5 +1,6 @@
 import form from './Form.xml';
 import TopComponent from '../TopComponent/TopComponent';
+import Validation from '../../modules/Validator/index';
 
 export default class FormView extends TopComponent {
     constructor(data) {
@@ -36,78 +37,6 @@ export default class FormView extends TopComponent {
         });
     }
 
-    _passwordValidation(input) {
-        let valid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(input);
-        if (!valid) {
-            if (input.length > 20) {
-                this.errors.password = 'Пароль должен быть меньше 20 символов!';
-            }
-            else if (input.length < 6) {
-                this.errors.password = 'Пароль должен быть от 6 символов!';
-            }
-            else {
-                this.errors.password = 'Пароль должен содержать буквы разных регистров и как минимум 1 цифру!';
-            }
-        }
-        else {
-            this.errors.password = '';
-        }
-        return valid;
-    }
-
-    _repeatPasswordValidation(input) {
-        const password = document.forms[this.getData().name].elements.password.value;
-        let valid = password === input;
-        if (!valid) {
-            this.errors.repeatPassword = 'Пароли не совпадают!';
-        }
-        else {
-            this.errors.repeatPassword = '';
-        }
-        return valid;
-    }
-
-    _loginValidation(input) {
-        let valid = /^[a-z0-9_-]{3,15}$/.test(input);
-        if (!valid) {
-            if (input.length < 3) {
-                this.errors.login = 'Логин должен быть от 3 символов!';
-            }
-            else if (input.length > 15) {
-                this.errors.login = 'Логин должен быть до 15 символов!';
-            }
-            else {
-                this.errors.login = 'Логин должен быть только из цифр и нижних букв английского алфавита!';
-            }
-        }
-        else {
-            this.errors.login = '';
-        }
-        return valid;
-    }
-
-    _emailValidation(input) {
-        let valid = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/.test(input);
-        if (!valid) {
-            this.errors.email = 'Введите корректный email!';
-        }
-        else {
-            this.errors.email = '';
-        }
-        return valid;
-    }
-
-    _basicValidation(element) {
-        let valid = !(element.value === '');
-        if (!valid) {
-            this.errors[element.name] = 'Пожалуйста, введите данные!';
-        }
-        else {
-            this.errors[element.name] = '';
-        }
-        return valid;
-    }
-
     _isValid() {
         for (let error of Object.values(this.errors)) {
             if (error) {
@@ -126,29 +55,14 @@ export default class FormView extends TopComponent {
         this._resetErrors(formElements);
 
         main.getElementsByClassName(submit)[0].addEventListener('click', () => {
-            formElements.forEach(element => {
-                let formValid = this._basicValidation(element);
+            const values = {};
 
-                if (formValid) {
-                    switch (element.name) {
-                        case 'login':
-                            this._loginValidation(element.value);
-                            break;
-                        case 'email':
-                            this._emailValidation(element.value);
-                            break;
-                        case 'password':
-                            this._passwordValidation(element.value);
-                            break;
-                        case 'repeat-password':
-                            this._repeatPasswordValidation(element.value);
-                            break;
-                    }
-                }
+            formElements.forEach(element => {
+                values[element.name] = element;
             });
 
+            this.errors = Validation(values, this.errors);
             this._errorOutput(formElements, errors);
-
             if (this._isValid()) {
                 document.forms[formName].submit();
             }
