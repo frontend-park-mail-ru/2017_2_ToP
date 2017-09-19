@@ -8,13 +8,13 @@ const data = {
     fields: [
         {
             type: 'text',
-            name: 'form-username',
+            name: 'login',
             placeholder: 'Логин...',
             class: 'loginput'
         },
         {
             type: 'password',
-            name: 'form-password',
+            name: 'password',
             placeholder: 'Пароль...',
             class: 'loginput'
         }
