@@ -16,7 +16,7 @@ const data = {
 
 export default class Main extends TopComponent {
     constructor() {
-        super('div', {'class': 'form-box'}, data);
+        super('div', {}, data);
     }
 
     build() {

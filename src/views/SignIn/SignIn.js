@@ -30,7 +30,7 @@ const data = {
 
 export default class SignIn extends TopComponent {
     constructor() {
-        super('div', {'class': 'form-box'}, data);
+        super('div', {}, data);
     }
 
     build() {
