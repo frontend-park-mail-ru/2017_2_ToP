@@ -1,20 +1,19 @@
 export default class Transport {
-    static Get(url, callback) {
-        return this._send(url, 'GET', {}, callback);
+    static get(url, callback) {
+        return Transport._send(url, 'GET', {}, callback);
     }
 
-    static Post(url, body, callback) {
-        return this._send(url, 'POST', body, callback);
+    static post(url, body, callback) {
+        return Transport._send(url, 'POST', body, callback);
     }
 
     static _send(url, method, body = {}, callback) {
         const xhr = new XMLHttpRequest();
         xhr.open(method, url, true);
         xhr.withCredentials = true;
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf8');
 
         xhr.addEventListener('readystatechange', () => {
-            if (xhr.readyState !== 4) {
+            if (xhr.readyState !== XMLHttpRequest.DONE) {
                 return;
             }
 
@@ -24,7 +23,11 @@ export default class Transport {
 
             const response = JSON.parse(xhr.responseText);
             callback(null, response);
-        });
+        }, false);
+
+        if (body) {
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=utf8');
+        }
 
         xhr.send(JSON.stringify(body));
     }

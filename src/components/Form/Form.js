@@ -84,8 +84,8 @@ export default class FormView extends TopComponent {
             }));
 
         if (this.getData().method === 'post') {
-            Transport.Post(url, data, () => {
-                Transport.Get('/me', (xhr, res) => {
+            Transport.post(url, data, () => {
+                Transport.get('/me', (xhr, res) => {
                     if (xhr !== null) {
                         alert(`${xhr.status}: ${xhr.statusText}`);
                     } else {
