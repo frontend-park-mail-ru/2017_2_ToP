@@ -14,7 +14,7 @@ export default class Transport {
     }
 
     static post(url, body, callback) {
-        return Transport._send(url, METHODS.GET, body, callback);
+        return Transport._send(url, METHODS.POST, body, callback);
     }
 
     static _send(url, method, body = {}, callback) {
