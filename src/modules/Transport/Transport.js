@@ -1,10 +1,20 @@
+const METHODS = {
+    GET: 'GET',
+    POST: 'POST'
+};
+
+const REQ_HEADER = {
+    HEADER: 'Content-Type',
+    VALUE: 'application/json; charset=utf8'
+};
+
 export default class Transport {
     static get(url, callback) {
-        return Transport._send(url, 'GET', {}, callback);
+        return Transport._send(url, METHODS.GET, {}, callback);
     }
 
     static post(url, body, callback) {
-        return Transport._send(url, 'POST', body, callback);
+        return Transport._send(url, METHODS.GET, body, callback);
     }
 
     static _send(url, method, body = {}, callback) {
@@ -15,7 +25,7 @@ export default class Transport {
         xhr.addEventListener('readystatechange', Transport._readystatechange.bind(this, xhr, callback), false);
 
         if (body) {
-            xhr.setRequestHeader('Content-Type', 'application/json; charset=utf8');
+            xhr.setRequestHeader(REQ_HEADER.HEADER, REQ_HEADER.VALUE);
         }
 
         xhr.send(JSON.stringify(body));
