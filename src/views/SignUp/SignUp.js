@@ -13,7 +13,7 @@ const data = {
             class: 'reginput'
         },
         {
-            type: 'text',
+            type: 'email',
             name: 'email',
             placeholder: 'Email...',
             class: 'reginput'

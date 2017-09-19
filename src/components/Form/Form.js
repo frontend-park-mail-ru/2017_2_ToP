@@ -1,10 +1,13 @@
 import form from './Form.xml';
 import TopComponent from '../TopComponent/TopComponent';
 import Transport from '../../modules/Transport/Transport';
+import Validation from '../../modules/Validator/index';
 
 export default class FormView extends TopComponent {
     constructor(data) {
         super('div', {'class': 'form-box'}, data);
+      
+        this.errors = {};
     }
 
     render() {
@@ -12,27 +15,57 @@ export default class FormView extends TopComponent {
         return this.getElement();
     }
 
-    validation(input, submit) {
-        const main = this.getElement();
-        [...main.getElementsByClassName(input)].forEach(element => {
+    _errorOutput(formElements, errorsElements) {
+        formElements.forEach(element => {
+            if (this.errors[element.name]) {
+                errorsElements[element.name].innerHTML = this.errors[element.name];
+                element.classList.add('input-error');
+                errorsElements[element.name].classList.add('active');
+            }
+            else {
+                element.classList.remove('input-error');
+                errorsElements[element.name].classList.remove('active');
+                errorsElements[element.name].innerHTML = '';
+            }
+        });
+    }
+
+    _resetErrors(formElements) {
+        this.errors = {};
+        formElements.forEach(element => {
             element.addEventListener('focus', () => {
                 element.classList.remove('input-error');
             }, false);
         });
+    }
+
+    _isValid() {
+        for (let error of Object.values(this.errors)) {
+            if (error) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    validation(input, submit) {
+        const main = this.getElement();
+        const errors = main.getElementsByClassName('error');
+        const formElements = [...main.getElementsByClassName(input)];
+
+        this._resetErrors(formElements);
 
         main.getElementsByClassName(submit)[0].addEventListener('click', () => {
-            let valid = true;
-            [...main.getElementsByClassName(input)].forEach(element => {
-                if (element.value === '') {
-                    element.classList.add('input-error');
-                    valid = false;
-                } else {
-                    element.classList.remove('input-error');
-                }
+            const values = {};
+
+            formElements.forEach(element => {
+                values[element.name] = element;
             });
 
-            if (valid) {
-                // document.forms[this.getData().name].submit();
+            this.errors = Validation(values, this.errors);
+            this._errorOutput(formElements, errors);
+            if (this._isValid()) {
                 this._submit();
             }
         });
