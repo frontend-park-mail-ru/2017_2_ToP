@@ -1,5 +1,5 @@
 export default function PasswordValidation(input, errors) {
-    const valid = /П/.test(input);
+    const valid = /^[a-zA-Z0-9]{6,20}$/.test(input);
     if (!valid) {
         if (input.length > 20) {
             errors.password = 'Пароль должен быть меньше 20 символов!';
