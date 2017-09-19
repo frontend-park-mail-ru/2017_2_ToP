@@ -9,7 +9,7 @@ export default class Transport {
                 return;
             }
             if (+xhr.status >= 400) {
-                return url(xhr, null);
+                return callback(xhr, null);
             }
 
             const response = JSON.parse(xhr.responseText);
