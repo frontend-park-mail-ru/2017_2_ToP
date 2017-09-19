@@ -13,8 +13,7 @@ export default class Transport {
         xhr.withCredentials = true;
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf8');
 
-        xhr.onreadystatechange = () => {
-
+        xhr.addEventListener('readystatechange', () => {
             if (xhr.readyState !== 4) {
                 return;
             }
@@ -25,7 +24,7 @@ export default class Transport {
 
             const response = JSON.parse(xhr.responseText);
             callback(null, response);
-        };
+        });
 
         xhr.send(JSON.stringify(body));
     }
