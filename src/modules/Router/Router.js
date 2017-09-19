@@ -57,7 +57,7 @@ export default class Router {
         this.routes.forEach(route => {
             if (route.getView()) {
                 console.log(route);
-                route.getView().hide();
+                route.getView().forEach(element => element.hide());
             }
         });
     }

@@ -1,4 +1,5 @@
 import Form from '../../components/Form/Form';
+import TopComponent from '../../components/TopComponent/TopComponent';
 
 const data = {
     title: 'Регистрация',
@@ -39,13 +40,17 @@ const data = {
     ]
 };
 
-export default class SignUp extends Form {
+export default class SignUp extends TopComponent {
     constructor() {
-        super(data);
+        super('div', {'class': 'form-box'}, data);
     }
 
-    init() {
-        this.renderTo('content');
-        this.validation('reginput', 'registrationSubmit', 'registrationForm');
+    build() {
+        this.signup = [ new Form(this.getData()) ];
+        this.signup.forEach(element => {
+            element.renderTo('content');
+            element.validation();
+        });
+        return this.signup;
     }
 }
