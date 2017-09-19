@@ -15,7 +15,7 @@ app.use(cookie());
 let users = {
     'test': {
         email: 'test@apoj.ru',
-        password: 'password'
+        password: 'Password1'
     }
 };
 
