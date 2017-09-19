@@ -34,7 +34,7 @@ export default class SignIn extends Form {
 
     init() {
         this.renderTo('content');
-        this.validation('loginput', 'loginSubmit', 'loginForm');
+        this.validation('loginput', 'loginSubmit');
     }
 }
 
