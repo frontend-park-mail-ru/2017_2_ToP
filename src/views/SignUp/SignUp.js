@@ -46,6 +46,6 @@ export default class SignUp extends Form {
 
     init() {
         this.renderTo('content');
-        this.validation('reginput', 'registrationSubmit', 'registrationForm');
+        this.validation('reginput', 'registrationSubmit');
     }
 }

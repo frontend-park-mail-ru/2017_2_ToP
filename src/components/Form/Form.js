@@ -1,10 +1,12 @@
 import form from './Form.xml';
 import TopComponent from '../TopComponent/TopComponent';
+import Transport from '../../modules/Transport/Transport';
 import Validation from '../../modules/Validator/index';
 
 export default class FormView extends TopComponent {
     constructor(data) {
         super('div', {'class': 'form-box'}, data);
+
         this.errors = {};
     }
 
@@ -47,7 +49,7 @@ export default class FormView extends TopComponent {
         return true;
     }
 
-    validation(input, submit, formName) {
+    validation(input, submit) {
         const main = this.getElement();
         const errors = main.getElementsByClassName('error');
         const formElements = [...main.getElementsByClassName(input)];
@@ -64,8 +66,33 @@ export default class FormView extends TopComponent {
             this.errors = Validation(values, this.errors);
             this._errorOutput(formElements, errors);
             if (this._isValid()) {
-                document.forms[formName].submit();
+                this._submit();
             }
         });
     }
+
+    _submit() {
+        const form = document.forms[this.getData().name];
+        const url = form.action;
+        const fields = form.elements;
+
+        const data = Object.assign(...Object.values(fields)
+            .map(field => {
+                return {
+                    [field.name]: field.value
+                };
+            }));
+
+        if (this.getData().method === 'post') {
+            Transport.post(url, data, () => {
+                Transport.get('/me', (xhr, res) => {
+                    if (xhr !== null) {
+                        alert(`${xhr.status}: ${xhr.statusText}`);
+                    } else {
+                        alert(`email: ${res.email}\npassword: ${res.password}`);
+                    }
+                });
+            });
+        }
+    };
 }

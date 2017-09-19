@@ -15,7 +15,7 @@ app.use(cookie());
 let users = {
     'test': {
         email: 'test@apoj.ru',
-        password: 'password'
+        password: 'Password1'
     }
 };
 
@@ -26,8 +26,6 @@ app.post('/signup', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    console.log(req.body);
-
     if (!users[login]) {
         users[login] = {
             email: email,
@@ -37,8 +35,6 @@ app.post('/signup', (req, res) => {
     const id = uuid();
     ids[id] = login;
 
-    console.log(users);
-
     res.cookie('auth', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
     res.status(201).json({id});
 });
@@ -47,10 +43,8 @@ app.post('/signin', (req, res) => {
     const login = req.body.login;
     const password = req.body.password;
 
-    console.log(req.body);
-
     if (!users[login] || users[login].password !== password) {
-        return res.status(400).json({error: 'Не верный E-Mail и/или пароль'});
+        return res.status(400).json({error: 'Не верный Логин и/или пароль'});
     }
 
     const id = uuid();
