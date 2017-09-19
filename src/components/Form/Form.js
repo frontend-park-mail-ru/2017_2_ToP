@@ -6,7 +6,7 @@ import Validation from '../../modules/Validator/index';
 export default class FormView extends TopComponent {
     constructor(data) {
         super('div', {'class': 'form-box'}, data);
-      
+
         this.errors = {};
     }
 
@@ -85,10 +85,14 @@ export default class FormView extends TopComponent {
 
         if (this.getData().method === 'post') {
             Transport.Post(url, data, () => {
-                Transport.Get('/me', (one, res) => {
-                    alert(`email: ${res.email}\npassword: ${res.password}`);
+                Transport.Get('/me', (xhr, res) => {
+                    if (xhr !== null) {
+                        alert(`${xhr.status}: ${xhr.statusText}`);
+                    } else {
+                        alert(`email: ${res.email}\npassword: ${res.password}`);
+                    }
                 });
             });
         }
-    }
+    };
 }
