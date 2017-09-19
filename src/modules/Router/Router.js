@@ -19,9 +19,9 @@ export default class Router {
     }
 
     start() {
-        window.onpopstate = () => {
+        window.addEventListener('popstate', () => {
             this._onRoute();
-        };
+        });
 
         this._onRoute();
     }
