@@ -32,7 +32,6 @@ export default class Transport {
     }
 
     static _readystatechange(xhr, callback) {
-        console.log(xhr);
         if (xhr.readyState !== XMLHttpRequest.DONE) {
             return;
         }
