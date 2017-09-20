@@ -7,7 +7,7 @@ export default class Route {
 
     createView() {
         if (!this._view) {
-            this._view = this._viewType.build();
+            this._view = this._viewType.init();
         } else {
             this._view.forEach(element => element.show());
         }
