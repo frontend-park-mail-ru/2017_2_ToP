@@ -85,14 +85,12 @@ export default class FormView extends TopComponent {
             }));
 
         if (this.getData().method === 'post') {
-            Transport.post(url, data, () => {
-                Transport.get('user', (xhr, res) => {
-                    if (xhr !== null) {
-                        alert(`${xhr.status}: ${xhr.statusText}`);
-                    } else {
-                        alert(`login: ${res.login}\nemail: ${res.email}`);
-                    }
-                });
+            Transport.post(url, data, (xhr, res) => {
+                if (xhr !== null) {
+                    alert(`${xhr.status}: ${xhr.statusText}\n${res.message}`);
+                } else {
+                    alert(`login: ${res.login}\nemail: ${res.email}`);
+                }
             });
         }
     };

@@ -22,14 +22,14 @@ const router = CreateTopRouter('main', [
         path: '/signin',
         component: SignIn
     }
-], [ new Header(), new TopComponent('div', { 'class': 'content' }), new Footer() ]);
+], [new Header(), new TopComponent('div', {'class': 'content'}), new Footer()]);
 
 router.start();
 
 document.getElementsByClassName('logout')[0].addEventListener('click', () => {
     Transport.get('logout', (xhr, res) => {
         if (xhr !== null) {
-            alert(`${xhr.status}: ${xhr.statusText}`);
+            alert(`${xhr.status}: ${xhr.statusText}\n${res.message}`);
         } else {
             alert(res.message);
         }

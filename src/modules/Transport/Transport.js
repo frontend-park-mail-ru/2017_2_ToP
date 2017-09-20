@@ -37,11 +37,12 @@ export default class Transport {
             return;
         }
 
+        const response = JSON.parse(xhr.responseText);
+
         if (+xhr.status >= 400) {
-            return callback(xhr, null);
+            return callback(xhr, response);
         }
 
-        const response = JSON.parse(xhr.responseText);
         callback(null, response);
     }
 }
