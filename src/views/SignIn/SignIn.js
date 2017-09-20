@@ -4,7 +4,7 @@ const data = {
     title: 'Авторизация',
     icon: 'fa fa-lock',
     method: 'post',
-    name: 'loginForm',
+    name: 'signin',
     fields: [
         {
             type: 'text',

@@ -4,7 +4,7 @@ const data = {
     title: 'Регистрация',
     icon: 'fa fa-pencil',
     method: 'post',
-    name: 'registrationForm',
+    name: 'signup',
     fields: [
         {
             type: 'text',

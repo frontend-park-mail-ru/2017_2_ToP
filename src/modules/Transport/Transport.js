@@ -18,6 +18,7 @@ export default class Transport {
     }
 
     static _send(url, method, body = {}, callback) {
+        url = `http://apoj.herokuapp.com/${url}`;
         const xhr = new XMLHttpRequest();
         xhr.open(method, url, true);
         xhr.withCredentials = true;
