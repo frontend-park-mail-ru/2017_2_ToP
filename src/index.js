@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import TopComponent from './components/TopComponent/TopComponent';
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
+import Transport from './modules/Transport/Transport';
 
 const router = CreateTopRouter('main', [
     {
@@ -24,3 +25,13 @@ const router = CreateTopRouter('main', [
 ], [ new Header(), new TopComponent('div', { 'class': 'content' }), new Footer() ]);
 
 router.start();
+
+document.getElementsByClassName('logout')[0].addEventListener('click', () => {
+    Transport.get('logout', (xhr, res) => {
+        if (xhr !== null) {
+            alert(`${xhr.status}: ${xhr.statusText}`);
+        } else {
+            alert(res.message);
+        }
+    });
+});
