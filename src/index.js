@@ -26,12 +26,20 @@ const router = CreateTopRouter('main', [
 
 router.start();
 
-document.getElementsByClassName('logout')[0].addEventListener('click', () => {
-    Transport.get('logout', (xhr, res) => {
-        if (xhr !== null) {
-            alert(`${xhr.status}: ${xhr.statusText}\n${res.message}`);
-        } else {
-            alert(res.message);
-        }
+
+['logout', 'user'].forEach(element => {
+    document.getElementsByClassName(element)[0].addEventListener('click', () => {
+        Transport.get(element, (xhr, res) => {
+            if (xhr !== null) {
+                alert(`${xhr.status}: ${xhr.statusText}\n${res.message}`);
+            } else {
+                if (element === 'logout') {
+                    alert(res.message);
+                } else {
+                    alert(`login: ${res.login}\nemail: ${res.email}`);
+                }
+            }
+        });
     });
 });
+

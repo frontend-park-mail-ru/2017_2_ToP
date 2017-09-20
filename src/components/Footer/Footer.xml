@@ -1,5 +1,5 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-    <a class="logout">ВЫЙТИ [TEMP]</a>
+    <a class="user" style="cursor: pointer; margin-right: 10px;">Обо мне</a>    –   <a class="logout" style="cursor: pointer; margin-left:10px;">Выйти [TEMP]</a>
     <div class="footer-border"/>
     <p>&copy
         <fest:space/>
