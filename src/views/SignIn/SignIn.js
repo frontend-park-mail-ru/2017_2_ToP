@@ -33,15 +33,6 @@ export default class SignIn extends TopComponent {
         super('div', {}, data);
     }
 
-    init() {
-        this.signin = this.build();
-        this.signin.forEach(element => {
-            element.renderTo('content');
-            element.validation();
-        });
-        return this.signin;
-    }
-
     build() {
         return [ new Form(this.getData()) ];
     }

@@ -12,6 +12,7 @@ export default class FormView extends TopComponent {
 
     render() {
         this._innerHTML(form(this.getData()));
+        this._validation();
         return this.getElement();
     }
 
@@ -49,7 +50,7 @@ export default class FormView extends TopComponent {
         return true;
     }
 
-    validation() {
+    _validation() {
         const main = this.getElement();
         const errors = main.getElementsByClassName('error');
         const formElements = [...main.getElementsByClassName(this.getData().fields[0].class)];

@@ -45,15 +45,6 @@ export default class SignUp extends TopComponent {
         super('div', {}, data);
     }
 
-    init() {
-        this.signup = this.build();
-        this.signup.forEach(element => {
-            element.renderTo('content');
-            element.validation();
-        });
-        return this.signup;
-    }
-
     build() {
         return [ new Form(this.getData()) ];
     }
