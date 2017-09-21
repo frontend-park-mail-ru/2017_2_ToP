@@ -20,8 +20,6 @@ export default class Main extends TopComponent {
     }
 
     build() {
-        this.main = [ new Menu(this.getData()) ];
-        this.main.forEach(element => element.renderTo('content'));
-        return this.main;
+        return [ new Menu(this.getData()) ];
     }
 }
