@@ -62,6 +62,34 @@ export default class FormView extends TopComponent {
 
             formElements.forEach(element => {
                 values[element.name] = element;
+
+            });
+
+            this.errors = Validation(values, this.errors);
+            this._errorOutput(formElements, errors);
+            if (this._isValid()) {
+                this._submit();
+            }
+        });
+
+        main.getElementsByClassName(this.getData().buttons[0].class)[0].addEventListener('blur', () => {
+            const values = {};
+
+            formElements.forEach(element => {
+                values[element.name] = element;
+            });
+
+            this.errors = Validation(values, this.errors);
+            this._errorOutput(formElements, errors);
+            if (this._isValid()) {
+                this._submit();
+            }
+        });
+        main.getElementsByClassName(this.getData().buttons[0].class)[0].addEventListener('input', () => {
+            const values = {};
+
+            formElements.forEach(element => {
+                values[element.name] = element;
             });
 
             this.errors = Validation(values, this.errors);
