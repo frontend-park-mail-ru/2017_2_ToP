@@ -54,14 +54,9 @@ export default class TopComponent {
     }
 
     makeBuild() {
-        this.top = this.build();
-        if (this.top) {
-            this.top.forEach(element => element.renderTo('content'));
-            return this.top;
-        }
-        else {
-            return [];
-        }
+        const components = this.build();
+        components.forEach(element => element.renderTo('content'));
+        return components;
     }
 
 }
