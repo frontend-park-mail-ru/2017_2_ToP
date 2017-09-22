@@ -20,6 +20,6 @@ export default class Main extends TopComponent {
     }
 
     build() {
-        return [ new Menu(this.getData()) ];
+        return [new Menu(this.getData())];
     }
 }

@@ -3,15 +3,12 @@ export default function LoginValidation(input, errors) {
     if (!valid) {
         if (input.length < 3) {
             errors.login = 'Логин должен быть от 3 символов!';
-        }
-        else if (input.length > 15) {
+        } else if (input.length > 15) {
             errors.login = 'Логин должен быть до 15 символов!';
-        }
-        else {
+        } else {
             errors.login = 'Логин должен быть только из цифр и нижних букв английского алфавита!';
         }
-    }
-    else {
+    } else {
         errors.login = '';
     }
     return valid;

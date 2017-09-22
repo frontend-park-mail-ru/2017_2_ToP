@@ -25,21 +25,10 @@ export default class Router {
     }
 
     getRoute(path) {
-        return this.routes.find(route => route.isPath(path));
+        return this.routes.find(route => route.isThisPath(path));
     }
 
-    _onRoute() {
-        const route = this.getRoute(this.getPath());
-
-        if (!route) {
-            return;
-        }
-
-        this.hideAll();
-        route.createView();
-    }
-
-    getPath() {
+    static getPath() {
         const currentPath = window.location.pathname.toString().toLowerCase();
 
         return currentPath[currentPath.length - 1] === '/' ? currentPath.slice(0, -1) : currentPath;
@@ -54,7 +43,6 @@ export default class Router {
     hideAll() {
         this.routes.forEach(route => {
             if (route.getView()) {
-                console.log(route);
                 route.getView().forEach(element => element.hide());
             }
         });
@@ -69,5 +57,16 @@ export default class Router {
             }
             this.go(url);
         });
+    }
+
+    _onRoute() {
+        const route = this.getRoute(Router.getPath());
+
+        if (!route) {
+            return;
+        }
+
+        this.hideAll();
+        route.createView();
     }
 }

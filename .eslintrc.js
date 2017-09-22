@@ -20,6 +20,7 @@ module.exports = {
         "import/no-unresolved": [2, {"commonjs": true, "amd": true}],
         "prefer-template": "error",
         "object-shorthand": "error",
+        "object-curly-spacing": 0,
         "indent": ["error", 4, {"FunctionDeclaration": {"body": 1, "parameters": 2}, "SwitchCase": 1}],
         "no-plusplus": 0,
         "no-unused-expressions": ["error", {"allowShortCircuit": true}],

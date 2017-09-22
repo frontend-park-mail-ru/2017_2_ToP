@@ -3,15 +3,12 @@ export default function PasswordValidation(input, errors) {
     if (!valid) {
         if (input.length > 20) {
             errors.password = 'Пароль должен быть меньше 20 символов!';
-        }
-        else if (input.length < 6) {
+        } else if (input.length < 6) {
             errors.password = 'Пароль должен быть от 6 символов!';
-        }
-        else {
+        } else {
             errors.password = 'Пароль должен быть только из букв английского алфавита и цифр!';
         }
-    }
-    else {
+    } else {
         errors.password = '';
     }
     return valid;
