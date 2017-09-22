@@ -8,6 +8,8 @@ const REQ_HEADER = {
     VALUE: 'application/json; charset=utf8'
 };
 
+const BACK_URL = 'http://apoj.herokuapp.com/';
+
 export default class Transport {
     static get(url, callback) {
         return Transport._send(url, METHODS.GET, {}, callback);
@@ -18,6 +20,8 @@ export default class Transport {
     }
 
     static _send(url, method, body = {}, callback) {
+        url = BACK_URL + url;
+
         const xhr = new XMLHttpRequest();
         xhr.open(method, url, true);
         xhr.withCredentials = true;
@@ -36,11 +40,12 @@ export default class Transport {
             return;
         }
 
+        const response = JSON.parse(xhr.responseText);
+
         if (+xhr.status >= 400) {
-            return callback(xhr, null);
+            return callback(xhr, response);
         }
 
-        const response = JSON.parse(xhr.responseText);
         callback(null, response);
     }
 }

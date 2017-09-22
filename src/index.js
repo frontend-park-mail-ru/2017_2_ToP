@@ -21,6 +21,6 @@ const router = CreateTopRouter('main', [
         path: '/signin',
         component: new SignIn()
     }
-], [ new Header(), new TopComponent('div', { 'class': 'content' }), new Footer() ]);
+], [new Header(), new TopComponent('div', {'class': 'content'}), new Footer()]);
 
 router.start();
