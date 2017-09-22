@@ -17,7 +17,7 @@ export default class Route {
         return this._view;
     }
 
-    isPath(path) {
+    isThisPath(path) {
         return this._path === path;
     }
 }

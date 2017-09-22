@@ -6,8 +6,7 @@ export default function BasicValidation(element, errors) {
     const valid = !(element.value === '');
     if (!valid) {
         errors[element.name] = 'Пожалуйста, введите данные!';
-    }
-    else {
+    } else {
         switch (element.name) {
             case 'login':
                 LoginValidation(element.value, errors);

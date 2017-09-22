@@ -46,6 +46,6 @@ export default class SignUp extends TopComponent {
     }
 
     build() {
-        return [ new Form(this.getData()) ];
+        return [new Form(this.getData())];
     }
 }

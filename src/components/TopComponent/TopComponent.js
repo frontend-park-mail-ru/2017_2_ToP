@@ -49,17 +49,19 @@ export default class TopComponent {
         this.getElement().appendChild(element);
     }
 
-    _innerHTML(template) {
-        this._component.innerHTML = template;
-    }
-
     makeBuild() {
         const components = this.build();
         components.forEach(element => element.renderTo('content'));
         return components;
     }
+
+    _innerHTML(template) {
+        this._component.innerHTML = template;
+    }
 }
 
 export function appendChilds(parentName, childComponents) {
-    childComponents.forEach((child) => child.renderTo(parentName));
+    childComponents.forEach(child => {
+        child.renderTo(parentName);
+    });
 }

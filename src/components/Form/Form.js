@@ -22,8 +22,7 @@ export default class FormView extends TopComponent {
                 errorsElements[element.name].innerHTML = this.errors[element.name];
                 element.classList.add('input-error');
                 errorsElements[element.name].classList.add('active');
-            }
-            else {
+            } else {
                 element.classList.remove('input-error');
                 errorsElements[element.name].classList.remove('active');
                 errorsElements[element.name].innerHTML = '';
@@ -60,7 +59,9 @@ export default class FormView extends TopComponent {
         main.getElementsByClassName(this.getData().buttons[0].class)[0].addEventListener('click', () => {
             const values = {};
 
-            formElements.forEach(element => values[element.name] = element);
+            formElements.forEach(element => {
+                values[element.name] = element;
+            });
 
             this.errors = Validation(values, this.errors);
             this._errorOutput(formElements, errors);
@@ -102,5 +103,5 @@ export default class FormView extends TopComponent {
                 }
             });
         }
-    };
+    }
 }
