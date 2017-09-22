@@ -7,7 +7,6 @@ import Header from './components/Header/Header';
 import TopComponent from './components/TopComponent/TopComponent';
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
-import Transport from './modules/Transport/Transport';
 
 const router = CreateTopRouter('main', [
     {
@@ -25,21 +24,3 @@ const router = CreateTopRouter('main', [
 ], [new Header(), new TopComponent('div', {'class': 'content'}), new Footer()]);
 
 router.start();
-
-
-['logout', 'user'].forEach(element => {
-    document.getElementsByClassName(element)[0].addEventListener('click', () => {
-        Transport.get(element, (xhr, res) => {
-            if (xhr !== null) {
-                alert(`${xhr.status}: ${xhr.statusText}\n${res.message}`);
-            } else {
-                if (element === 'logout') {
-                    alert(res.message);
-                } else {
-                    alert(`login: ${res.login}\nemail: ${res.email}`);
-                }
-            }
-        });
-    });
-});
-
