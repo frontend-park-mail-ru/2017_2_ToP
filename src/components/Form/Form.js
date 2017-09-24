@@ -1,6 +1,7 @@
 import form from './Form.xml';
 import TopComponent from '../TopComponent/TopComponent';
 import Transport from '../../modules/Transport/Transport';
+import UserService from '../../services/UserService';
 import Validation from '../../modules/Validator/index';
 
 export default class FormView extends TopComponent {
@@ -98,6 +99,8 @@ export default class FormView extends TopComponent {
             Transport.post(url, data)
                 .then(response => {
                     alert(`login: ${response.login}\nemail: ${response.email}`);
+
+                    UserService.user = response;
                 })
                 .catch(response => {
                     response.json().then(json => {
