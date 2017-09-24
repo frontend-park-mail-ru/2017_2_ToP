@@ -13,9 +13,7 @@ class UserService {
 
     logout() {
         return Transport.get('logout')
-            .then(function () {
-                this.user = null;
-            }.bind(this));
+            .then(() => { this.user = null; });
     }
 
     isLoggedIn() {
@@ -24,10 +22,10 @@ class UserService {
 
     getData() {
         return Transport.get('user')
-            .then(function (userdata) {
+            .then(userdata => {
                 this.user = userdata;
                 return userdata;
-            }.bind(this));
+            });
     }
 }
 
