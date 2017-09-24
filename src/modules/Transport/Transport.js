@@ -11,41 +11,38 @@ const REQ_HEADER = {
 const BACK_URL = 'https://apoj.herokuapp.com/';
 
 export default class Transport {
-    static get(url, callback) {
-        return Transport._send(url, METHODS.GET, {}, callback);
+    static get(url) {
+        return Transport._send(url, METHODS.GET);
     }
 
-    static post(url, body, callback) {
-        return Transport._send(url, METHODS.POST, body, callback);
+    static post(url, body) {
+        return Transport._send(url, METHODS.POST, body);
     }
 
-    static _send(url, method, body = {}, callback) {
+    static _send(url, _method, body = {}) {
         url = BACK_URL + url;
 
-        const xhr = new XMLHttpRequest();
-        xhr.open(method, url, true);
-        xhr.withCredentials = true;
+        const options = {
+            method: _method,
+            mode: 'cors',
+            credentials: 'include'
+        };
 
-        xhr.addEventListener('readystatechange', Transport._readystatechange.bind(null, xhr, callback), false);
+        if (_method === METHODS.POST) {
+            const _headers = new Headers();
+            _headers.append(REQ_HEADER.HEADER, REQ_HEADER.VALUE);
 
-        if (body) {
-            xhr.setRequestHeader(REQ_HEADER.HEADER, REQ_HEADER.VALUE);
+            options.body = JSON.stringify(body);
+            options.headers = _headers;
         }
 
-        xhr.send(JSON.stringify(body));
-    }
+        return fetch(url, options)
+            .then(function (response) {
+                if (response.status >= 400) {
+                    throw response;
+                }
 
-    static _readystatechange(xhr, callback) {
-        if (xhr.readyState !== XMLHttpRequest.DONE) {
-            return;
-        }
-
-        const response = JSON.parse(xhr.responseText);
-
-        if (+xhr.status >= 400) {
-            return callback(xhr, response);
-        }
-
-        callback(null, response);
+                return response.json();
+            });
     }
 }
