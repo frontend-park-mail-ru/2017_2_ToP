@@ -20,3 +20,4 @@ deploy:
 script:
   - npm i
   - npm run eslint
+  - npm test
