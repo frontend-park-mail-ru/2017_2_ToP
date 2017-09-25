@@ -1,6 +1,6 @@
 const webpackConfig = require('../webpack.config.dev.js');
 
-module.exports = (config) => {
+module.exports = config => {
     config.set({
         coverageReporter: {
             dir:'coverage/',
