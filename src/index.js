@@ -8,7 +8,7 @@ import TopComponent from './components/TopComponent/TopComponent';
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
 
-import UserService from './services/UserService';
+import UserService from './services/UserService/UserService';
 
 const router = CreateTopRouter('main', [
     {

@@ -1,6 +1,7 @@
 import Form from '../../components/Form/Form';
 import TopComponent from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
+import BackButton from '../../components/BackButton/BackButton';
 
 const data = {
     title: 'Авторизация',
@@ -44,6 +45,7 @@ export default class SignIn extends TopComponent {
                     return [new Form(this.getData())];
                 }
             });
+        return [new Form(this.getData()), new BackButton()];
     }
 }
 

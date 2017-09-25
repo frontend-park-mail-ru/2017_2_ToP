@@ -1,6 +1,7 @@
 import Form from '../../components/Form/Form';
 import TopComponent from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
+import BackButton from '../../components/BackButton/BackButton';
 
 const data = {
     title: 'Регистрация',
@@ -56,5 +57,6 @@ export default class SignUp extends TopComponent {
                     return [new Form(this.getData())];
                 }
             });
+        return [new Form(this.getData()), new BackButton()];
     }
 }
