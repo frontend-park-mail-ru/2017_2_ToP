@@ -10,15 +10,37 @@ const REQ_HEADER = {
 
 const BACK_URL = 'https://apoj.herokuapp.com';
 
+/**
+ * Модуль, предоставляющий методы для выполнения HTTP-запросов
+ * @module Transport
+ */
 export default class Transport {
+    /**
+     * Выполняет GET запрос по указанному адресу
+     * @param {string} url - адрес запроса
+     * @return {Promise}
+     */
     static get(url) {
         return Transport._send(url, METHODS.GET);
     }
 
+    /**
+     * Выполняет POST запрос по указанному адресу
+     * @param {string} url - адрес запроса
+     * @param {*} body - тело запроса
+     * @return {Promise}
+     */
     static post(url, body) {
         return Transport._send(url, METHODS.POST, body);
     }
 
+    /**
+     * Выполняет запрос по указанному адресу
+     * @param {string} url - адрес запроса
+     * @param {string} _method - метод запроса
+     * @param {*} [body={}] - тело запроса (объект)
+     * @return {Promise}
+     */
     static _send(url, _method, body = {}) {
         url = BACK_URL + url;
 
