@@ -25,18 +25,5 @@ const router = CreateTopRouter('main', [
     }
 ], [new Header(), new TopComponent('div', {'class': 'content'}), new Footer()]);
 
-UserService.getData()
-    .then(userdata => {
-        // авторизирован. userdata - {id, login, email}
-    })
-    .catch(response => {
-        // 400+
-        if (response.status === 401) {
-            // unLogged
-        } else {
-            // хз
-        }
-    });
-
 router.start();
 window.router = router;
