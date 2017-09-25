@@ -45,6 +45,19 @@ h3 {
   text-shadow: none;
 }
 
+.backButton {
+  @extend strong;
+  display: inline;
+  cursor: pointer;
+
+  color: $white;
+  border-bottom: 1px dotted $white;
+}
+
+.backButton:hover {
+  opacity: 0.8;
+}
+
 /***** Header *****/
 
 .header {
