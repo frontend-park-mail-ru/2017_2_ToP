@@ -84,8 +84,7 @@ export default class FormView extends TopComponent {
 
     _submit() {
         const form = document.forms[this.getData().name];
-        // const url = form.action;
-        const url = this.getData().name;
+        const url = '/' + this.getData().name;
         const fields = form.elements;
 
         const data = Object.assign(...Object.values(fields)

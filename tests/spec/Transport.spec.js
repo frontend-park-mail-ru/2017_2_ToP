@@ -2,22 +2,20 @@ import Transport from '../../src/modules/Transport/Transport';
 import 'whatwg-fetch';
 
 describe('Api tests', () => {
-    it('Logout error', (done) => {
-        Transport.get('logout')
+    it('Logout error', done => {
+        Transport.get('/logout')
             .catch(response => {
                 expect(response.status).to.equal(401);
                 done();
             });
     });
 
-    it('Register', (done) => {
-        const obj = {
+    it('Register', done => {
+        Transport.post('/signup', {
             login: "test",
             email: "test@apoj.ru",
             password: "Password1"
-        };
-        obj['repeat-password'] = "Password1";
-        Transport.post('signup', obj)
+        })
             .then(response => {
                 expect(response).to.have.property('id');
                 done();
@@ -28,8 +26,8 @@ describe('Api tests', () => {
             });
     });
 
-    it('Sign In', (done) => {
-        Transport.post('signin', {
+    it('Sign In', done => {
+        Transport.post('/signin', {
             login: "test",
             password: "Password1"
         })
@@ -45,8 +43,8 @@ describe('Api tests', () => {
             });
     });
 
-    it('Current user', (done) => {
-        Transport.get('user')
+    it('Current user', done => {
+        Transport.get('/user')
             .then(response => {
                 expect(response).to.have.property('id');
                 done();

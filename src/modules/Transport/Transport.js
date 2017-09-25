@@ -8,7 +8,7 @@ const REQ_HEADER = {
     VALUE: 'application/json; charset=utf8'
 };
 
-const BACK_URL = 'https://apoj.herokuapp.com/';
+const BACK_URL = 'https://apoj.herokuapp.com';
 
 export default class Transport {
     static get(url) {
