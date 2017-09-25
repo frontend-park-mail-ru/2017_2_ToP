@@ -1,7 +1,7 @@
 import form from './Form.xml';
 import TopComponent from '../TopComponent/TopComponent';
 import Transport from '../../modules/Transport/Transport';
-import UserService from '../../services/UserService';
+import UserService from '../../services/UserService/UserService';
 import Validation from '../../modules/Validator/index';
 
 export default class FormView extends TopComponent {

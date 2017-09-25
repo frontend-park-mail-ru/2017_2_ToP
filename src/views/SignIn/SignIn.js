@@ -1,5 +1,6 @@
 import Form from '../../components/Form/Form';
 import TopComponent from '../../components/TopComponent/TopComponent';
+import UserService from '../../services/UserService/UserService';
 
 const data = {
     title: 'Авторизация',
@@ -34,7 +35,15 @@ export default class SignIn extends TopComponent {
     }
 
     build() {
-        return [new Form(this.getData())];
+        UserService.getData()
+            .then(userdata => {
+                window.router.go('/');
+            })
+            .catch(response => {
+                if (response.status === 401) {
+                    return [new Form(this.getData())];
+                }
+            });
     }
 }
 

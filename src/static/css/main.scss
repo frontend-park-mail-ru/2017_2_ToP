@@ -223,6 +223,18 @@ input[type="email"]{
     cursor: pointer;
     width: 100%;
   }
+  .text {
+    color: $white;
+    h1 {
+      color: $white;
+    }
+  }
+  .description {
+    margin: 20px 0 10px 0;
+    p {
+      opacity: 0.8;
+    }
+  }
 }
 
 /***** Footer *****/
