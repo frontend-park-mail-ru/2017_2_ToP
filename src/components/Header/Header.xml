@@ -2,9 +2,6 @@
     <div class="header">
         <div class="text">
             <h1><strong>Apoj</strong><fest:space/>игра</h1>
-            <div class="description">
-                <p>Описание нашей<fest:space/><strong>захватывающей</strong><fest:space/>игры</p>
-            </div>
         </div>
     </div>
 </fest:template>
