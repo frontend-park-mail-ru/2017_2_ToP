@@ -1,6 +1,6 @@
 /**
  * Класс роута
- * @module Router
+ * @module Route
  */
 export default class Route {
     /**
