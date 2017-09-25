@@ -84,7 +84,7 @@ export default class FormView extends TopComponent {
 
     _submit() {
         const form = document.forms[this.getData().name];
-        const url = '/' + this.getData().name;
+        const url = `/${this.getData().name}`;
         const fields = form.elements;
 
         const data = Object.assign(...Object.values(fields)
@@ -97,13 +97,13 @@ export default class FormView extends TopComponent {
         if (this.getData().method === 'post') {
             Transport.post(url, data)
                 .then(response => {
-                    alert(`login: ${response.login}\nemail: ${response.email}`);
+                    console.log(`login: ${response.login}\nemail: ${response.email}`);
 
                     UserService.user = response;
                 })
                 .catch(response => {
                     response.json().then(json => {
-                        alert(`${response.status}: ${response.statusText}\n${json.message}`);
+                        console.log(`${response.status}: ${response.statusText}\n${json.message}`);
                     });
                 });
         }
