@@ -10,19 +10,6 @@ import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
 
 import UserService from './services/UserService';
 
-UserService.getData()
-    .then(userdata => {
-        // авторизирован. userdata - {id, login, email}
-    })
-    .catch(response => {
-        // 400+
-        if (response.status === 401) {
-            // unLogged
-        } else {
-            // хз
-        }
-    });
-
 const router = CreateTopRouter('main', [
     {
         path: '',
@@ -38,4 +25,18 @@ const router = CreateTopRouter('main', [
     }
 ], [new Header(), new TopComponent('div', {'class': 'content'}), new Footer()]);
 
+UserService.getData()
+    .then(userdata => {
+        // авторизирован. userdata - {id, login, email}
+    })
+    .catch(response => {
+        // 400+
+        if (response.status === 401) {
+            // unLogged
+        } else {
+            // хз
+        }
+    });
+
 router.start();
+window.router = router;

@@ -66,6 +66,7 @@ export default class FormView extends TopComponent {
 
             this.errors = Validation(values, this.errors);
             this._errorOutput(formElements, errors);
+
             if (this._isValid()) {
                 this._submit();
             }
@@ -84,7 +85,6 @@ export default class FormView extends TopComponent {
 
     _submit() {
         const form = document.forms[this.getData().name];
-        // const url = form.action;
         const url = this.getData().name;
         const fields = form.elements;
 
@@ -98,9 +98,12 @@ export default class FormView extends TopComponent {
         if (this.getData().method === 'post') {
             Transport.post(url, data)
                 .then(response => {
-                    alert(`login: ${response.login}\nemail: ${response.email}`);
+                    console.log(`login: ${response.login}\nemail: ${response.email}`);
 
                     UserService.user = response;
+                })
+                .then( () => {
+                    window.router.go('/');
                 })
                 .catch(response => {
                     response.json().then(json => {
