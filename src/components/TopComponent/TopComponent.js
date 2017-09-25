@@ -61,7 +61,5 @@ export default class TopComponent {
 }
 
 export function appendChilds(parentName, childComponents) {
-    childComponents.forEach(child => {
-        child.renderTo(parentName);
-    });
+    childComponents.forEach(child => child.renderTo(parentName));
 }
