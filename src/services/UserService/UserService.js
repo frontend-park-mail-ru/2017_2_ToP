@@ -16,6 +16,10 @@ class UserService {
             .then(() => { this.user = null; });
     }
 
+    getLogin() {
+        return this.user.login;
+    }
+
     isLoggedIn() {
         return !!this.user;
     }

@@ -17,7 +17,6 @@ const unlogged = {
 };
 
 const logged = {
-    user: true,
     method: 'get',
     buttons: [
         {
@@ -46,6 +45,7 @@ export default class Main extends TopComponent {
 
     build() {
         if (UserService.isLoggedIn()) {
+            logged.login = UserService.getLogin();
             this.setData(logged);
         }
         else {

@@ -2,8 +2,8 @@
     <div class="description">
         <div class="text">
             <p>Описание нашей<fest:space/><strong>захватывающей</strong><fest:space/>игры</p>
-            <fest:if test="json.user">
-                <p>Привет!</p>
+            <fest:if test="json.login">
+                <p>Привет<fest:space/><fest:value>json.login</fest:value>!</p>
             </fest:if>
         </div>
     </div>
