@@ -1,6 +1,6 @@
 import Route from './Route';
 
-export default class Router {
+class Router {
     constructor() {
         if (Router.__instance) {
             return Router.__instance;
@@ -70,3 +70,7 @@ export default class Router {
         route.createView();
     }
 }
+
+const router = new Router();
+
+export default router;

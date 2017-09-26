@@ -3,6 +3,7 @@ import TopComponent from '../TopComponent/TopComponent';
 import Transport from '../../modules/Transport/Transport';
 import UserService from '../../services/UserService/UserService';
 import Validation from '../../modules/Validator/index';
+import router from '../../modules/Router/Router';
 
 export default class FormView extends TopComponent {
     constructor(data) {
@@ -103,12 +104,13 @@ export default class FormView extends TopComponent {
                     UserService.user = response;
                 })
                 .then( () => {
-                    window.router.go('/');
+                    router.go('/');
                 })
                 .catch(response => {
                     response.json().then(json => {
                         console.log(`${response.status}: ${response.statusText}\n${json.message}`);
                     });
+
                 });
         }
 

@@ -8,8 +8,6 @@ import TopComponent from './components/TopComponent/TopComponent';
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
 
-import UserService from './services/UserService/UserService';
-
 const router = CreateTopRouter('main', [
     {
         path: '',
@@ -26,4 +24,3 @@ const router = CreateTopRouter('main', [
 ], [new Header(), new TopComponent('div', {'class': 'content'}), new Footer()]);
 
 router.start();
-window.router = router;

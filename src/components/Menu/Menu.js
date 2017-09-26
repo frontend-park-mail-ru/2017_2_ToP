@@ -1,6 +1,7 @@
 import TopComponent from '../TopComponent/TopComponent';
 import Button from '../Button/Button';
 import UserService from '../../services/UserService/UserService';
+import router from '../../modules/Router/Router';
 
 export default class Menu extends TopComponent {
     constructor(data) {
@@ -24,7 +25,7 @@ export default class Menu extends TopComponent {
             if (this.getData().method === 'get') {
                 UserService.logout()
                     .then(response => {
-                        window.router.go('/');
+                        router.go('/');
                     })
                     .catch(response => {
                         response.json().then(json => {
