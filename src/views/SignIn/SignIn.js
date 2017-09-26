@@ -35,17 +35,32 @@ export default class SignIn extends TopComponent {
         super('div', {}, data);
     }
 
+    show() {
+        if (UserService.isLoggedIn()) {
+            window.router.go('/');
+        }
+        else {
+            if (!this._components)
+                this.build();
+            this._components.forEach(element => element.show());
+        }
+    }
+
+    hide() {
+        if (!this._components)
+            this.build();
+        this._components.forEach(element => element.hide());
+    }
+
     build() {
-        UserService.getData()
-            .then(userdata => {
-                window.router.go('/');
-            })
-            .catch(response => {
-                if (response.status === 401) {
-                    return [new Form(this.getData())];
-                }
-            });
-        return [new Form(this.getData()), new BackButton()];
+        if (UserService.isLoggedIn()) {
+            window.router.go('/');
+        }
+        else {
+            this._components = [new Form(this.getData()), new BackButton()];
+            this._components.forEach(element => element.renderTo('content'));
+
+        }
     }
 }
 
