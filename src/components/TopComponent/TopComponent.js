@@ -50,9 +50,7 @@ export default class TopComponent {
     }
 
     makeBuild() {
-        const components = this.build();
-        components.forEach(element => element.renderTo('content'));
-        return components;
+        this.build();
     }
 
     _innerHTML(template) {

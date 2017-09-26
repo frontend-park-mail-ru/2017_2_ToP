@@ -1,4 +1,5 @@
 import Menu from '../../components/Menu/Menu';
+import Description from '../../components/Description/Description';
 import TopComponent from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
 
@@ -16,11 +17,11 @@ const unlogged = {
 };
 
 const logged = {
-    user: {
-
-    },
+    user: true,
+    method: 'get',
     buttons: [
         {
+            name: 'logout',
             text: 'Выйти',
             url: '/'
         }
@@ -29,32 +30,28 @@ const logged = {
 
 export default class Main extends TopComponent {
     constructor() {
-        let data = {};
-        UserService.getData()
-            .then(userdata => {
-                console.log(userdata);
-                logged.user.username = userdata.login;
-                data = logged;
-            })
-            .catch(response => {
-            if (response.status === 401) {
-                data = unlogged;
-            }
-        });
-        super('div', {}, data);
+        super('div');
+    }
+
+    show() {
+        this.build();
+        this._components.forEach(element => element.show());
+    }
+
+    hide() {
+        if (!this._components)
+            this.build();
+        this._components.forEach(element => element.hide());
     }
 
     build() {
-        UserService.getData()
-            .then(userdata => {
-                logged.user.username = userdata.login;
-                this.setData(logged);
-            })
-            .catch(response => {
-                if (response.status === 401) {
-                    this.setData(unlogged);
-                }
-            });
-        return [new Menu(this.getData())];
+        if (UserService.isLoggedIn()) {
+            this.setData(logged);
+        }
+        else {
+            this.setData(unlogged);
+        }
+        this._components = [new Description(this.getData()), new Menu(this.getData())];
+        this._components.forEach(element => element.renderTo('content'));
     }
 }

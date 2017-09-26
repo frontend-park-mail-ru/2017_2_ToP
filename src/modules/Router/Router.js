@@ -43,7 +43,7 @@ export default class Router {
     hideAll() {
         this.routes.forEach(route => {
             if (route.getView()) {
-                route.getView().forEach(element => element.hide());
+                route.getView().hide();//.forEach(element => element.hide());
             }
         });
     }
