@@ -4,7 +4,7 @@ import Route from './Route';
  * Класс роутера
  * @module Router
  */
-export default class Router {
+class Router {
     /**
      * @constructor
      * @return {Router|*}
@@ -75,7 +75,7 @@ export default class Router {
     hideAll() {
         this.routes.forEach(route => {
             if (route.getView()) {
-                route.getView().forEach(element => element.hide());
+                route.getView().hide();//.forEach(element => element.hide());
             }
         });
     }
@@ -110,3 +110,7 @@ export default class Router {
         route.createView();
     }
 }
+
+const router = new Router();
+
+export default router;

@@ -1,8 +1,9 @@
 import form from './Form.xml';
 import TopComponent from '../TopComponent/TopComponent';
 import Transport from '../../modules/Transport/Transport';
-import UserService from '../../services/UserService';
+import UserService from '../../services/UserService/UserService';
 import Validation from '../../modules/Validator/index';
+import router from '../../modules/Router/Router';
 
 export default class FormView extends TopComponent {
     constructor(data) {
@@ -66,6 +67,7 @@ export default class FormView extends TopComponent {
 
             this.errors = Validation(values, this.errors);
             this._errorOutput(formElements, errors);
+
             if (this._isValid()) {
                 this._submit();
             }
@@ -101,11 +103,16 @@ export default class FormView extends TopComponent {
 
                     UserService.user = response;
                 })
+                .then(() => {
+                    router.go('/');
+                })
                 .catch(response => {
                     response.json().then(json => {
                         console.log(`${response.status}: ${response.statusText}\n${json.message}`);
                     });
+
                 });
         }
+
     }
 }

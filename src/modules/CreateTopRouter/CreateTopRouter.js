@@ -1,12 +1,16 @@
-import Router from '../Router/Router';
+import router from '../Router/Router';
 import {appendChilds} from '../../components/TopComponent/TopComponent';
+import UserService from '../../services/UserService/UserService';
 
 export default function CreateTopRouter(className, componentsRoutes, defaultComponents) {
-    const router = new Router();
-
     appendChilds(className, defaultComponents);
     componentsRoutes.forEach(route => router.use(route.path, route.component));
     router.connectRouting(window);
 
-    return router;
+    UserService.getData()
+        .catch(response => {
+        })
+        .then(response => {
+           router.start();
+        });
 }
