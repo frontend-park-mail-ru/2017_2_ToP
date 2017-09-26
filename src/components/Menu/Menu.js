@@ -23,9 +23,7 @@ export default class Menu extends TopComponent {
         main.getElementsByClassName('button')[0].addEventListener('click', () => {
             if (this.getData().method === 'get') {
                 UserService.logout()
-                    .then(response => {
-                        router.go('/');
-                    })
+                    .then(() => router.go('/'))
                     .catch(response => {
                         response.json().then(json => {
                             console.log(`${response.status}: ${response.statusText}\n${json.message}`);
