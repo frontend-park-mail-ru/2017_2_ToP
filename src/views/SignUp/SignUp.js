@@ -4,7 +4,6 @@ import UserService from '../../services/UserService/UserService';
 import BackButton from '../../components/BackButton/BackButton';
 import router from '../../modules/Router/Router';
 
-
 const data = {
     title: 'Регистрация',
     icon: 'fa fa-pencil',
@@ -52,8 +51,7 @@ export default class SignUp extends TopComponent {
     show() {
         if (UserService.isLoggedIn()) {
             router.go('/');
-        }
-        else {
+        } else {
             if (!this._components) {
                 this.build();
             } else {

@@ -1,13 +1,12 @@
 export default class Route {
     constructor(path, view) {
         this._path = path;
-        this._viewType = view;
         this._view = view;
     }
 
     createView() {
         if (!this._view) {
-            this._view.makeBuild();
+            this._view.build();
         } else {
             this._view.show();
         }

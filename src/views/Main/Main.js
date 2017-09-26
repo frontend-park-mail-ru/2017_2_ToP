@@ -38,9 +38,9 @@ export default class Main extends TopComponent {
     }
 
     hide() {
-        if (!this._components)
-            this.build();
-        this._components.forEach(element => element.hide());
+        if (this._components) {
+            this._components.forEach(element => element.hide());
+        }
     }
 
     build() {

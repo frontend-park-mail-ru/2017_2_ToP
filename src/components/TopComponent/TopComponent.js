@@ -49,10 +49,6 @@ export default class TopComponent {
         this.getElement().appendChild(element);
     }
 
-    makeBuild() {
-        this.build();
-    }
-
     _innerHTML(template) {
         this._component.innerHTML = template;
     }

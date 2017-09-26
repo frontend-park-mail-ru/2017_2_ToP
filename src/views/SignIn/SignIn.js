@@ -39,8 +39,7 @@ export default class SignIn extends TopComponent {
     show() {
         if (UserService.isLoggedIn()) {
             router.go('/');
-        }
-        else {
+        } else {
             if (!this._components) {
                 this.build();
             } else {
@@ -61,7 +60,6 @@ export default class SignIn extends TopComponent {
         } else {
             this._components = [new Form(this.getData()), new BackButton()];
             this._components.forEach(element => element.renderTo('content'));
-
         }
     }
 }
