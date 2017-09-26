@@ -10,8 +10,7 @@ export default class Route {
      */
     constructor(path, view) {
         this._path = path;
-        this._viewType = view;
-        this._view = null;
+        this._view = view;
     }
 
     /**
@@ -19,9 +18,9 @@ export default class Route {
      */
     createView() {
         if (!this._view) {
-            this._view = this._viewType.makeBuild();
+            this._view.build();
         } else {
-            this._view.forEach(element => element.show());
+            this._view.show();
         }
     }
 

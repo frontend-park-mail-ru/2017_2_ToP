@@ -96,16 +96,6 @@ export default class TopComponent {
     }
 
     /**
-     * Собирает несколько компонент во вьюшку
-     * @return {TopComponent[]}
-     */
-    makeBuild() {
-        const components = this.build();
-        components.forEach(element => element.renderTo('content'));
-        return components;
-    }
-
-    /**
      * Устанавливает в себя разметку
      * @param template
      * @private

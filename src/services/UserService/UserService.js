@@ -1,4 +1,4 @@
-import Transport from '../modules/Transport/Transport';
+import Transport from '../../modules/Transport/Transport';
 
 class UserService {
     constructor() {
@@ -14,6 +14,10 @@ class UserService {
     logout() {
         return Transport.get('/logout')
             .then(() => { this.user = null; });
+    }
+
+    getLogin() {
+        return this.user.login;
     }
 
     isLoggedIn() {

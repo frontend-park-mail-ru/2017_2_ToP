@@ -1,6 +1,8 @@
 import Form from '../../components/Form/Form';
 import TopComponent from '../../components/TopComponent/TopComponent';
+import UserService from '../../services/UserService/UserService';
 import BackButton from '../../components/BackButton/BackButton';
+import router from '../../modules/Router/Router';
 
 const data = {
     title: 'Регистрация',
@@ -46,7 +48,30 @@ export default class SignUp extends TopComponent {
         super('div', {}, data);
     }
 
+    show() {
+        if (UserService.isLoggedIn()) {
+            router.go('/');
+        } else {
+            if (!this._components) {
+                this.build();
+            } else {
+                this._components.forEach(element => element.show());
+            }
+        }
+    }
+
+    hide() {
+        if (this._components) {
+            this._components.forEach(element => element.hide());
+        }
+    }
+
     build() {
-        return [new Form(this.getData()), new BackButton()];
+        if (UserService.isLoggedIn()) {
+            router.go('/');
+        } else {
+            this._components = [new Form(this.getData()), new BackButton()];
+            this._components.forEach(element => element.renderTo('content'));
+        }
     }
 }
