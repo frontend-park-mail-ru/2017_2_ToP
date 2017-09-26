@@ -2,7 +2,7 @@ import Transport from '../../src/modules/Transport/Transport';
 import 'whatwg-fetch';
 
 describe('Api tests', () => {
-    it('Logout error', done => {
+    it('Not authorized Logout', done => {
         Transport.get('/logout')
             .catch(response => {
                 expect(response.status).to.equal(401);
@@ -18,8 +18,21 @@ describe('Api tests', () => {
         })
             .then(response => {
                 expect(response).to.have.property('id');
+                Transport.get('/logout');
                 done();
             })
+            .catch(response => {
+                expect(response.status).to.equal(400);
+                done();
+            });
+    });
+
+    it('Register existing user', done => {
+        Transport.post('/signup', {
+            login: "test",
+            email: "test@apoj.ru",
+            password: "Password1"
+        })
             .catch(response => {
                 expect(response.status).to.equal(400);
                 done();
@@ -34,11 +47,16 @@ describe('Api tests', () => {
             .then(response => {
                 expect(response).to.have.property('id');
                 done();
-            })
+            });
+    });
+
+    it('Sign in when authorized', done => {
+        Transport.post('/signin', {
+            login: "test",
+            password: "Password1"
+        })
             .catch(response => {
-                response.json().then(json => {
-                    console.log(`${response.status}: ${response.statusText}\n${json.message}`);
-                });
+                expect(response.status).to.equal(403);
                 done();
             });
     });
@@ -48,7 +66,23 @@ describe('Api tests', () => {
             .then(response => {
                 expect(response).to.have.property('id');
                 done();
-            })
+            });
+        Transport.get('/logout');
+    });
+
+    it('Wrong Sign In', done => {
+        Transport.post('/signin', {
+            login: "test",
+            password: "WrongPassword"
+        })
+            .catch(response => {
+                expect(response.status).to.equal(400);
+                done();
+            });
+    });
+
+    it('Current user when not authorized', done => {
+        Transport.get('/user')
             .catch(response => {
                 expect(response.status).to.equal(401);
                 done();
