@@ -110,7 +110,6 @@ export default class FormView extends TopComponent {
                     response.json().then(json => {
                         console.log(`${response.status}: ${response.statusText}\n${json.message}`);
                     });
-
                 });
         }
 

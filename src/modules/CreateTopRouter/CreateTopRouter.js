@@ -8,9 +8,6 @@ export default function CreateTopRouter(className, componentsRoutes, defaultComp
     router.connectRouting(window);
 
     UserService.getData()
-        .catch(response => {
-        })
-        .then(response => {
-           router.start();
-        });
+        .catch(response => {})
+        .then(response => router.start());
 }
