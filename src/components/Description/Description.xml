@@ -3,7 +3,7 @@
         <div class="text">
             <p>Описание нашей<fest:space/><strong>захватывающей</strong><fest:space/>игры</p>
             <fest:if test="json.user">
-                <p>Привет,<fest:space/><fest:value>json.username</fest:value>!</p>
+                <p>Привет!</p>
             </fest:if>
         </div>
     </div>
