@@ -19,7 +19,6 @@ export default class Menu extends TopComponent {
 
     _logout() {
         const main = this.getElement();
-        console.log(this.getElement());
 
         main.getElementsByClassName('button')[0].addEventListener('click', () => {
             if (this.getData().method === 'get') {

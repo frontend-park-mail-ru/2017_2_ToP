@@ -8,7 +8,7 @@ import TopComponent from './components/TopComponent/TopComponent';
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
 
-const router = CreateTopRouter('main', [
+CreateTopRouter('main', [
     {
         path: '',
         component: new Main()
@@ -22,5 +22,3 @@ const router = CreateTopRouter('main', [
         component: new SignIn()
     }
 ], [new Header(), new TopComponent('div', {'class': 'content'}), new Footer()]);
-
-router.start();
