@@ -38,6 +38,7 @@ const data = {
     buttons: [
         {
             class: 'registrationSubmit',
+            name: 'submitButton',
             text: 'Зарегистрироваться!'
         }
     ]

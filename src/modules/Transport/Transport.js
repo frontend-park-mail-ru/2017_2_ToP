@@ -59,7 +59,7 @@ export default class Transport {
         }
 
         return fetch(url, options)
-            .then(function (response) {
+            .then(response => {
                 if (response.status >= 400) {
                     throw response;
                 }

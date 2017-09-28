@@ -53,8 +53,7 @@ export default class Main extends TopComponent {
         if (UserService.isLoggedIn()) {
             logged.login = UserService.getLogin();
             this.setData(logged);
-        }
-        else {
+        } else {
             this.setData(unlogged);
         }
         this._components = [new Description(this.getData()), new Menu(this.getData())];

@@ -20,6 +20,8 @@ export default function BasicValidation(element, errors) {
             case 'repeatPassword':
                 errors[element.name] = '';
                 break;
+            default:
+                break;
         }
     }
     return valid;
