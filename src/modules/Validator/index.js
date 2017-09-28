@@ -1,7 +1,7 @@
 import BasicValidation from './BasicValidation/BasicValidation';
 
 function repeatPassword(password1, password2, errors) {
-    if (!(password1 === password2)) {
+    if (password1 !== password2) {
         errors.repeatPassword = 'Пароли не совпадают!';
     }
 }

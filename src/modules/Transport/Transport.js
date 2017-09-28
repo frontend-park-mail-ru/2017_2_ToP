@@ -42,8 +42,6 @@ export default class Transport {
      * @return {Promise}
      */
     static _send(url, _method, body = {}) {
-        url = BACK_URL + url;
-
         const options = {
             method: _method,
             mode: 'cors',
@@ -58,7 +56,7 @@ export default class Transport {
             options.headers = _headers;
         }
 
-        return fetch(url, options)
+        return fetch(BACK_URL + url, options)
             .then(response => {
                 if (response.status >= 400) {
                     throw response;
