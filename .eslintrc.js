@@ -12,6 +12,7 @@ module.exports = {
         "no-param-reassign": 0,
         "prefer-const": 0,
         "no-lonely-if": 0,
+        "eol-last": 0,
         "arrow-parens": ["error", "as-needed"],
         "class-methods-use-this": 0,
         "comma-dangle": [2, "never"],
