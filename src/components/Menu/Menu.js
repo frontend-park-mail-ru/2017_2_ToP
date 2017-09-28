@@ -3,6 +3,8 @@ import Button from '../Button/Button';
 import UserService from '../../services/UserService/UserService';
 import router from '../../modules/Router/Router';
 
+import './Menu.scss';
+
 export default class Menu extends TopComponent {
     constructor(data) {
         super('div', {'class': 'menu'}, data);

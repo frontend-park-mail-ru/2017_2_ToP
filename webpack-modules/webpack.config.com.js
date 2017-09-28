@@ -8,8 +8,8 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
     entry: {
         main: [
-            "./src/index.js",
-            "./src/static/css/main.scss"
+            "./src/static/css/main.scss",
+            "./src/index.js"
         ]
     },
 

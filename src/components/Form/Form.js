@@ -5,6 +5,8 @@ import UserService from '../../services/UserService/UserService';
 import Validation from '../../modules/Validator/index';
 import router from '../../modules/Router/Router';
 
+import './Form.scss';
+
 export default class FormView extends TopComponent {
     constructor(data) {
         super('div', {'class': 'form-box'}, data);
