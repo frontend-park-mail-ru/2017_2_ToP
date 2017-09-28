@@ -68,7 +68,7 @@ export default class TopComponent {
      * Удаляет элемент
      */
     remove() {
-        this._component.parent.removeChild();
+        this._component.parentElement.removeChild(this._component);
     }
 
     /**

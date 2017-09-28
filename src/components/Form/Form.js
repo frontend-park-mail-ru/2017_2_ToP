@@ -61,9 +61,7 @@ export default class FormView extends TopComponent {
         main.getElementsByClassName(this.getData().buttons[0].class)[0].addEventListener('click', () => {
             const values = {};
 
-            formElements.forEach(element => {
-                values[element.name] = element;
-            });
+            formElements.forEach(element => values[element.name] = element);
 
             this.errors = Validation(values, this.errors);
             this._errorOutput(formElements, errors);
@@ -104,6 +102,7 @@ export default class FormView extends TopComponent {
                     UserService.user = response;
                 })
                 .then(() => {
+                    router.getRoute('').getView().rerender();
                     router.go('/');
                 })
                 .catch(response => {
