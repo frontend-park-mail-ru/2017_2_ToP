@@ -7,8 +7,8 @@
     "start": "node server/server.js",
     "webpack": "./node_modules/.bin/webpack -p --config webpack.config.prod.js",
     "webpack-dev": "./node_modules/.bin/webpack --config webpack.config.dev.js",
-    "eslint": "./node_modules/.bin/eslint ./src/**/*.js",
-    "eslint-fix": "./node_modules/.bin/eslint --fix ./src/**/*.js",
+    "eslint": "./node_modules/.bin/eslint ./src/",
+    "eslint-fix": "./node_modules/.bin/eslint --fix ./src/",
     "postinstall": "npm run webpack",
     "test": "./node_modules/.bin/karma start tests/karma.conf.js --single-run --browsers PhantomJS"
   },
