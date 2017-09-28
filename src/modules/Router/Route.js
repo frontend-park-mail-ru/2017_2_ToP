@@ -18,7 +18,6 @@ export default class Route {
      * Отрисовывает вьюшку
      */
     createView() {
-        console.log(this._view);
         if (!this._view) {
             this._view = new this._viewType();
             this._view.build();
