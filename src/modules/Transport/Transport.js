@@ -53,7 +53,6 @@ export default class Transport {
             _headers.append(REQ_HEADER.HEADER, REQ_HEADER.VALUE);
 
             options.body = JSON.stringify(body);
-            console.log(_headers);
             options.headers = _headers;
         }
 
