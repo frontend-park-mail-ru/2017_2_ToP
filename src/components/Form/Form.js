@@ -42,26 +42,29 @@ export default class FormView extends TopComponent {
     }
 
     _isValid() {
-        for (let error of Object.values(this.errors)) {
+        let valid = true;
+        Object.values(this.errors).forEach(error => {
             if (error) {
-                return false;
+                valid = false;
             }
-        }
-
-        return true;
+        });
+        return valid;
     }
 
     _validation() {
         const main = this.getElement();
         const errors = main.getElementsByClassName('error');
         const formElements = [...main.getElementsByClassName(this.getData().fields[0].class)];
+        const submitButton = main.getElementsByClassName(this.getData().buttons[0].class)[0];
 
         this._resetErrors(formElements);
 
-        main.getElementsByClassName(this.getData().buttons[0].class)[0].addEventListener('click', () => {
+        submitButton.addEventListener('click', () => {
             const values = {};
 
-            formElements.forEach(element => values[element.name] = element);
+            formElements.forEach(element => {
+                values[element.name] = element;
+            });
 
             this.errors = Validation(values, this.errors);
             this._errorOutput(formElements, errors);
@@ -75,6 +78,10 @@ export default class FormView extends TopComponent {
             element.addEventListener('blur', () => {
                 const values = {};
                 values[element.name] = element;
+
+                if (element.name === 'repeatPassword') {
+                    values.password = formElements.find(element => element.name === 'password');
+                }
 
                 this.errors = Validation(values, this.errors);
                 this._errorOutput([element], errors);

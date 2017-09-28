@@ -19,7 +19,7 @@ export default class Route {
      */
     createView() {
         if (!this._view) {
-            this._view = new this._viewType;
+            this._view = new this._viewType();
             this._view.build();
         } else {
             this._view.show();

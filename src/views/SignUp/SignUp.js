@@ -30,7 +30,7 @@ const data = {
         },
         {
             type: 'password',
-            name: 'repeat-password',
+            name: 'repeatPassword',
             placeholder: 'Повторите пароль...',
             class: 'reginput'
         }
@@ -38,6 +38,7 @@ const data = {
     buttons: [
         {
             class: 'registrationSubmit',
+            name: 'submitButton',
             text: 'Зарегистрироваться!'
         }
     ]

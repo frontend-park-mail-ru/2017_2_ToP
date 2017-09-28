@@ -12,9 +12,7 @@ export default class TopComponent {
     constructor(tagName = 'div', attrs = {}, data = {}) {
         this._component = document.createElement(tagName);
 
-        for (let name in attrs) {
-            this._component.setAttribute(name, attrs[name]);
-        }
+        (Object.keys(attrs) || []).forEach(name => this._component.setAttribute(name, attrs[name]));
 
         this.setData(data);
     }
