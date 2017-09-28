@@ -5,7 +5,7 @@ const METHODS = {
 
 const REQ_HEADER = {
     HEADER: 'Content-Type',
-    VALUE: 'application/json; charset=utf8'
+    VALUE: 'application/json; charset=utf-8'
 };
 
 const BACK_URL = 'https://apoj.herokuapp.com';

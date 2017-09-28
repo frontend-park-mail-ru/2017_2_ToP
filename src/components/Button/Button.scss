@@ -1,0 +1,25 @@
+@import "../../static/css/_theme.scss";
+@import '../Form/Form-template.scss';
+
+.button {
+  @extend %form-text;
+  @extend %form-element;
+  margin: 10px 0px 0px 0px;
+  background: $blue;
+  border: 0;
+  color: $white;
+  text-align: center;
+  text-shadow: none;
+  box-sizing: border-box;
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    outline: 0;
+    opacity: 0.6;
+  }
+  &:focus {
+    outline: 0;
+    opacity: 0.8;
+  }
+}

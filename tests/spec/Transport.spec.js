@@ -22,7 +22,7 @@ describe('Api tests', () => {
                 done();
             })
             .catch(response => {
-                expect(response.status).to.equal(400);
+                expect(response.status).to.equal(409);
                 done();
             });
     });
@@ -34,7 +34,7 @@ describe('Api tests', () => {
             password: "Password1"
         })
             .catch(response => {
-                expect(response.status).to.equal(400);
+                expect(response.status).to.equal(409);
                 done();
             });
     });
