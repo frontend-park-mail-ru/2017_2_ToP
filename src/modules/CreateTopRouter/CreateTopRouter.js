@@ -1,6 +1,7 @@
 import router from '../Router/Router';
 import {appendChilds} from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
+import Loading from '../../components/Loading/Loading';
 
 export default function CreateTopRouter(className, componentsRoutes, defaultComponents) {
     appendChilds(className, defaultComponents);
@@ -9,5 +10,8 @@ export default function CreateTopRouter(className, componentsRoutes, defaultComp
 
     UserService.getData()
         .catch(response => {})
-        .then(response => router.start());
+        .then(() => {
+            router.start();
+            Loading.hide();
+        });
 }
