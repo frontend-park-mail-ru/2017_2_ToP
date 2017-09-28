@@ -10,7 +10,6 @@ const Validation = (values, errors) => {
     for (let value in values) {
         BasicValidation(values[value], errors);
     }
-
     if (values['repeat-password']) {
         repeatPassword(values['password'].value, values['repeat-password'].value, errors);
     }

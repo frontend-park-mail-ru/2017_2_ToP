@@ -62,6 +62,7 @@ export default class FormView extends TopComponent {
             const values = {};
 
             formElements.forEach(element => values[element.name] = element);
+            console.log(values);
 
             this.errors = Validation(values, this.errors);
             this._errorOutput(formElements, errors);
@@ -76,6 +77,10 @@ export default class FormView extends TopComponent {
                 const values = {};
                 values[element.name] = element;
 
+                if(element.name === 'repeat-password') {
+                    values.password = formElements.find(element => element.name === 'password');
+                }
+                
                 this.errors = Validation(values, this.errors);
                 this._errorOutput([element], errors);
             });
