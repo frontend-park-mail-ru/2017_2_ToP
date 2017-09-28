@@ -15,6 +15,7 @@
 * [Команда](#team)
   * [Frontend](#frontend)
   * [Backend](#backend)
+* [Bug report](#bugreport)
 
 <a name="url"></a>
 ## Ссылка на игру
@@ -90,10 +91,15 @@ npm start
 ## Команда
 <a name="frontend"></a>
 ### Frontend
-  * [Владимиир Пряхин](http://github.com/pryahin)
+  * [Пряхин Владимиир](http://github.com/pryahin)
   * [Свойкина Надежда](http://github.com/couatl)
   
 <a name="backend"></a>
 ### Backend
   * [Москалев Илья](http://github.com/ilyamoskalev)
   * [Кудинов Михаил](http://github.com/MikKud)
+
+
+<a name="bugreport"></a>
+## Bug report
+Нашли баг? Сообщите нам об этом здесь - [ссылка](https://github.com/frontend-park-mail-ru/2017_2_ToP/issues)
