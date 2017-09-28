@@ -1,5 +1,7 @@
+const loginRegular = /^[a-z0-9_-]{3,15}$/;
+
 export default function LoginValidation(input, errors) {
-    const valid = /^[a-z0-9_-]{3,15}$/.test(input);
+    const valid = loginRegular.test(input);
     if (!valid) {
         if (input.length < 3) {
             errors.login = 'Логин должен быть от 3 символов!';
