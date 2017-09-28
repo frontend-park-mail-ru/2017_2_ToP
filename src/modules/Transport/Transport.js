@@ -5,10 +5,10 @@ const METHODS = {
 
 const REQ_HEADER = {
     HEADER: 'Content-Type',
-    VALUE: 'application/json; charset=utf8'
+    VALUE: 'application/json; charset=utf-8'
 };
 
-const BACK_URL = 'https://apoj.herokuapp.com';
+const BACK_URL = location.hostname === 'localhost' ? '' : 'https://apoj.herokuapp.com';
 
 /**
  * Модуль, предоставляющий методы для выполнения HTTP-запросов
@@ -53,6 +53,7 @@ export default class Transport {
             _headers.append(REQ_HEADER.HEADER, REQ_HEADER.VALUE);
 
             options.body = JSON.stringify(body);
+            console.log(_headers);
             options.headers = _headers;
         }
 

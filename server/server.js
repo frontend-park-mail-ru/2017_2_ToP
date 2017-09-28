@@ -14,6 +14,7 @@ app.use(cookie());
 
 let users = {
     'test': {
+        login: 'test',
         email: 'test@apoj.ru',
         password: 'Password1'
     }
@@ -28,6 +29,7 @@ app.post('/signup', (req, res) => {
 
     if (!users[login]) {
         users[login] = {
+            login: login,
             email: email,
             password: password
         };
@@ -36,7 +38,7 @@ app.post('/signup', (req, res) => {
     ids[id] = login;
 
     res.cookie('auth', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
-    res.status(201).json({id});
+    res.status(201).json(users[login]);
 });
 
 app.post('/signin', (req, res) => {
@@ -51,7 +53,7 @@ app.post('/signin', (req, res) => {
     ids[id] = login;
 
     res.cookie('auth', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
-    res.status(201).json({id});
+    res.status(201).json(users[login]);
 });
 
 app.get('/users', (req, res) => {
@@ -60,13 +62,13 @@ app.get('/users', (req, res) => {
             return {
                 login: login,
                 email: users[login].email
-            }
+            };
         });
 
     res.json(userlist);
 });
 
-app.get('/me', (req, res) => {
+app.get('/user', (req, res) => {
     const id = req.cookies['auth'];
     const login = ids[id];
     if (!login || !users[login]) {
@@ -74,6 +76,17 @@ app.get('/me', (req, res) => {
     }
 
     res.json(users[login]);
+});
+
+app.get('/logout', (req, res) => {
+    const id = req.cookies['auth'];
+    const login = ids[id];
+    if (!login || !users[login]) {
+        return res.status(401).end();
+    }
+
+    res.cookie('auth', '', {expires: new Date()});
+    res.json({});
 });
 
 app.get('*', (req, res) => {
