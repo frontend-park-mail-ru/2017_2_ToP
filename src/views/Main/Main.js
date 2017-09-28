@@ -43,7 +43,7 @@ export default class Main extends TopComponent {
     }
 
     rerender() {
-        if(this._components) {
+        if (this._components) {
             this._components.forEach(element => element.remove());
         }
         this.build();
