@@ -104,6 +104,7 @@ export default class FormView extends TopComponent {
                     UserService.user = response;
                 })
                 .then(() => {
+                    router.getRoute('').getView().rerender();
                     router.go('/');
                 })
                 .catch(response => {

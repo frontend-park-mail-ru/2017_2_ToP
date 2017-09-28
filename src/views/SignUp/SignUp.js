@@ -52,11 +52,7 @@ export default class SignUp extends TopComponent {
         if (UserService.isLoggedIn()) {
             router.go('/');
         } else {
-            if (!this._components) {
-                this.build();
-            } else {
-                this._components.forEach(element => element.show());
-            }
+            this._components.forEach(element => element.show());
         }
     }
 

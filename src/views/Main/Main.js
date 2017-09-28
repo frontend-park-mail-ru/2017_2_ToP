@@ -33,7 +33,6 @@ export default class Main extends TopComponent {
     }
 
     show() {
-        this.build();
         this._components.forEach(element => element.show());
     }
 
@@ -41,6 +40,13 @@ export default class Main extends TopComponent {
         if (this._components) {
             this._components.forEach(element => element.hide());
         }
+    }
+
+    rerender() {
+        if(this._components) {
+            this._components.forEach(element => element.remove());
+        }
+        this.build();
     }
 
     build() {
