@@ -10,3 +10,18 @@ $black: rgba(0, 0, 0, 0.35);
 $light-black: rgba(0, 0, 0, 0.3);
 
 $error-background: rgba(200, 0, 0, 0.7);
+
+%form-element {
+  height: 50px;
+  padding: 0 20px;
+  vertical-align: middle;
+  border-radius: 4px;
+  box-shadow: none;
+  transition: all .3s;
+}
+
+%form-text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 50px;
+}
