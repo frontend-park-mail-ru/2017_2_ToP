@@ -1,0 +1,48 @@
+@import "../../static/css/_theme.scss";
+
+@keyframes rotate-loading {
+  0% {  transform: rotate(0deg);  }
+  100% {  transform: rotate(360deg);  }
+}
+
+@keyframes loading-text-opacity {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+%container {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  border-radius: 100%;
+}
+
+.loading-container {
+  @extend %container;
+  margin: 40px auto;
+
+  &:hover .loading{
+    border-color: transparent $blue transparent $blue;
+  }
+}
+
+.loading {
+  @extend %container;
+  border: 2px solid;
+  border-color: transparent #fff transparent #FFF;
+  animation: rotate-loading 1.5s linear 0s infinite normal;
+  transition: all 0.5s ease-in-out;
+}
+
+.loading-text {
+  animation: loading-text-opacity 2s linear 0s infinite normal;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  width: 104px;
+  top: 40px;
+}

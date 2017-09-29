@@ -1,0 +1,17 @@
+@import "../../static/css/_theme.scss";
+
+footer {
+  margin-top: 50px;
+  color: $white;
+
+  .footer-border {
+    width: 200px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  p {
+    opacity: 0.8;
+  }
+}
