@@ -39,8 +39,13 @@ export default class SignIn extends TopComponent {
     show() {
         if (UserService.isLoggedIn()) {
             router.go('/');
-        } else {
+            return;
+        }
+
+        if (this._components) {
             this._components.forEach(element => element.show());
+        } else {
+            this.build();
         }
     }
 
