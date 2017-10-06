@@ -44,9 +44,7 @@
 
 .form-bottom {
   padding: 25px 25px 30px 30px;
-  background: $dark-gray;
   background: $light-black;
-  border-radius: 0 0 4px 4px;
   text-align: left;
 
   form input {
@@ -67,6 +65,10 @@
       margin-top: 7px;
     }
   }
+}
+
+.form-end {
+  border-radius: 0 0 4px 4px;
 }
 
 /***** Элементы формы ******/
@@ -124,4 +126,17 @@ input[type="email"] {
   &.active {
     padding: 0.3em;
   }
+}
+
+.backButton {
+  background: $black;
+  color: $white;
+  font-weight: 500;
+
+  cursor: pointer;
+  padding: 5px;
+}
+
+.backButton:hover {
+  opacity: 0.8;
 }

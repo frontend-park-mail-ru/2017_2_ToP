@@ -1,7 +1,6 @@
 import Form from '../../components/Form/Form';
 import TopComponent from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
-import BackButton from '../../components/BackButton/BackButton';
 import router from '../../modules/Router/Router';
 
 const data = {
@@ -41,7 +40,8 @@ const data = {
             name: 'submitButton',
             text: 'Зарегистрироваться!'
         }
-    ]
+    ],
+    back: {}
 };
 
 export default class SignUp extends TopComponent {
@@ -72,7 +72,7 @@ export default class SignUp extends TopComponent {
         if (UserService.isLoggedIn()) {
             router.go('/');
         } else {
-            this._components = [new Form(this.getData()), new BackButton()];
+            this._components = [new Form(this.getData())];
             this._components.forEach(element => element.renderTo('content'));
         }
     }
