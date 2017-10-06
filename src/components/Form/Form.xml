@@ -12,7 +12,7 @@
             </div>
         </div>
     </fest:if>
-    <div class="form-bottom">
+    <div class="form-bottom {json.back ? '' : 'form-end'}">
         <form role="form" action="" method="{json.method}" name="{json.name}">
             <fest:for iterate="json.fields" index="i">
                 <input type="{json.fields[i].type}" name="{json.fields[i].name}"
@@ -26,5 +26,8 @@
             </fest:for>
         </form>
     </div>
+    <fest:if test="json.back">
+        <fest:include context="json.back" src="../BackButton/BackButton.xml"/>
+    </fest:if>
 </fest:template>
 
