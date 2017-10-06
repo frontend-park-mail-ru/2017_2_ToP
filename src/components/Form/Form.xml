@@ -19,10 +19,9 @@
                        placeholder="{json.fields[i].placeholder}" class="{json.fields[i].class}"/>
                 <div class="error" name="{json.fields[i].name}"></div>
             </fest:for>
+
             <fest:for iterate="json.buttons" index="i">
-                <div class="button {json.buttons[i].class}" data-url="{json.buttons[i].url}">
-                    <fest:value>json.buttons[i].text</fest:value>
-                </div>
+                <fest:include context="json.buttons[i]" src="../Button/Button.xml"/>
             </fest:for>
         </form>
     </div>
