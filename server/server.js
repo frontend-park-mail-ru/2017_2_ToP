@@ -78,7 +78,7 @@ app.get('/user', (req, res) => {
     res.json(users[login]);
 });
 
-app.get('/logout', (req, res) => {
+app.post('/logout', (req, res) => {
     const id = req.cookies['auth'];
     const login = ids[id];
     if (!login || !users[login]) {
