@@ -20,6 +20,21 @@ const logged = {
     method: 'get',
     buttons: [
         {
+            name: 'singleplayer',
+            text: 'Одиночная игра',
+            url: '/singleplayer'
+        },
+        {
+            name: 'multiplayer',
+            text: 'Многопользовательская игра',
+            url: '/multiplayer'
+        },
+        {
+            name: 'about',
+            text: 'Об игре',
+            url: '/about'
+        },
+        {
             name: 'logout',
             text: 'Выйти',
             url: '/'
