@@ -21,9 +21,9 @@ export default class Menu extends TopComponent {
 
     _logout() {
         const main = this.getElement();
-
-        main.getElementsByClassName('button')[0].addEventListener('click', () => {
-            if (this.getData().method === 'get') {
+        const logoutButton = main.querySelector('[data-url="/"]');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', () => {
                 UserService.logout()
                     .then(() => {
                         router.getRoute('').getView().rerender();
@@ -34,7 +34,7 @@ export default class Menu extends TopComponent {
                             console.log(`${response.status}: ${response.statusText}\n${json.message}`);
                         });
                     });
-            }
-        });
+            });
+        }
     }
 }
