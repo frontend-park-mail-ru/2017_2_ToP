@@ -119,11 +119,15 @@ export default class FormView extends TopComponent {
                     router.go('/');
                 })
                 .catch(response => {
-                    response.json().then(json => {
-                        console.log(`${response.status}: ${response.statusText}\n${json.message}`);
-                    });
+                    return response.json();
+                })
+                .then(json => {
+                    const main = this.getElement();
+                    const formError = main.getElementsByClassName('serverError')[0];
+                    formError.name = 'formError';
+                    this.errors.formError = json.message;
+                    this._errorOutput([formError], main.getElementsByClassName('error'));
                 });
         }
-
     }
 }

@@ -14,6 +14,7 @@
     </fest:if>
     <div class="form-bottom">
         <form role="form" action="" method="{json.method}" name="{json.name}">
+            <div class="error serverError" name="formError"></div>
             <fest:for iterate="json.fields" index="i">
                 <input type="{json.fields[i].type}" name="{json.fields[i].name}"
                        placeholder="{json.fields[i].placeholder}" class="{json.fields[i].class}"/>
