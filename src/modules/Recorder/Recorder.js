@@ -1,10 +1,12 @@
-class Recorder {
-    constructor(source) {
+export default class Recorder {
+    constructor() {
         this.recBuffersL = [];
         this.recBuffersR = [];
 
         this.bufferLen = 4096;
+    }
 
+    init(source) {
         this.context = source.context;
         this.sampleRate = this.context.sampleRate;
 
@@ -16,7 +18,7 @@ class Recorder {
 
         this.node.onaudioprocess = e => {
             this.recBuffersL.push(e.inputBuffer.getChannelData(0));
-            this.recBuffersR.push(e.inputBuffer.getChannelDate(1));
+            this.recBuffersR.push(e.inputBuffer.getChannelData(1));
         };
 
         source.connect(this.node);
