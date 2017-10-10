@@ -36,13 +36,13 @@ function writeString(view, offset, string) {
 }
 
 function encodeWAV(samples, mono, sampleRate) {
-    let buffer = new ArrayBuffer(44 + samples.length * 2);
+    let buffer = new ArrayBuffer(44 + (samples.length * 2));
     let view = new DataView(buffer);
 
     /* RIFF identifier */
     writeString(view, 0, 'RIFF');
     /* file length */
-    view.setUint32(4, 32 + samples.length * 2, true);
+    view.setUint32(4, 32 + (samples.length * 2), true);
     /* RIFF type */
     writeString(view, 8, 'WAVE');
     /* format chunk identifier */
