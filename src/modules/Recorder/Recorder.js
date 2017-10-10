@@ -24,9 +24,15 @@ export default class Recorder {
         this.node.onaudioprocess = e => {
             if (!this.recording) return;
 
-            this.recBuffersL.push(e.inputBuffer.getChannelData(0));
-            this.recBuffersR.push(e.inputBuffer.getChannelData(1));
-            this.recLength++;
+            let buffers = [];
+            for (let i = 0; i < 2; i++) {
+                buffers[i] = new Float32Array(this.bufferLen);
+                e.inputBuffer.copyFromChannel(buffers[i], i);
+            }
+
+            this.recBuffersL.push(buffers[0]);
+            this.recBuffersR.push(buffers[1]);
+            this.recLength += buffers[0].length;
         };
 
         source.connect(this.node);
