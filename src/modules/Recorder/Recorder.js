@@ -3,6 +3,8 @@ export default class Recorder {
         this.recBuffersL = [];
         this.recBuffersR = [];
 
+        this.recording = false;
+
         this.bufferLen = 4096;
     }
 
@@ -17,11 +19,21 @@ export default class Recorder {
         }
 
         this.node.onaudioprocess = e => {
+            if (!this.recording) return;
+
             this.recBuffersL.push(e.inputBuffer.getChannelData(0));
             this.recBuffersR.push(e.inputBuffer.getChannelData(1));
         };
 
         source.connect(this.node);
         this.node.connect(this.context.destination);
+    }
+
+    record() {
+        this.recording = true;
+    }
+
+    stop() {
+        this.recording = false;
     }
 }
