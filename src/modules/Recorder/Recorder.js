@@ -1,5 +1,8 @@
+import {mergeBuffers, interleave, encodeWAV} from '../WavConverter/WavConverter';
+
 export default class Recorder {
     constructor() {
+        this.recLength = 0;
         this.recBuffersL = [];
         this.recBuffersR = [];
 
@@ -23,6 +26,7 @@ export default class Recorder {
 
             this.recBuffersL.push(e.inputBuffer.getChannelData(0));
             this.recBuffersR.push(e.inputBuffer.getChannelData(1));
+            this.recLength++;
         };
 
         source.connect(this.node);
@@ -38,7 +42,19 @@ export default class Recorder {
     }
 
     clear() {
+        this.recLength = 0;
         this.recBuffersL = [];
         this.recBuffersR = [];
+    }
+
+    exportWAV() {
+        const type = 'audio/wav';
+        const bufferL = mergeBuffers(this.recBuffersL, this.recLength);
+        const bufferR = mergeBuffers(this.recBuffersR, this.recLength);
+        const interleaved = interleave(bufferL, bufferR);
+        const dataview = encodeWAV(interleaved, null, this.sampleRate);
+        const audioBlob = new Blob([dataview], {type: type});
+
+        return audioBlob;
     }
 }
