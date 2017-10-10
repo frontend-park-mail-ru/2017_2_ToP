@@ -36,4 +36,9 @@ export default class Recorder {
     stop() {
         this.recording = false;
     }
+
+    clear() {
+        this.recBuffersL = [];
+        this.recBuffersR = [];
+    }
 }
