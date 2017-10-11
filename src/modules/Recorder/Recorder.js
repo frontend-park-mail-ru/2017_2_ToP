@@ -53,10 +53,15 @@ export default class Recorder {
         this.recBuffersR = [];
     }
 
-    exportWAV(callback) {
+    exportWAV(callback, reverse = false) {
         const type = 'audio/wav';
         const bufferL = mergeBuffers(this.recBuffersL, this.recLength);
         const bufferR = mergeBuffers(this.recBuffersR, this.recLength);
+
+        if (reverse) {
+            bufferL.reverse();
+            bufferR.reverse();
+        }
 
         const interleaved = interleave(bufferL, bufferR);
         const dataview = encodeWAV(interleaved, null, this.sampleRate);

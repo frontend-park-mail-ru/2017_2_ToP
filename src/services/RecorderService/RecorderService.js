@@ -23,7 +23,7 @@ class RecordService {
     stop() {
         this.audioRecorder.stop();
 
-        this.audioRecorder.exportWAV(Recorder.setupDownload);
+        this.audioRecorder.exportWAV(Recorder.setupDownload, true);
     }
 
     gotStream(stream) {
