@@ -49,7 +49,7 @@ class RecordService {
                     'googHighpassFilter': 'false'
                 },
                 'optional': []
-            },
+            }
         }, this.gotStream.bind(this), e => {
             console.log(e);
         });
