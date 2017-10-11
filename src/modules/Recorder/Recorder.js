@@ -53,14 +53,24 @@ export default class Recorder {
         this.recBuffersR = [];
     }
 
-    exportWAV() {
+    exportWAV(callback) {
         const type = 'audio/wav';
         const bufferL = mergeBuffers(this.recBuffersL, this.recLength);
         const bufferR = mergeBuffers(this.recBuffersR, this.recLength);
+
         const interleaved = interleave(bufferL, bufferR);
         const dataview = encodeWAV(interleaved, null, this.sampleRate);
-        const audioBlob = new Blob([dataview], {type: type});
+        const audioBlob = new Blob([dataview], {'type': type});
 
-        return audioBlob;
+        callback(audioBlob);
     }
 }
+
+Recorder.setupDownload = blob => {
+    const url = (window.URL || window.webkitURL).createObjectURL(blob);
+    const link = document.querySelector('#save');
+    const audio = document.querySelector('audio');
+    audio.src = url;
+    link.href = url;
+    link.download = 'output.wav';
+};

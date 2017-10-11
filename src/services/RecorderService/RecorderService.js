@@ -12,6 +12,20 @@ class RecordService {
         this.initAudio();
     }
 
+    start() {
+        if (!this.audioRecorder) {
+            return;
+        }
+        this.audioRecorder.clear();
+        this.audioRecorder.record();
+    }
+
+    stop() {
+        this.audioRecorder.stop();
+
+        this.audioRecorder.exportWAV(Recorder.setupDownload);
+    }
+
     gotStream(stream) {
         const inputPoint = this.context.createGain();
         const audioInput = this.context.createMediaStreamSource(stream);
@@ -41,3 +55,6 @@ class RecordService {
         });
     }
 }
+
+const recordService = new RecordService();
+export default recordService;
