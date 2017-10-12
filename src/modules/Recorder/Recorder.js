@@ -21,7 +21,7 @@ export default class Recorder {
             this.node = this.context.createScriptProcessor(this.bufferLen, 2, 2);
         }
 
-        this.node.onaudioprocess = e => {
+        this.node.addEventListener('audioprocess', e => {
             if (!this.recording) return;
 
             let buffers = [];
@@ -33,7 +33,7 @@ export default class Recorder {
             this.recBuffersL.push(buffers[0]);
             this.recBuffersR.push(buffers[1]);
             this.recLength += buffers[0].length;
-        };
+        });
 
         source.connect(this.node);
         this.node.connect(this.context.destination);
