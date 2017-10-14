@@ -1,4 +1,6 @@
 import Main from './views/Main/Main';
+import About from './views/About/About';
+import SinglePlayer from './views/SinglePlayer/SinglePlayer';
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
 
@@ -21,5 +23,9 @@ CreateTopRouter('main', [
     {
         path: '/signin',
         component: SignIn
+    },
+    {
+        path: '/singleplayer',
+        component: SinglePlayer
     }
 ], [new Header(), Loading, new TopComponent('div', {'class': 'content'}), new Footer()]);
