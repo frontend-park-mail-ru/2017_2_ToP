@@ -1,0 +1,12 @@
+@import "../../static/css/_theme.scss";
+
+.game-text {
+  margin: 20px 0 10px 0;
+  p {
+    opacity: 0.8;
+  }
+}
+
+.game-text__text {
+  color: $white;
+}
