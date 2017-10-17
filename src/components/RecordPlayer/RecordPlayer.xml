@@ -1,0 +1,14 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class = "record-player">
+        <!--<label><input type="checkbox" id="record-player__button"/></label>-->
+        <div class="record-player__button">
+            <div class="record-player__button_start">
+                <i class="fa fa-circle"></i>
+            </div>
+            <div class="record-player__button_stop">
+                <i class="fa fa-stop"></i>
+            </div>
+        </div>
+        <div class="record-player__time"></div>
+    </div>
+</fest:template>
