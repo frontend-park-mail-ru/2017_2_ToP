@@ -61,7 +61,7 @@ export default class FormView extends TopComponent {
 
         this._resetErrors(formElements);
 
-        submitButton.addEventListener('click', () => {
+        const submit = () => {
             const values = {};
 
             formElements.forEach(element => {
@@ -74,7 +74,15 @@ export default class FormView extends TopComponent {
             if (this._isValid()) {
                 this._submit();
             }
+        };
+
+        submitButton.addEventListener('click', submit);
+        this.getElement().addEventListener('keydown', e => {
+            if (e.keyCode === 13) {
+                submit();
+            }
         });
+
 
         formElements.forEach(element => {
             element.addEventListener('blur', () => {
