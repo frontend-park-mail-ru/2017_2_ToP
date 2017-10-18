@@ -1,6 +1,6 @@
 import recordPlayer from './RecordPlayer.xml';
-import TopComponent from '../TopComponent/TopComponent';
-import RecordService from '../../services/RecorderService/RecorderService';
+import TopComponent from '../../TopComponent/TopComponent';
+import RecordService from '../../../services/RecorderService/RecorderService';
 
 import './RecordPlayer.scss';
 

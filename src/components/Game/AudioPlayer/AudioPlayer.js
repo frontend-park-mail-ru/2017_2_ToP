@@ -1,5 +1,5 @@
 import audioPlayer from './AudioPlayer.xml';
-import TopComponent from '../TopComponent/TopComponent';
+import TopComponent from '../../TopComponent/TopComponent';
 
 import './AudioPlayer.scss';
 

@@ -1,5 +1,5 @@
 import gameText from './GameText.xml';
-import TopComponent from '../TopComponent/TopComponent';
+import TopComponent from '../../TopComponent/TopComponent';
 
 import './GameText.scss';
 

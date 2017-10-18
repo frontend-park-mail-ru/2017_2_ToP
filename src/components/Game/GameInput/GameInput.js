@@ -1,5 +1,5 @@
 import gameInput from './GameInput.xml';
-import TopComponent from '../TopComponent/TopComponent';
+import TopComponent from '../../TopComponent/TopComponent';
 
 import './GameInput.scss';
 

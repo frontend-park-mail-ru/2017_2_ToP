@@ -1,21 +1,15 @@
-import TopComponent from '../TopComponent/TopComponent';
+import TopComponent from '../../TopComponent/TopComponent';
 import GameText from '../GameText/GameText';
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
-import GameInput from '../GameInput/GameInput';
-import Button from '../Button/Button';
+import RecordPlayer from '../RecordPlayer/RecordPlayer';
+import Button from '../../Button/Button';
+
+import './RecordingPage.scss';
 
 const textData = {
-    method: 'post',
-    fields: [
-        {
-            type: 'text',
-            placeholder: 'Введите название песни...',
-            class: 'song-input'
-        },
-    ],
     texts: [
-        'Записи склеены и перевернуты!',
-        'Сможете ли угадать оригинал?',
+        'Прослушайте фрагмент песни и когда будете готовы, начните его запись.',
+        'Постарайтесь уложиться в 10 секунд.',
     ],
     buttons: [
         {
@@ -25,14 +19,18 @@ const textData = {
     ]
 };
 
-export default class ListeningPage extends TopComponent {
+export default class RecordingPage extends TopComponent {
     constructor(data) {
         super('div', {'class': 'recording-page'}, data);
         this._textData = textData;
     }
 
-    getUserInput() {
-        return this.getElement().querySelector('game-input__form_song-input').value;
+    getMusicURL() {
+        return this._components[3].getMusicURL();
+    }
+
+    getSubmitButton() {
+        return this._components[4].getElement();
     }
 
     render() {
@@ -44,7 +42,7 @@ export default class ListeningPage extends TopComponent {
             new GameText({
                 text: this._textData.texts[1]
             }),
-            new GameInput(this._textData),
+            new RecordPlayer(),
             new Button(
                 this._textData.buttons[0].text,
                 this._textData.buttons[0].url
