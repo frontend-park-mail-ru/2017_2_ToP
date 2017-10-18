@@ -15,6 +15,10 @@ export default class AudioPlayer extends TopComponent {
         return this.getElement();
     }
 
+    setSource(src) {
+        this.audio.src = src;
+    }
+
     _init() {
         this.button = this.getElement().querySelector('.audio-player__button');
         this.canvas = this.getElement().querySelector('.audio-player__visualizer');
@@ -77,10 +81,6 @@ export default class AudioPlayer extends TopComponent {
             if (this.src === undefined) {
                 this.src = this.audioContext.createMediaElementSource(this.audio);
             }
-
-            //  URL вида blob:http://localhost:8080/e5214da8-48e0-431c-8bbb-91948999259c
-            //  Передавая файл, создать его можно URL.createObjectURL(file)
-            this.audio.src = this.getData().musicURL;
 
             this.src.connect(analyser);
             analyser.connect(this.audioContext.destination);
