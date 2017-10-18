@@ -10,7 +10,11 @@ export default class SinglePlayer extends TopComponent {
     }
 
     show() {
-        if (this._components) {
+        if (this._endGame) {
+            this._components.forEach(element => element.remove());
+            this._components = [];
+            this.build();
+        } else if (this._components) {
             this._components.forEach(element => element.show());
         } else {
             this.build();
@@ -32,35 +36,41 @@ export default class SinglePlayer extends TopComponent {
     }
 
     _initRecordingPage() {
-        this._recordingPage = this._components[0];
-        this._listeningPage;
+        this._endGame = false;
+        const recordingPage = this._components[0];
 
-        this._recordingPage.getSubmitButton().addEventListener('click', () => {
+        recordingPage.getSubmitButton().addEventListener('click', () => {
             //  Всякие проверки на есть ли запись и вывод ошибок осуществлять в самом RecordingPage
-            if (this._recordingPage.check()) {
-                this._recordingPage.hide();
+            if (recordingPage.check()) {
+                recordingPage.hide();
 
-                const musicURL = this._recordingPage.getMusicURL();
-                this._components.push(new ListeningPage({
-                    musicSource: musicURL
-                }));
+                const musicURL = recordingPage.getMusicURL();
+                recordingPage.remove();
 
-                this._listeningPage = this._components[1];
-                this._listeningPage.renderTo('content');
-                this._initListeningPage();
+                this._components = [
+                    new ListeningPage({
+                        musicSource: musicURL
+                    })];
+
+                const listeningPage = this._components[0];
+                listeningPage.renderTo('content');
+                this._initListeningPage(listeningPage);
             }
         });
     }
 
-    _initListeningPage() {
-        this._listeningPage.getSubmitButton().addEventListener('click', () => {
-            if (this._listeningPage.check()) {
-                this._listeningPage.hide();
+    _initListeningPage(listeningPage) {
+        listeningPage.getSubmitButton().addEventListener('click', () => {
+            if (listeningPage.check()) {
+                listeningPage.hide();
+                listeningPage.remove();
 
-                this._components.push(new GameText({
-                    text: 'Спасибо, что прошли нашу игру!'
-                }));
-                this._components[2].renderTo('content');
+                this._components = [
+                    new GameText({
+                        text: 'Спасибо, что прошли нашу игру!'
+                    })];
+                this._components[0].renderTo('content');
+                this._endGame = true;
             }
         });
     }
