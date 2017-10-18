@@ -59,18 +59,4 @@ export default class ListeningPage extends TopComponent {
 
         return this.getElement();
     }
-
-    show() {
-        if (this._components) {
-            this._components.forEach(element => element.show());
-        } else {
-            this.render();
-        }
-    }
-
-    hide() {
-        if (this._components) {
-            this._components.forEach(element => element.hide());
-        }
-    }
 }
