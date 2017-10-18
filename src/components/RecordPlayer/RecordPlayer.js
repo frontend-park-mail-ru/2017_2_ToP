@@ -14,7 +14,7 @@ function pad0(value, count) {
 
 export default class AudioPlayer extends TopComponent {
     constructor(data) {
-        super('div', {}, data);
+        super('div', {'class': 'record-player'}, data);
     }
 
     render() {
