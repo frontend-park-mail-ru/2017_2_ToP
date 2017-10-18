@@ -29,6 +29,7 @@ export default class AudioPlayer extends TopComponent {
         this.src = undefined;
 
         this.audio = new Audio();
+        this.audio.src = this.getData().musicSource;
 
         this.isPlaying = false;
 

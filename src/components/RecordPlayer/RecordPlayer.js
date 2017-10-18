@@ -24,6 +24,10 @@ export default class AudioPlayer extends TopComponent {
         return this.getElement();
     }
 
+    getMusicURL() {
+        return RecordService.getMusicURL();
+    }
+
     resetTimer() {
         this.times = [0, 0];
     }
@@ -97,7 +101,6 @@ export default class AudioPlayer extends TopComponent {
                 this.stopTimer();
                 RecordService.stop();
 
-                this.getData().audioPlayer.setSource(RecordService.getMusicURL());
                 return;
             }
 
