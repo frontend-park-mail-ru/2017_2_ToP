@@ -33,6 +33,11 @@ export default class RecordingPage extends TopComponent {
         return this._components[4].getElement();
     }
 
+    //  TODO : Проверка на существование записи и вывод ошибок
+    check() {
+        return true;
+    }
+
     render() {
         this._components = [
             new GameText({

@@ -37,6 +37,15 @@ export default class ListeningPage extends TopComponent {
         return this.getElement().querySelector('game-input__form_song-input').value;
     }
 
+    getSubmitButton() {
+        return this._components[4].getElement();
+    }
+
+    //  TODO : Проверка на существование ввода в форме и вывод ошибок
+    check() {
+        return true;
+    }
+
     render() {
         this._components = [
             new GameText({
