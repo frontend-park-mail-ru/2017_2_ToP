@@ -4,13 +4,18 @@ import RecordingPage from '../../components/Game/RecordingPage/RecordingPage';
 import ListeningPage from '../../components/Game/ListeningPage/ListeningPage';
 import GameText from '../../components/Game/GameText/GameText';
 
+import UserService from '../../services/UserService/UserService';
+import router from '../../modules/Router/Router';
+
 export default class SinglePlayer extends TopComponent {
     constructor() {
         super('div', {});
     }
 
     show() {
-        if (this._endGame) {
+        if (!(UserService.isLoggedIn())) {
+            router.go('/');
+        } else if (this._endGame) {
             this._components.forEach(element => element.remove());
             this._components = [];
             this.build();
@@ -28,6 +33,10 @@ export default class SinglePlayer extends TopComponent {
     }
 
     build() {
+        if (!(UserService.isLoggedIn())) {
+            router.go('/');
+            return;
+        }
         this._components = [
             new RecordingPage()
         ];
