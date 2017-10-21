@@ -1,6 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
     <div class="header">
-        <div class="text">
+        <div class="header__text">
             <h1><strong>Apoj</strong><fest:space/>игра</h1>
         </div>
     </div>
