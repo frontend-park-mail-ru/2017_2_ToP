@@ -2,17 +2,11 @@
 
 .header {
   padding-top: 25px;
+}
 
-  .text {
+.header__text {
+  color: $white;
+  h1 {
     color: $white;
-    h1 {
-      color: $white;
-    }
-  }
-  .description {
-    margin: 20px 0 10px 0;
-    p {
-      opacity: 0.8;
-    }
   }
 }
