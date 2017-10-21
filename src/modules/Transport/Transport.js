@@ -8,7 +8,7 @@ const REQ_HEADER = {
     VALUE: 'application/json; charset=utf-8'
 };
 
-const BACK_URL = 'https://apoj.herokuapp.com';
+const BACK_URL = window.location.host === 'localhost:8080' ? '' : 'https://apoj.herokuapp.com';
 
 /**
  * Модуль, предоставляющий методы для выполнения HTTP-запросов

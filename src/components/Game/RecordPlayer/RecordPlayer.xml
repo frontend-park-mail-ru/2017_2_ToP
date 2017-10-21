@@ -1,0 +1,13 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class="record-player__button">
+        <div class="record-player__button_start">
+            <i class="fa fa-circle"></i>
+        </div>
+        <div class="record-player__button_stop">
+            <i class="fa fa-stop"></i>
+        </div>
+    </div>
+    <div class="record-player__time-box">
+        <div class="record-player__time"></div>
+    </div>
+</fest:template>

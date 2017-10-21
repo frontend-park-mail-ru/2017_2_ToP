@@ -54,6 +54,10 @@ class RecordService {
             console.log(e);
         });
     }
+
+    getMusicURL() {
+        return this.audioRecorder.getMusicURL();
+    }
 }
 
 const recordService = new RecordService();

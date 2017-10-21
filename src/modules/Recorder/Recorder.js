@@ -67,15 +67,18 @@ export default class Recorder {
         const dataview = encodeWAV(interleaved, null, this.sampleRate);
         const audioBlob = new Blob([dataview], {'type': type});
 
-        callback(audioBlob);
+        this.url = callback(audioBlob);
+    }
+
+    getMusicURL() {
+        return this.url;
+    }
+
+    setMusicURL(url) {
+        this.url = url;
     }
 }
 
 Recorder.setupDownload = blob => {
-    const url = (window.URL || window.webkitURL).createObjectURL(blob);
-    const link = document.querySelector('#save');
-    const audio = document.querySelector('audio');
-    audio.src = url;
-    link.href = url;
-    link.download = 'output.wav';
+    return (window.URL || window.webkitURL).createObjectURL(blob);
 };
