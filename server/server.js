@@ -26,8 +26,8 @@ const users = {
 const ids = {};
 
 const music = [
-    'Test',
-    'test2'
+    'bad',
+    'test'
 ];
 
 function isAuth(id) {
@@ -113,7 +113,7 @@ app.get('/music', (req, res) => {
     }
     const fileId = Math.floor(Math.random() * Object.keys(music).length);
     const title = music[fileId];
-    const file = `${__dirname}/music/${title}.mp3`;
+    const file = `${__dirname}/../src/static/music/${title}.mp3`;
 
     fs.exists(file, exists => {
         if (exists) {
