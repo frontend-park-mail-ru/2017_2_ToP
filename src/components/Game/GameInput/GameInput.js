@@ -8,6 +8,5 @@ export default class GameInput extends TopComponent {
         super('div', {'class': 'game-input'}, data);
 
         this.getElement().innerHTML = gameInput(this.getData());
-        console.log(this.getData());
     }
 }
