@@ -153,6 +153,7 @@ app.post('/music', (req, res) => {
         json.status = 'wrong';
     }
 
+    delete ids[id].music;
     res.json(json);
 });
 
