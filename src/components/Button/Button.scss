@@ -10,6 +10,9 @@
   text-align: center;
   text-shadow: none;
   box-sizing: border-box;
+  cursor: pointer;
+  width: 100%;
+
   &:hover {
     opacity: 0.8;
   }

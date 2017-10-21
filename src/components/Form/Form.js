@@ -1,7 +1,11 @@
 import form from './Form.xml';
+
 import TopComponent from '../TopComponent/TopComponent';
-import Transport from '../../modules/Transport/Transport';
+import BackButton from '../BackButton/BackButton';
+
 import UserService from '../../services/UserService/UserService';
+
+import Transport from '../../modules/Transport/Transport';
 import Validation from '../../modules/Validator/index';
 import router from '../../modules/Router/Router';
 
@@ -16,6 +20,14 @@ export default class FormView extends TopComponent {
 
     render() {
         this._innerHTML(form(this.getData()));
+
+        if (this.getData().back) {
+            const backButton = new BackButton();
+            const formEnd = this.getElement().querySelector('.form-box__end');
+
+            formEnd.appendChild(backButton.getElement());
+        }
+
         this._validation();
         return this.getElement();
     }
@@ -82,7 +94,6 @@ export default class FormView extends TopComponent {
                 submit();
             }
         });
-
 
         formElements.forEach(element => {
             element.addEventListener('blur', () => {
