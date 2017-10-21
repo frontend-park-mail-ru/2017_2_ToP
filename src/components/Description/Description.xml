@@ -1,5 +1,5 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-    <div class="text">
+    <div class="description__text">
         <p>Описание нашей<fest:space/><strong>захватывающей</strong><fest:space/>игры</p>
         <fest:if test="json.login">
             <p>Привет<fest:space/><fest:value>json.login</fest:value>!</p>
