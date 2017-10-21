@@ -26,9 +26,13 @@ const users = {
 const ids = {};
 
 const music = [
-    'Test.wav',
-    'test2.wav'
+    'Test',
+    'test2'
 ];
+
+function isAuth(id) {
+    return ids[id] !== undefined;
+}
 
 app.post('/signup', (req, res) => {
     const login = req.body.login;
@@ -84,20 +88,17 @@ app.get('/users', (req, res) => {
 
 app.get('/user', (req, res) => {
     const id = req.cookies.auth;
-    try {
-        const login = ids[id].login;
-        res.json(users[login]);
-    } catch (e) {
+    if (!isAuth(id)) {
         return res.status(401).end();
     }
+
+    const login = ids[id].login;
+    res.json(users[login]);
 });
 
 app.post('/logout', (req, res) => {
     const id = req.cookies.auth;
-    try {
-        const login = ids[id].login;
-        res.json(users[login]);
-    } catch (e) {
+    if (!isAuth(id)) {
         return res.status(401).end();
     }
 
@@ -106,15 +107,18 @@ app.post('/logout', (req, res) => {
 });
 
 app.get('/music', (req, res) => {
+    const id = req.cookies.auth;
+    if (!isAuth(id)) {
+        return res.status(401).end();
+    }
     const fileId = Math.floor(Math.random() * Object.keys(music).length);
     const title = music[fileId];
-    const file = `${__dirname}/music/${title}`;
+    const file = `${__dirname}/music/${title}.mp3`;
 
     fs.exists(file, exists => {
         if (exists) {
             const rstream = fs.createReadStream(file);
 
-            const id = req.cookies.auth;
             ids[id].music = fileId;
 
             rstream.pipe(res);
@@ -127,17 +131,20 @@ app.get('/music', (req, res) => {
 
 app.post('/music', (req, res) => {
     const id = req.cookies.auth;
-
-    const fileId = ids[id].music;
-    if (fileId === undefined) {
-        res.send('Something wrong');
-        res.end();
+    if (!isAuth(id)) {
+        return res.status(401).end();
     }
 
-    const title = req.body.title.toLowerCase();
+    const fileId = ids[id].music;
+    const title = req.body.title;
+
+    if (fileId !== undefined || title !== undefined) {
+        return res.status(400).end();
+    }
+
     const json = {};
 
-    if (music[fileId].toLowerCase() === title) {
+    if (music[fileId].toLowerCase() === title.toLowerCase()) {
         const login = ids[id].login;
 
         json.status = 'win';
