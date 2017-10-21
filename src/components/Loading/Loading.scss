@@ -22,7 +22,7 @@
   @extend %container;
   margin: 40px auto;
 
-  &:hover .loading{
+  &:hover .loading__element{
     border-color: transparent $blue transparent $blue;
   }
 }
