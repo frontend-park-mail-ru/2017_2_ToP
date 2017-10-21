@@ -27,7 +27,7 @@
         </form>
     </div>
     <fest:if test="json.back">
-        <fest:include context="json.back" src="../BackButton/BackButton.xml"/>
+        <div class = "form-end"></div>
     </fest:if>
 </fest:template>
 

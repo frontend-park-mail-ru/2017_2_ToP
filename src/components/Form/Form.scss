@@ -127,16 +127,3 @@ input[type="email"] {
     padding: 0.3em;
   }
 }
-
-.backButton {
-  background: $black;
-  color: $white;
-  font-weight: 500;
-
-  cursor: pointer;
-  padding: 5px;
-}
-
-.backButton:hover {
-  opacity: 0.8;
-}
