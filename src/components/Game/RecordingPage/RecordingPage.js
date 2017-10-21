@@ -33,6 +33,10 @@ export default class RecordingPage extends TopComponent {
         return this._components[4].getElement();
     }
 
+    releasePlayer() {
+        this._components[1].release();
+    }
+
     //  TODO : Проверка на существование записи и вывод ошибок
     check() {
         return true;

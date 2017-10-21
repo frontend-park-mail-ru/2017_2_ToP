@@ -41,6 +41,10 @@ export default class ListeningPage extends TopComponent {
         return this._components[4].getElement();
     }
 
+    releasePlayer() {
+        this._components[1].release();
+    }
+
     //  TODO : Проверка на существование ввода в форме и вывод ошибок
     check() {
         return true;
