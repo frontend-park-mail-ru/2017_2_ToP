@@ -1,5 +1,5 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-    <div class="backButton form-end" data-url="{json.url || '/'}">
+    <div class="backButton__url" data-url="{json.url || '/'}">
         <fest:choose>
             <fest:when test="json.text">
                 <fest:value>json.text</fest:value>
