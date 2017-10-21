@@ -13,7 +13,7 @@ app.use('/singleplayer', express.static('src'));
 app.use(body.json());
 app.use(cookie());
 
-let users = {
+const users = {
     'test': {
         login: 'test',
         email: 'test@apoj.ru',
@@ -21,7 +21,7 @@ let users = {
     }
 };
 
-let ids = {};
+const ids = {};
 
 app.post('/signup', (req, res) => {
     const login = req.body.login;
@@ -30,15 +30,15 @@ app.post('/signup', (req, res) => {
 
     if (!users[login]) {
         users[login] = {
-            login: login,
-            email: email,
-            password: password
+            'login': login,
+            'email': email,
+            'password': password
         };
     }
     const id = uuid();
     ids[id] = login;
 
-    res.cookie('auth', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
+    res.cookie('auth', id, {expires: new Date(Date.now() + (1000 * 60 * 10))});
     res.status(201).json(users[login]);
 });
 
@@ -53,7 +53,7 @@ app.post('/signin', (req, res) => {
     const id = uuid();
     ids[id] = login;
 
-    res.cookie('auth', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
+    res.cookie('auth', id, {expires: new Date(Date.now() + (1000 * 60 * 10))});
     res.status(201).json(users[login]);
 });
 
@@ -61,8 +61,8 @@ app.get('/users', (req, res) => {
     const userlist = Object.keys(users)
         .map(login => {
             return {
-                login: login,
-                email: users[login].email
+                'login': login,
+                'email': users[login].email
             };
         });
 
@@ -70,7 +70,7 @@ app.get('/users', (req, res) => {
 });
 
 app.get('/user', (req, res) => {
-    const id = req.cookies['auth'];
+    const id = req.cookies.auth;
     const login = ids[id];
     if (!login || !users[login]) {
         return res.status(401).end();
@@ -80,7 +80,7 @@ app.get('/user', (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-    const id = req.cookies['auth'];
+    const id = req.cookies.auth;
     const login = ids[id];
     if (!login || !users[login]) {
         return res.status(401).end();
