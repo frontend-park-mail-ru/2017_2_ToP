@@ -17,7 +17,8 @@ const users = {
     'test': {
         login: 'test',
         email: 'test@apoj.ru',
-        password: 'Password1'
+        password: 'Password1',
+        singleScore: 0
     }
 };
 
@@ -32,7 +33,8 @@ app.post('/signup', (req, res) => {
         users[login] = {
             'login': login,
             'email': email,
-            'password': password
+            'password': password,
+            'singleScore': 0
         };
     }
     const id = uuid();
@@ -62,7 +64,8 @@ app.get('/users', (req, res) => {
         .map(login => {
             return {
                 'login': login,
-                'email': users[login].email
+                'email': users[login].email,
+                'singleScore': users[login].singleScore
             };
         });
 
