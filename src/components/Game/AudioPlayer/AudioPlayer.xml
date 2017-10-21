@@ -1,0 +1,11 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class="audio-player__button">
+        <div class="audio-player__button_play">
+            <i class="fa fa-play"></i>
+        </div>
+        <div class="audio-player__button_pause">
+            <i class="fa fa-pause"></i>
+        </div>
+    </div>
+    <canvas class="audio-player__visualizer"></canvas>
+</fest:template>

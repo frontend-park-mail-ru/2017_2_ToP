@@ -1,0 +1,14 @@
+@import "../../static/css/_theme.scss";
+
+.back-button {
+  background: $black;
+  color: $white;
+  font-weight: 500;
+
+  cursor: pointer;
+  padding: 5px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

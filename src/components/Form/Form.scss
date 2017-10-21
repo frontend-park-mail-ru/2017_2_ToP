@@ -7,7 +7,7 @@
   margin-top: 20px;
 }
 
-.form-top {
+.form-box__top {
   overflow: hidden;
   padding: 0 20px 0px 25px;
   background: $dark-gray;
@@ -16,7 +16,7 @@
   text-align: left;
 }
 
-.form-top-left {
+.form-box__top-left {
   float: left;
   width: 75%;
   padding-top: 25px;
@@ -31,7 +31,7 @@
   }
 }
 
-.form-top-right {
+.form-box__top-right {
   float: right;
   width: 25%;
   padding-top: 5px;
@@ -42,7 +42,7 @@
   opacity: 0.3;
 }
 
-.form-bottom {
+.form-box__bottom {
   padding: 25px 25px 30px 30px;
   background: $light-black;
   text-align: left;
@@ -67,7 +67,7 @@
   }
 }
 
-.form-end {
+.form-box__end {
   border-radius: 0 0 4px 4px;
 }
 
@@ -126,17 +126,4 @@ input[type="email"] {
   &.active {
     padding: 0.3em;
   }
-}
-
-.backButton {
-  background: $black;
-  color: $white;
-  font-weight: 500;
-
-  cursor: pointer;
-  padding: 5px;
-}
-
-.backButton:hover {
-  opacity: 0.8;
 }

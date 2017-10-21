@@ -18,16 +18,16 @@
   border-radius: 100%;
 }
 
-.loading-container {
+.loading {
   @extend %container;
   margin: 40px auto;
 
-  &:hover .loading{
+  &:hover .loading__element{
     border-color: transparent $blue transparent $blue;
   }
 }
 
-.loading {
+.loading__element {
   @extend %container;
   border: 2px solid;
   border-color: transparent #fff transparent #FFF;
@@ -35,7 +35,7 @@
   transition: all 0.5s ease-in-out;
 }
 
-.loading-text {
+.loading__text {
   animation: loading-text-opacity 2s linear 0s infinite normal;
   color: #ffffff;
   font-size: 10px;
