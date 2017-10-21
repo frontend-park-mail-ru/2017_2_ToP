@@ -5,7 +5,7 @@ import './BackButton.scss';
 
 export default class BackButton extends TopComponent {
     constructor(data) {
-        super('div', { 'class': 'backButton' }, data);
+        super('div', { 'class': 'back-button' }, data);
 
         this.getElement().innerHTML = backButton(this.getData());
     }
