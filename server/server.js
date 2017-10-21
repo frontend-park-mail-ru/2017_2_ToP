@@ -2,6 +2,7 @@ const express = require('express');
 const body = require('body-parser');
 const cookie = require('cookie-parser');
 const uuid = require('uuid/v4');
+const fs = require('fs');
 
 const app = express();
 
@@ -24,6 +25,11 @@ const users = {
 
 const ids = {};
 
+const music = [
+    'Test.wav',
+    'test2.wav'
+];
+
 app.post('/signup', (req, res) => {
     const login = req.body.login;
     const email = req.body.email;
@@ -38,7 +44,9 @@ app.post('/signup', (req, res) => {
         };
     }
     const id = uuid();
-    ids[id] = login;
+    ids[id] = {
+        'login': login
+    };
 
     res.cookie('auth', id, {expires: new Date(Date.now() + (1000 * 60 * 10))});
     res.status(201).json(users[login]);
@@ -53,7 +61,9 @@ app.post('/signin', (req, res) => {
     }
 
     const id = uuid();
-    ids[id] = login;
+    ids[id] = {
+        'login': login
+    };
 
     res.cookie('auth', id, {expires: new Date(Date.now() + (1000 * 60 * 10))});
     res.status(201).json(users[login]);
@@ -74,23 +84,45 @@ app.get('/users', (req, res) => {
 
 app.get('/user', (req, res) => {
     const id = req.cookies.auth;
-    const login = ids[id];
-    if (!login || !users[login]) {
+    try {
+        const login = ids[id].login;
+        res.json(users[login]);
+    } catch (e) {
         return res.status(401).end();
     }
-
-    res.json(users[login]);
 });
 
 app.post('/logout', (req, res) => {
     const id = req.cookies.auth;
-    const login = ids[id];
-    if (!login || !users[login]) {
+    try {
+        const login = ids[id].login;
+        res.json(users[login]);
+    } catch (e) {
         return res.status(401).end();
     }
 
     res.cookie('auth', '', {expires: new Date()});
     res.json({});
+});
+
+app.get('/music', (req, res) => {
+    const fileId = Math.floor(Math.random() * Object.keys(music).length);
+    const title = music[fileId];
+    const file = `${__dirname}/music/${title}`;
+
+    fs.exists(file, exists => {
+        if (exists) {
+            const rstream = fs.createReadStream(file);
+
+            const id = req.cookies.auth;
+            ids[id].music = fileId;
+
+            rstream.pipe(res);
+        } else {
+            res.send('Something wrong');
+            res.end();
+        }
+    });
 });
 
 app.get('*', (req, res) => {
