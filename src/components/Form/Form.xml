@@ -1,18 +1,18 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
     <fest:if test="json.title">
-        <div class="form-top">
-            <div class="form-top-left">
+        <div class="form-box__top">
+            <div class="form-box__top-left">
                 <h3>
                     <fest:value>json.title</fest:value>
                 </h3>
                 <p>Заполните следующие поля:</p>
             </div>
-            <div class="form-top-right">
+            <div class="form-box__top-right">
                 <i class="{json.icon}"/>
             </div>
         </div>
     </fest:if>
-    <div class="form-bottom {json.back ? '' : 'form-end'}">
+    <div class="form-box__bottom {json.back ? '' : 'form-box__end'}">
         <form role="form" action="" method="{json.method}" name="{json.name}">
             <div class="error serverError" name="formError"></div>
             <fest:for iterate="json.fields" index="i">
@@ -27,7 +27,7 @@
         </form>
     </div>
     <fest:if test="json.back">
-        <div class = "form-end"></div>
+        <div class = "form-box__end"></div>
     </fest:if>
 </fest:template>
 

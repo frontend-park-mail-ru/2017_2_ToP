@@ -23,7 +23,7 @@ export default class FormView extends TopComponent {
 
         if (this.getData().back) {
             const backButton = new BackButton();
-            const formEnd = this.getElement().querySelector('.form-end');
+            const formEnd = this.getElement().querySelector('.form-box__end');
 
             formEnd.appendChild(backButton.getElement());
         }
