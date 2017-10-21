@@ -125,6 +125,30 @@ app.get('/music', (req, res) => {
     });
 });
 
+app.post('/music', (req, res) => {
+    const id = req.cookies.auth;
+
+    const fileId = ids[id].music;
+    if (fileId === undefined) {
+        res.send('Something wrong');
+        res.end();
+    }
+
+    const title = req.body.title.toLowerCase();
+    const json = {};
+
+    if (music[fileId].toLowerCase() === title) {
+        const login = ids[id].login;
+
+        json.status = 'win';
+        json.score = ++users[login].singleScore;
+    } else {
+        json.status = 'wrong';
+    }
+
+    res.json(json);
+});
+
 app.get('*', (req, res) => {
     res.send('404');
 });
