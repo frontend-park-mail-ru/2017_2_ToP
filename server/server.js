@@ -70,7 +70,7 @@ app.post('/signin', (req, res) => {
     };
 
     res.cookie('auth', id, {expires: new Date(Date.now() + (1000 * 60 * 10))});
-    res.status(201).json(users[login]);
+    res.status(200).json(users[login]);
 });
 
 app.get('/users', (req, res) => {
