@@ -138,19 +138,19 @@ app.post('/music', (req, res) => {
     const fileId = ids[id].music;
     const title = req.body.title;
 
-    if (fileId !== undefined || title !== undefined) {
-        return res.status(400).end();
-    }
+    const json = {
+        message: 'wrong'
+    };
 
-    const json = {};
+    if (fileId === undefined || title === undefined) {
+        return res.status(400).json(json).end();
+    }
 
     if (music[fileId].toLowerCase() === title.toLowerCase()) {
         const login = ids[id].login;
 
-        json.status = 'win';
+        json.message = 'right';
         json.score = ++users[login].singleScore;
-    } else {
-        json.status = 'wrong';
     }
 
     delete ids[id].music;
