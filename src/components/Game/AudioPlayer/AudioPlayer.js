@@ -19,6 +19,10 @@ export default class AudioPlayer extends TopComponent {
         this.audio.src = src;
     }
 
+    release() {
+        this.audioContext.close();
+    }
+
     _init() {
         this.button = this.getElement().querySelector('.audio-player__button');
         this.canvas = this.getElement().querySelector('.audio-player__visualizer');

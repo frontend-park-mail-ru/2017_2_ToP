@@ -42,6 +42,10 @@ export default class ListeningPage extends TopComponent {
         return this._components[4].getElement();
     }
 
+    releasePlayer() {
+        this._components[1].release();
+    }
+
     async check() {
         const response = await Transport.post('/music', {'title': this.getUserInput()});
 
