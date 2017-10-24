@@ -26,8 +26,8 @@ const users = {
 const ids = {};
 
 const music = [
-    'bad',
-    'test'
+    'badtrip',
+    'Владимирский централ'
 ];
 
 function isAuth(id) {
