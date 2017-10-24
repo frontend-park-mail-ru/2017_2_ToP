@@ -23,6 +23,12 @@ export default class AudioPlayer extends TopComponent {
         this.audioContext.close();
     }
 
+    stop() {
+        this.isPlaying = false;
+        this.audio.pause();
+        this.audioContext.close();
+    }
+
     _init() {
         this.button = this.getElement().querySelector('.audio-player__button');
         this.canvas = this.getElement().querySelector('.audio-player__visualizer');
