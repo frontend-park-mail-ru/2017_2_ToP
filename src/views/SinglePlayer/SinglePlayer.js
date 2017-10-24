@@ -70,8 +70,8 @@ export default class SinglePlayer extends TopComponent {
     }
 
     _initListeningPage(listeningPage) {
-        listeningPage.getSubmitButton().addEventListener('click', () => {
-            if (listeningPage.check()) {
+        listeningPage.getSubmitButton().addEventListener('click', async () => {
+            if (await listeningPage.check()) {
                 listeningPage.hide();
                 listeningPage.stopPlayer();
                 listeningPage.remove();
