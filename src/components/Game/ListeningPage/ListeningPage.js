@@ -4,6 +4,7 @@ import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import GameInput from '../GameInput/GameInput';
 import Button from '../../Button/Button';
 import Transport from '../../../modules/Transport/Transport';
+import UserService from '../../../services/UserService/UserService';
 
 import './ListeningPage.scss';
 
@@ -49,7 +50,12 @@ export default class ListeningPage extends TopComponent {
     async check() {
         const response = await Transport.post('/music', {'title': this.getUserInput()});
 
-        return response.message === 'right';
+        if (response.message === 'right') {
+            UserService.setScore('single', response.score);
+            return true;
+        }
+
+        return false;
     }
 
     render() {
