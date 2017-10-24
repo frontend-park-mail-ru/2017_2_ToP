@@ -42,6 +42,10 @@ export default class RecordingPage extends TopComponent {
         return true;
     }
 
+    getMusic() {
+        this._components[1].setSource('/music');
+    }
+
     render() {
         this._components = [
             new GameText({
@@ -61,6 +65,7 @@ export default class RecordingPage extends TopComponent {
         this._components.forEach(element => {
             this.append(element.render());
         });
+        this.getMusic();
 
         return this.getElement();
     }

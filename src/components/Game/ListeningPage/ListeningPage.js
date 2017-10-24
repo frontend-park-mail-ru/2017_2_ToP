@@ -3,6 +3,7 @@ import GameText from '../GameText/GameText';
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import GameInput from '../GameInput/GameInput';
 import Button from '../../Button/Button';
+import Transport from '../../../modules/Transport/Transport';
 
 import './ListeningPage.scss';
 
@@ -34,7 +35,7 @@ export default class ListeningPage extends TopComponent {
     }
 
     getUserInput() {
-        return this.getElement().querySelector('game-input__form_song-input').value;
+        return this.getElement().querySelector('.game-input__form_song-input').value;
     }
 
     getSubmitButton() {
@@ -45,9 +46,10 @@ export default class ListeningPage extends TopComponent {
         this._components[1].release();
     }
 
-    //  TODO : Проверка на существование ввода в форме и вывод ошибок
-    check() {
-        return true;
+    async check() {
+        const response = await Transport.post('/music', {'title': this.getUserInput()});
+
+        return response.message === 'right';
     }
 
     render() {
