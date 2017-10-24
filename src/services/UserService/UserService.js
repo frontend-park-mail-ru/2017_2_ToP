@@ -12,7 +12,7 @@ class UserService {
     }
 
     logout() {
-        return Transport.get('/logout')
+        return Transport.post('/logout')
             .then(() => { this.user = null; });
     }
 

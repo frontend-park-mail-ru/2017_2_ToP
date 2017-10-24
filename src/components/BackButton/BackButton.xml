@@ -1,0 +1,12 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class="back-button__url" data-url="{json.url || '/'}">
+        <fest:choose>
+            <fest:when test="json.text">
+                <fest:value>json.text</fest:value>
+            </fest:when>
+            <fest:otherwise>
+                <fest:text>На главную</fest:text>
+            </fest:otherwise>
+        </fest:choose>
+    </div>
+</fest:template>

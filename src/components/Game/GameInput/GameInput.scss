@@ -1,0 +1,20 @@
+@import "../../../static/css/_theme.scss";
+
+form input {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 15px;
+}
+form {
+  position: relative;
+
+  .input-error {
+    border-color: $red;
+  }
+  input {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 0px;
+    margin-top: 7px;
+  }
+}

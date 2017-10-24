@@ -1,7 +1,11 @@
 import form from './Form.xml';
+
 import TopComponent from '../TopComponent/TopComponent';
-import Transport from '../../modules/Transport/Transport';
+import BackButton from '../BackButton/BackButton';
+
 import UserService from '../../services/UserService/UserService';
+
+import Transport from '../../modules/Transport/Transport';
 import Validation from '../../modules/Validator/index';
 import router from '../../modules/Router/Router';
 
@@ -16,6 +20,14 @@ export default class FormView extends TopComponent {
 
     render() {
         this._innerHTML(form(this.getData()));
+
+        if (this.getData().back) {
+            const backButton = new BackButton();
+            const formEnd = this.getElement().querySelector('.form-box__end');
+
+            formEnd.appendChild(backButton.getElement());
+        }
+
         this._validation();
         return this.getElement();
     }
@@ -61,7 +73,7 @@ export default class FormView extends TopComponent {
 
         this._resetErrors(formElements);
 
-        submitButton.addEventListener('click', () => {
+        const submit = () => {
             const values = {};
 
             formElements.forEach(element => {
@@ -73,6 +85,13 @@ export default class FormView extends TopComponent {
 
             if (this._isValid()) {
                 this._submit();
+            }
+        };
+
+        submitButton.addEventListener('click', submit);
+        this.getElement().addEventListener('keydown', e => {
+            if (e.keyCode === 13) {
+                submit();
             }
         });
 
@@ -119,11 +138,15 @@ export default class FormView extends TopComponent {
                     router.go('/');
                 })
                 .catch(response => {
-                    response.json().then(json => {
-                        console.log(`${response.status}: ${response.statusText}\n${json.message}`);
-                    });
+                    return response.json();
+                })
+                .then(json => {
+                    const main = this.getElement();
+                    const formError = main.getElementsByClassName('serverError')[0];
+                    formError.name = 'formError';
+                    this.errors.formError = json.message;
+                    this._errorOutput([formError], main.getElementsByClassName('error'));
                 });
         }
-
     }
 }

@@ -10,8 +10,8 @@ module.exports = merge(common, {
                 test: /.spec\.js$/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015'],
-                    cacheDirectory: true,
+                    presets: ['env'],
+                    cacheDirectory: true
                 }
             }
         ]

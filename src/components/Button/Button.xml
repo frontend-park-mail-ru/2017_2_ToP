@@ -1,0 +1,5 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class="button {json.class}" data-url="{json.url}">
+        <fest:value>json.text</fest:value>
+    </div>
+</fest:template>
