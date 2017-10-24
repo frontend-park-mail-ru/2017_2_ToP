@@ -3,6 +3,7 @@ import TopComponent from '../../components/TopComponent/TopComponent';
 import RecordingPage from '../../components/Game/RecordingPage/RecordingPage';
 import ListeningPage from '../../components/Game/ListeningPage/ListeningPage';
 import GameText from '../../components/Game/GameText/GameText';
+import VideoPlayer from '../../components/Game/VideoPlayer/VideoPlayer';
 
 import UserService from '../../services/UserService/UserService';
 import router from '../../modules/Router/Router';
@@ -79,8 +80,16 @@ export default class SinglePlayer extends TopComponent {
                 this._components = [
                     new GameText({
                         text: 'Спасибо, что прошли нашу игру!'
-                    })];
-                this._components[0].renderTo('content');
+                    }),
+                    new VideoPlayer({
+                        src: '/static/video/win.mp4',
+                        type: 'video/mp4'
+                    }),
+                    new GameText({
+                        text: `Ваш новый счет ${UserService.getScore('single')}`
+                    })
+                ];
+                this._components.forEach(element => element.renderTo('content'));
                 this._endGame = true;
             }
         });
