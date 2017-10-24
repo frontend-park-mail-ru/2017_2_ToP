@@ -54,7 +54,7 @@ export default class SinglePlayer extends TopComponent {
                 recordingPage.hide();
 
                 const musicURL = recordingPage.getMusicURL();
-                recordingPage.releasePlayer();
+                recordingPage.stopPlayer();
                 recordingPage.remove();
 
                 this._components = [
@@ -73,7 +73,7 @@ export default class SinglePlayer extends TopComponent {
         listeningPage.getSubmitButton().addEventListener('click', () => {
             if (listeningPage.check()) {
                 listeningPage.hide();
-                listeningPage.releasePlayer();
+                listeningPage.stopPlayer();
                 listeningPage.remove();
 
                 this._components = [
