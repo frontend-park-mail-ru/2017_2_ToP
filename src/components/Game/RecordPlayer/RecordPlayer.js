@@ -42,6 +42,11 @@ export default class AudioPlayer extends TopComponent {
         }
     }
 
+    stop() {
+        this.isRecording = false;
+        RecordService.stop();
+    }
+
     stopTimer() {
         this.running = false;
         this.time = null;
