@@ -1,0 +1,5 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <video autoplay="" class="video">
+        <source src="{json.src}" type="{json.type}"/>
+    </video>
+</fest:template>
