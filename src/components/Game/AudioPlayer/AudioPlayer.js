@@ -29,6 +29,14 @@ export default class AudioPlayer extends TopComponent {
         this.audioContext.close();
     }
 
+    _initAudio() {
+        this.audio.addEventListener('ended', () => {
+            this.isPlaying = false;
+            this.pauseButton.style.display = 'none';
+            this.playButton.style.display = 'block';
+        });
+    }
+
     _init() {
         this.button = this.getElement().querySelector('.audio-player__button');
         this.canvas = this.getElement().querySelector('.audio-player__visualizer');
@@ -40,6 +48,8 @@ export default class AudioPlayer extends TopComponent {
 
         this.audio = new Audio();
         this.audio.src = this.getData().musicSource;
+
+        this._initAudio();
 
         this.isPlaying = false;
 
