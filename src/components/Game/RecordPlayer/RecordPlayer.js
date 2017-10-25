@@ -43,10 +43,6 @@ export default class AudioPlayer extends TopComponent {
     }
 
     stop() {
-        if (!this.isRecording) {
-            return;
-        }
-
         this.isRecording = false;
 
         this.stopButton.style.display = 'none';
