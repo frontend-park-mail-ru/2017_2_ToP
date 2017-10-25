@@ -1,7 +1,8 @@
 .video-player {
   display: block;
   margin: auto;
-  max-height: 1000px;
+  opacity: 0;
+  max-height: 0px;
   transition: all .7s;
 }
 

@@ -9,7 +9,19 @@ export default class VideoPlayer extends TopComponent {
 
         this._innerHTML(videoPlayer(this.getData()));
 
-        this.getElement().querySelector('.video').addEventListener('ended', this._hide.bind(this), false);
+        this.video = this.getElement().querySelector('.video');
+
+        this.video.addEventListener('ended', this._hide.bind(this), false);
+        this.video.addEventListener('canplay', this._show.bind(this), false);
+    }
+
+    _show() {
+        setTimeout(() => {
+            this.video.pause();
+            this.getElement().style.opacity = 1;
+            this.getElement().style.maxHeight = '1000px';
+            setTimeout(() => { this.video.play(); }, 700);
+        }, 500);
     }
 
     _hide() {
