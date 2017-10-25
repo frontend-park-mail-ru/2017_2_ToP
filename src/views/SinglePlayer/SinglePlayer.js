@@ -1,8 +1,8 @@
 import TopComponent from '../../components/TopComponent/TopComponent';
 
-import RecordingPage from '../../components/Game/RecordingPage/RecordingPage';
-import ListeningPage from '../../components/Game/ListeningPage/ListeningPage';
-import EndingPage from '../../components/Game/EndingPage/EndingPage';
+import RecordingPage from '../../components/Game/Stages/Recording/Recording';
+import ListeningPage from '../../components/Game/Stages/Listening/Listening';
+import EndingPage from '../../components/Game/Stages/Ending/Ending';
 
 import UserService from '../../services/UserService/UserService';
 import router from '../../modules/Router/Router';

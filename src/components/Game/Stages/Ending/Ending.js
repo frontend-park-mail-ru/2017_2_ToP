@@ -1,12 +1,12 @@
-import TopComponent from '../../TopComponent/TopComponent';
-import GameText from '../GameText/GameText';
-import BackButton from '../../BackButton/BackButton';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import UserService from '../../../services/UserService/UserService';
+import TopComponent from '../../../TopComponent/TopComponent';
+import GameText from '../../GameText/GameText';
+import BackButton from '../../../BackButton/BackButton';
+import VideoPlayer from '../../VideoPlayer/VideoPlayer';
+import UserService from '../../../../services/UserService/UserService';
 
-import './EndingPage.scss';
+import './Ending.scss';
 
-export default class ListeningPage extends TopComponent {
+export default class Ending extends TopComponent {
     constructor(data) {
         super('div', {'class': 'ending-page'}, data);
     }

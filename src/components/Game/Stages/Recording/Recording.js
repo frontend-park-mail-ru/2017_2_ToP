@@ -1,10 +1,10 @@
-import TopComponent from '../../TopComponent/TopComponent';
-import GameText from '../GameText/GameText';
-import AudioPlayer from '../AudioPlayer/AudioPlayer';
-import RecordPlayer from '../RecordPlayer/RecordPlayer';
-import Button from '../../Button/Button';
+import TopComponent from '../../../TopComponent/TopComponent';
+import GameText from '../../GameText/GameText';
+import AudioPlayer from '../../AudioPlayer/AudioPlayer';
+import RecordPlayer from '../../RecordPlayer/RecordPlayer';
+import Button from '../../../Button/Button';
 
-import './RecordingPage.scss';
+import './Recording.scss';
 
 const textData = {
     texts: [
@@ -19,7 +19,7 @@ const textData = {
     ]
 };
 
-export default class RecordingPage extends TopComponent {
+export default class Recording extends TopComponent {
     constructor(data) {
         super('div', {'class': 'recording-page'}, data);
         this._textData = textData;
