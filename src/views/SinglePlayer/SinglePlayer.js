@@ -2,8 +2,7 @@ import TopComponent from '../../components/TopComponent/TopComponent';
 
 import RecordingPage from '../../components/Game/RecordingPage/RecordingPage';
 import ListeningPage from '../../components/Game/ListeningPage/ListeningPage';
-import GameText from '../../components/Game/GameText/GameText';
-import VideoPlayer from '../../components/Game/VideoPlayer/VideoPlayer';
+import EndingPage from '../../components/Game/EndingPage/EndingPage';
 
 import UserService from '../../services/UserService/UserService';
 import router from '../../modules/Router/Router';
@@ -78,17 +77,9 @@ export default class SinglePlayer extends TopComponent {
                 listeningPage.remove();
 
                 this._components = [
-                    new GameText({
-                        text: 'Спасибо, что прошли нашу игру!'
-                    }),
-                    new VideoPlayer({
-                        src: '/static/video/win.mp4',
-                        type: 'video/mp4'
-                    }),
-                    new GameText({
-                        text: `Ваш новый счет ${UserService.getScore('single')}`
-                    })
-                ];
+                    new EndingPage({
+                        isWin: true
+                    })];
                 this._components.forEach(element => element.renderTo('content'));
                 this._endGame = true;
             }
