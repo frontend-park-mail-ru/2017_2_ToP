@@ -49,12 +49,11 @@ export default class SinglePlayer extends TopComponent {
         const recordingPage = this._components[0];
 
         recordingPage.getSubmitButton().addEventListener('click', () => {
-            //  Всякие проверки на есть ли запись и вывод ошибок осуществлять в самом RecordingPage
             if (recordingPage.check()) {
                 recordingPage.hide();
+                recordingPage.stopPlayer();
 
                 const musicURL = recordingPage.getMusicURL();
-                recordingPage.stopPlayer();
                 recordingPage.remove();
 
                 this._components = [

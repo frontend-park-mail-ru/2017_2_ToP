@@ -26,7 +26,23 @@ export default class AudioPlayer extends TopComponent {
     stop() {
         this.isPlaying = false;
         this.audio.pause();
+
+        this.pauseButton.style.display = 'none';
+        this.playButton.style.display = 'block';
+    }
+
+    remove() {
+        this.stop();
         this.audioContext.close();
+    }
+
+    start() {
+        this.isPlaying = true;
+
+        this.pauseButton.style.display = 'block';
+        this.playButton.style.display = 'none';
+
+        this.audio.play();
     }
 
     _initAudio() {
@@ -91,10 +107,8 @@ export default class AudioPlayer extends TopComponent {
             };
 
             if (this.isPlaying) {
-                this.isPlaying = false;
-                this.audio.pause();
-                this.pauseButton.style.display = 'none';
-                this.playButton.style.display = 'block';
+                this.stop();
+
                 cancelAnimationFrame(renderFrame);
                 return;
             }
@@ -108,11 +122,7 @@ export default class AudioPlayer extends TopComponent {
 
             analyser.fftSize = 256;
 
-            this.pauseButton.style.display = 'block';
-            this.playButton.style.display = 'none';
-            this.isPlaying = true;
-
-            this.audio.play();
+            this.start();
             renderFrame();
         });
     }
