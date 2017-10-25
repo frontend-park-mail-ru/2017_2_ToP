@@ -34,7 +34,7 @@ export default class RecordingPage extends TopComponent {
     }
 
     stopPlayer() {
-        this._components[1].stop();
+        this._components[1].remove();
         this._components[3].stop();
     }
 
