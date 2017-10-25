@@ -1,5 +1,6 @@
 import TopComponent from '../../TopComponent/TopComponent';
 import GameText from '../GameText/GameText';
+import BackButton from '../../BackButton/BackButton';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import UserService from '../../../services/UserService/UserService';
 
@@ -33,6 +34,8 @@ export default class ListeningPage extends TopComponent {
                 })
             ];
         }
+
+        this._components.push(new BackButton());
 
         this._components.forEach(element => {
             this.append(element.render());
