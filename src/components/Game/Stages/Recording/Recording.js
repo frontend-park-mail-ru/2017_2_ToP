@@ -21,7 +21,7 @@ const textData = {
 
 export default class Recording extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'recording-page'}, data);
+        super('div', {'class': 'recording-stage'}, data);
         this._textData = textData;
     }
 
