@@ -2,7 +2,7 @@ import TopComponent from '../../components/TopComponent/TopComponent';
 
 import RecordingPage from '../../components/Game/RecordingPage/RecordingPage';
 import ListeningPage from '../../components/Game/ListeningPage/ListeningPage';
-import GameText from '../../components/Game/GameText/GameText';
+import EndingPage from '../../components/Game/EndingPage/EndingPage';
 
 import UserService from '../../services/UserService/UserService';
 import router from '../../modules/Router/Router';
@@ -70,19 +70,18 @@ export default class SinglePlayer extends TopComponent {
     }
 
     _initListeningPage(listeningPage) {
-        listeningPage.getSubmitButton().addEventListener('click', () => {
-            if (listeningPage.check()) {
-                listeningPage.hide();
-                listeningPage.stopPlayer();
-                listeningPage.remove();
+        listeningPage.getSubmitButton().addEventListener('click', async () => {
+            const isWin = await listeningPage.check();
+            listeningPage.hide();
+            listeningPage.stopPlayer();
+            listeningPage.remove();
 
-                this._components = [
-                    new GameText({
-                        text: 'Спасибо, что прошли нашу игру!'
-                    })];
-                this._components[0].renderTo('content');
-                this._endGame = true;
-            }
+            this._components = [
+                new EndingPage({
+                    'isWin': isWin
+                })];
+            this._components.forEach(element => element.renderTo('content'));
+            this._endGame = true;
         });
     }
 }

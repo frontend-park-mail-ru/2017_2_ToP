@@ -31,6 +31,18 @@ class UserService {
                 return userdata;
             });
     }
+
+    setScore(type, score) {
+        if (type === 'single') {
+            this.user.singleScore = score;
+        } else if (type === 'multi') {
+            this.user.multiScore = score;
+        }
+    }
+
+    getScore(type) {
+        return type === 'single' ? this.user.singleScore : this.user.multiScore;
+    }
 }
 
 const userService = new UserService();
