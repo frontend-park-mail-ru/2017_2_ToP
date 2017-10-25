@@ -35,11 +35,15 @@ export default class ListeningPage extends TopComponent {
             ];
         }
 
-        this._components.push(new BackButton());
+        const content = new TopComponent('div', {'class': 'ending-page__content'});
+        const backButton = new BackButton();
 
         this._components.forEach(element => {
-            this.append(element.render());
+            content.append(element.render());
         });
+
+        this.append(content.render());
+        this.append(backButton.render());
 
         return this.getElement();
     }

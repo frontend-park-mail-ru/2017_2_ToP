@@ -2,6 +2,11 @@
 
 .ending-page {
   overflow: hidden;
-  background: $light-black;
   border-radius: 4px;
 }
+
+.ending-page__content {
+  overflow: hidden;
+  background: $light-black;
+}
+
