@@ -43,8 +43,33 @@ export default class AudioPlayer extends TopComponent {
     }
 
     stop() {
+        if (!this.isRecording) {
+            return;
+        }
+
         this.isRecording = false;
+
+        this.stopButton.style.display = 'none';
+        this.startButton.style.display = 'block';
+
+        this.stopTimer();
         RecordService.stop();
+    }
+
+    start() {
+        this.isRecording = true;
+
+        this.stopButton.style.display = 'block';
+        this.startButton.style.display = 'none';
+
+        this.timeElement.style.opacity = 1;
+
+        if (this.time === null) {
+            this.resetTimer();
+        }
+
+        this.startTimer();
+        RecordService.start();
     }
 
     stopTimer() {
@@ -96,31 +121,12 @@ export default class AudioPlayer extends TopComponent {
         this.printTimer(this.times);
 
         this.button.addEventListener('click', () => {
-
             if (this.isRecording) {
-                this.isRecording = false;
-
-                this.stopButton.style.display = 'none';
-                this.startButton.style.display = 'block';
-
-                this.stopTimer();
-                RecordService.stop();
-
+                this.stop();
                 return;
             }
 
-            this.isRecording = true;
-            this.stopButton.style.display = 'block';
-            this.startButton.style.display = 'none';
-
-            this.timeElement.style.opacity = 1;
-
-            if (this.time === null) {
-                this.resetTimer();
-            }
-
-            this.startTimer();
-            RecordService.start();
+            this.start();
         });
     }
 }
