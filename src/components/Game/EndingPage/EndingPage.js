@@ -25,6 +25,13 @@ export default class ListeningPage extends TopComponent {
                     text: `Ваш новый счет ${UserService.getScore('single')}`
                 })
             ];
+        } else {
+            this._components = [
+                new GameText({
+                    text: 'Вы проиграли',
+                    title: true
+                })
+            ];
         }
 
         this._components.forEach(element => {

@@ -71,18 +71,17 @@ export default class SinglePlayer extends TopComponent {
 
     _initListeningPage(listeningPage) {
         listeningPage.getSubmitButton().addEventListener('click', async () => {
-            if (await listeningPage.check()) {
-                listeningPage.hide();
-                listeningPage.stopPlayer();
-                listeningPage.remove();
+            const isWin = await listeningPage.check();
+            listeningPage.hide();
+            listeningPage.stopPlayer();
+            listeningPage.remove();
 
-                this._components = [
-                    new EndingPage({
-                        isWin: true
-                    })];
-                this._components.forEach(element => element.renderTo('content'));
-                this._endGame = true;
-            }
+            this._components = [
+                new EndingPage({
+                    'isWin': isWin
+                })];
+            this._components.forEach(element => element.renderTo('content'));
+            this._endGame = true;
         });
     }
 }
