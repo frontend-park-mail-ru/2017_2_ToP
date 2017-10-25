@@ -49,27 +49,25 @@ export default class SinglePlayer extends TopComponent {
         const recordingPage = this._components[0];
 
         recordingPage.getSubmitButton().addEventListener('click', () => {
-            if (recordingPage.check()) {
-                recordingPage.hide();
-                recordingPage.stopPlayer();
+            recordingPage.hide();
+            recordingPage.stopPlayer();
 
-                const musicURL = recordingPage.getMusicURL();
-                recordingPage.remove();
+            const musicURL = recordingPage.getMusicURL();
+            recordingPage.remove();
 
-                this._components = [
-                    new ListeningPage({
-                        musicSource: musicURL
-                    })];
+            this._components = [
+                new ListeningPage({
+                    musicSource: musicURL
+                })];
 
-                const listeningPage = this._components[0];
-                listeningPage.renderTo('content');
-                this._initListeningPage(listeningPage);
-            }
+            const listeningPage = this._components[0];
+            listeningPage.renderTo('content');
+            this._initListeningPage(listeningPage);
         });
     }
 
     _initListeningPage(listeningPage) {
-        listeningPage.getSubmitButton().addEventListener('click', async () => {
+        listeningPage.getSubmitButton().addEventListener('click', async() => {
             const isWin = await listeningPage.check();
             listeningPage.hide();
             listeningPage.stopPlayer();

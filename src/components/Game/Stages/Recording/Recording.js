@@ -38,11 +38,6 @@ export default class Recording extends TopComponent {
         this._components[3].stop();
     }
 
-    //  TODO : Проверка на существование записи и вывод ошибок
-    check() {
-        return true;
-    }
-
     getMusic() {
         this._components[1].setSource('/music');
     }
