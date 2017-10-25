@@ -51,9 +51,9 @@ export default class SinglePlayer extends TopComponent {
         recordingPage.getSubmitButton().addEventListener('click', () => {
             if (recordingPage.check()) {
                 recordingPage.hide();
+                recordingPage.stopPlayer();
 
                 const musicURL = recordingPage.getMusicURL();
-                recordingPage.stopPlayer();
                 recordingPage.remove();
 
                 this._components = [
