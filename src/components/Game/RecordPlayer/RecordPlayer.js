@@ -28,6 +28,10 @@ export default class AudioPlayer extends TopComponent {
         return RecordService.getMusicURL();
     }
 
+    getButton() {
+        return this.button;
+    }
+
     resetTimer() {
         this.times = [0, 0];
     }
@@ -43,6 +47,10 @@ export default class AudioPlayer extends TopComponent {
     }
 
     stop() {
+        if (!this.isRecording) {
+            return;
+        }
+
         this.isRecording = false;
 
         this.stopButton.style.display = 'none';

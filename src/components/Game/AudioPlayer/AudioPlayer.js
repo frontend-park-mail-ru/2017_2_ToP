@@ -15,6 +15,10 @@ export default class AudioPlayer extends TopComponent {
         return this.getElement();
     }
 
+    getButton() {
+        return this.button;
+    }
+
     setSource(src) {
         this.audio.src = src;
     }
@@ -24,6 +28,10 @@ export default class AudioPlayer extends TopComponent {
     }
 
     stop() {
+        if (!this.isPlaying) {
+            return;
+        }
+
         this.isPlaying = false;
         this.audio.pause();
 

@@ -63,6 +63,21 @@ export default class Recording extends TopComponent {
         });
         this.getMusic();
 
+        this._initPlayers();
+
         return this.getElement();
+    }
+
+    _initPlayers() {
+        const audioButton = this._components[1].getButton();
+        const recordButton = this._components[3].getButton();
+
+        audioButton.addEventListener('click', () => {
+            this._components[3].stop();
+        });
+
+        recordButton.addEventListener('click', () => {
+            this._components[1].stop();
+        });
     }
 }
