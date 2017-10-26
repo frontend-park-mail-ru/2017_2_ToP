@@ -67,7 +67,7 @@ export default class SinglePlayer extends TopComponent {
     }
 
     _initListeningPage(listeningPage) {
-        listeningPage.getSubmitButton().addEventListener('click', async() => {
+        listeningPage.getSubmitButton().addEventListener('click', async () => {
             const isWin = await listeningPage.check();
             listeningPage.hide();
             listeningPage.stopPlayer();
