@@ -1,7 +1,10 @@
 import TopComponent from '../../../TopComponent/TopComponent';
+
 import GameText from '../../GameText/GameText';
+import TopImage from '../../../TopImage/TopImage';
 import BackButton from '../../../BackButton/BackButton';
 import VideoPlayer from '../../VideoPlayer/VideoPlayer';
+
 import UserService from '../../../../services/UserService/UserService';
 
 import './Ending.scss';
@@ -31,6 +34,9 @@ export default class Ending extends TopComponent {
                 new GameText({
                     text: 'Вы проиграли',
                     title: true
+                }),
+                new TopImage({
+                    src: `../static/img/results/${Math.floor((Math.random() * 5) + 1)}.png`
                 })
             ];
         }
