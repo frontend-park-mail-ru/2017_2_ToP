@@ -1,10 +1,10 @@
-import TopComponent from '../../TopComponent/TopComponent';
-import GameText from '../GameText/GameText';
-import AudioPlayer from '../AudioPlayer/AudioPlayer';
-import RecordPlayer from '../RecordPlayer/RecordPlayer';
-import Button from '../../Button/Button';
+import TopComponent from '../../../TopComponent/TopComponent';
+import GameText from '../../GameText/GameText';
+import AudioPlayer from '../../AudioPlayer/AudioPlayer';
+import RecordPlayer from '../../RecordPlayer/RecordPlayer';
+import Button from '../../../Button/Button';
 
-import './RecordingPage.scss';
+import './Recording.scss';
 
 const textData = {
     texts: [
@@ -19,9 +19,9 @@ const textData = {
     ]
 };
 
-export default class RecordingPage extends TopComponent {
+export default class Recording extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'recording-page'}, data);
+        super('div', {'class': 'recording-stage'}, data);
         this._textData = textData;
     }
 
@@ -36,11 +36,6 @@ export default class RecordingPage extends TopComponent {
     stopPlayer() {
         this._components[1].remove();
         this._components[3].stop();
-    }
-
-    //  TODO : Проверка на существование записи и вывод ошибок
-    check() {
-        return true;
     }
 
     getMusic() {
@@ -68,6 +63,21 @@ export default class RecordingPage extends TopComponent {
         });
         this.getMusic();
 
+        this._initPlayers();
+
         return this.getElement();
+    }
+
+    _initPlayers() {
+        const audioButton = this._components[1].getButton();
+        const recordButton = this._components[3].getButton();
+
+        audioButton.addEventListener('click', () => {
+            this._components[3].stop();
+        });
+
+        recordButton.addEventListener('click', () => {
+            this._components[1].stop();
+        });
     }
 }

@@ -1,12 +1,12 @@
-import TopComponent from '../../TopComponent/TopComponent';
-import GameText from '../GameText/GameText';
-import AudioPlayer from '../AudioPlayer/AudioPlayer';
-import GameInput from '../GameInput/GameInput';
-import Button from '../../Button/Button';
-import Transport from '../../../modules/Transport/Transport';
-import UserService from '../../../services/UserService/UserService';
+import TopComponent from '../../../TopComponent/TopComponent';
+import GameText from '../../GameText/GameText';
+import AudioPlayer from '../../AudioPlayer/AudioPlayer';
+import GameInput from '../../GameInput/GameInput';
+import Button from '../../../Button/Button';
+import Transport from '../../../../modules/Transport/Transport';
+import UserService from '../../../../services/UserService/UserService';
 
-import './ListeningPage.scss';
+import './Listening.scss';
 
 const textData = {
     method: 'post',
@@ -29,9 +29,9 @@ const textData = {
     ]
 };
 
-export default class ListeningPage extends TopComponent {
+export default class Listening extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'listening-page'}, data);
+        super('div', {'class': 'listening-stage'}, data);
         this._textData = textData;
     }
 
@@ -78,6 +78,20 @@ export default class ListeningPage extends TopComponent {
             this.append(element.render());
         });
 
+        this._initInput();
+
         return this.getElement();
+    }
+
+    _initInput() {
+        const gameInput = this._components[3].getElement();
+        const submitButton = this._components[4].getElement();
+
+        gameInput.addEventListener('keydown', event => {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                submitButton.click();
+            }
+        });
     }
 }

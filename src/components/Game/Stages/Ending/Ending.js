@@ -1,14 +1,17 @@
-import TopComponent from '../../TopComponent/TopComponent';
-import GameText from '../GameText/GameText';
-import BackButton from '../../BackButton/BackButton';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import UserService from '../../../services/UserService/UserService';
+import TopComponent from '../../../TopComponent/TopComponent';
 
-import './EndingPage.scss';
+import GameText from '../../GameText/GameText';
+import TopImage from '../../../TopImage/TopImage';
+import BackButton from '../../../BackButton/BackButton';
+import VideoPlayer from '../../VideoPlayer/VideoPlayer';
 
-export default class ListeningPage extends TopComponent {
+import UserService from '../../../../services/UserService/UserService';
+
+import './Ending.scss';
+
+export default class Ending extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'ending-page'}, data);
+        super('div', {'class': 'ending-stage'}, data);
     }
 
     render() {
@@ -31,11 +34,14 @@ export default class ListeningPage extends TopComponent {
                 new GameText({
                     text: 'Вы проиграли',
                     title: true
+                }),
+                new TopImage({
+                    src: `../static/img/results/${Math.floor((Math.random() * 5) + 1)}.png`
                 })
             ];
         }
 
-        const content = new TopComponent('div', {'class': 'ending-page__content'});
+        const content = new TopComponent('div', {'class': 'ending-stage__content'});
         const backButton = new BackButton();
 
         this._components.forEach(element => {
