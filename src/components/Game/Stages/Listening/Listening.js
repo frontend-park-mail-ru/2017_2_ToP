@@ -84,13 +84,13 @@ export default class Listening extends TopComponent {
     }
 
     _initInput() {
-        const gameInput = this._components[3];
-        const submitButton = this._components[4];
+        const gameInput = this._components[3].getElement();
+        const submitButton = this._components[4].getElement();
 
-        gameInput.getElement().addEventListener('keydown', event => {
+        gameInput.addEventListener('keydown', event => {
             if (event.keyCode === 13) {
                 event.preventDefault();
-                submitButton.getElement().click();
+                submitButton.click();
             }
         });
     }
