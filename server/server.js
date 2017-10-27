@@ -110,6 +110,9 @@ app.post('/logout', (req, res) => {
 
 app.get('/music', (req, res) => {
     const id = req.cookies.auth;
+    if (!isAuth(id)) {
+        return res.status(401).end();
+    }
 
     const fileId = Math.floor(Math.random() * Object.keys(music).length);
     const title = music[fileId];
@@ -131,6 +134,9 @@ app.get('/music', (req, res) => {
 
 app.post('/music', (req, res) => {
     const id = req.cookies.auth;
+    if (!isAuth(id)) {
+        return res.status(401).end();
+    }
 
     const fileId = ids[id].music;
     const title = req.body.title;
