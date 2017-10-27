@@ -1,0 +1,12 @@
+@import "../../../../static/css/_theme.scss";
+
+.ending-stage {
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.ending-stage__content {
+  overflow: hidden;
+  background: $light-black;
+}
+

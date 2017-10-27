@@ -3,7 +3,7 @@ import 'whatwg-fetch';
 
 describe('Api tests', () => {
     it('Not authorized Logout', done => {
-        Transport.get('/logout')
+        Transport.post('/logout')
             .catch(response => {
                 expect(response.status).to.equal(401);
                 done();
@@ -67,7 +67,7 @@ describe('Api tests', () => {
                 expect(response).to.have.property('id');
                 done();
             });
-        Transport.get('/logout');
+        Transport.post('/logout');
     });
 
     it('Wrong Sign In', done => {

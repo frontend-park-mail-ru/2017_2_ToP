@@ -1,0 +1,62 @@
+@import "../../../static/css/_theme.scss";
+
+$firstColor:       $blue;
+$secondColor: $dark-blue;
+
+.record-player {
+  margin: auto;
+  width: 210px;
+  height: 50px;
+}
+
+.record-player__button {
+  float: left;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  background: $white;
+  box-shadow: 0 3px 20px 0 $light-black;
+  text-align: center;
+  font-size: 25px;
+  color: $blue;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.record-player__button_start {
+
+}
+
+.record-player__button_stop {
+  display: none;
+}
+
+.record-player__time-box {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  height: 100%;
+  width: 150px;
+  transition: 0.5s;
+  border-radius: 10px;
+  background-size: 200% auto;
+  background-image: linear-gradient(to right, $firstColor 0%, $secondColor 51%, $firstColor 100%);
+  &:hover {
+    background-position: right center;
+  }
+}
+
+.record-player__time {
+  color: $white;
+  margin-left: 0px;
+  margin-top: 10px;
+  font-size: 120%;
+  opacity: 0;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}

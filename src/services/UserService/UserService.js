@@ -12,7 +12,7 @@ class UserService {
     }
 
     logout() {
-        return Transport.get('/logout')
+        return Transport.post('/logout')
             .then(() => { this.user = null; });
     }
 
@@ -30,6 +30,18 @@ class UserService {
                 this.user = userdata;
                 return userdata;
             });
+    }
+
+    setScore(type, score) {
+        if (type === 'single') {
+            this.user.singleScore = score;
+        } else if (type === 'multi') {
+            this.user.multiScore = score;
+        }
+    }
+
+    getScore(type) {
+        return type === 'single' ? this.user.singleScore : this.user.multiScore;
     }
 }
 

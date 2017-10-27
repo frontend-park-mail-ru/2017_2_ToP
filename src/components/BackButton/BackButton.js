@@ -1,14 +1,12 @@
+import backButton from './BackButton.xml';
 import TopComponent from '../TopComponent/TopComponent';
 
 import './BackButton.scss';
 
 export default class BackButton extends TopComponent {
-    constructor() {
-        super('div', {class: 'backButton', 'data-url': '/'});
-        this.setText('На главную');
-    }
+    constructor(data) {
+        super('div', { 'class': 'back-button' }, data);
 
-    show() {
-        this.getElement().style.display = 'inline';
+        this.getElement().innerHTML = backButton(this.getData());
     }
 }

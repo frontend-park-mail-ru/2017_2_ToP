@@ -1,30 +1,33 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
     <fest:if test="json.title">
-        <div class="form-top">
-            <div class="form-top-left">
+        <div class="form-box__top">
+            <div class="form-box__top-left">
                 <h3>
                     <fest:value>json.title</fest:value>
                 </h3>
                 <p>Заполните следующие поля:</p>
             </div>
-            <div class="form-top-right">
+            <div class="form-box__top-right">
                 <i class="{json.icon}"/>
             </div>
         </div>
     </fest:if>
-    <div class="form-bottom">
+    <div class="form-box__bottom {json.back ? '' : 'form-box__end'}">
         <form role="form" action="" method="{json.method}" name="{json.name}">
+            <div class="error serverError" name="formError"></div>
             <fest:for iterate="json.fields" index="i">
                 <input type="{json.fields[i].type}" name="{json.fields[i].name}"
                        placeholder="{json.fields[i].placeholder}" class="{json.fields[i].class}"/>
                 <div class="error" name="{json.fields[i].name}"></div>
             </fest:for>
+
             <fest:for iterate="json.buttons" index="i">
-                <div class="button {json.buttons[i].class}" data-url="{json.buttons[i].url}">
-                    <fest:value>json.buttons[i].text</fest:value>
-                </div>
+                <fest:include context="json.buttons[i]" src="../Button/Button.xml"/>
             </fest:for>
         </form>
     </div>
+    <fest:if test="json.back">
+        <div class = "form-box__end"></div>
+    </fest:if>
 </fest:template>
 
