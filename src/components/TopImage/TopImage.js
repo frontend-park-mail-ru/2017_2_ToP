@@ -13,6 +13,9 @@ export default class TopImage extends TopComponent {
 
         this.image.addEventListener('load', () => {
             this.append(this.image);
+            setTimeout(() => {
+                this.getElement().style.maxHeight = `${this.image.height || 500}px`;
+            }, 500);
         });
 
         return this.getElement();
