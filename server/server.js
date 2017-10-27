@@ -46,6 +46,8 @@ app.post('/signup', (req, res) => {
             'password': password,
             'singleScore': 0
         };
+    } else {
+        return res.status(400).json({message: 'Логин или Email уже существует'});
     }
     const id = uuid();
     ids[id] = {
@@ -61,7 +63,7 @@ app.post('/signin', (req, res) => {
     const password = req.body.password;
 
     if (!users[login] || users[login].password !== password) {
-        return res.status(400).json({error: 'Не верный Логин и/или пароль'});
+        return res.status(400).json({message: 'Не верный Логин и/или пароль'});
     }
 
     const id = uuid();
