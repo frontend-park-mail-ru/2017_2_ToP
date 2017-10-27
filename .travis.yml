@@ -5,17 +5,18 @@ node_js:
 
 branches:
   only:
-  - develop
+  - backend
 
 deploy:
   provider: heroku
   api_key:
     secure: $key
-  app: gametes
+  app: apoj-test
   on:
     repo: frontend-park-mail-ru/2017_2_ToP
-    branch: develop
+    branch: backend
   skip_cleanup: true
 
 script:
   - npm run eslint
+  - npm run test
