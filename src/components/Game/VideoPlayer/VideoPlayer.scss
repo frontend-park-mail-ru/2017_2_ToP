@@ -1,0 +1,11 @@
+.video-player {
+  display: block;
+  margin: auto;
+  opacity: 0;
+  max-height: 0px;
+  transition: all .7s;
+}
+
+.video {
+  width: 90%;
+}

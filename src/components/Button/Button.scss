@@ -1,5 +1,4 @@
 @import "../../static/css/_theme.scss";
-@import '../Form/Form-template.scss';
 
 .button {
   @extend %form-text;
@@ -11,6 +10,9 @@
   text-align: center;
   text-shadow: none;
   box-sizing: border-box;
+  cursor: pointer;
+  width: 100%;
+
   &:hover {
     opacity: 0.8;
   }

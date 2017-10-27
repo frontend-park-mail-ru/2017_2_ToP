@@ -18,6 +18,4 @@ deploy:
   skip_cleanup: true
 
 script:
-  - npm i
   - npm run eslint
-  - npm test

@@ -8,15 +8,15 @@ class Loading extends TopComponent {
             return Loading.__instance;
         }
 
-        super('div', {class: 'loading-container'});
+        super('div', {class: 'loading'});
         this.build();
 
         Loading.__instance = this;
     }
 
     build() {
-        const loading = new TopComponent('div', {class: 'loading'});
-        const text = new TopComponent('div', {class: 'loading-text'});
+        const loading = new TopComponent('div', {class: 'loading__element'});
+        const text = new TopComponent('div', {class: 'loading__text'});
         text.setText('Загрузка');
 
         this.append(loading.getElement());

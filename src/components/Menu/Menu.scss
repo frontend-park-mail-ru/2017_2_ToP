@@ -2,12 +2,8 @@
 @import "../Form/Form.scss";
 
 .menu {
-  @extend .form-box;
-  @extend .form-bottom;
+  margin-top: 20px;
+  padding: 25px 25px 30px 30px;
+  background: $light-black;
   border-radius: 4px;
-
-  .button {
-    cursor: pointer;
-    width: 100%;
-  }
 }

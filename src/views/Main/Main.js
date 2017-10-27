@@ -20,6 +20,21 @@ const logged = {
     method: 'get',
     buttons: [
         {
+            name: 'singleplayer',
+            text: 'Одиночная игра',
+            url: '/singleplayer'
+        },
+        {
+            name: 'multiplayer',
+            text: 'Многопользовательская игра',
+            url: '/multiplayer'
+        },
+        {
+            name: 'about',
+            text: 'Об игре',
+            url: '/about'
+        },
+        {
             name: 'logout',
             text: 'Выйти',
             url: '/'
@@ -33,7 +48,11 @@ export default class Main extends TopComponent {
     }
 
     show() {
-        this._components.forEach(element => element.show());
+        if (this._components) {
+            this._components.forEach(element => element.show());
+        } else {
+            this.build();
+        }
     }
 
     hide() {

@@ -1,0 +1,8 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <form role="form" class="game-input__form" action="" method="{json.method}">
+        <fest:for iterate="json.fields" index="i">
+            <input type="{json.fields[i].type}" placeholder="{json.fields[i].placeholder}"
+                   class="game-input__form_{json.fields[i].class}"/>
+        </fest:for>
+    </form>
+</fest:template>

@@ -1,0 +1,13 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class="game-text__text">
+        <fest:choose>
+            <fest:when test="json.title">
+                <h2><strong><fest:value>json.text</fest:value></strong></h2>
+            </fest:when>
+
+            <fest:otherwise>
+                <p><fest:value>json.text</fest:value></p>
+            </fest:otherwise>
+        </fest:choose>
+    </div>
+</fest:template>

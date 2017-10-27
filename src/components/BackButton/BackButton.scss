@@ -1,14 +1,14 @@
 @import "../../static/css/_theme.scss";
 
-.backButton {
-  display: inline;
-  cursor: pointer;
-
+.back-button {
+  background: $black;
   color: $white;
   font-weight: 500;
-  border-bottom: 1px dotted $white;
-}
 
-.backButton:hover {
-  opacity: 0.8;
+  cursor: pointer;
+  padding: 5px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
