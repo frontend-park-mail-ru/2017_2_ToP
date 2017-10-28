@@ -22,7 +22,7 @@
 
 .header__motto {
   position: absolute;
-  font-family: 'Mr Dafoe', cursive;
+  font-family: $second-font-family, cursive;
   font-size: 60px;
   color: $apoj-color-second-light;
   transform:rotate(-10deg);

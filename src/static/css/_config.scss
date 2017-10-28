@@ -21,12 +21,13 @@ $apoj-color: $blue !default;
 $apoj-color-dark: darken($apoj-color, 10%) !default;
 $apoj-color-light: lighten($apoj-color, 10%) !default;
 $apoj-color-second: $pink !default;
-$apoj-color-second-light: lighten($pink, 10%) !default;
+$apoj-color-second-light: lighten($apoj-color-second, 10%) !default;
 $error-color: $red !default;
 $error-background: darken($error-color, 20%) !default;
 
 //  Font
-$base-font-family: Roboto, Mr Dafoe !default;
+$base-font-family: Roboto !default;
+$second-font-family: Mr Dafoe !default;
 $base-font-color: $white !default;
 
 //  Background
