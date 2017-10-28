@@ -17,8 +17,7 @@ export default class Theming {
 
         if (this.theme === 'main') {
             this.theme = 'halloween';
-        }
-        else {
+        } else {
             this.theme = 'main';
         }
 
@@ -41,9 +40,8 @@ export default class Theming {
 
         if (this.theme === 'main') {
             themeBlock.innerHTML = '<link rel="stylesheet" href="built/main.css">';
-        }
-        else {
-            themeBlock.innerHTML = '<link rel="stylesheet" href="built/main.css">' +
+        } else {
+            themeBlock.innerHTML += '<link rel="stylesheet" href="built/main.css">' +
                 '<link rel="stylesheet" href="built/halloween.css">';
         }
     }

@@ -76,10 +76,14 @@ export default class Main extends TopComponent {
         } else {
             this.setData(unlogged);
         }
-        this._components = [new Description(this.getData()), new Menu(this.getData()), new TopImage({
-            theming: true,
-            src: `../static/img/icons/pumpkin.png`
-        })];
+        this._components = [
+            new Description(this.getData()),
+            new Menu(this.getData()),
+            new TopImage({
+                theming: true,
+                src: `../static/img/icons/pumpkin.png`
+            })
+        ];
         this._components.forEach(element => element.renderTo('content'));
     }
 }
