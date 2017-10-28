@@ -1,0 +1,49 @@
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+}
+
+//  Colors
+$blue:       #19b9e7;
+$pink:       #f008b7;
+$white:         #fff;
+
+$gray:          #555;
+$dark-gray:     darken($gray, 10%);
+$red:            red;
+$black: rgba(0, 0, 0, 0.35);
+$light-black: rgba(0, 0, 0, 0.3);
+
+//  Apoj colors
+$apoj-color: $blue !default;
+$apoj-color-dark: darken($apoj-color, 10%) !default;
+$apoj-color-light: lighten($apoj-color, 10%) !default;
+$apoj-color-second: $pink !default;
+$apoj-color-second-light: lighten($apoj-color-second, 10%) !default;
+$error-color: $red !default;
+$error-background: darken($error-color, 20%) !default;
+
+//  Font
+$base-font-family: Roboto !default;
+$second-font-family: Mr Dafoe !default;
+$base-font-color: $white !default;
+
+//  Background
+$main-background: url('../img/backgrounds/#{randomNum(0, 2)}.jpg') !default;
+
+%form-element {
+  height: 50px;
+  padding: 0 20px;
+  vertical-align: middle;
+  border-radius: 4px;
+  box-shadow: none;
+  transition: all .3s;
+}
+
+%form-text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 50px;
+}

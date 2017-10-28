@@ -1,4 +1,5 @@
 import Menu from '../../components/Menu/Menu';
+import TopImage from '../../components/TopImage/TopImage';
 import Description from '../../components/Description/Description';
 import TopComponent from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
@@ -75,7 +76,14 @@ export default class Main extends TopComponent {
         } else {
             this.setData(unlogged);
         }
-        this._components = [new Description(this.getData()), new Menu(this.getData())];
+        this._components = [
+            new Description(this.getData()),
+            new Menu(this.getData()),
+            new TopImage({
+                theming: true,
+                src: `../static/img/icons/pumpkin.png`
+            })
+        ];
         this._components.forEach(element => element.renderTo('content'));
     }
 }

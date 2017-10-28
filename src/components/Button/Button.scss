@@ -1,10 +1,10 @@
-@import "../../static/css/_theme.scss";
+@import "../../static/css/_config.scss";
 
 .button {
   @extend %form-text;
   @extend %form-element;
   margin: 10px 0px 0px 0px;
-  background: $blue;
+  background: $apoj-color;
   border: 0;
   color: $white;
   text-align: center;

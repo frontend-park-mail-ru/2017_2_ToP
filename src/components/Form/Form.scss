@@ -1,4 +1,4 @@
-@import "../../static/css/_theme.scss";
+@import "../../static/css/_config.scss";
 @import "../Button/Button.scss";
 
 /**** Форма ****/
@@ -56,7 +56,7 @@
     position: relative;
 
     .input-error {
-      border-color: $red;
+      border-color: $error-color;
     }
     input {
       box-sizing: border-box;
@@ -81,7 +81,7 @@ input[type="email"] {
   @extend %form-text;
   background: $white;
   border: 3px solid $white;
-  color: $primary-color;
+  color: $dark-gray;
   &:focus {
     outline: 0;
   }
@@ -91,7 +91,7 @@ input[type="email"] {
   @extend %form-text;
   @extend %form-element;
   margin: 10px 0px 0px 0px;
-  background: $blue;
+  background: $apoj-color;
   border: 0;
   color: $white;
   text-align: center;
