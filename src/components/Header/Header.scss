@@ -1,4 +1,4 @@
-@import "../../static/css/_theme.scss";
+@import "../../static/css/_config.scss";
 
 .header {
   padding-top: 25px;
@@ -8,7 +8,7 @@
 .header__text {
   h1 {
     position: relative;
-    background-image: -webkit-linear-gradient($dark-blue 0%, $light-blue 46%, $white 50%, $blue 100%);
+    background-image: -webkit-linear-gradient($apoj-color-dark 0%, $apoj-color-light 46%, $white 50%, $apoj-color 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 3px $black;
@@ -24,13 +24,13 @@
   position: absolute;
   font-family: 'Mr Dafoe', cursive;
   font-size: 60px;
-  color: $light-pink ;
+  color: $apoj-color-second-light;
   transform:rotate(-10deg);
   -webkit-transform:rotate(-10deg);
   margin-left: 100px;
   margin-top: -30px;
-  -webkit-text-stroke: 1px $pink;
-  -webkit-filter: drop-shadow(2px 2px 20px $pink);
+  -webkit-text-stroke: 1px $apoj-color-second;
+  -webkit-filter: drop-shadow(2px 2px 20px $apoj-color-second);
   z-index: 20;
   width: 100%;
 }

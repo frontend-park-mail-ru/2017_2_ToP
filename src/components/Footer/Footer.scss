@@ -1,4 +1,4 @@
-@import "../../static/css/_theme.scss";
+@import "../../static/css/_config.scss";
 
 footer {
   margin-top: 50px;
@@ -13,5 +13,5 @@ footer {
   width: 200px;
   margin: 0 auto;
   padding-bottom: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 1px solid $white;
 }
