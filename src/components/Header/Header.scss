@@ -2,12 +2,35 @@
 
 .header {
   padding-top: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .header__text {
-  color: $white;
   h1 {
-    color: $white;
+    position: relative;
+    background-image: -webkit-linear-gradient($dark-blue 0%, $light-blue 46%, $white 50%, $blue 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 3px $black;
+    font-size: 100px;
+    font-weight: 500;
+    font-style: italic;
+    margin: 0;
+    line-height: 1;
   }
+}
+
+.header__motto {
+  position: absolute;
+  font-family: 'Mr Dafoe', cursive;
+  font-size: 60px;
+  color: $light-pink ;
+  transform:rotate(-10deg);
+  -webkit-transform:rotate(-10deg);
+  margin-left: 100px;
+  margin-top: -30px;
+  -webkit-text-stroke: 1px $pink;
+  -webkit-filter: drop-shadow(2px 2px 20px $pink);
+  z-index: 20;
+  width: 100%;
 }
