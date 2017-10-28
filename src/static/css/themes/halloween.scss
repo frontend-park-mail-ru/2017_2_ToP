@@ -1,0 +1,30 @@
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+}
+
+//  Colors
+$halloween-red:  #E64618;
+$green:       #068A08;
+
+//  Apoj colors
+$apoj-color: $halloween-red;
+$apoj-color-second: $green;
+
+//  Font
+$second-font-family: Bangers;
+
+//  Background
+$main-background: url('../../img/backgrounds/halloween/#{randomNum(3, 5)}.jpg');
+
+@import "../main";
+@import "../../../components/Button/Button";
+@import "../../../components/Header/Header";
+@import "../../../components/Loading/Loading";
+@import "../../../components/Form/Form";
+@import "../../../components/Game/AudioPlayer/AudioPlayer";
+@import "../../../components/Game/RecordPlayer/RecordPlayer";
+@import "../../../components/Game/RecordPlayer/RecordPlayer";
+
