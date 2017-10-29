@@ -117,9 +117,9 @@ export default class FormView extends TopComponent {
 
         const data = Object.assign(...Object.values(fields)
             .map(field => {
-                return {
+                return field.name !== 'repeatPassword' ? {
                     [field.name]: field.value
-                };
+                } : {};
             }));
 
         if (this.getData().method === 'post') {
