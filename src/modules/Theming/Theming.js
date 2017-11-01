@@ -37,11 +37,22 @@ export default class Theming {
 
     addTheme() {
         const themeBlock = document.querySelector('.theme');
+        this.link = themeBlock.querySelectorAll('link')[1];
+        this.linkExist = true;
+
+        if (!this.link) {
+            this.linkExist = false;
+            this.link = document.createElement('link');
+            this.link.rel = 'stylesheet';
+            this.link.href = 'built/halloween.css';
+        }
 
         if (this.theme === 'main') {
-            themeBlock.innerHTML = '<link rel="stylesheet" href="built/main.css">';
+            if (this.linkExist) {
+                themeBlock.removeChild(this.link);
+            }
         } else {
-            themeBlock.innerHTML += '<link rel="stylesheet" href="built/halloween.css">';
+            themeBlock.appendChild(this.link);
         }
     }
 }
