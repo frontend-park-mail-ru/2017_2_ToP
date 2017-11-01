@@ -6,7 +6,9 @@ const fs = require('fs');
 
 const app = express();
 
-app.use('/', express.static('src'));
+app.use('/', express.static('src', {
+    maxage: '30min'
+}));
 app.use('/signIn', express.static('src'));
 app.use('/signUp', express.static('src'));
 app.use('/singleplayer', express.static('src'));
