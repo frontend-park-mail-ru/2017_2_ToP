@@ -3,15 +3,15 @@
 .button {
   @extend %form-text;
   @extend %form-element;
-  margin: 10px 0px 0px 0px;
-  background: $apoj-color;
-  border: 0;
-  color: $white;
-  text-align: center;
-  text-shadow: none;
   box-sizing: border-box;
-  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 40px;
+  text-align: center;
   width: 100%;
+  color: $apoj-text-color;
+  background: transparent;
+  cursor: pointer;
 
   &:hover {
     opacity: 0.8;
