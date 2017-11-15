@@ -2,6 +2,8 @@
 @import "config";
 
 body {
+    height: 100%;
+    overflow: hidden;
     font-family: $base-font-family;
     font-size: 16px;
     font-weight: 300;
