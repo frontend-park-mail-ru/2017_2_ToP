@@ -9,9 +9,10 @@ footer {
   }
 }
 
-.footer__border {
-  width: 200px;
+.footer__text {
   margin: 0 auto;
   padding-bottom: 10px;
-  border-top: 1px solid $white;
+  font-family: $second-font-family, cursive;
+  font-size: 45px;
+  color: $white;
 }
