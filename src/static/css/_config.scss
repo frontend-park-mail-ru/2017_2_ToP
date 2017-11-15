@@ -26,12 +26,12 @@ $error-color: $red !default;
 $error-background: darken($error-color, 20%) !default;
 
 //  Font
-$base-font-family: Roboto !default;
-$second-font-family: Mr Dafoe !default;
+$base-font-family: Bebas !default;
+$second-font-family: Pacifico !default;
 $base-font-color: $white !default;
 
 //  Background
-$main-background: url('../img/backgrounds/#{randomNum(0, 2)}.jpg') !default;
+$main-background: url('../img/backgrounds/background.png') !default;
 
 %form-element {
   height: 50px;
