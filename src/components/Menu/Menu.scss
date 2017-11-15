@@ -10,14 +10,21 @@
 }
 
 .menu__circle {
+  box-sizing: border-box;
   position: relative;
   z-index: -1;
-  width: 600px;
+  width: 588px;
   height: 644px;
-  margin-top: -60px;
-  border-radius: 4px;
-  background: url('../../static/img/circle.png');
+  margin-top: -90%;
+  background: url('../../static/img/circle.png') no-repeat center;
   background-size: cover;
+}
+
+.menu__buttons {
+  box-sizing: border-box;
+  padding: 170px 0;
+  height: 460px;
+  width: 588px;
 }
 
 .menu__rotate {
@@ -30,7 +37,18 @@
   z-index: -2;
   width: 1000px;
   height: 1000px;
-  background: url('../../static/img/sun.png');
+  background: url('../../static/img/sun.png') no-repeat center;
   background-size: cover;
   animation: rotate-sun 20s linear 0s infinite normal;
+}
+
+.menu__sparkle1 {
+  @extend %sparkle;
+  margin-top: -21%;
+}
+
+.menu__sparkle2 {
+  @extend %sparkle;
+  margin-top: -39%;
+  margin-left: 33%;
 }
