@@ -1,3 +1,4 @@
+import menu from './Menu.xml';
 import TopComponent from '../TopComponent/TopComponent';
 import Button from '../Button/Button';
 import UserService from '../../services/UserService/UserService';
@@ -8,6 +9,8 @@ import './Menu.scss';
 export default class Menu extends TopComponent {
     constructor(data) {
         super('div', {'class': 'menu'}, data);
+
+        this.getElement().innerHTML = menu();
     }
 
     render() {

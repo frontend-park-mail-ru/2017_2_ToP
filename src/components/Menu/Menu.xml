@@ -1,0 +1,4 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class="menu__circle"></div>
+    <div class="menu__rotate"></div>
+</fest:template>
