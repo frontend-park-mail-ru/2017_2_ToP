@@ -3,7 +3,6 @@ import SinglePlayer from './views/SinglePlayer/SinglePlayer';
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
 
-import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Loading from './components/Loading/Loading';
 import TopComponent from './components/TopComponent/TopComponent';
@@ -28,4 +27,4 @@ CreateTopRouter('main', [
         path: '/singleplayer',
         component: SinglePlayer
     }
-], [new Header(), Loading, new TopComponent('div', {'class': 'content'}), new Footer()]);
+], [new Header(), Loading, new TopComponent('div', {'class': 'content'})]);
