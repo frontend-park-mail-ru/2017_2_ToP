@@ -15,7 +15,7 @@ export default class Menu extends TopComponent {
 
     render() {
         this.getData().buttons.forEach(el => {
-            const button = new Button(el.text, el.url);
+            const button = new Button(el.text, el.url, el.class);
             this.getElement().querySelector('.menu__buttons').appendChild(button.render());
         });
         this._logout();

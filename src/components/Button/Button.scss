@@ -1,15 +1,12 @@
 @import "../../static/css/_config.scss";
 
-.button {
-  @extend %form-text;
-  @extend %form-element;
+%button-base {
+  transition: all .3s;
   box-sizing: border-box;
   display: inline-block;
   vertical-align: middle;
-  margin-bottom: 40px;
   text-align: center;
   width: 100%;
-  color: $apoj-text-color;
   background: transparent;
   cursor: pointer;
 
@@ -24,4 +21,28 @@
     outline: 0;
     opacity: 0.8;
   }
+}
+
+.button {
+  @extend %button-base;
+  font-size: 65px;
+  margin-bottom: 40px;
+  color: $apoj-text-color;
+}
+
+.button-main {
+  @extend %button-base;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  font-size: 80px;
+  color: $apoj-text-second-color;
+}
+
+.button-second {
+  @extend %button-base;
+  line-height: 20px;
+  margin-bottom: 0;
+  font-family: $third-font-family;
+  color: $apoj-text-color;
+  font-size: 25px;
 }
