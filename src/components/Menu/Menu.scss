@@ -13,42 +13,73 @@
   box-sizing: border-box;
   position: relative;
   z-index: -1;
-  width: 588px;
-  height: 644px;
-  margin-top: -90%;
+  height: 65vh;
+  margin-top: -6vh;
   background: url('../../static/img/circle.png') no-repeat center;
-  background-size: cover;
+  background-size: contain;
 }
 
 .menu__buttons {
+  width: fit-content;
   box-sizing: border-box;
-  padding: 150px 0;
-  height: 460px;
-  width: 588px;
+  position: absolute;
+  margin: 30vh auto 0;
+  left: 0;
+  right: 0;
 }
 
 .menu__rotate {
-  top: 0;
+  z-index: -2;
+  position: absolute;
   left: 0;
   right: 0;
-  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.menu__rotate_image {
   margin-left: auto;
   margin-right: auto;
-  z-index: -2;
-  width: 1000px;
-  height: 1000px;
+  width: 60vw;
+  height: 100vh;
   background: url('../../static/img/sun.png') no-repeat center;
   background-size: cover;
   animation: rotate-sun 20s linear 0s infinite normal;
 }
 
 .menu__sparkle1 {
+  display: none;
   @extend %sparkle;
   margin-top: -21%;
 }
 
 .menu__sparkle2 {
+  display: none;
   @extend %sparkle;
   margin-top: -39%;
   margin-left: 33%;
+}
+
+@media screen and (max-width: 980px) {
+  .menu__circle {
+    height: 50vh;
+  }
+  .menu__rotate {
+    display: none;
+  }
+  .menu__buttons {
+    margin: 20vh auto 0;
+  }
+}
+
+@media (max-width: 310px) {
+  .menu__circle {
+    height: 252px;
+  }
+  .menu__buttons {
+    margin: 20vh auto 0;
+  }
 }
