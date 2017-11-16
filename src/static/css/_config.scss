@@ -29,9 +29,9 @@ $error-color: $red !default;
 $error-background: darken($error-color, 20%) !default;
 
 //  Font
-$base-font-family: BebasNeueBold !default;
-$second-font-family: Pacifico !default;
-$third-font-family: Montserrat !default;
+$base-font-family: Montserrat !default;
+$quote-font-family: Pacifico !default;
+$header-font-family: BebasNeueBold !default;
 $base-font-color: $white !default;
 
 //  Background
@@ -47,7 +47,7 @@ $main-background: url('../img/backgrounds/background.png') !default;
 }
 
 %form-text {
-  font-size: 65px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 50px;
 }

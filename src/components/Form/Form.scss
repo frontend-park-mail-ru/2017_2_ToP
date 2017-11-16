@@ -22,6 +22,7 @@
   padding-top: 25px;
 
   h3 {
+    font-size: 35px;
     margin-top: 0;
     color: $white;
   }
@@ -90,13 +91,14 @@ input[type="email"] {
 .button {
   @extend %form-text;
   @extend %form-element;
+  font-family: $header-font-family;
   box-sizing: border-box;
   display: inline-block;
-  vertical-align: middle;
-  margin-bottom: 40px;
+  margin-top: 30px;
+  margin-bottom: 0;
   text-align: center;
   width: 100%;
-  color: $apoj-text-color;
+  color: $white;
   background: transparent;
   cursor: pointer;
 

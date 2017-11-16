@@ -35,6 +35,7 @@
   margin-bottom: 40px;
   margin-top: 10px;
   font-size: 80px;
+  font-family: $header-font-family;
   color: $apoj-text-second-color;
 }
 
@@ -42,7 +43,6 @@
   @extend %button-base;
   line-height: 20px;
   margin-bottom: 0;
-  font-family: $third-font-family;
   color: $apoj-text-color;
   font-size: 25px;
 }
