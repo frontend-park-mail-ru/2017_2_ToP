@@ -11,6 +11,7 @@ $pink:       #f008b7;
 $white:         #fff;
 
 $gray:          #909090;
+$pastel-red:     rgb(171, 86, 75);
 $dark-gray:     darken($gray, 10%);
 $red:            red;
 $black: rgba(0, 0, 0, 0.35);
@@ -19,6 +20,7 @@ $light-black: rgba(0, 0, 0, 0.3);
 //  Apoj colors
 $apoj-color: $blue !default;
 $apoj-text-color: $gray !default;
+$apoj-text-second-color: $pastel-red !default;
 $apoj-color-dark: darken($apoj-color, 10%) !default;
 $apoj-color-light: lighten($apoj-color, 10%) !default;
 $apoj-color-second: $pink !default;
@@ -29,6 +31,7 @@ $error-background: darken($error-color, 20%) !default;
 //  Font
 $base-font-family: BebasNeueBold !default;
 $second-font-family: Pacifico !default;
+$third-font-family: Montserrat !default;
 $base-font-color: $white !default;
 
 //  Background
