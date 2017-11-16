@@ -6,14 +6,23 @@
 
 .header__logo {
   margin: auto;
-  width: 250px;
-  height: 178px;
+  height: 20vh;
   background: url('../../static/img/logo.png') no-repeat center;
-  background-size: cover;
+  background-size: contain;
 }
 
 .header__sparkle {
   @extend %sparkle;
-  margin-left: 53%;
-  margin-top: -13%;
+  margin-left: 52vw;
+  margin-top: -22vh;
+}
+
+.header__sparkle_sprite {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url('../../static/img/sparkles.png') 0 0 no-repeat;
+  background-size: 100%;
 }
