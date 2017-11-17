@@ -14,7 +14,8 @@ const textData = {
     buttons: [
         {
             url: '',
-            text: 'Отправить!'
+            text: 'Отправить',
+            class: 'button-form'
         }
     ]
 };
@@ -54,7 +55,8 @@ export default class Recording extends TopComponent {
             new RecordPlayer(),
             new Button(
                 this._textData.buttons[0].text,
-                this._textData.buttons[0].url
+                this._textData.buttons[0].url,
+                this._textData.buttons[0].class
             )
         ];
 

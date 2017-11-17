@@ -19,7 +19,6 @@ $light-black: rgba(0, 0, 0, 0.3);
 
 //  Apoj colors
 $apoj-color: $blue !default;
-$apoj-text-color: $gray !default;
 $apoj-text-second-color: $pastel-red !default;
 $apoj-color-dark: darken($apoj-color, 10%) !default;
 $apoj-color-light: lighten($apoj-color, 10%) !default;
@@ -32,7 +31,8 @@ $error-background: darken($error-color, 20%) !default;
 $base-font-family: Montserrat !default;
 $quote-font-family: Pacifico !default;
 $header-font-family: BebasNeueBold !default;
-$base-font-color: $white !default;
+
+$apoj-text-color: $gray !default;
 
 //  Background
 $main-background: url('../img/backgrounds/background.png') !default;
@@ -54,8 +54,15 @@ $main-background: url('../img/backgrounds/background.png') !default;
 
 %sparkle {
   position: absolute;
-  width: 150px;
-  height: 140px;
-  background: url('../../static/img/glare.png') no-repeat center;
-  background-size: cover;
+  width: 8vw;
+  height: 16vh;
+  //-webkit-animation: sparkleAnim 1s steps(6) infinite;
 }
+
+//@keyframes sparkleAnim {
+//  0% { background-position:    0px 0; }
+//  100% { background-position: 900px 0; }
+//}
+
+
+

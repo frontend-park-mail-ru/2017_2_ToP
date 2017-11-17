@@ -24,7 +24,8 @@ const textData = {
     buttons: [
         {
             url: '',
-            text: 'Отправить!'
+            text: 'Отправить',
+            class: 'button-form'
         }
     ]
 };
@@ -70,7 +71,8 @@ export default class Listening extends TopComponent {
             new GameInput(this._textData),
             new Button(
                 this._textData.buttons[0].text,
-                this._textData.buttons[0].url
+                this._textData.buttons[0].url,
+                this._textData.buttons[0].class
             )
         ];
 
