@@ -4,7 +4,8 @@
 /**** Форма ****/
 
 .form-box {
-  margin-top: 20px;
+  width: 420px;
+  margin: auto;
 }
 
 .form-box__top {
@@ -22,7 +23,7 @@
   padding-top: 25px;
 
   h3 {
-    font-size: 35px;
+    font-size: 1.5em;
     margin-top: 0;
     color: $white;
   }
@@ -44,7 +45,7 @@
 }
 
 .form-box__bottom {
-  padding: 25px 25px 30px 30px;
+  padding: 25px 25px 0px 30px;
   background: $light-black;
   text-align: left;
 
@@ -91,6 +92,10 @@ input[type="email"] {
 .form__button {
   @extend %form-text;
   @extend %form-element;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 3em;
   font-family: $header-font-family;
   box-sizing: border-box;
   display: inline-block;
@@ -131,5 +136,27 @@ input[type="email"] {
   box-sizing: border-box;
   &.active {
     padding: 0.3em;
+  }
+}
+
+@media (min-width: 850px) {
+  .form-box {
+
+  }
+}
+
+// Мобилки!
+@media screen and (max-width: 414px) and (min-width: 319px) {
+  .form-box {
+    width: 100%;
+  }
+  .form-box__top-left {
+    h3 {
+      font-size: 25px;
+      margin-top: 20px;
+    }
+    p {
+      display: none;
+    }
   }
 }
