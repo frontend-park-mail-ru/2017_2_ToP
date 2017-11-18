@@ -53,16 +53,17 @@ $main-background: url('../img/backgrounds/background.png') !default;
 }
 
 %sparkle {
+  display: none;
   position: absolute;
   width: 8vw;
   height: 16vh;
-  //-webkit-animation: sparkleAnim 1s steps(6) infinite;
+  -webkit-animation: sparkleAnim 1s steps(6) infinite;
 }
 
-//@keyframes sparkleAnim {
-//  0% { background-position:    0px 0; }
-//  100% { background-position: 900px 0; }
-//}
+@keyframes sparkleAnim {
+  0% { background-position:    0px 0; }
+  100% { background-position: 900px 0; }
+}
 
 
 

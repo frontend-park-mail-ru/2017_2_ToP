@@ -41,12 +41,10 @@
 }
 
 .menu__rotate_image {
-  margin-left: auto;
-  margin-right: auto;
-  width: 60vw;
-  height: 100vh;
+  margin-top: -5vh;
+  height: 110vh;
   background: url('../../static/img/sun.png') no-repeat center;
-  background-size: cover;
+  background-size: contain;
   animation: rotate-sun 20s linear 0s infinite normal;
 }
 
@@ -63,23 +61,45 @@
   margin-left: 33%;
 }
 
-@media screen and (max-width: 980px) {
-  .menu__circle {
-    height: 50vh;
-  }
-  .menu__rotate {
-    display: none;
+
+// Мобилки!
+@media screen and (max-width: 414px) and (min-width: 319px) {
+  .menu__rotate_image {
+    margin-top: 0;
+    height: 100vh;
+    margin-right: auto;
+    background-size: cover;
+    width: 100vh;
+    margin-left: -20vh;
   }
   .menu__buttons {
-    margin: 20vh auto 0;
+    line-height: 15px;
   }
 }
 
-@media (max-width: 310px) {
+@media screen and (max-width: 319px) {
   .menu__circle {
-    height: 252px;
+    margin-top: -10vh;
+    width: 290px;
+  }
+  .menu__rotate_image {
+    display: none;
   }
   .menu__buttons {
-    margin: 20vh auto 0;
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .menu__circle {
+    margin-top: -30px;
+    height: 325px;
+  }
+  .menu__rotate_image {
+    height: 550px;
+    background-size: contain;
+  }
+  .menu__buttons {
+    margin: 150px auto 0;
   }
 }

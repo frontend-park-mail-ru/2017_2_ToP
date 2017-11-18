@@ -63,3 +63,17 @@
     margin-bottom: 2vh;
   }
 }
+
+@media screen and (max-height: 500px) {
+  .button {
+
+  }
+  .button-main {
+    font-size: 50px;
+  }
+  .button-second {
+    font-size: 15px;
+    line-height: 20px;
+    margin: auto auto;
+  }
+}

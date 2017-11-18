@@ -26,3 +26,9 @@
   background: url('../../static/img/sparkles.png') 0 0 no-repeat;
   background-size: 100%;
 }
+
+@media screen and (max-height: 500px) {
+  .header__logo {
+    height: 100px;
+  }
+}
