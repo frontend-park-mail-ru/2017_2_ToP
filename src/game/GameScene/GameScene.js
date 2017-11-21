@@ -1,13 +1,16 @@
 import TopComponent from '../../components/TopComponent/TopComponent';
+import loading from '../../components/Loading/Loading';
 
 export default class GameScene extends TopComponent {
     constructor() {
         super('div', {'class': 'game'});
         this._stage = null;
+        this.loading = loading;
         this._render();
     }
 
     setStage(stage) {
+        loading.show();
         this._stage = stage;
         this._rerender();
     }
@@ -22,6 +25,7 @@ export default class GameScene extends TopComponent {
             this.append(this._stage.render());
         }
         this.renderTo('content');
+        loading.hide();
     }
 
 
