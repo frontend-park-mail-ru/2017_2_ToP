@@ -42,7 +42,7 @@ const logged = {
         },
         {
             name: 'settings',
-            text: 'Настройки',
+            text: 'Профиль',
             class: 'button-second',
             url: '/settings'
         },
