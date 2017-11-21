@@ -5,7 +5,7 @@ export default class GameScene extends TopComponent {
     constructor() {
         super('div', {'class': 'game'});
         this._stage = null;
-        this.loading = loading;
+        loading.show();
         this._render();
     }
 
