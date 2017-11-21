@@ -4,7 +4,7 @@ export default class GameScene extends TopComponent {
     constructor() {
         super('div', {'class': 'game'});
         this._stage = null;
-        this.render();
+        this._render();
     }
 
     setStage(stage) {
@@ -12,20 +12,21 @@ export default class GameScene extends TopComponent {
         this._rerender();
     }
 
-    render() {
+    destroy() {
+        this._stage = null;
+        this.remove();
+    }
+
+    _render() {
         if (this._stage) {
             this.append(this._stage.render());
         }
         this.renderTo('content');
     }
 
-    destroy() {
-        this._stage = null;
-        this.remove();
-    }
 
     _rerender() {
         this.clear();
-        this.render();
+        this._render();
     }
 }
