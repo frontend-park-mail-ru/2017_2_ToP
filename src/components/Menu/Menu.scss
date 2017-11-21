@@ -12,7 +12,7 @@
 .menu__circle {
   box-sizing: border-box;
   position: relative;
-  z-index: -1;
+  z-index: 1;
   height: 65vh;
   margin-top: -6vh;
   background: url('../../static/img/circle.png') no-repeat center;
@@ -23,7 +23,8 @@
   width: fit-content;
   box-sizing: border-box;
   position: absolute;
-  margin: 30vh auto 0;
+  z-index: 2;
+  margin: 25vh auto 0;
   left: 0;
   right: 0;
 }
@@ -100,6 +101,6 @@
     background-size: contain;
   }
   .menu__buttons {
-    margin: 150px auto 0;
+    margin: 125px auto 0;
   }
 }
