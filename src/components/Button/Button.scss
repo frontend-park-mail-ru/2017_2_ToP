@@ -32,8 +32,8 @@
 
 .button-main {
   @extend %button-base;
-  font-size: 10vh;
-  margin-bottom: 5vh;
+  font-size: 9vh;
+  margin-bottom: 6vh;
   font-family: $header-font-family;
   color: $apoj-text-second-color;
 }
@@ -43,6 +43,7 @@
   display: block;
   width: fit-content;
   line-height: 20px;
+  font-weight: 600;
   margin: auto auto 1vh;
   color: $apoj-text-color;
   font-size: 3vh;
@@ -57,7 +58,7 @@
   color: $white;
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 414px) {
   .button-second {
     font-size: 4vh;
     margin-bottom: 2vh;
