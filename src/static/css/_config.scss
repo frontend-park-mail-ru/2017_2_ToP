@@ -9,18 +9,20 @@
 $blue:       #19b9e7;
 $pink:       #f008b7;
 $white:         #fff;
+$show-red: #e71919;
+$dark-red: #a00b3b;
 
 $gray:          #909090;
 $pastel-red:     rgb(171, 86, 75);
 $dark-gray:     darken($gray, 10%);
-$red:            red;
-$black: rgba(0, 0, 0, 0.35);
-$light-black: rgba(0, 0, 0, 0.3);
+$red:            #e71919;
+$black: rgba(0, 0, 0, 0.5);
+$light-black: rgba(0, 0, 0, 0.4);
 
 //  Apoj colors
-$apoj-color: $blue !default;
+$apoj-color: $show-red !default;
 $apoj-text-second-color: $pastel-red !default;
-$apoj-color-dark: darken($apoj-color, 10%) !default;
+$apoj-color-dark: $dark-red; //darken($apoj-color, 10%) !default;
 $apoj-color-light: lighten($apoj-color, 10%) !default;
 $apoj-color-second: $pink !default;
 $apoj-color-second-light: lighten($apoj-color-second, 10%) !default;
@@ -35,7 +37,7 @@ $header-font-family: BebasNeueBold !default;
 $apoj-text-color: $gray !default;
 
 //  Background
-$main-background: url('../img/backgrounds/background.png') !default;
+$main-background: url('../img/backgrounds/scene.png') !default;
 
 %form-element {
   height: 50px;
