@@ -36,7 +36,7 @@ const logged = {
         },
         {
             name: 'singleplayer',
-            text: 'Играть одному',
+            text: 'Тренировка',
             class: 'button-main',
             url: '/singleplayer'
         },
