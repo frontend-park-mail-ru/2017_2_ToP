@@ -23,6 +23,7 @@ export default class Recording extends TopComponent {
     constructor(data) {
         super('div', {'class': 'recording-stage'}, data);
         this._textData = textData;
+        this._build();
     }
 
     getMusicURL() {
@@ -39,10 +40,14 @@ export default class Recording extends TopComponent {
     }
 
     getMusic() {
-        this._components[1].setSource('/music');
+        this._components[1].setSource(this.getData().musicSource);
     }
 
     render() {
+        return this.getElement();
+    }
+
+    _build() {
         this._components = [
             new GameText({
                 text: this._textData.texts[0]
@@ -65,7 +70,6 @@ export default class Recording extends TopComponent {
 
         this._initPlayers();
 
-        return this.getElement();
     }
 
     _initPlayers() {
