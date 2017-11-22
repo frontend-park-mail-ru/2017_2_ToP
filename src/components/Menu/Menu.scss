@@ -64,30 +64,33 @@
 
 
 // Мобилки!
-@media screen and (max-width: 414px) and (min-width: 319px) {
+@media screen and (max-width: 414px) and (min-width: 319px) and (min-device-aspect-ratio: 1/2){
   .menu__rotate_image {
     margin-top: 0;
     height: 100vh;
     margin-right: auto;
     background-size: cover;
     width: 100vh;
-    margin-left: -20vh;
+    margin-left: calc(50vw - 50vh);
   }
   .menu__buttons {
     line-height: 15px;
   }
 }
 
-@media screen and (max-width: 319px) {
+@media screen and (max-width: 319px) and (max-device-aspect-ratio: 1/2){
   .menu__circle {
     margin-top: -10vh;
-    width: 290px;
+    //width: 290px;
+    width: 490px;
+    margin-left: -5vh;
   }
   .menu__rotate_image {
     display: none;
   }
   .menu__buttons {
     line-height: 15px;
+    margin-left: 17vh;
   }
 }
 

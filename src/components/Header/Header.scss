@@ -34,3 +34,11 @@
     height: 100px;
   }
 }
+
+@media screen and (max-width: 319px) and (max-device-aspect-ratio: 1/2){
+  .header__logo {
+    margin-left: 20vh;
+    height: 20vh;
+    width: 20vh;
+  }
+}

@@ -22,3 +22,9 @@ footer {
     font-size: 25px;
   }
 }
+
+@media screen and (max-width: 319px) and (max-device-aspect-ratio: 1/2){
+  .footer__text {
+    margin-left: 20vh;
+  }
+}
