@@ -9,14 +9,12 @@ const unlogged = {
             text: 'Играть',
             class: 'button-main',
             url: '/singleplayer'
-        }
-        ,
+        },
         {
             text: 'Войти',
             class: 'button-second',
             url: '/signin'
-        }
-        ,
+        },
         {
             text: 'Регистрация',
             class: 'button-second',
