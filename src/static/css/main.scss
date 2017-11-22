@@ -2,10 +2,12 @@
 @import "config";
 
 body {
+    //height: 100%;
+    //overflow: hidden;
     font-family: $base-font-family;
     font-size: 16px;
     font-weight: 300;
-    color: $dark-gray;
+    color: $apoj-text-color;
     line-height: 30px;
     text-align: center;
     background: $main-background no-repeat center fixed;
@@ -19,7 +21,6 @@ strong {
 %h-base {
   margin-top: 10px;
   font-weight: 100;
-  color: $white;
 }
 
 h1 {
@@ -43,7 +44,7 @@ h3 {
 
 ::selection {
   background: $blue;
-  color: $white;
+  color: $apoj-text-color;
   text-shadow: none;
 }
 
@@ -59,8 +60,4 @@ h3 {
 
 /***** Media queries *****/
 
-@media (min-width: 850px) {
-  .content {
-    width: 40%;
-  }
-}
+

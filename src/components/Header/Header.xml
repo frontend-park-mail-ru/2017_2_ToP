@@ -1,8 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-    <div class="header__text">
-        <h1>APOJ</h1>
-    </div>
-    <div class="header__motto">
-        Reverse singing!
+    <div class="header__logo"></div>
+    <div class="header__sparkle">
+        <div class="header__sparkle_sprite"></div>
     </div>
 </fest:template>

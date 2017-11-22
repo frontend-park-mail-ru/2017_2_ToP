@@ -1,0 +1,9 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+    <div class="menu__buttons"></div>
+    <div class="menu__circle"></div>
+    <div class="menu__rotate">
+        <div class="menu__rotate_image"></div>
+    </div>
+    <div class="menu__sparkle1"></div>
+    <div class="menu__sparkle2"></div>
+</fest:template>

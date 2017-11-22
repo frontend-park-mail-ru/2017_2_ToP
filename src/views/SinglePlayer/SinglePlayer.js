@@ -5,22 +5,26 @@ import router from '../../modules/Router/Router';
 import GameManager from '../../game/GameManager/GameManager';
 import loading from '../../components/Loading/Loading';
 
+import './Game.scss';
+
 const preGameData = {
     buttons: [
         {
             text: 'Продолжить',
-            url: ''
+            url: '',
+            class: 'button-main'
         },
         {
             text: 'Начать новую',
-            url: ''
+            url: '',
+            class: 'button-main'
         }
     ]
 };
 
 export default class SinglePlayer extends TopComponent {
     constructor() {
-        super('div', {}, preGameData);
+        super('div', {class: 'game'}, preGameData);
     }
 
     show() {
@@ -46,7 +50,7 @@ export default class SinglePlayer extends TopComponent {
     build() {
         if (!(UserService.isLoggedIn())) {
             router.go('/');
-            return null;
+            return;
         }
 
         this._gameManager = new GameManager('singleplayer');

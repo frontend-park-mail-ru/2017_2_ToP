@@ -1,4 +1,5 @@
 import Form from '../../components/Form/Form';
+import Footer from '../../components/Footer/Footer';
 import TopComponent from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
 import router from '../../modules/Router/Router';
@@ -38,7 +39,7 @@ const data = {
         {
             class: 'registrationSubmit',
             name: 'submitButton',
-            text: 'Зарегистрироваться!'
+            text: 'Создать аккаунт'
         }
     ],
     back: {}
@@ -72,7 +73,9 @@ export default class SignUp extends TopComponent {
         if (UserService.isLoggedIn()) {
             router.go('/');
         } else {
-            this._components = [new Form(this.getData())];
+            this._components = [
+                new Form(this.getData())
+            ];
             this._components.forEach(element => element.renderTo('content'));
         }
     }
