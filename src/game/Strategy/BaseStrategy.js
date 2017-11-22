@@ -40,6 +40,8 @@ export default class BaseStrategy {
     finish() {
         this.scene.destroy();
         delete this.scene;
-        this._socket.close();
+        if (this._socket) {
+            this._socket.close();
+        }
     }
 }
