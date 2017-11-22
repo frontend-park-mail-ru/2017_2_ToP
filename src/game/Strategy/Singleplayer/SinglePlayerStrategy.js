@@ -30,10 +30,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
             recordingPage.hide();
             recordingPage.stopPlayer();
 
-            const musicURL = recordingPage.getMusicURL();
             const musicBlob = recordingPage.getMusicBlob();
-            console.log(musicURL);
-            console.log(musicBlob);
 
             const result = {
                 type: 'Recording',
