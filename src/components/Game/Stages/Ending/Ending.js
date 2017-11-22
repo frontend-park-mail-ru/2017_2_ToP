@@ -35,7 +35,7 @@ export default class Ending extends TopComponent {
                     type: 'video/mp4'
                 }),
                 new GameText({
-                    text: `Ваш новый счет: ${this.getData().score}`
+                    text: this.getData().isOffline ? 'В режиме оффлайн счет не работает ☹️' : `Ваш новый счет: ${this.getData().score}`
                 })
             ];
         } else {

@@ -45,8 +45,7 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
             const isWin = this.title.toLowerCase() === answer.toLowerCase() ? 'right' : 'wrong';
 
             const result = {
-                message: isWin,
-                score: 'В режиме оффлайн счет не работает ☹️'
+                message: isWin
             };
 
             this._initEndingPage(result);
@@ -56,7 +55,7 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.message === 'right', score: data.score});
+        const endingPage = new Ending({isWin: data.message === 'right', isOffline: true});
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });
