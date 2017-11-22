@@ -22,6 +22,14 @@ export default class GameScene extends TopComponent {
         this.remove();
     }
 
+    pause() {
+        this.hide();
+    }
+
+    resume() {
+        this.show();
+    }
+
     _render() {
         if (this._stage) {
             this.append(this._stage.render());

@@ -8,6 +8,7 @@ export default class BaseStrategy {
         this.stage = null;
         this.stages = [];
         this.scene = new GameScene();
+        this.scene.setStage(null);
     }
 
     next() {
@@ -20,7 +21,22 @@ export default class BaseStrategy {
         this.scene.setStage(this.stage);
     }
 
+    pause() {
+        if (!this.isFinished()) {
+            this.scene.pause();
+        }
+    }
+
+    resume() {
+        this.scene.resume();
+    }
+
+    isFinished() {
+        return !this.scene;
+    }
+
     finish() {
         this.scene.destroy();
+        delete this.scene;
     }
 }
