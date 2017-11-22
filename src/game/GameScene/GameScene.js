@@ -4,13 +4,15 @@ import loading from '../../components/Loading/Loading';
 export default class GameScene extends TopComponent {
     constructor() {
         super('div', {'class': 'game'});
+        if (GameScene.__instance) {
+            return GameScene.__instance;
+        }
+
         this._stage = null;
-        loading.show();
-        this._render();
+        GameScene.__instance = this;
     }
 
     setStage(stage) {
-        loading.show();
         this._stage = stage;
         this._rerender();
     }
@@ -23,13 +25,13 @@ export default class GameScene extends TopComponent {
     _render() {
         if (this._stage) {
             this.append(this._stage.render());
+            loading.hide();
         }
         this.renderTo('content');
-        loading.hide();
     }
 
-
     _rerender() {
+        loading.show();
         this.clear();
         this._render();
     }
