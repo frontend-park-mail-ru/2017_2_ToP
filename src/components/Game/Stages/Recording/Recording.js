@@ -30,6 +30,10 @@ export default class Recording extends TopComponent {
         return this._components[3].getMusicURL();
     }
 
+    getMusicBlob() {
+        return this._components[3].getMusicBlob();
+    }
+
     getSubmitButton() {
         return this._components[4].getElement();
     }

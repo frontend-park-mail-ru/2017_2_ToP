@@ -28,6 +28,10 @@ export default class AudioPlayer extends TopComponent {
         return RecordService.getMusicURL();
     }
 
+    getMusicBlob() {
+        return RecordService.getMusicBlob();
+    }
+
     getButton() {
         return this.button;
     }

@@ -58,6 +58,10 @@ class RecordService {
     getMusicURL() {
         return this.audioRecorder.getMusicURL();
     }
+
+    getMusicBlob() {
+        return this.audioRecorder.getMusicBlob();
+    }
 }
 
 const recordService = new RecordService();
