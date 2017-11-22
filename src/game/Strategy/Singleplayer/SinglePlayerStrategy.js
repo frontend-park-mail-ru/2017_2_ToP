@@ -2,11 +2,23 @@ import BaseStrategy from '../BaseStrategy';
 import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
+import SinglePlayerOfflineStrategy from './SinglePlayerOfflineStrategy';
 
 export default class SinglePlayerStrategy extends BaseStrategy {
     constructor() {
         super('apoj.herokuapp.com/singleplayer');
-        this._socket.onmessage = this.onMessage;
+
+        this._socket.onopen = () => {
+            this._socket.onmessage = this.onMessage;
+        };
+
+        this._socket.onclose = event => {
+            if (event.code === 1006) {
+                delete this._socket;
+                Object.setPrototypeOf(this, SinglePlayerOfflineStrategy.prototype);
+                this.init();
+            }
+        };
     }
 
     onMessage(event) {
