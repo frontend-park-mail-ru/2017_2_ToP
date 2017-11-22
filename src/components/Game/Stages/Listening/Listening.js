@@ -33,6 +33,7 @@ export default class Listening extends TopComponent {
     constructor(data) {
         super('div', {'class': 'listening-stage'}, data);
         this._textData = textData;
+        this._build();
     }
 
     getUserInput() {
@@ -59,6 +60,10 @@ export default class Listening extends TopComponent {
     }
 
     render() {
+        return this.getElement();
+    }
+
+    _build() {
         this._components = [
             new GameText({
                 text: this._textData.texts[0]
@@ -79,8 +84,6 @@ export default class Listening extends TopComponent {
         });
 
         this._initInput();
-
-        return this.getElement();
     }
 
     _initInput() {

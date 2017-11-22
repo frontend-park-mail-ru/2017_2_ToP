@@ -12,9 +12,18 @@ import './Ending.scss';
 export default class Ending extends TopComponent {
     constructor(data) {
         super('div', {'class': 'ending-stage'}, data);
+        this._build();
+    }
+
+    getBackButton() {
+        return this.getElement().querySelector('.back-button');
     }
 
     render() {
+        return this.getElement();
+    }
+
+    _build() {
         if (this.getData().isWin) {
             this._components = [
                 new GameText({
@@ -50,7 +59,5 @@ export default class Ending extends TopComponent {
 
         this.append(content.render());
         this.append(backButton.render());
-
-        return this.getElement();
     }
 }
