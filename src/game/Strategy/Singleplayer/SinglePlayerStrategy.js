@@ -31,9 +31,16 @@ export default class SinglePlayerStrategy extends BaseStrategy {
             recordingPage.stopPlayer();
 
             const musicURL = recordingPage.getMusicURL();
+            const musicBlob = recordingPage.getMusicBlob();
             console.log(musicURL);
+            console.log(musicBlob);
 
-            // TODO: отправка музыки по вебсокету
+            const result = {
+                type: 'Recording',
+                data: musicBlob
+            };
+
+            this._socket.send(result);
         });
         this.stages.push(recordingPage);
         this.next();
@@ -45,7 +52,12 @@ export default class SinglePlayerStrategy extends BaseStrategy {
             listeningPage.hide();
             listeningPage.stopPlayer();
 
-            // TODO: отправка ответа по вебсокету
+            const result = {
+                type: 'Listening',
+                data: listeningPage.getUserInput()
+            };
+
+            this._socket.send(result);
         });
         this.stages.push(listeningPage);
         this.next();
@@ -53,6 +65,9 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     _initEndingPage(data) {
         const endingPage = new Ending({isWin: data.message, score: data.score});
+        endingPage.getBackButton().addEventListener('click', () => {
+            this.finish();
+        });
         this.stages.push(endingPage);
         this.next();
     }
