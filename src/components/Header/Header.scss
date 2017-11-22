@@ -2,34 +2,43 @@
 
 .header {
   padding-top: 25px;
-  margin-bottom: 60px;
 }
 
-.header__text {
-  h1 {
-    position: relative;
-    background-image: -webkit-linear-gradient($apoj-color-dark 0%, $apoj-color-light 46%, $white 50%, $apoj-color 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 3px $black;
-    font-size: 100px;
-    font-weight: 500;
-    font-style: italic;
-    margin: 0;
-    line-height: 1;
+.header__logo {
+  margin: auto;
+  height: 20vh;
+  background: url('../../static/img/logo.png') no-repeat center;
+  background-size: contain;
+  position: relative;
+  z-index: 4;
+}
+
+.header__sparkle {
+  @extend %sparkle;
+  margin-left: 52vw;
+  margin-top: -22vh;
+}
+
+.header__sparkle_sprite {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url('../../static/img/sparkles.png') 0 0 no-repeat;
+  background-size: 100%;
+}
+
+@media screen and (max-height: 500px) {
+  .header__logo {
+    height: 100px;
   }
 }
 
-.header__motto {
-  position: relative;
-  font-family: $second-font-family, cursive;
-  font-size: 60px;
-  color: $apoj-color-second-light;
-  transform:rotate(-10deg);
-  -webkit-transform:rotate(-10deg);
-  margin-left: 200px;
-  margin-top: -30px;
-  -webkit-text-stroke: 1px $apoj-color-second;
-  -webkit-filter: drop-shadow(2px 2px 20px $apoj-color-second);
-  z-index: 20;
+@media screen and (max-width: 319px) and (max-device-aspect-ratio: 1/2){
+  .header__logo {
+    margin-left: 20vh;
+    height: 20vh;
+    width: 20vh;
+  }
 }

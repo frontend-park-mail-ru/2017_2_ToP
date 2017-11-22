@@ -11,8 +11,7 @@ module.exports = {
             'babel-polyfill',
             './src/static/css/main.scss',
             './src/index.js'
-        ],
-        halloween: './src/static/css/themes/halloween.scss',
+        ]
     },
 
     output: {

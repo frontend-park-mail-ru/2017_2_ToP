@@ -1,7 +1,5 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-    <div class="footer__border"/>
-    <p>&copy
-        <fest:space/>
-        <strong>ToP</strong>, 2017
-    </p>
+    <div class="footer__text">
+        Reverse singing!
+    </div>
 </fest:template>

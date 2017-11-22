@@ -8,22 +8,26 @@ import Menu from '../../components/Menu/Menu';
 import UserService from '../../services/UserService/UserService';
 import router from '../../modules/Router/Router';
 
+import './Game.scss';
+
 const preGameData = {
     buttons: [
         {
             text: 'Продолжить',
-            url: ''
+            url: '',
+            class: 'button-main'
         },
         {
             text: 'Начать новую',
-            url: ''
+            url: '',
+            class: 'button-main'
         }
     ]
 };
 
 export default class SinglePlayer extends TopComponent {
     constructor() {
-        super('div', {}, preGameData);
+        super('div', {class: 'game'}, preGameData);
     }
 
     show() {
@@ -32,23 +36,21 @@ export default class SinglePlayer extends TopComponent {
             return;
         }
 
-        this._initPreGame();
-
+        // this._initPreGame();
         if (this._endGame) {
             this._components.forEach(element => element.remove());
             this._components = [];
             this.build();
         } else if (this._components) {
-            this._components.forEach(element => element.show());
+            this._component.style.display = 'block';
+            // this._components.forEach(element => element.show());
         } else {
             this.build();
         }
     }
 
     hide() {
-        if (this._components) {
-            this._components.forEach(element => element.hide());
-        }
+        this._component.style.display = 'none';
     }
 
     build() {
@@ -56,10 +58,16 @@ export default class SinglePlayer extends TopComponent {
             router.go('/');
             return;
         }
+
+
+        this._component.style.display = 'block';
+
         this._components = [
             new RecordingPage()
         ];
-        this._components[0].renderTo('content');
+
+        this.renderTo('content');
+        this._components[0].renderTo('game');
         this._initRecordingPage();
     }
 
@@ -105,7 +113,7 @@ export default class SinglePlayer extends TopComponent {
                 })];
 
             const listeningPage = this._components[0];
-            listeningPage.renderTo('content');
+            listeningPage.renderTo('game');
             this._initListeningPage(listeningPage);
         });
     }
@@ -121,7 +129,7 @@ export default class SinglePlayer extends TopComponent {
                 new EndingPage({
                     'isWin': isWin
                 })];
-            this._components.forEach(element => element.renderTo('content'));
+            this._components.forEach(element => element.renderTo('game'));
             this._endGame = true;
         });
     }
