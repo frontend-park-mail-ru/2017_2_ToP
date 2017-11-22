@@ -1,9 +1,11 @@
 import GameScene from '../GameScene/GameScene';
 
 export default class BaseStrategy {
-    constructor(path) {
-        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        this._socket = new WebSocket(`${protocol}//${path}`);
+    constructor(path = null) {
+        if (path) {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            this._socket = new WebSocket(`${protocol}//${path}`);
+        }
 
         this.stage = null;
         this.stages = [];
