@@ -61,7 +61,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.message, score: data.score});
+        const endingPage = new Ending({isWin: data.message === 'right', score: data.score});
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });

@@ -35,7 +35,7 @@ export default class Ending extends TopComponent {
                     type: 'video/mp4'
                 }),
                 new GameText({
-                    text: `Ваш новый счет ${UserService.getScore('single')}`
+                    text: `Ваш новый счет ${this.getData().score}`
                 })
             ];
         } else {
