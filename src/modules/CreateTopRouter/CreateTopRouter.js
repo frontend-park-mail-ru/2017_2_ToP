@@ -15,7 +15,7 @@ export default function CreateTopRouter(className, componentsRoutes, defaultComp
     UserService.getData()
         .catch(response => {})
         .then(() => {
-            router.start();
             Loading.hide();
+            router.start();
         });
 }

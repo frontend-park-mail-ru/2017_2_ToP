@@ -94,6 +94,15 @@ export default class TopComponent {
     }
 
     /**
+     * Очищает себя
+     */
+    clear() {
+        while (this._component.firstChild) {
+            this._component.removeChild(this._component.firstChild);
+        }
+    }
+
+    /**
      * Устанавливает в себя разметку
      * @param template
      * @private
