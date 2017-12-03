@@ -1,4 +1,5 @@
 import BaseStrategy from '../BaseStrategy';
+import PreGame from '../../../components/Game/Stages/PreGame/PreGame';
 import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
@@ -24,7 +25,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     onMessage(event) {
         switch (event.data.type) {
             case 'preGameData':
-                return this._initPreGame(event.data.data);
+                return this._initPreGame();
             case 'Recording':
                 return this._initRecordingPage(event.data.data);
             case 'Listening':
@@ -81,29 +82,23 @@ export default class SinglePlayerStrategy extends BaseStrategy {
         this.next();
     }
 
-    _initPreGame(data) {
-        // TODO: сделать компоненту PreGame
-        // if (this._endGame || !this._components[0]) {
-        //     return;
-        // }
-        //
-        // this._previousPage = this._components[0];
-        //
-        // this._components = [new Menu(this.getData())];
-        // const menu = this._components[0];
-        // menu.renderTo('content');
-        //
-        // const buttons = menu.getElement().getElementsByClassName('button');
-        // buttons[0].addEventListener('click', () => {
-        //     menu.remove();
-        //     this._components = [this._previousPage];
-        //     this._components.forEach(element => element.show());
-        // });
-        // buttons[1].addEventListener('click', () => {
-        //     menu.remove();
-        //     this._previousPage.remove();
-        //     this._components = [];
-        //     this.build();
-        // });
+    _initPreGame() {
+        const preGamePage = new PreGame();
+        preGamePage.getNewGameButton().addEventListener('click', () => {
+            const result = {
+                message: 'newGame'
+            };
+
+            this._socket.send(result);
+        });
+        preGamePage.getContinueButton().addEventListener('click', () => {
+            const result = {
+                message: 'continue'
+            };
+
+            this._socket.send(result);
+        });
+        this.stages.push(preGamePage);
+        this.next();
     }
 }
