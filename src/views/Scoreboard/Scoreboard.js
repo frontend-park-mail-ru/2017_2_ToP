@@ -1,5 +1,8 @@
 import TopComponent from '../../components/TopComponent/TopComponent';
 import Table from '../../components/Table/Table';
+import BackButton from '../../components/BackButton/BackButton';
+
+import './Scoreboard.scss';
 
 const TMP_DATA = {
     head: [
@@ -18,21 +21,7 @@ const TMP_DATA = {
 
 export default class Scoreboard extends TopComponent {
     constructor() {
-        super('div');
-    }
-
-    show() {
-        if (this._components) {
-            this._components.forEach(element => element.show());
-        } else {
-            this.build();
-        }
-    }
-
-    hide() {
-        if (this._components) {
-            this._components.forEach(element => element.hide());
-        }
+        super('div', {class: 'content__scoreboard'});
     }
 
     rerender() {
@@ -44,8 +33,10 @@ export default class Scoreboard extends TopComponent {
 
     build() {
         this._components = [
-            new Table(TMP_DATA)
+            new Table(TMP_DATA),
+            new BackButton()
         ];
-        this._components.forEach(element => element.renderTo('content'));
+        this._components.forEach(element => this.append(element.render()));
+        this.renderTo('content');
     }
 }
