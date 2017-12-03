@@ -3,8 +3,6 @@ import GameText from '../../GameText/GameText';
 import AudioPlayer from '../../AudioPlayer/AudioPlayer';
 import GameInput from '../../GameInput/GameInput';
 import Button from '../../../Button/Button';
-import Transport from '../../../../modules/Transport/Transport';
-import UserService from '../../../../services/UserService/UserService';
 
 import {LISTENING_TEXT1, LISTENING_TEXT2, TITLE_INPUT, SEND_BUTTON} from '../../../../constants/Stages';
 
@@ -31,17 +29,6 @@ export default class Listening extends TopComponent {
 
     stopPlayer() {
         this._components[1].remove();
-    }
-
-    async check() {
-        const response = await Transport.post('/music', {'title': this.getUserInput()});
-
-        if (response.message === 'right') {
-            UserService.setScore('single', response.score);
-            return true;
-        }
-
-        return false;
     }
 
     render() {
