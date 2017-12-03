@@ -4,11 +4,7 @@ import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 
 import {RIGHT, WRONG} from '../../Constants/Game';
-
-const music = [
-    'badtrip',
-    'Владимирский централ'
-];
+import MUSIC_LIST from '../../Constants/Singleplayer';
 
 export default class SinglePlayerOfflineStrategy extends BaseStrategy {
     constructor() {
@@ -16,8 +12,8 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
     }
 
     init() {
-        const fileId = Math.floor(Math.random() * Object.keys(music).length);
-        this.title = music[fileId];
+        const fileId = Math.floor(Math.random() * Object.keys(MUSIC_LIST).length);
+        this.title = MUSIC_LIST[fileId];
         this.file = `/static/music/${this.title}.mp3`;
 
         this._initRecordingPage(this.file);
