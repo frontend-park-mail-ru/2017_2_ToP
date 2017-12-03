@@ -106,7 +106,17 @@ export default class MultiPlayerStrategy extends BaseStrategy {
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });
-        this.stages.push(endingPage);
-        this.next();
+
+        const nextStage = () => {
+            this.stages.push(endingPage);
+            this.next();
+        };
+
+        if (this.role === 'singer') {
+            this.stage.ready();
+            this.getResultButton.addEventListener('click', nextStage.bind(this));
+        } else {
+            nextStage();
+        }
     }
 }
