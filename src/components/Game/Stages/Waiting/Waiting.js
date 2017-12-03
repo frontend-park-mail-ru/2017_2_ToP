@@ -3,7 +3,7 @@ import AudioPlayer from '../../AudioPlayer/AudioPlayer';
 import GameText from '../../GameText/GameText';
 import Button from '../../../Button/Button';
 
-import {READY_BUTTON} from '../../../../Constants/stages';
+import {READY_BUTTON} from '../../../../constants/stages';
 
 export default class Waiting extends TopComponent {
     constructor(data) {
@@ -30,13 +30,13 @@ export default class Waiting extends TopComponent {
 
     ready() {
         this.status.remove();
-        this.resultBbutton = new Button(READY_BUTTON);
-        this._components.push(this.resultBbutton);
+        this.resultButton = new Button(READY_BUTTON);
+        this._components.push(this.resultButton);
         this._rerender();
     }
 
     getResultButton() {
-        return this.resultBbutton.getElement();
+        return this.resultButton.getElement();
     }
 
     _build() {
