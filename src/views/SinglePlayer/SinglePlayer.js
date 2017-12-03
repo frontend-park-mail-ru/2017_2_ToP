@@ -7,24 +7,9 @@ import loading from '../../components/Loading/Loading';
 
 import './Game.scss';
 
-const preGameData = {
-    buttons: [
-        {
-            text: 'Продолжить',
-            url: '',
-            class: 'button-main'
-        },
-        {
-            text: 'Начать новую',
-            url: '',
-            class: 'button-main'
-        }
-    ]
-};
-
 export default class SinglePlayer extends TopComponent {
     constructor() {
-        super('div', {class: 'game'}, preGameData);
+        super('div', {class: 'game'});
     }
 
     show() {
