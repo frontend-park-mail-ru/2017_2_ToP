@@ -5,6 +5,9 @@ import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 import SinglePlayerOfflineStrategy from './SinglePlayerOfflineStrategy';
 
+import {PREGAME_DATA, RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
+import {RIGHT, CONTINUE, NEWGAME} from '../../Constants/Game';
+
 export default class SinglePlayerStrategy extends BaseStrategy {
     constructor() {
         super('apoj.herokuapp.com/singleplayer');
@@ -24,13 +27,13 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     onMessage(event) {
         switch (event.data.type) {
-            case 'preGameData':
+            case PREGAME_DATA:
                 return this._initPreGame();
-            case 'Recording':
+            case RECORDING:
                 return this._initRecordingPage(event.data.data);
-            case 'Listening':
+            case LISTENING:
                 return this._initListeningPage(event.data.data);
-            case 'Result':
+            case RESULT:
                 return this._initEndingPage(event.data.data);
             default:
                 return null;
@@ -46,7 +49,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
             const musicBlob = recordingPage.getMusicBlob();
 
             const result = {
-                type: 'Recording',
+                type: RECORDING,
                 data: musicBlob
             };
 
@@ -63,7 +66,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
             listeningPage.stopPlayer();
 
             const result = {
-                type: 'Listening',
+                type: LISTENING,
                 data: listeningPage.getUserInput()
             };
 
@@ -74,7 +77,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.message === 'right', score: data.score});
+        const endingPage = new Ending({isWin: data.message === RIGHT, score: data.score});
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });
@@ -86,14 +89,14 @@ export default class SinglePlayerStrategy extends BaseStrategy {
         const preGamePage = new PreGame();
         preGamePage.getNewGameButton().addEventListener('click', () => {
             const result = {
-                message: 'newGame'
+                message: NEWGAME
             };
 
             this._socket.send(result);
         });
         preGamePage.getContinueButton().addEventListener('click', () => {
             const result = {
-                message: 'continue'
+                message: CONTINUE
             };
 
             this._socket.send(result);

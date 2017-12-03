@@ -4,7 +4,9 @@ import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 import Waiting from '../../../components/Game/Stages/Waiting/Waiting';
 
-import {RECORDNG_MESSAGE, READY_MESSAGE1, READY_MESSAGE2, GOT_RESULT} from '../../Constants/Multiplayer';
+import {PREGAME_DATA, RECORDING, LISTENING, SECOND_LISTENING, RESULT} from '../../Constants/WebsocketTypes';
+import {RIGHT} from '../../Constants/Game';
+import {SINGER, LISTENER, RECORDNG_MESSAGE, READY_MESSAGE1, READY_MESSAGE2, GOT_RESULT} from '../../Constants/Multiplayer';
 
 export default class MultiPlayerStrategy extends BaseStrategy {
     constructor() {
@@ -20,15 +22,15 @@ export default class MultiPlayerStrategy extends BaseStrategy {
 
     onMessage({data: message}) {
         switch (message.type) {
-            case 'preGameData':
+            case PREGAME_DATA:
                 return this._initPreGame(message.data);
-            case 'Recording':
+            case RECORDING:
                 return this._initRecordingPage(message.data);
-            case 'Listening':
+            case LISTENING:
                 return this._listening(message.data);
-            case 'SecondListening':
+            case SECOND_LISTENING:
                 return this._secondListening(message.data);
-            case 'Result':
+            case RESULT:
                 return this._initEndingPage(message.data);
             default:
                 return null;
@@ -38,7 +40,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     _initPreGame(data) {
         this.role = data.role;
         this.secondUser = data.secondUser;
-        if (this.role === 'listener') {
+        if (this.role === LISTENER) {
             this._initWaitingPage();
         }
     }
@@ -58,13 +60,13 @@ export default class MultiPlayerStrategy extends BaseStrategy {
             const musicBlob = recordingPage.getMusicBlob();
 
             const result = {
-                type: 'Recording',
+                type: RECORDING,
                 data: musicBlob
             };
 
             this._socket.send(result);
 
-            if (this.role === 'singer') {
+            if (this.role === SINGER) {
                 this._initWaitingPage();
             }
         });
@@ -73,7 +75,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     }
 
     _listening(data) {
-        if (this.role === 'singer') {
+        if (this.role === SINGER) {
             this.stage.addAudio(data, READY_MESSAGE1);
         } else {
             this._initListeningPage();
@@ -91,7 +93,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
             listeningPage.stopPlayer();
 
             const result = {
-                type: 'Listening',
+                type: LISTENING,
                 data: listeningPage.getUserInput()
             };
 
@@ -102,7 +104,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.message === 'right', score: data.score});
+        const endingPage = new Ending({isWin: data.message === RIGHT, score: data.score});
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });
@@ -112,7 +114,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
             this.next();
         };
 
-        if (this.role === 'singer') {
+        if (this.role === SINGER) {
             this.stage.ready();
             this.getResultButton.addEventListener('click', nextStage.bind(this));
         } else {

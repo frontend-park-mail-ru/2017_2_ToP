@@ -3,6 +3,8 @@ import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 
+import {RIGHT, WRONG} from '../../Constants/Game';
+
 const music = [
     'badtrip',
     'Владимирский централ'
@@ -42,7 +44,7 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
             listeningPage.stopPlayer();
 
             const answer = listeningPage.getUserInput();
-            const isWin = this.title.toLowerCase() === answer.toLowerCase() ? 'right' : 'wrong';
+            const isWin = this.title.toLowerCase() === answer.toLowerCase() ? RIGHT : WRONG;
 
             const result = {
                 message: isWin
@@ -55,37 +57,11 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.message === 'right', isOffline: true});
+        const endingPage = new Ending({isWin: data.message === RIGHT, isOffline: true});
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });
         this.stages.push(endingPage);
         this.next();
-    }
-
-    _initPreGame(data) {
-        // TODO: сделать компоненту PreGame
-        // if (this._endGame || !this._components[0]) {
-        //     return;
-        // }
-        //
-        // this._previousPage = this._components[0];
-        //
-        // this._components = [new Menu(this.getData())];
-        // const menu = this._components[0];
-        // menu.renderTo('content');
-        //
-        // const buttons = menu.getElement().getElementsByClassName('button');
-        // buttons[0].addEventListener('click', () => {
-        //     menu.remove();
-        //     this._components = [this._previousPage];
-        //     this._components.forEach(element => element.show());
-        // });
-        // buttons[1].addEventListener('click', () => {
-        //     menu.remove();
-        //     this._previousPage.remove();
-        //     this._components = [];
-        //     this.build();
-        // });
     }
 }
