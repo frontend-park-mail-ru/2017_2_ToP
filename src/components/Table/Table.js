@@ -7,9 +7,10 @@ import Button from '../Button/Button';
 export default class Table extends TopComponent {
     constructor(data) {
         super('div', {class: 'table'}, data);
+        this._build();
     }
 
-    render() {
+    _build() {
         this._innerHTML(table(this.getData()));
         const _table = this.getElement().querySelector('table');
         this.moreButton = new Button({
@@ -18,6 +19,12 @@ export default class Table extends TopComponent {
         });
         this.append(this.moreButton.getElement());
 
-        return this.getElement();
+        this._initButton();
+    }
+
+    _initButton() {
+        this.moreButton.getElement().addEventListener('click', () => {
+            console.log('Тут будет получение дынных');
+        });
     }
 }
