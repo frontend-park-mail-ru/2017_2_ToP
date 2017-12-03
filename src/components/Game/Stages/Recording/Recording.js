@@ -4,26 +4,13 @@ import AudioPlayer from '../../AudioPlayer/AudioPlayer';
 import RecordPlayer from '../../RecordPlayer/RecordPlayer';
 import Button from '../../../Button/Button';
 
-import './Recording.scss';
+import {RECORDING_TEXT1, RECORDING_TEXT2, SEND_BUTTON} from '../../../../constants/Stages';
 
-const textData = {
-    texts: [
-        'Прослушайте фрагмент песни, вам необходимо его спеть. Когда будете готовы, начните запись.',
-        'Постарайтесь уложиться в 10 секунд.'
-    ],
-    buttons: [
-        {
-            url: '',
-            text: 'Отправить',
-            class: 'button-form'
-        }
-    ]
-};
+import './Recording.scss';
 
 export default class Recording extends TopComponent {
     constructor(data) {
         super('div', {'class': 'recording-stage'}, data);
-        this._textData = textData;
         this._build();
     }
 
@@ -54,19 +41,11 @@ export default class Recording extends TopComponent {
 
     _build() {
         this._components = [
-            new GameText({
-                text: this._textData.texts[0]
-            }),
+            new GameText({text: RECORDING_TEXT1}),
             new AudioPlayer(this.getData()),
-            new GameText({
-                text: this._textData.texts[1]
-            }),
+            new GameText({text: RECORDING_TEXT2}),
             new RecordPlayer(),
-            new Button(
-                this._textData.buttons[0].text,
-                this._textData.buttons[0].url,
-                this._textData.buttons[0].class
-            )
+            new Button(SEND_BUTTON)
         ];
 
         this._components.forEach(element => {

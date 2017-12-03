@@ -3,10 +3,8 @@ import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 
-const music = [
-    'badtrip',
-    'Владимирский централ'
-];
+import {RIGHT, WRONG} from '../../Constants/Game';
+import MUSIC_LIST from '../../Constants/Singleplayer';
 
 export default class SinglePlayerOfflineStrategy extends BaseStrategy {
     constructor() {
@@ -14,8 +12,8 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
     }
 
     init() {
-        const fileId = Math.floor(Math.random() * Object.keys(music).length);
-        this.title = music[fileId];
+        const fileId = Math.floor(Math.random() * Object.keys(MUSIC_LIST).length);
+        this.title = MUSIC_LIST[fileId];
         this.file = `/static/music/${this.title}.mp3`;
 
         this._initRecordingPage(this.file);
@@ -42,7 +40,7 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
             listeningPage.stopPlayer();
 
             const answer = listeningPage.getUserInput();
-            const isWin = this.title.toLowerCase() === answer.toLowerCase() ? 'right' : 'wrong';
+            const isWin = this.title.toLowerCase() === answer.toLowerCase() ? RIGHT : WRONG;
 
             const result = {
                 message: isWin
@@ -55,37 +53,11 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.message === 'right', isOffline: true});
+        const endingPage = new Ending({isWin: data.message === RIGHT, isOffline: true});
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });
         this.stages.push(endingPage);
         this.next();
-    }
-
-    _initPreGame(data) {
-        // TODO: сделать компоненту PreGame
-        // if (this._endGame || !this._components[0]) {
-        //     return;
-        // }
-        //
-        // this._previousPage = this._components[0];
-        //
-        // this._components = [new Menu(this.getData())];
-        // const menu = this._components[0];
-        // menu.renderTo('content');
-        //
-        // const buttons = menu.getElement().getElementsByClassName('button');
-        // buttons[0].addEventListener('click', () => {
-        //     menu.remove();
-        //     this._components = [this._previousPage];
-        //     this._components.forEach(element => element.show());
-        // });
-        // buttons[1].addEventListener('click', () => {
-        //     menu.remove();
-        //     this._previousPage.remove();
-        //     this._components = [];
-        //     this.build();
-        // });
     }
 }

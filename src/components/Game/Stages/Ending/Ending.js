@@ -5,7 +5,7 @@ import TopImage from '../../../TopImage/TopImage';
 import BackButton from '../../../BackButton/BackButton';
 import VideoPlayer from '../../VideoPlayer/VideoPlayer';
 
-import UserService from '../../../../services/UserService/UserService';
+import {WIN, WIN_OFFLINE, WIN_VIDEO, LOSE, NEW_SCORE} from '../../../../constants/Stages';
 
 import './Ending.scss';
 
@@ -27,21 +27,18 @@ export default class Ending extends TopComponent {
         if (this.getData().isWin) {
             this._components = [
                 new GameText({
-                    text: 'Победа!',
+                    text: WIN,
                     title: true
                 }),
-                new VideoPlayer({
-                    src: '/static/video/win.mp4',
-                    type: 'video/mp4'
-                }),
+                new VideoPlayer(WIN_VIDEO),
                 new GameText({
-                    text: this.getData().isOffline ? 'В режиме оффлайн счет не работает ☹️' : `Ваш новый счет: ${this.getData().score}`
+                    text: this.getData().isOffline ? WIN_OFFLINE : NEW_SCORE + this.getData().score
                 })
             ];
         } else {
             this._components = [
                 new GameText({
-                    text: 'Вы проиграли',
+                    text: LOSE,
                     title: true
                 }),
                 new TopImage({

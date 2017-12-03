@@ -1,8 +1,12 @@
 import BaseStrategy from '../BaseStrategy';
+import PreGame from '../../../components/Game/Stages/PreGame/PreGame';
 import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 import SinglePlayerOfflineStrategy from './SinglePlayerOfflineStrategy';
+
+import {PREGAME_DATA, RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
+import {RIGHT, CONTINUE, NEWGAME} from '../../Constants/Game';
 
 export default class SinglePlayerStrategy extends BaseStrategy {
     constructor() {
@@ -23,13 +27,13 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     onMessage(event) {
         switch (event.data.type) {
-            case 'preGameData':
-                return this._initPreGame(event.data.data);
-            case 'Recording':
+            case PREGAME_DATA:
+                return this._initPreGame();
+            case RECORDING:
                 return this._initRecordingPage(event.data.data);
-            case 'Listening':
+            case LISTENING:
                 return this._initListeningPage(event.data.data);
-            case 'Result':
+            case RESULT:
                 return this._initEndingPage(event.data.data);
             default:
                 return null;
@@ -45,7 +49,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
             const musicBlob = recordingPage.getMusicBlob();
 
             const result = {
-                type: 'Recording',
+                type: RECORDING,
                 data: musicBlob
             };
 
@@ -62,7 +66,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
             listeningPage.stopPlayer();
 
             const result = {
-                type: 'Listening',
+                type: LISTENING,
                 data: listeningPage.getUserInput()
             };
 
@@ -73,7 +77,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.message === 'right', score: data.score});
+        const endingPage = new Ending({isWin: data.message === RIGHT, score: data.score});
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });
@@ -81,29 +85,23 @@ export default class SinglePlayerStrategy extends BaseStrategy {
         this.next();
     }
 
-    _initPreGame(data) {
-        // TODO: сделать компоненту PreGame
-        // if (this._endGame || !this._components[0]) {
-        //     return;
-        // }
-        //
-        // this._previousPage = this._components[0];
-        //
-        // this._components = [new Menu(this.getData())];
-        // const menu = this._components[0];
-        // menu.renderTo('content');
-        //
-        // const buttons = menu.getElement().getElementsByClassName('button');
-        // buttons[0].addEventListener('click', () => {
-        //     menu.remove();
-        //     this._components = [this._previousPage];
-        //     this._components.forEach(element => element.show());
-        // });
-        // buttons[1].addEventListener('click', () => {
-        //     menu.remove();
-        //     this._previousPage.remove();
-        //     this._components = [];
-        //     this.build();
-        // });
+    _initPreGame() {
+        const preGamePage = new PreGame();
+        preGamePage.getNewGameButton().addEventListener('click', () => {
+            const result = {
+                message: NEWGAME
+            };
+
+            this._socket.send(result);
+        });
+        preGamePage.getContinueButton().addEventListener('click', () => {
+            const result = {
+                message: CONTINUE
+            };
+
+            this._socket.send(result);
+        });
+        this.stages.push(preGamePage);
+        this.next();
     }
 }

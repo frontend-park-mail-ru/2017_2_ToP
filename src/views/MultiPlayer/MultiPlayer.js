@@ -6,9 +6,9 @@ import GameManager from '../../game/GameManager/GameManager';
 import loading from '../../components/Loading/Loading';
 
 import './Game.scss';
-import {SINGLEPLAYER} from '../../constants/Game';
+import {MULTIPLAYER} from '../../constants/Game';
 
-export default class SinglePlayer extends TopComponent {
+export default class MultiPlayer extends TopComponent {
     constructor() {
         super('div', {class: 'game'});
     }
@@ -39,6 +39,6 @@ export default class SinglePlayer extends TopComponent {
             return;
         }
 
-        this._gameManager = new GameManager(SINGLEPLAYER);
+        this._gameManager = new GameManager(MULTIPLAYER);
     }
 }
