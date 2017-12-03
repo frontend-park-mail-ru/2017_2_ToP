@@ -6,28 +6,12 @@ import Button from '../../../Button/Button';
 import Transport from '../../../../modules/Transport/Transport';
 import UserService from '../../../../services/UserService/UserService';
 
+import {LISTENING_TEXT1, LISTENING_TEXT2, TITLE_INPUT, SEND_BUTTON} from '../../../../constants/Stages';
+
 import './Listening.scss';
 
 const textData = {
-    method: 'post',
-    fields: [
-        {
-            type: 'text',
-            placeholder: 'Введите название песни...',
-            class: 'song-input'
-        }
-    ],
-    texts: [
-        'Записи склеены и перевернуты!',
-        'Сможете ли угадать оригинал?'
-    ],
-    buttons: [
-        {
-            url: '',
-            text: 'Отправить',
-            class: 'button-form'
-        }
-    ]
+    fields: [TITLE_INPUT]
 };
 
 export default class Listening extends TopComponent {
@@ -66,19 +50,11 @@ export default class Listening extends TopComponent {
 
     _build() {
         this._components = [
-            new GameText({
-                text: this._textData.texts[0]
-            }),
+            new GameText({text: LISTENING_TEXT1}),
             new AudioPlayer(this.getData()),
-            new GameText({
-                text: this._textData.texts[1]
-            }),
+            new GameText({text: LISTENING_TEXT2}),
             new GameInput(this._textData),
-            new Button(
-                this._textData.buttons[0].text,
-                this._textData.buttons[0].url,
-                this._textData.buttons[0].class
-            )
+            new Button(SEND_BUTTON)
         ];
 
         this._components.forEach(element => {

@@ -1,18 +1,12 @@
 import TopComponent from '../../../TopComponent/TopComponent';
 import Menu from '../../../Menu/Menu';
 
+import {NEWGAME_BUTTON, COUNTINUE_BUTTON} from '../../../../constants/Stages';
+
 const preGameData = {
     buttons: [
-        {
-            text: 'Продолжить',
-            url: '',
-            class: 'button-main'
-        },
-        {
-            text: 'Начать новую',
-            url: '',
-            class: 'button-main'
-        }
+        COUNTINUE_BUTTON,
+        NEWGAME_BUTTON
     ]
 };
 

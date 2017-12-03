@@ -3,7 +3,7 @@ import AudioPlayer from '../../AudioPlayer/AudioPlayer';
 import GameText from '../../GameText/GameText';
 import Button from '../../../Button/Button';
 
-import {READY_BUTTON} from '../../../../constants/stages';
+import {READY_BUTTON} from '../../../../constants/Stages';
 
 export default class Waiting extends TopComponent {
     constructor(data) {
