@@ -1,7 +1,8 @@
 import Main from './views/Main/Main';
-import SinglePlayer from './views/SinglePlayer/SinglePlayer';
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
+import SinglePlayer from './views/SinglePlayer/SinglePlayer';
+import MultiPlayer from './views/MultiPlayer/MultiPlayer';
 
 import Header from './components/Header/Header';
 import Loading from './components/Loading/Loading';
@@ -26,5 +27,9 @@ CreateTopRouter('main', [
     {
         path: '/singleplayer',
         component: SinglePlayer
+    },
+    {
+        path: '/multiplayer',
+        component: MultiPlayer
     }
 ], [new Header(), Loading, new TopComponent('div', {'class': 'content'})]);

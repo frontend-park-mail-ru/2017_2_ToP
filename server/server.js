@@ -12,6 +12,7 @@ app.use('/', express.static('src', {
 app.use('/signIn', express.static('src'));
 app.use('/signUp', express.static('src'));
 app.use('/singleplayer', express.static('src'));
+app.use('/multiplayer', express.static('src'));
 
 app.use(body.json());
 app.use(cookie());

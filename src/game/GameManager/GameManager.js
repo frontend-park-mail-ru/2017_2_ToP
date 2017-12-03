@@ -1,4 +1,5 @@
 import SinglePlayerStrategy from '../Strategy/Singleplayer/SinglePlayerStrategy';
+import MultiPlayerStrategy from '../Strategy/Multiplayer/MultiPlayerStrategy';
 
 export default class GameManager {
     constructor(type) {
@@ -10,6 +11,8 @@ export default class GameManager {
     start() {
         if (this._type === 'singleplayer') {
             this.strategy = new SinglePlayerStrategy();
+        } else {
+            this.strategy = new MultiPlayerStrategy();
         }
 
         return null;
