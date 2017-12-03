@@ -10,6 +10,7 @@ import TopComponent from './components/TopComponent/TopComponent';
 
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
+import Scoreboard from './views/Scoreboard/Scoreboard';
 
 CreateTopRouter('main', [
     {
@@ -31,5 +32,9 @@ CreateTopRouter('main', [
     {
         path: '/multiplayer',
         component: MultiPlayer
+    },
+    {
+        path: '/scoreboard',
+        component: Scoreboard
     }
 ], [new Header(), Loading, new TopComponent('div', {'class': 'content'})]);
