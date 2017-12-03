@@ -34,7 +34,7 @@ const data = {
 
 export default class SignIn extends TopComponent {
     constructor() {
-        super('div', {}, data);
+        super('div', {class: 'content__signin'}, data);
     }
 
     show() {
@@ -43,17 +43,7 @@ export default class SignIn extends TopComponent {
             return;
         }
 
-        if (this._components) {
-            this._components.forEach(element => element.show());
-        } else {
-            this.build();
-        }
-    }
-
-    hide() {
-        if (this._components) {
-            this._components.forEach(element => element.hide());
-        }
+        super.show();
     }
 
     build() {
@@ -63,7 +53,9 @@ export default class SignIn extends TopComponent {
             this._components = [
                 new Form(this.getData())
             ];
-            this._components.forEach(element => element.renderTo('content'));
+            // this._components.forEach(element => element.renderTo('content'));
+            this._components.forEach(element => this.append(element.render()));
+            this.renderTo('content');
         }
     }
 }

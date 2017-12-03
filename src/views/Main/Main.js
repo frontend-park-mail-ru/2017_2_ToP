@@ -45,6 +45,12 @@ const logged = {
             url: '/settings'
         },
         {
+            name: 'scoreboard',
+            text: 'Таблица лидеров',
+            class: 'button-second',
+            url: '/scoreboard'
+        },
+        {
             name: 'logout',
             text: 'Выйти',
             class: 'button-second',
@@ -55,21 +61,7 @@ const logged = {
 
 export default class Main extends TopComponent {
     constructor() {
-        super('div');
-    }
-
-    show() {
-        if (this._components) {
-            this._components.forEach(element => element.show());
-        } else {
-            this.build();
-        }
-    }
-
-    hide() {
-        if (this._components) {
-            this._components.forEach(element => element.hide());
-        }
+        super('div', {class: 'content__main'});
     }
 
     rerender() {
@@ -90,6 +82,7 @@ export default class Main extends TopComponent {
             new Menu(this.getData()),
             new Footer()
         ];
-        this._components.forEach(element => element.renderTo('content'));
+        this._components.forEach(element => this.append(element.render()));
+        this.renderTo('content');
     }
 }
