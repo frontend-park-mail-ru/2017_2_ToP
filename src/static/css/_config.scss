@@ -6,18 +6,22 @@
 }
 
 //  Colors
-$blue:       #19b9e7;
-$pink:       #f008b7;
-$white:         #fff;
-$show-red: #e71919;
-$dark-red: #a00b3b;
+$blue:        #19b9e7;
+$pink:        #f008b7;
+$white:       #fff;
+$show-red:    #e71919;
+$dark-red:    #a00b3b;
 
-$gray:          #909090;
-$pastel-red:     rgb(171, 86, 75);
-$dark-gray:     darken($gray, 10%);
-$red:            #e71919;
-$black: rgba(0, 0, 0, 0.5);
+$gray:        #909090;
+$pastel-red:  rgb(171, 86, 75);
+$dark-gray:   darken($gray, 10%);
+$red:         #e71919;
+$black:       rgba(0, 0, 0, 0.5);
 $light-black: rgba(0, 0, 0, 0.4);
+
+$cell-odd:    #fdfdfd;
+$cell-even:   #eee;
+$cell-text-color: #333;
 
 //  Apoj colors
 $apoj-color: $show-red !default;
@@ -33,6 +37,7 @@ $error-background: darken($error-color, 20%) !default;
 $base-font-family: Montserrat !default;
 $quote-font-family: Pacifico !default;
 $header-font-family: BebasNeueBold !default;
+$table-font-family: Helvetica;
 
 $apoj-text-color: $gray !default;
 
