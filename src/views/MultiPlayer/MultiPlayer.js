@@ -6,6 +6,7 @@ import GameManager from '../../game/GameManager/GameManager';
 import loading from '../../components/Loading/Loading';
 
 import './Game.scss';
+import {MULTIPLAYER} from '../../constants/Game';
 
 export default class MultiPlayer extends TopComponent {
     constructor() {
@@ -38,6 +39,6 @@ export default class MultiPlayer extends TopComponent {
             return;
         }
 
-        this._gameManager = new GameManager('multiplayer');
+        this._gameManager = new GameManager(MULTIPLAYER);
     }
 }

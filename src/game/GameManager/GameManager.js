@@ -1,5 +1,6 @@
 import SinglePlayerStrategy from '../Strategy/Singleplayer/SinglePlayerStrategy';
 import MultiPlayerStrategy from '../Strategy/Multiplayer/MultiPlayerStrategy';
+import {MULTIPLAYER, SINGLEPLAYER} from '../../constants/Game';
 
 export default class GameManager {
     constructor(type) {
@@ -9,13 +10,16 @@ export default class GameManager {
     }
 
     start() {
-        if (this._type === 'singleplayer') {
-            this.strategy = new SinglePlayerStrategy();
-        } else {
-            this.strategy = new MultiPlayerStrategy();
+        switch (this._type) {
+            case SINGLEPLAYER:
+                this.strategy = new SinglePlayerStrategy();
+                break;
+            case MULTIPLAYER:
+                this.strategy = new MultiPlayerStrategy();
+                break;
+            default:
+                console.log(`Unexpected type: ${this._type}`);
         }
-
-        return null;
     }
 
     hide() {

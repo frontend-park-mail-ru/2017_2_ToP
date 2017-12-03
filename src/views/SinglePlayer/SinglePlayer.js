@@ -6,6 +6,7 @@ import GameManager from '../../game/GameManager/GameManager';
 import loading from '../../components/Loading/Loading';
 
 import './Game.scss';
+import {SINGLEPLAYER} from '../../constants/Game';
 
 export default class SinglePlayer extends TopComponent {
     constructor() {
@@ -38,6 +39,6 @@ export default class SinglePlayer extends TopComponent {
             return;
         }
 
-        this._gameManager = new GameManager('singleplayer');
+        this._gameManager = new GameManager(SINGLEPLAYER);
     }
 }
