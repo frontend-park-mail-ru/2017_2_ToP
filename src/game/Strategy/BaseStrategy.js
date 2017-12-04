@@ -9,7 +9,7 @@ export default class BaseStrategy {
 
         this._socket.onopen = () => {
             console.log('opened');
-            this._socket.send({
+            this.send({
                 mode
             });
         };
@@ -18,6 +18,10 @@ export default class BaseStrategy {
         this.stages = [];
         this.scene = new GameScene();
         this.scene.setStage(null);
+    }
+
+    send(data) {
+        this._socket.send(JSON.stringify(data));
     }
 
     next() {

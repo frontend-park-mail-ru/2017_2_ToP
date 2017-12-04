@@ -53,7 +53,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
                 data: musicBlob
             };
 
-            this._socket.send(result);
+            this.send(result);
         });
         this.stages.push(recordingPage);
         this.next();
@@ -70,7 +70,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
                 data: listeningPage.getUserInput()
             };
 
-            this._socket.send(result);
+            this.send(result);
         });
         this.stages.push(listeningPage);
         this.next();
@@ -92,14 +92,14 @@ export default class SinglePlayerStrategy extends BaseStrategy {
                 message: NEWGAME
             };
 
-            this._socket.send(result);
+            this.send(result);
         });
         preGamePage.getContinueButton().addEventListener('click', () => {
             const result = {
                 message: CONTINUE
             };
 
-            this._socket.send(result);
+            this.send(result);
         });
         this.stages.push(preGamePage);
         this.next();

@@ -10,7 +10,7 @@ import {SINGER, LISTENER, RECORDNG_MESSAGE, READY_MESSAGE1, READY_MESSAGE2, GOT_
 
 export default class MultiPlayerStrategy extends BaseStrategy {
     constructor() {
-        super('apoj.herokuapp.com/multiplayer');
+        super('Multiplayer');
 
         this._socket.onopen = () => {
             this._socket.onmessage = this.onMessage;
@@ -33,6 +33,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
             case RESULT:
                 return this._initEndingPage(message.data);
             default:
+                console.log('Unexpected message', message);
                 return null;
         }
     }
@@ -64,7 +65,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
                 data: musicBlob
             };
 
-            this._socket.send(result);
+            this.send(result);
 
             if (this.role === SINGER) {
                 this._initWaitingPage();
@@ -97,7 +98,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
                 data: listeningPage.getUserInput()
             };
 
-            this._socket.send(result);
+            this.send(result);
         });
         this.stages.push(listeningPage);
         this.next();
