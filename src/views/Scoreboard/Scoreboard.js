@@ -7,9 +7,9 @@ import Button from '../../components/Button/Button';
 
 const TMP_DATA = {
     head: [
-        'Имя',
-        'Одиночная игра',
-        'Многопользовательская'
+        'User',
+        'Singleplayer',
+        'Multiplayer'
     ],
     body: [
         ['test', 1000, 1000],
