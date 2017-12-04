@@ -10,13 +10,12 @@ import {RIGHT, CONTINUE, NEWGAME} from '../../Constants/Game';
 
 export default class SinglePlayerStrategy extends BaseStrategy {
     constructor() {
-        super('apoj.herokuapp.com/singleplayer');
+        super('Singleplayer');
 
-        this._socket.onopen = () => {
-            this._socket.onmessage = this.onMessage;
-        };
+        this._socket.onmessage = this.onMessage;
 
         this._socket.onclose = event => {
+            console.log('closed');
             if (event.code === 1006) {
                 delete this._socket;
                 Object.setPrototypeOf(this, SinglePlayerOfflineStrategy.prototype);
@@ -36,6 +35,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
             case RESULT:
                 return this._initEndingPage(event.data.data);
             default:
+                console.log('Unexpected message', event.data);
                 return null;
         }
     }

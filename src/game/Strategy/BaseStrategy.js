@@ -1,11 +1,18 @@
 import GameScene from '../GameScene/GameScene';
 
+const PATH = 'localhost:8081/mechanic';
+
 export default class BaseStrategy {
-    constructor(path = null) {
-        if (path) {
-            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-            this._socket = new WebSocket(`${protocol}//${path}`);
-        }
+    constructor(mode) {
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        this._socket = new WebSocket(`${protocol}//${PATH}`);
+
+        this._socket.onopen = () => {
+            console.log('opened');
+            this._socket.send({
+                mode
+            });
+        };
 
         this.stage = null;
         this.stages = [];
