@@ -24,18 +24,18 @@ export default class SinglePlayerStrategy extends BaseStrategy {
         };
     }
 
-    onMessage(event) {
-        switch (event.data.type) {
+    onMessage({data: message}) {
+        switch (message.type) {
             case PREGAME_DATA:
                 return this._initPreGame();
             case RECORDING:
-                return this._initRecordingPage(event.data.data);
+                return this._initRecordingPage(message.data);
             case LISTENING:
-                return this._initListeningPage(event.data.data);
+                return this._initListeningPage(message.data);
             case RESULT:
-                return this._initEndingPage(event.data.data);
+                return this._initEndingPage(message.data);
             default:
-                console.log('Unexpected message', event.data);
+                console.log('Unexpected message', message);
                 return null;
         }
     }
