@@ -1,0 +1,7 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="cells">
+    <fest:for iterate="cells" index="i">
+        <td>
+            <fest:value>cells[i]</fest:value>
+        </td>
+    </fest:for>
+</fest:template>
