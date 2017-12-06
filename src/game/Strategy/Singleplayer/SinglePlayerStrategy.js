@@ -4,6 +4,7 @@ import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 import SinglePlayerOfflineStrategy from './SinglePlayerOfflineStrategy';
+import {b64toBlob, BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
 
 import {PREGAME_DATA, RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
 import {RIGHT, CONTINUE, NEWGAME} from '../../Constants/Game';
@@ -12,7 +13,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     constructor() {
         super('Singleplayer');
 
-        this._socket.onmessage = this.onMessage;
+        this._socket.onmessage = this.onMessage.bind(this);
 
         this._socket.onclose = event => {
             console.log('closed');
@@ -24,7 +25,8 @@ export default class SinglePlayerStrategy extends BaseStrategy {
         };
     }
 
-    onMessage({data: message}) {
+    onMessage({data: message_string}) {
+        const message = JSON.parse(message_string);
         switch (message.type) {
             case PREGAME_DATA:
                 return this._initPreGame();
@@ -41,16 +43,20 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     }
 
     _initRecordingPage(data) {
-        const recordingPage = new Recording({musicSource: data});
-        recordingPage.getSubmitButton().addEventListener('click', () => {
+        const blob = b64toBlob(data, 'audio/wav');
+        const src = (window.URL || window.webkitURL).createObjectURL(blob);
+
+        const recordingPage = new Recording({musicSource: src});
+        recordingPage.getSubmitButton().addEventListener('click', async () => {
             recordingPage.hide();
             recordingPage.stopPlayer();
 
             const musicBlob = recordingPage.getMusicBlob();
+            const musicBase64 = await BlobToB64(musicBlob);
 
             const result = {
                 type: RECORDING,
-                data: musicBlob
+                data: musicBase64
             };
 
             this.send(result);
