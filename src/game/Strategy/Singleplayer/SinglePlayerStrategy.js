@@ -8,10 +8,11 @@ import {b64toBlob, BlobToB64} from '../../../modules/Base64Converter/Base64Conve
 
 import {PREGAME_DATA, RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
 import {CONTINUE, NEWGAME} from '../../Constants/Game';
+import {SINGLEPLAYER} from '../../../constants/Game';
 
 export default class SinglePlayerStrategy extends BaseStrategy {
     constructor() {
-        super('Singleplayer');
+        super(SINGLEPLAYER);
 
         this._socket.onmessage = this.onMessage.bind(this);
 
@@ -48,8 +49,12 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
         const recordingPage = new Recording({musicSource: src});
         recordingPage.getSubmitButton().addEventListener('click', async () => {
-            recordingPage.hide();
+            if (!recordingPage.haveRecord()) {
+                return;
+            }
+
             recordingPage.stopPlayer();
+            this.next();
 
             const musicBlob = recordingPage.getMusicBlob();
             const musicBase64 = await BlobToB64(musicBlob);
@@ -71,8 +76,8 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
         const listeningPage = new Listening({musicSource: src});
         listeningPage.getSubmitButton().addEventListener('click', () => {
-            listeningPage.hide();
             listeningPage.stopPlayer();
+            this.next();
 
             const result = {
                 type: LISTENING,
