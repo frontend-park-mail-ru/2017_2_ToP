@@ -9,8 +9,9 @@ import {RECORDING_TEXT1, RECORDING_TEXT2, SEND_BUTTON} from '../../../../constan
 import './Recording.scss';
 
 export default class Recording extends TopComponent {
-    constructor(data) {
+    constructor(data, autoreverse = false) {
         super('div', {'class': 'recording-stage'}, data);
+        this.autoreverse = autoreverse;
         this._build();
     }
 
@@ -44,7 +45,7 @@ export default class Recording extends TopComponent {
             new GameText({text: RECORDING_TEXT1}),
             new AudioPlayer(this.getData()),
             new GameText({text: RECORDING_TEXT2}),
-            new RecordPlayer(),
+            new RecordPlayer(this.autoreverse),
             new Button(SEND_BUTTON)
         ];
 
