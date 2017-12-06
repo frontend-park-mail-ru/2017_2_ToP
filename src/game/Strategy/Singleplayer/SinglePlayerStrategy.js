@@ -66,7 +66,10 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     }
 
     _initListeningPage(data) {
-        const listeningPage = new Listening({musicSource: data});
+        const blob = b64toBlob(data, 'audio/wav');
+        const src = (window.URL || window.webkitURL).createObjectURL(blob);
+
+        const listeningPage = new Listening({musicSource: src});
         listeningPage.getSubmitButton().addEventListener('click', () => {
             listeningPage.hide();
             listeningPage.stopPlayer();
