@@ -7,7 +7,7 @@ import SinglePlayerOfflineStrategy from './SinglePlayerOfflineStrategy';
 import {b64toBlob, BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
 
 import {PREGAME_DATA, RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
-import {RIGHT, CONTINUE, NEWGAME} from '../../Constants/Game';
+import {CONTINUE, NEWGAME} from '../../Constants/Game';
 
 export default class SinglePlayerStrategy extends BaseStrategy {
     constructor() {
@@ -35,7 +35,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
             case LISTENING:
                 return this._initListeningPage(message.data);
             case RESULT:
-                return this._initEndingPage(message.data);
+                return this._initEndingPage(message);
             default:
                 console.log('Unexpected message', message);
                 return null;
@@ -86,7 +86,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.message === RIGHT, score: data.score});
+        const endingPage = new Ending({isWin: data.result, score: data.score});
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });
