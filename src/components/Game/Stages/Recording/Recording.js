@@ -32,6 +32,10 @@ export default class Recording extends TopComponent {
         this._components[3].stop();
     }
 
+    haveRecord() {
+        return this._components[3].haveRecord;
+    }
+
     getMusic() {
         this._components[1].setSource(this.getData().musicSource);
     }

@@ -16,6 +16,7 @@ export default class RecordPlayer extends TopComponent {
     constructor(autoreverse = false) {
         super('div', {'class': 'record-player'});
         this.autoreverse = autoreverse;
+        this.haveRecord = false;
     }
 
     render() {
@@ -67,6 +68,7 @@ export default class RecordPlayer extends TopComponent {
 
     start() {
         this.isRecording = true;
+        this.haveRecord = true;
 
         this.stopButton.style.display = 'block';
         this.startButton.style.display = 'none';
