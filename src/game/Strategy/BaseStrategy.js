@@ -25,11 +25,6 @@ export default class BaseStrategy {
     }
 
     next() {
-        if (this.stages.length === 0) {
-            this.finish();
-            return;
-        }
-
         this.stage = this.stages.shift();
         this.scene.setStage(this.stage);
     }
