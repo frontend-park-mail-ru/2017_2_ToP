@@ -4,7 +4,7 @@ const PATH = 'apoj.herokuapp.com/mechanic';
 
 export default class BaseStrategy {
     constructor(mode) {
-        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const protocol = 'wss:'; // window.location.protocol === 'https:' ? 'wss:' : 'ws:';
         this._socket = new WebSocket(`${protocol}//${PATH}`);
 
         this._socket.onopen = () => {
