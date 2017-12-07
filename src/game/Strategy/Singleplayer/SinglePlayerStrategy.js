@@ -4,7 +4,7 @@ import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 import SinglePlayerOfflineStrategy from './SinglePlayerOfflineStrategy';
-import {b64toBlob, BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
+import {BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
 
 import {PREGAME_DATA, RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
 import {CONTINUE, NEWGAME} from '../../Constants/Game';
@@ -44,10 +44,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     }
 
     _initRecordingPage(data) {
-        const blob = b64toBlob(data, 'audio/wav');
-        const src = (window.URL || window.webkitURL).createObjectURL(blob);
-
-        const recordingPage = new Recording({musicSource: src});
+        const recordingPage = new Recording({musicBase64: data});
         recordingPage.getSubmitButton().addEventListener('click', async () => {
             if (!recordingPage.haveRecord()) {
                 return;
@@ -71,10 +68,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     }
 
     _initListeningPage(data) {
-        const blob = b64toBlob(data, 'audio/wav');
-        const src = (window.URL || window.webkitURL).createObjectURL(blob);
-
-        const listeningPage = new Listening({musicSource: src});
+        const listeningPage = new Listening({musicBase64: data});
         listeningPage.getSubmitButton().addEventListener('click', () => {
             listeningPage.stopPlayer();
             this.next();
