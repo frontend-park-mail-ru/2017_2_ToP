@@ -17,7 +17,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
         this._socket.onmessage = this.onMessage.bind(this);
 
         this._socket.onclose = event => {
-            console.log('closed');
+            console.log(`closed(${event.code}): ${event.reason}`);
             if (event.code === 1006) {
                 delete this._socket;
                 Object.setPrototypeOf(this, SinglePlayerOfflineStrategy.prototype);
