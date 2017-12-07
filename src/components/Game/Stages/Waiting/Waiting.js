@@ -5,6 +5,8 @@ import Button from '../../../Button/Button';
 
 import {READY_BUTTON} from '../../../../constants/Stages';
 
+import './Waiting.scss';
+
 export default class Waiting extends TopComponent {
     constructor(data) {
         super('div', {'class': 'waiting-stage'}, data);
