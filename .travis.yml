@@ -5,7 +5,7 @@ node_js:
 
 branches:
   only:
-  - backend
+  - game-test
 
 deploy:
   provider: heroku
