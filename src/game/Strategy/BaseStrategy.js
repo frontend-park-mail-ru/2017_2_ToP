@@ -1,6 +1,6 @@
 import GameScene from '../GameScene/GameScene';
 
-const PATH = 'localhost:8081/mechanic';
+const PATH = 'apoj.herokuapp.com/mechanic';
 
 export default class BaseStrategy {
     constructor(mode) {
