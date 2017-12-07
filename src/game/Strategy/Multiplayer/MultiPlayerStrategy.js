@@ -12,7 +12,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     constructor() {
         super(MULTIPLAYER);
 
-        this._socket.onmessage = this.onMessage;
+        this._socket.onmessage = this.onMessage.bind(this);
 
         this.role = null;
         this.secondUser = null;
