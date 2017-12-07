@@ -3,7 +3,7 @@ import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 import Waiting from '../../../components/Game/Stages/Waiting/Waiting';
-import {b64toBlob, BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
+import {BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
 
 
 import {PREGAME_DATA, RECORDING, SECOND_RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
@@ -55,10 +55,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     }
 
     _initRecordingPage(data) {
-        const blob = b64toBlob(data, 'audio/wav');
-        const src = (window.URL || window.webkitURL).createObjectURL(blob);
-
-        const recordingPage = new Recording({musicSource: src});
+        const recordingPage = new Recording({musicBase64: data});
         recordingPage.getSubmitButton().addEventListener('click', async () => {
             if (!recordingPage.haveRecord()) {
                 return;
@@ -86,30 +83,24 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     }
 
     _recording(data) {
-        const blob = b64toBlob(data, 'audio/wav');
-        const src = (window.URL || window.webkitURL).createObjectURL(blob);
-
         if (this.role === SINGER) {
-            this.stage.addAudio(src, READY_MESSAGE1);
+            this.stage.addAudio(data, READY_MESSAGE1);
         } else {
             this._initRecordingPage(data);
         }
     }
 
     _listening(data) {
-        const blob = b64toBlob(data, 'audio/wav');
-        const src = (window.URL || window.webkitURL).createObjectURL(blob);
-
         if (this.role === SINGER) {
-            this.stage.addAudio(src, READY_MESSAGE2);
+            this.stage.addAudio(data, READY_MESSAGE2);
             this.stage.setStatus(WAIT_ANSWER);
         } else {
-            this._initListeningPage(src);
+            this._initListeningPage(data);
         }
     }
 
     _initListeningPage(data) {
-        const listeningPage = new Listening({musicSource: data});
+        const listeningPage = new Listening({musicBase64: data});
         listeningPage.getSubmitButton().addEventListener('click', () => {
             listeningPage.hide();
             listeningPage.stopPlayer();

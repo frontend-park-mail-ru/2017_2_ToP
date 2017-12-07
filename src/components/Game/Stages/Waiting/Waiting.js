@@ -18,10 +18,10 @@ export default class Waiting extends TopComponent {
         return this.getElement();
     }
 
-    addAudio(source, text) {
+    addAudio(data, text) {
         this._components.push(
             new GameText({text}),
-            new AudioPlayer({musicSource: source})
+            new AudioPlayer({musicBase64: data})
         );
         this._rerender();
     }
