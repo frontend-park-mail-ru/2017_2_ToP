@@ -125,19 +125,19 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.result, score: data.score});
-        endingPage.getBackButton().addEventListener('click', () => {
-            this.finish();
-        });
-
         const nextStage = () => {
+            const endingPage = new Ending({isWin: data.result, score: data.score});
+            endingPage.getBackButton().addEventListener('click', () => {
+                this.finish();
+            });
+
             this.stages.push(endingPage);
             this.next();
         };
 
         if (this.role === SINGER) {
             this.stage.ready();
-            this.getResultButton.addEventListener('click', nextStage.bind(this));
+            this.stage.getResultButton().addEventListener('click', nextStage.bind(this));
         } else {
             nextStage();
         }
