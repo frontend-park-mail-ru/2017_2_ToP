@@ -13,7 +13,7 @@ export const NEW_SCORE = 'Ваш новый счет: ';
 // buttons/video/inputs
 export const READY_BUTTON = {
     url: '',
-    text: 'Подвести итоги',
+    text: 'Узнать результат',
     class: 'button-form'
 };
 export const SEND_BUTTON = {

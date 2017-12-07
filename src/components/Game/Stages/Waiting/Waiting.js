@@ -19,19 +19,18 @@ export default class Waiting extends TopComponent {
     }
 
     addAudio(source, text) {
-        this._components.unshift(
+        this._components.push(
             new GameText({text}),
             new AudioPlayer({musicSource: source})
         );
         this._rerender();
     }
 
-    changeStatus(text) {
-        this.status.setText(text);
+    setStatus(text) {
+        this.status.setText({text});
     }
 
     ready() {
-        this.status.remove();
         this.resultButton = new Button(READY_BUTTON);
         this._components.push(this.resultButton);
         this._rerender();

@@ -7,7 +7,7 @@ import {b64toBlob, BlobToB64} from '../../../modules/Base64Converter/Base64Conve
 
 
 import {PREGAME_DATA, RECORDING, SECOND_RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
-import {SINGER, LISTENER, RECORDNG_MESSAGE, READY_MESSAGE1, READY_MESSAGE2} from '../../Constants/Multiplayer';
+import {SINGER, LISTENER, RECORDNG_MESSAGE, READY_MESSAGE1, READY_MESSAGE2, GOT_RESULT, WAIT_ANSWER} from '../../Constants/Multiplayer';
 import {MULTIPLAYER} from '../../../constants/Game';
 
 export default class MultiPlayerStrategy extends BaseStrategy {
@@ -102,6 +102,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
 
         if (this.role === SINGER) {
             this.stage.addAudio(src, READY_MESSAGE2);
+            this.stage.setStatus(WAIT_ANSWER);
         } else {
             this._initListeningPage(src);
         }
@@ -137,6 +138,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
 
         if (this.role === SINGER) {
             this.stage.ready();
+            this.stage.setStatus(GOT_RESULT);
             this.stage.getResultButton().addEventListener('click', nextStage.bind(this));
         } else {
             nextStage();
