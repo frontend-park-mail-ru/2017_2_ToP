@@ -128,8 +128,7 @@ export default class FormView extends TopComponent {
                     console.log(`login: ${response.login}\nemail: ${response.email}`);
 
                     UserService.user = response;
-                })
-                .then(() => {
+
                     const route = router.getRoute('');
                     if (!route.getView()) {
                         route.createView();
@@ -137,10 +136,9 @@ export default class FormView extends TopComponent {
                     route.getView().rerender();
                     router.go('/');
                 })
-                .catch(response => {
-                    return response.json();
-                })
-                .then(json => {
+                .catch(async response => {
+                    const json = await response.json();
+
                     const main = this.getElement();
                     const formError = main.getElementsByClassName('serverError')[0];
                     formError.name = 'formError';
