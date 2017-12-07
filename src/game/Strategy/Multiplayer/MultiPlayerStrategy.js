@@ -3,6 +3,8 @@ import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 import Waiting from '../../../components/Game/Stages/Waiting/Waiting';
+import {b64toBlob, BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
+
 
 import {PREGAME_DATA, RECORDING, LISTENING, SECOND_LISTENING, RESULT} from '../../Constants/WebsocketTypes';
 import {SINGER, LISTENER, RECORDNG_MESSAGE, READY_MESSAGE1, READY_MESSAGE2} from '../../Constants/Multiplayer';
@@ -52,16 +54,24 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     }
 
     _initRecordingPage(data) {
-        const recordingPage = new Recording({musicSource: data});
-        recordingPage.getSubmitButton().addEventListener('click', () => {
-            recordingPage.hide();
+        const blob = b64toBlob(data, 'audio/wav');
+        const src = (window.URL || window.webkitURL).createObjectURL(blob);
+
+        const recordingPage = new Recording({musicSource: src});
+        recordingPage.getSubmitButton().addEventListener('click', async () => {
+            if (!recordingPage.haveRecord()) {
+                return;
+            }
+
             recordingPage.stopPlayer();
+            this.next();
 
             const musicBlob = recordingPage.getMusicBlob();
+            const musicBase64 = await BlobToB64(musicBlob);
 
             const result = {
                 type: RECORDING,
-                data: musicBlob
+                data: musicBase64
             };
 
             this.send(result);
@@ -75,15 +85,21 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     }
 
     _listening(data) {
+        const blob = b64toBlob(data, 'audio/wav');
+        const src = (window.URL || window.webkitURL).createObjectURL(blob);
+
         if (this.role === SINGER) {
-            this.stage.addAudio(data, READY_MESSAGE1);
+            this.stage.addAudio(src, READY_MESSAGE1);
         } else {
-            this._initListeningPage();
+            this._initListeningPage(src);
         }
     }
 
     _secondListening(data) {
-        this.stage.addAudio(data, READY_MESSAGE2);
+        const blob = b64toBlob(data, 'audio/wav');
+        const src = (window.URL || window.webkitURL).createObjectURL(blob);
+
+        this.stage.addAudio(src, READY_MESSAGE2);
     }
 
     _initListeningPage(data) {
