@@ -5,25 +5,24 @@ import Ending from '../../../components/Game/Stages/Ending/Ending';
 import Waiting from '../../../components/Game/Stages/Waiting/Waiting';
 
 import {PREGAME_DATA, RECORDING, LISTENING, SECOND_LISTENING, RESULT} from '../../Constants/WebsocketTypes';
-import {SINGER, LISTENER, RECORDNG_MESSAGE, READY_MESSAGE1, READY_MESSAGE2, GOT_RESULT} from '../../Constants/Multiplayer';
+import {SINGER, LISTENER, RECORDNG_MESSAGE, READY_MESSAGE1, READY_MESSAGE2} from '../../Constants/Multiplayer';
 import {MULTIPLAYER} from '../../../constants/Game';
 
 export default class MultiPlayerStrategy extends BaseStrategy {
     constructor() {
         super(MULTIPLAYER);
 
-        this._socket.onopen = () => {
-            this._socket.onmessage = this.onMessage;
-        };
+        this._socket.onmessage = this.onMessage;
 
         this.role = null;
         this.secondUser = null;
     }
 
-    onMessage({data: message}) {
+    onMessage({data: message_string}) {
+        const message = JSON.parse(message_string);
         switch (message.type) {
             case PREGAME_DATA:
-                return this._initPreGame(message.data);
+                return this._initPreGame(message);
             case RECORDING:
                 return this._initRecordingPage(message.data);
             case LISTENING:
