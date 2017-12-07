@@ -14,7 +14,7 @@ deploy:
   app: apoj-test
   on:
     repo: frontend-park-mail-ru/2017_2_ToP
-    branch: backend
+    branch: game-test
   skip_cleanup: true
 
 script:
