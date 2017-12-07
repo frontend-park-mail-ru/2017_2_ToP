@@ -22,7 +22,9 @@
             </fest:for>
 
             <fest:for iterate="json.buttons" index="i">
-                <fest:include context="json.buttons[i]" src="../Button/Button.xml"/>
+                <div class="form__button {json.buttons[i].class}" data-url="{json.buttons[i].url}">
+                    <fest:value>json.buttons[i].text</fest:value>
+                </div>
             </fest:for>
         </form>
     </div>

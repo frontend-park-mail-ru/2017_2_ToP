@@ -1,16 +1,23 @@
 import Menu from '../../components/Menu/Menu';
-import Description from '../../components/Description/Description';
+import Footer from '../../components/Footer/Footer';
 import TopComponent from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
 
 const unlogged = {
     buttons: [
         {
-            text: 'Авторизация',
+            text: 'Играть',
+            class: 'button-main',
+            url: '/singleplayer'
+        },
+        {
+            text: 'Войти',
+            class: 'button-second',
             url: '/signin'
         },
         {
             text: 'Регистрация',
+            class: 'button-second',
             url: '/signup'
         }
     ]
@@ -20,23 +27,27 @@ const logged = {
     method: 'get',
     buttons: [
         {
-            name: 'singleplayer',
-            text: 'Одиночная игра',
-            url: '/singleplayer'
-        },
-        {
             name: 'multiplayer',
-            text: 'Многопользовательская игра',
+            text: 'Играть',
+            class: 'button-main',
             url: '/multiplayer'
         },
         {
-            name: 'about',
-            text: 'Об игре',
-            url: '/about'
+            name: 'singleplayer',
+            text: 'Тренировка',
+            class: 'button-main',
+            url: '/singleplayer'
+        },
+        {
+            name: 'settings',
+            text: 'Профиль',
+            class: 'button-second',
+            url: '/settings'
         },
         {
             name: 'logout',
             text: 'Выйти',
+            class: 'button-second',
             url: '/'
         }
     ]
@@ -75,7 +86,10 @@ export default class Main extends TopComponent {
         } else {
             this.setData(unlogged);
         }
-        this._components = [new Description(this.getData()), new Menu(this.getData())];
+        this._components = [
+            new Menu(this.getData()),
+            new Footer()
+        ];
         this._components.forEach(element => element.renderTo('content'));
     }
 }

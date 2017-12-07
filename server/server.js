@@ -6,10 +6,13 @@ const fs = require('fs');
 
 const app = express();
 
-app.use('/', express.static('src'));
+app.use('/', express.static('src', {
+    maxage: '30min'
+}));
 app.use('/signIn', express.static('src'));
 app.use('/signUp', express.static('src'));
 app.use('/singleplayer', express.static('src'));
+app.use('/multiplayer', express.static('src'));
 
 app.use(body.json());
 app.use(cookie());
@@ -46,6 +49,8 @@ app.post('/signup', (req, res) => {
             'password': password,
             'singleScore': 0
         };
+    } else {
+        return res.status(400).json({message: 'Логин или Email уже существует'});
     }
     const id = uuid();
     ids[id] = {
@@ -61,7 +66,7 @@ app.post('/signin', (req, res) => {
     const password = req.body.password;
 
     if (!users[login] || users[login].password !== password) {
-        return res.status(400).json({error: 'Не верный Логин и/или пароль'});
+        return res.status(400).json({message: 'Не верный Логин и/или пароль'});
     }
 
     const id = uuid();
@@ -108,6 +113,9 @@ app.post('/logout', (req, res) => {
 
 app.get('/music', (req, res) => {
     const id = req.cookies.auth;
+    if (!isAuth(id)) {
+        return res.status(401).end();
+    }
 
     const fileId = Math.floor(Math.random() * Object.keys(music).length);
     const title = music[fileId];
@@ -129,6 +137,9 @@ app.get('/music', (req, res) => {
 
 app.post('/music', (req, res) => {
     const id = req.cookies.auth;
+    if (!isAuth(id)) {
+        return res.status(401).end();
+    }
 
     const fileId = ids[id].music;
     const title = req.body.title;

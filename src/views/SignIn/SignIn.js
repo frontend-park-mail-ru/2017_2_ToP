@@ -1,4 +1,5 @@
 import Form from '../../components/Form/Form';
+import Footer from '../../components/Footer/Footer';
 import TopComponent from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
 import router from '../../modules/Router/Router';
@@ -25,7 +26,7 @@ const data = {
     buttons: [
         {
             class: 'loginSubmit',
-            text: 'Войти!'
+            text: 'Войти'
         }
     ],
     back: {}
@@ -59,7 +60,9 @@ export default class SignIn extends TopComponent {
         if (UserService.isLoggedIn()) {
             router.go('/');
         } else {
-            this._components = [new Form(this.getData())];
+            this._components = [
+                new Form(this.getData())
+            ];
             this._components.forEach(element => element.renderTo('content'));
         }
     }

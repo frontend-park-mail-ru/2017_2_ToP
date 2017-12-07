@@ -1,3 +1,4 @@
+import menu from './Menu.xml';
 import TopComponent from '../TopComponent/TopComponent';
 import Button from '../Button/Button';
 import UserService from '../../services/UserService/UserService';
@@ -8,12 +9,14 @@ import './Menu.scss';
 export default class Menu extends TopComponent {
     constructor(data) {
         super('div', {'class': 'menu'}, data);
+
+        this.getElement().innerHTML = menu();
     }
 
     render() {
         this.getData().buttons.forEach(el => {
-            const button = new Button(el.text, el.url);
-            this.append(button.render());
+            const button = new Button(el);
+            this.getElement().querySelector('.menu__buttons').appendChild(button.render());
         });
         this._logout();
         return this.getElement();
