@@ -10,6 +10,9 @@ import TopComponent from './components/TopComponent/TopComponent';
 
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
+import ServiceWorkerRegister from './services/ServiceWorker/ServiceWorker';
+
+ServiceWorkerRegister();
 
 CreateTopRouter('main', [
     {
