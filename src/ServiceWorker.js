@@ -22,3 +22,18 @@ this.addEventListener('install', event => {
             ]);
         }));
 });
+
+this.addEventListener('fetch', event => {
+    // console.log(event);
+    event.respondWith(caches.match(event.request)
+        .then(cachedResponse => {
+
+            // выдаём кэш, если он есть
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+
+            // иначе запрашиваем из сети как обычно
+            return fetch(event.request);
+        }));
+});

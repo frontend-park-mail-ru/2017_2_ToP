@@ -137,6 +137,10 @@ export default class FormView extends TopComponent {
                     router.go('/');
                 })
                 .catch(async response => {
+                    if (!response.json) {
+                        console.log(response);
+                        return;
+                    }
                     const json = await response.json();
 
                     const main = this.getElement();
