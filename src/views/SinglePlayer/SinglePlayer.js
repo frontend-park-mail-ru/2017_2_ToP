@@ -5,12 +5,11 @@ import router from '../../modules/Router/Router';
 import GameManager from '../../game/GameManager/GameManager';
 import loading from '../../components/Loading/Loading';
 
-import './Game.scss';
 import {SINGLEPLAYER} from '../../constants/Game';
 
 export default class SinglePlayer extends TopComponent {
     constructor() {
-        super('div', {class: 'game'});
+        super('div', {class: 'content__game'});
     }
 
     show() {
@@ -39,6 +38,7 @@ export default class SinglePlayer extends TopComponent {
             return;
         }
 
+        this.renderTo('content');
         this._gameManager = new GameManager(SINGLEPLAYER);
     }
 }
