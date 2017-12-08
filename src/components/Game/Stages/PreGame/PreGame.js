@@ -5,7 +5,7 @@ import {NEWGAME_BUTTON, COUNTINUE_BUTTON} from '../../../../constants/Stages';
 
 const preGameData = {
     buttons: [
-        COUNTINUE_BUTTON,
+        CONTINUE_BUTTON,
         NEWGAME_BUTTON
     ]
 };
