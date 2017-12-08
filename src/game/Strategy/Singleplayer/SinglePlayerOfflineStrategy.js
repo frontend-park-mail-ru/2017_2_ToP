@@ -20,7 +20,7 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
     }
 
     _initRecordingPage(data) {
-        const recordingPage = new Recording({musicSource: data});
+        const recordingPage = new Recording({musicSource: data}, true);
         recordingPage.getSubmitButton().addEventListener('click', () => {
             recordingPage.hide();
             recordingPage.stopPlayer();

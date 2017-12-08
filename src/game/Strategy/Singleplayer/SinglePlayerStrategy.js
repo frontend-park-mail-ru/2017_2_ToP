@@ -4,19 +4,20 @@ import Recording from '../../../components/Game/Stages/Recording/Recording';
 import Listening from '../../../components/Game/Stages/Listening/Listening';
 import Ending from '../../../components/Game/Stages/Ending/Ending';
 import SinglePlayerOfflineStrategy from './SinglePlayerOfflineStrategy';
+import {BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
 
 import {PREGAME_DATA, RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
-import {RIGHT, CONTINUE, NEWGAME} from '../../Constants/Game';
+import {CONTINUE, NEWGAME} from '../../Constants/Game';
+import {SINGLEPLAYER} from '../../../constants/Game';
 
 export default class SinglePlayerStrategy extends BaseStrategy {
     constructor() {
-        super('apoj.herokuapp.com/singleplayer');
+        super(SINGLEPLAYER);
 
-        this._socket.onopen = () => {
-            this._socket.onmessage = this.onMessage;
-        };
+        this._socket.onmessage = this.onMessage.bind(this);
 
         this._socket.onclose = event => {
+            console.log('closed');
             if (event.code === 1006) {
                 delete this._socket;
                 Object.setPrototypeOf(this, SinglePlayerOfflineStrategy.prototype);
@@ -25,59 +26,66 @@ export default class SinglePlayerStrategy extends BaseStrategy {
         };
     }
 
-    onMessage(event) {
-        switch (event.data.type) {
+    onMessage({data: message_string}) {
+        const message = JSON.parse(message_string);
+        switch (message.type) {
             case PREGAME_DATA:
                 return this._initPreGame();
             case RECORDING:
-                return this._initRecordingPage(event.data.data);
+                return this._initRecordingPage(message.data);
             case LISTENING:
-                return this._initListeningPage(event.data.data);
+                return this._initListeningPage(message.data);
             case RESULT:
-                return this._initEndingPage(event.data.data);
+                return this._initEndingPage(message);
             default:
+                console.log('Unexpected message', message);
                 return null;
         }
     }
 
     _initRecordingPage(data) {
-        const recordingPage = new Recording({musicSource: data});
-        recordingPage.getSubmitButton().addEventListener('click', () => {
-            recordingPage.hide();
+        const recordingPage = new Recording({musicBase64: data});
+        recordingPage.getSubmitButton().addEventListener('click', async () => {
+            if (!recordingPage.haveRecord()) {
+                return;
+            }
+
             recordingPage.stopPlayer();
+            this.next();
 
             const musicBlob = recordingPage.getMusicBlob();
+            const musicBase64 = await BlobToB64(musicBlob);
 
             const result = {
                 type: RECORDING,
-                data: musicBlob
+                data: musicBase64
             };
 
-            this._socket.send(result);
+            this.send(result);
         });
         this.stages.push(recordingPage);
         this.next();
     }
 
     _initListeningPage(data) {
-        const listeningPage = new Listening({musicSource: data});
+        const listeningPage = new Listening({musicBase64: data});
         listeningPage.getSubmitButton().addEventListener('click', () => {
-            listeningPage.hide();
             listeningPage.stopPlayer();
+            this.next();
 
             const result = {
                 type: LISTENING,
                 data: listeningPage.getUserInput()
             };
 
-            this._socket.send(result);
+            this.send(result);
         });
         this.stages.push(listeningPage);
         this.next();
     }
 
     _initEndingPage(data) {
-        const endingPage = new Ending({isWin: data.message === RIGHT, score: data.score});
+        const endingPage = new Ending({isWin: data.result, score: data.score});
         endingPage.getBackButton().addEventListener('click', () => {
             this.finish();
         });
@@ -92,14 +100,14 @@ export default class SinglePlayerStrategy extends BaseStrategy {
                 message: NEWGAME
             };
 
-            this._socket.send(result);
+            this.send(result);
         });
         preGamePage.getContinueButton().addEventListener('click', () => {
             const result = {
                 message: CONTINUE
             };
 
-            this._socket.send(result);
+            this.send(result);
         });
         this.stages.push(preGamePage);
         this.next();

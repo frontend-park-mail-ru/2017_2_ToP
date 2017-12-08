@@ -13,7 +13,7 @@ export const NEW_SCORE = 'Ваш новый счет: ';
 // buttons/video/inputs
 export const READY_BUTTON = {
     url: '',
-    text: 'Подвести итоги',
+    text: 'Узнать результат',
     class: 'button-form'
 };
 export const SEND_BUTTON = {
@@ -26,7 +26,7 @@ export const NEWGAME_BUTTON = {
     url: '',
     class: 'button-main'
 };
-export const COUNTINUE_BUTTON = {
+export const CONTINUE_BUTTON = {
     text: 'Продолжить',
     url: '',
     class: 'button-main'

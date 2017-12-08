@@ -5,31 +5,32 @@ import Button from '../../../Button/Button';
 
 import {READY_BUTTON} from '../../../../constants/Stages';
 
+import './Waiting.scss';
+
 export default class Waiting extends TopComponent {
     constructor(data) {
         super('div', {'class': 'waiting-stage'}, data);
-        this._build();
         this.status = null;
+        this._build();
     }
 
     render() {
         return this.getElement();
     }
 
-    addAudio(source, text) {
-        this._components.unshift(
+    addAudio(data, text) {
+        this._components.push(
             new GameText({text}),
-            new AudioPlayer({musicSource: source})
+            new AudioPlayer({musicBase64: data})
         );
         this._rerender();
     }
 
-    changeStatus(text) {
-        this.status.setText(text);
+    setStatus(text) {
+        this.status.setText({text});
     }
 
     ready() {
-        this.status.remove();
         this.resultButton = new Button(READY_BUTTON);
         this._components.push(this.resultButton);
         this._rerender();

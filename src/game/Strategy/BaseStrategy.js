@@ -1,11 +1,18 @@
 import GameScene from '../GameScene/GameScene';
 
+const PATH = 'apoj.herokuapp.com/mechanic';
+
 export default class BaseStrategy {
-    constructor(path = null) {
-        if (path) {
-            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-            this._socket = new WebSocket(`${protocol}//${path}`);
-        }
+    constructor(mode) {
+        const protocol = 'wss:'; // window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        this._socket = new WebSocket(`${protocol}//${PATH}`);
+
+        this._socket.onopen = () => {
+            console.log('opened');
+            this.send({
+                mode
+            });
+        };
 
         this.stage = null;
         this.stages = [];
@@ -13,12 +20,11 @@ export default class BaseStrategy {
         this.scene.setStage(null);
     }
 
-    next() {
-        if (this.stages.length === 0) {
-            this.finish();
-            return;
-        }
+    send(data) {
+        this._socket.send(JSON.stringify(data));
+    }
 
+    next() {
         this.stage = this.stages.shift();
         this.scene.setStage(this.stage);
     }

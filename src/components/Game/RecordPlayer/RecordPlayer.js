@@ -12,9 +12,11 @@ function pad0(value, count) {
     return result;
 }
 
-export default class AudioPlayer extends TopComponent {
-    constructor(data) {
-        super('div', {'class': 'record-player'}, data);
+export default class RecordPlayer extends TopComponent {
+    constructor(autoreverse = false) {
+        super('div', {'class': 'record-player'});
+        this.autoreverse = autoreverse;
+        this.haveRecord = false;
     }
 
     render() {
@@ -61,11 +63,12 @@ export default class AudioPlayer extends TopComponent {
         this.startButton.style.display = 'block';
 
         this.stopTimer();
-        RecordService.stop();
+        RecordService.stop(this.autoreverse);
     }
 
     start() {
         this.isRecording = true;
+        this.haveRecord = true;
 
         this.stopButton.style.display = 'block';
         this.startButton.style.display = 'none';

@@ -20,10 +20,10 @@ class RecordService {
         this.audioRecorder.record();
     }
 
-    stop() {
+    stop(reverse) {
         this.audioRecorder.stop();
 
-        this.audioRecorder.exportWAV(Recorder.setupDownload, true);
+        this.audioRecorder.exportWAV(Recorder.setupDownload, reverse);
     }
 
     gotStream(stream) {
