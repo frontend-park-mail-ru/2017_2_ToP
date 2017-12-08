@@ -1,7 +1,7 @@
 import TopComponent from '../../../TopComponent/TopComponent';
 import Menu from '../../../Menu/Menu';
 
-import {NEWGAME_BUTTON, COUNTINUE_BUTTON} from '../../../../constants/Stages';
+import {NEWGAME_BUTTON, CONTINUE_BUTTON} from '../../../../constants/Stages';
 
 const preGameData = {
     buttons: [
