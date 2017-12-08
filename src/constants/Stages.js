@@ -26,7 +26,7 @@ export const NEWGAME_BUTTON = {
     url: '',
     class: 'button-main'
 };
-export const COUNTINUE_BUTTON = {
+export const CONTINUE_BUTTON = {
     text: 'Продолжить',
     url: '',
     class: 'button-main'
