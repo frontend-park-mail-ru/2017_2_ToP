@@ -1,6 +1,7 @@
 import Main from './views/Main/Main';
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
+import Scoreboard from './views/Scoreboard/Scoreboard';
 import SinglePlayer from './views/SinglePlayer/SinglePlayer';
 import MultiPlayer from './views/MultiPlayer/MultiPlayer';
 
@@ -10,7 +11,9 @@ import TopComponent from './components/TopComponent/TopComponent';
 
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
-import Scoreboard from './views/Scoreboard/Scoreboard';
+import ServiceWorkerRegister from './services/ServiceWorker/ServiceWorker';
+
+ServiceWorkerRegister();
 
 CreateTopRouter('main', [
     {

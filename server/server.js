@@ -165,7 +165,7 @@ app.post('/music', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.send('404');
+    res.status(404).send('Sorry cant find that!');
 });
 
 app.listen(process.env.PORT || '8080', () => {
