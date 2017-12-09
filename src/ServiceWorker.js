@@ -20,6 +20,9 @@ this.addEventListener('install', event => {
 
                 '/static/video/win.mp4'
             ]);
+        })
+        .catch(error => {
+            console.log(error);
         }));
 });
 
