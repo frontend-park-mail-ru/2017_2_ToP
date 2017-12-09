@@ -117,7 +117,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     }
 
     _startOffline() {
-        delete this._socket;
+        this._socket.close();
         Object.setPrototypeOf(this, SinglePlayerOfflineStrategy.prototype);
         this.init();
     }
