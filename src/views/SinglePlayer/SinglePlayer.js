@@ -1,7 +1,5 @@
 import TopComponent from '../../components/TopComponent/TopComponent';
 
-import UserService from '../../services/UserService/UserService';
-import router from '../../modules/Router/Router';
 import GameManager from '../../game/GameManager/GameManager';
 import loading from '../../components/Loading/Loading';
 
@@ -13,11 +11,6 @@ export default class SinglePlayer extends TopComponent {
     }
 
     show() {
-        if (!(UserService.isLoggedIn())) {
-            router.go('/');
-            return;
-        }
-
         if (this._gameManager) {
             this._gameManager.show();
         } else {
@@ -33,11 +26,6 @@ export default class SinglePlayer extends TopComponent {
     }
 
     build() {
-        if (!(UserService.isLoggedIn())) {
-            router.go('/');
-            return;
-        }
-
         this.renderTo('content');
         this._gameManager = new GameManager(SINGLEPLAYER);
     }
