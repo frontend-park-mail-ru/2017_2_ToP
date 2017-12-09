@@ -26,8 +26,8 @@ export default class SinglePlayerStrategy extends BaseStrategy {
         };
     }
 
-    onMessage({data: message_string}) {
-        const message = JSON.parse(message_string);
+    onMessage({data: messageString}) {
+        const message = JSON.parse(messageString);
         switch (message.type) {
             case PREGAME_DATA:
                 return this._initPreGame();
