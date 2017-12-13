@@ -21,7 +21,7 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
 
     _initRecordingPage(data) {
         const recordingPage = new Recording({musicSource: data}, true);
-        recordingPage.getSubmitButton().addEventListener('click', () => {
+        recordingPage.getSubmitButton().addMultiEvents('click touchend', () => {
             recordingPage.hide();
             recordingPage.stopPlayer();
 
@@ -35,7 +35,7 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
 
     _initListeningPage(data) {
         const listeningPage = new Listening({musicSource: data});
-        listeningPage.getSubmitButton().addEventListener('click', () => {
+        listeningPage.getSubmitButton().addMultiEvents('click touchend', () => {
             listeningPage.hide();
             listeningPage.stopPlayer();
 
@@ -54,7 +54,7 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
 
     _initEndingPage(data) {
         const endingPage = new Ending({isWin: data.message === RIGHT, isOffline: true});
-        endingPage.getBackButton().addEventListener('click', () => {
+        endingPage.getBackButton().addMultiEvents('click touchend', () => {
             this.finish();
         });
         this.stages.push(endingPage);

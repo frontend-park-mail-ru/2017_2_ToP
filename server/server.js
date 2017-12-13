@@ -13,6 +13,7 @@ app.use('/signIn', express.static('src'));
 app.use('/signUp', express.static('src'));
 app.use('/singleplayer', express.static('src'));
 app.use('/multiplayer', express.static('src'));
+app.use('/scoreboard', express.static('src'));
 
 app.use(body.json());
 app.use(cookie());
@@ -164,7 +165,7 @@ app.post('/music', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.send('404');
+    res.status(404).send('Sorry cant find that!');
 });
 
 app.listen(process.env.PORT || '8080', () => {

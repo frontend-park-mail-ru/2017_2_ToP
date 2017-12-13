@@ -1,0 +1,10 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="columns">
+    <tr>
+        <th>#</th>
+        <fest:for iterate="columns" index="i">
+            <th>
+                <fest:value>columns[i]</fest:value>
+            </th>
+        </fest:for>
+    </tr>
+</fest:template>

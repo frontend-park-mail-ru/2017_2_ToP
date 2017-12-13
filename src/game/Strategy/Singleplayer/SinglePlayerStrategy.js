@@ -9,25 +9,28 @@ import {BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
 import {PREGAME_DATA, RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
 import {CONTINUE, NEWGAME} from '../../Constants/Game';
 import {SINGLEPLAYER} from '../../../constants/Game';
+import UserService from '../../../services/UserService/UserService';
 
 export default class SinglePlayerStrategy extends BaseStrategy {
     constructor() {
         super(SINGLEPLAYER);
+
+        if (!UserService.isLoggedIn()) {
+            return this._startOffline();
+        }
 
         this._socket.onmessage = this.onMessage.bind(this);
 
         this._socket.onclose = event => {
             console.log(`closed(${event.code}): ${event.reason}`);
             if (event.code === 1006) {
-                delete this._socket;
-                Object.setPrototypeOf(this, SinglePlayerOfflineStrategy.prototype);
-                this.init();
+                this._startOffline();
             }
         };
     }
 
-    onMessage({data: message_string}) {
-        const message = JSON.parse(message_string);
+    onMessage({data: messageString}) {
+        const message = JSON.parse(messageString);
         switch (message.type) {
             case PREGAME_DATA:
                 return this._initPreGame();
@@ -45,7 +48,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     _initRecordingPage(data) {
         const recordingPage = new Recording({musicBase64: data});
-        recordingPage.getSubmitButton().addEventListener('click', async () => {
+        recordingPage.getSubmitButton().addMultiEvents('click touchend', async () => {
             if (!recordingPage.haveRecord()) {
                 return;
             }
@@ -69,7 +72,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     _initListeningPage(data) {
         const listeningPage = new Listening({musicBase64: data});
-        listeningPage.getSubmitButton().addEventListener('click', () => {
+        listeningPage.getSubmitButton().addMultiEvents('click touchend', () => {
             listeningPage.stopPlayer();
             this.next();
 
@@ -86,7 +89,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     _initEndingPage(data) {
         const endingPage = new Ending({isWin: data.result, score: data.score});
-        endingPage.getBackButton().addEventListener('click', () => {
+        endingPage.getBackButton().addMultiEvents('click touchend', () => {
             this.finish();
         });
         this.stages.push(endingPage);
@@ -95,14 +98,14 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     _initPreGame() {
         const preGamePage = new PreGame();
-        preGamePage.getNewGameButton().addEventListener('click', () => {
+        preGamePage.getNewGameButton().addMultiEvents('click touchend', () => {
             const result = {
                 message: NEWGAME
             };
 
             this.send(result);
         });
-        preGamePage.getContinueButton().addEventListener('click', () => {
+        preGamePage.getContinueButton().addMultiEvents('click touchend', () => {
             const result = {
                 message: CONTINUE
             };
@@ -111,5 +114,11 @@ export default class SinglePlayerStrategy extends BaseStrategy {
         });
         this.stages.push(preGamePage);
         this.next();
+    }
+
+    _startOffline() {
+        this._socket.close();
+        Object.setPrototypeOf(this, SinglePlayerOfflineStrategy.prototype);
+        this.init();
     }
 }

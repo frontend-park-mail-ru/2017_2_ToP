@@ -85,7 +85,7 @@ class Router {
      * @param {EventTarget} objectListener
      */
     connectRouting(objectListener) {
-        objectListener.addEventListener('click', event => {
+        objectListener.addMultiEvents('click touchend', event => {
             const url = event.target.getAttribute('data-url');
 
             if (!url || url === '') {

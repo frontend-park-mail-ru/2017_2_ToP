@@ -1,9 +1,11 @@
 import TopComponent from '../../components/TopComponent/TopComponent';
 import loading from '../../components/Loading/Loading';
 
+import './GameScene.scss';
+
 export default class GameScene extends TopComponent {
     constructor() {
-        super('div', {'class': 'game'});
+        super('div', {'class': 'content__game__scene'});
         if (GameScene.__instance) {
             return GameScene.__instance;
         }
@@ -35,7 +37,7 @@ export default class GameScene extends TopComponent {
             this.append(this._stage.render());
             loading.hide();
         }
-        this.renderTo('content');
+        this.renderTo('content__game');
     }
 
     _rerender() {

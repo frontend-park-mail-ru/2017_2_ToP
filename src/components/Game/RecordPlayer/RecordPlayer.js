@@ -131,7 +131,7 @@ export default class RecordPlayer extends TopComponent {
         this.resetTimer();
         this.printTimer(this.times);
 
-        this.button.addEventListener('click', () => {
+        this.button.addMultiEvents('click touchend', () => {
             if (this.isRecording) {
                 this.stop();
                 return;

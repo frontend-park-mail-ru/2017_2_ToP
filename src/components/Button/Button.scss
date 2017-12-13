@@ -49,6 +49,28 @@
   font-size: 3vh;
 }
 
+%button-more {
+  color: $cell-text-color;
+  font-weight: 500;
+
+  cursor: pointer;
+  padding: 5px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.button-more_odd {
+  @extend %button-more;
+  background: $cell-odd;
+}
+
+.button-more_even {
+  @extend %button-more;
+  background: $cell-even;
+}
+
 .button-form {
   @extend %button-base;
   font-size: 55px;

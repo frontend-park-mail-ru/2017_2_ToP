@@ -36,7 +36,7 @@ export default class TopImage extends TopComponent {
         this.getElement().style.height = '50px';
         this.getElement().style.width = '50px';
 
-        this.getElement().addEventListener('click', () => {
+        this.getElement().addMultiEvents('click touchend', () => {
             this.theming.changeTheme();
         });
     }

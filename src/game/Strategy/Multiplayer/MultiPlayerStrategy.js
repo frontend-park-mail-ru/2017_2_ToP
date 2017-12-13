@@ -20,8 +20,8 @@ export default class MultiPlayerStrategy extends BaseStrategy {
         this.secondUser = null;
     }
 
-    onMessage({data: message_string}) {
-        const message = JSON.parse(message_string);
+    onMessage({data: messageString}) {
+        const message = JSON.parse(messageString);
         console.log(message);
         switch (message.type) {
             case PREGAME_DATA:
@@ -56,7 +56,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
 
     _initRecordingPage(data) {
         const recordingPage = new Recording({musicBase64: data});
-        recordingPage.getSubmitButton().addEventListener('click', async () => {
+        recordingPage.getSubmitButton().addMultiEvents('click touchend', async () => {
             if (!recordingPage.haveRecord()) {
                 return;
             }
@@ -101,7 +101,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
 
     _initListeningPage(data) {
         const listeningPage = new Listening({musicBase64: data});
-        listeningPage.getSubmitButton().addEventListener('click', () => {
+        listeningPage.getSubmitButton().addMultiEvents('click touchend', () => {
             listeningPage.hide();
             listeningPage.stopPlayer();
 
@@ -119,7 +119,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     _initEndingPage(data) {
         const nextStage = () => {
             const endingPage = new Ending({isWin: data.result, score: data.score});
-            endingPage.getBackButton().addEventListener('click', () => {
+            endingPage.getBackButton().addMultiEvents('click touchend', () => {
                 this.finish();
             });
 
@@ -130,7 +130,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
         if (this.role === SINGER) {
             this.stage.ready();
             this.stage.setStatus(GOT_RESULT);
-            this.stage.getResultButton().addEventListener('click', nextStage.bind(this));
+            this.stage.getResultButton().addMultiEvents('click touchend', nextStage.bind(this));
         } else {
             nextStage();
         }

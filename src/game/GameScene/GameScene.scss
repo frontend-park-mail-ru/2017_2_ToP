@@ -1,4 +1,4 @@
-.game {
+.content__game__scene {
   margin-right: auto;
   margin-left: auto;
   width: 50%;
@@ -6,7 +6,7 @@
 
 // Мобилки!
 @media screen and (max-width: 414px) and (min-width: 319px) {
-  .game {
+  .content__game__scene {
     width: 100%;
   }
 }

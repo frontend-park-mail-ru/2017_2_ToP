@@ -1,6 +1,7 @@
 import Main from './views/Main/Main';
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
+import Scoreboard from './views/Scoreboard/Scoreboard';
 import SinglePlayer from './views/SinglePlayer/SinglePlayer';
 import MultiPlayer from './views/MultiPlayer/MultiPlayer';
 
@@ -10,6 +11,15 @@ import TopComponent from './components/TopComponent/TopComponent';
 
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
+import ServiceWorkerRegister from './services/ServiceWorker/ServiceWorker';
+
+ServiceWorkerRegister();
+
+Object.prototype.addMultiEvents = function addMultiEvents(events, handler) {
+    events.split(' ').forEach(event => {
+        this.addEventListener(event, handler);
+    });
+};
 
 CreateTopRouter('main', [
     {
@@ -31,5 +41,9 @@ CreateTopRouter('main', [
     {
         path: '/multiplayer',
         component: MultiPlayer
+    },
+    {
+        path: '/scoreboard',
+        component: Scoreboard
     }
 ], [new Header(), Loading, new TopComponent('div', {'class': 'content'})]);
