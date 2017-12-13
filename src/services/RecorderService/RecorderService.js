@@ -9,6 +9,8 @@ class RecordService {
         this.node = null;
         this.source = null;
 
+        this.hasMedia = false;
+
         this.initAudio();
     }
 
@@ -40,6 +42,10 @@ class RecordService {
                 navigator.msGetUserMedia;
         }
 
+        if (!navigator.getUserMedia) {
+            return;
+        }
+
         navigator.getUserMedia({
             'audio': {
                 'mandatory': {
@@ -53,6 +59,8 @@ class RecordService {
         }, this.gotStream.bind(this), e => {
             console.log(e);
         });
+
+        this.hasMedia = true;
     }
 
     getMusicURL() {
