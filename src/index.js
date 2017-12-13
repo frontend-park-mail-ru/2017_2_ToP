@@ -15,6 +15,12 @@ import ServiceWorkerRegister from './services/ServiceWorker/ServiceWorker';
 
 ServiceWorkerRegister();
 
+Object.prototype.addMultiEvents = function addMultiEvents(events, handler) {
+    events.split(' ').forEach(event => {
+        this.addEventListener(event, handler);
+    });
+};
+
 CreateTopRouter('main', [
     {
         path: '',

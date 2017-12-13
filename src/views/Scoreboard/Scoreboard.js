@@ -53,7 +53,7 @@ export default class Scoreboard extends TopComponent {
 
     _initButton() {
         this.moreButton = new Button({text: '. . .'});
-        this.moreButton.getElement().addEventListener('click', () => {
+        this.moreButton.getElement().addMiltiEvents('click touchend', () => {
             this.table.addRow(TMP_DATA.body);
             this._rerenderMoreButton();
         });
