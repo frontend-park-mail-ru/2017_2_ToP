@@ -48,7 +48,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     _initRecordingPage(data) {
         const recordingPage = new Recording({musicBase64: data});
-        recordingPage.getSubmitButton().addMiltiEvents('click touchend', async () => {
+        recordingPage.getSubmitButton().addMultiEvents('click touchend', async () => {
             if (!recordingPage.haveRecord()) {
                 return;
             }
@@ -72,7 +72,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     _initListeningPage(data) {
         const listeningPage = new Listening({musicBase64: data});
-        listeningPage.getSubmitButton().addMiltiEvents('click touchend', () => {
+        listeningPage.getSubmitButton().addMultiEvents('click touchend', () => {
             listeningPage.stopPlayer();
             this.next();
 
@@ -89,7 +89,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     _initEndingPage(data) {
         const endingPage = new Ending({isWin: data.result, score: data.score});
-        endingPage.getBackButton().addMiltiEvents('click touchend', () => {
+        endingPage.getBackButton().addMultiEvents('click touchend', () => {
             this.finish();
         });
         this.stages.push(endingPage);
@@ -98,14 +98,14 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
     _initPreGame() {
         const preGamePage = new PreGame();
-        preGamePage.getNewGameButton().addMiltiEvents('click touchend', () => {
+        preGamePage.getNewGameButton().addMultiEvents('click touchend', () => {
             const result = {
                 message: NEWGAME
             };
 
             this.send(result);
         });
-        preGamePage.getContinueButton().addMiltiEvents('click touchend', () => {
+        preGamePage.getContinueButton().addMultiEvents('click touchend', () => {
             const result = {
                 message: CONTINUE
             };

@@ -56,7 +56,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
 
     _initRecordingPage(data) {
         const recordingPage = new Recording({musicBase64: data});
-        recordingPage.getSubmitButton().addMiltiEvents('click touchend', async () => {
+        recordingPage.getSubmitButton().addMultiEvents('click touchend', async () => {
             if (!recordingPage.haveRecord()) {
                 return;
             }
@@ -101,7 +101,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
 
     _initListeningPage(data) {
         const listeningPage = new Listening({musicBase64: data});
-        listeningPage.getSubmitButton().addMiltiEvents('click touchend', () => {
+        listeningPage.getSubmitButton().addMultiEvents('click touchend', () => {
             listeningPage.hide();
             listeningPage.stopPlayer();
 
@@ -119,7 +119,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
     _initEndingPage(data) {
         const nextStage = () => {
             const endingPage = new Ending({isWin: data.result, score: data.score});
-            endingPage.getBackButton().addMiltiEvents('click touchend', () => {
+            endingPage.getBackButton().addMultiEvents('click touchend', () => {
                 this.finish();
             });
 
@@ -130,7 +130,7 @@ export default class MultiPlayerStrategy extends BaseStrategy {
         if (this.role === SINGER) {
             this.stage.ready();
             this.stage.setStatus(GOT_RESULT);
-            this.stage.getResultButton().addMiltiEvents('click touchend', nextStage.bind(this));
+            this.stage.getResultButton().addMultiEvents('click touchend', nextStage.bind(this));
         } else {
             nextStage();
         }
