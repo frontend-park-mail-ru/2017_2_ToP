@@ -66,11 +66,11 @@ export default class Recording extends TopComponent {
         const audioButton = this._components[1].getButton();
         const recordButton = this._components[3].getButton();
 
-        audioButton.addEventListener('click', () => {
+        audioButton.addMiltiEvents('click touchend', () => {
             this._components[3].stop();
         });
 
-        recordButton.addEventListener('click', () => {
+        recordButton.addMiltiEvents('click touchend', () => {
             this._components[1].stop();
         });
     }

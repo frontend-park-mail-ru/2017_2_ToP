@@ -88,7 +88,7 @@ export default class FormView extends TopComponent {
             }
         };
 
-        submitButton.addEventListener('click', submit);
+        submitButton.addMiltiEvents('click touchend', submit);
         this.getElement().addEventListener('keydown', e => {
             if (e.keyCode === 13) {
                 submit();
