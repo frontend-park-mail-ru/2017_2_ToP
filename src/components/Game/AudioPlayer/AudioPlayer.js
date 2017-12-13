@@ -84,7 +84,7 @@ export default class AudioPlayer extends TopComponent {
 
         this.isPlaying = false;
 
-        this.button.addMiltiEvents('click touchend', () => {
+        this.button.addMultiEvents('click touchend', () => {
             const analyser = this.audioContext.createAnalyser();
 
             const bufferLength = analyser.frequencyBinCount;

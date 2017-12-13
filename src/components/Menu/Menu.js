@@ -26,7 +26,7 @@ export default class Menu extends TopComponent {
         const main = this.getElement();
         const logoutButton = main.querySelector('[data-url="/"]');
         if (logoutButton) {
-            logoutButton.addMiltiEvents('click touchend', () => {
+            logoutButton.addMultiEvents('click touchend', () => {
                 UserService.logout()
                     .then(() => {
                         router.getRoute('').getView().rerender();
