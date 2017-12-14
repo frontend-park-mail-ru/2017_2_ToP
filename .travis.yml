@@ -4,7 +4,7 @@ node_js:
 - '7'
 branches:
   only:
-  - develop
+  - feature-vps
 addons:
   apt:
     packages:
