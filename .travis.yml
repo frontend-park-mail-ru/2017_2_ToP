@@ -10,8 +10,8 @@ addons:
     packages:
       - sshpass
 script:
+  - npm i
   - npm run eslint
-  - npm run test
 after_sucess:
   - mkdir archive
   - mv * archive
