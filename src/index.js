@@ -9,17 +9,12 @@ import Header from './components/Header/Header';
 import Loading from './components/Loading/Loading';
 import TopComponent from './components/TopComponent/TopComponent';
 
-
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
+import MultiEventsRegister from './modules/MultiEvents/MultiEvents';
 import ServiceWorkerRegister from './services/ServiceWorker/ServiceWorker';
 
 ServiceWorkerRegister();
-
-Object.prototype.addMultiEvents = function addMultiEvents(events, handler) {
-    events.split(' ').forEach(event => {
-        this.addEventListener(event, handler);
-    });
-};
+MultiEventsRegister();
 
 CreateTopRouter('main', [
     {
