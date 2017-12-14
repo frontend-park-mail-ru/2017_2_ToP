@@ -4,18 +4,17 @@ node_js:
 - '7'
 branches:
   only:
-  - develop
-deploy:
-  provider: heroku
-  api_key:
-    secure: "$key"
-  app: gametes
-  on:
-    repo: frontend-park-mail-ru/2017_2_ToP
-    branch: develop
-  skip_cleanup: true
+  - master
+addons:
+  apt:
+    packages:
+      - sshpass
 script:
-- npm run eslint
-before_install:
-- openssl aes-256-cbc -K $encrypted_a5968e60f234_key -iv $encrypted_a5968e60f234_iv
-  -in apoj_key.enc -out ~\/.ssh/apoj_key -d
+  - npm run eslint
+  - npm run test
+after_sucess:
+  - mkdir archive
+  - mv * archive
+  - tar -czf package.tgz archive
+  - scp -o StrictHostKeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  - sshpass ssh -o StrictHostKeychecking=no $DEPLOY_USER@$DEPLOY_HOST "cd $DEPLOY_PATH && ./deploy.sh"
