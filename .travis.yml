@@ -2,20 +2,20 @@ language: node_js
 sudo: false
 node_js:
 - '7'
-
 branches:
   only:
   - develop
-
 deploy:
   provider: heroku
   api_key:
-    secure: $key
+    secure: "$key"
   app: gametes
   on:
     repo: frontend-park-mail-ru/2017_2_ToP
     branch: develop
   skip_cleanup: true
-
 script:
-  - npm run eslint
+- npm run eslint
+before_install:
+- openssl aes-256-cbc -K $encrypted_a5968e60f234_key -iv $encrypted_a5968e60f234_iv
+  -in apoj_key.enc -out ~\/.ssh/apoj_key -d
