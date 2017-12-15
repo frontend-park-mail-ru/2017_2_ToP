@@ -16,7 +16,7 @@ deploy:
   app: gametes
   on:
     repo: frontend-park-mail-ru/2017_2_ToP
-    branch: develop
+    branch: feature-different-vps
   skip_cleanup: true
 script:
   - npm run eslint
