@@ -8,7 +8,7 @@ import './Menu.scss';
 
 export default class Menu extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'menu'}, data);
+        super('div', {class: 'menu'}, data);
 
         this.getElement().innerHTML = menu();
     }

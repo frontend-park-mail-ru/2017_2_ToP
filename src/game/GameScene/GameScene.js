@@ -5,7 +5,7 @@ import './GameScene.scss';
 
 export default class GameScene extends TopComponent {
     constructor() {
-        super('div', {'class': 'content__game__scene'});
+        super('div', {class: 'content__game__scene'});
         if (GameScene.__instance) {
             return GameScene.__instance;
         }

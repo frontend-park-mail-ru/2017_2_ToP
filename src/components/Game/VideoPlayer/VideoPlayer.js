@@ -5,7 +5,7 @@ import './VideoPlayer.scss';
 
 export default class VideoPlayer extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'video-player'}, data);
+        super('div', {class: 'video-player'}, data);
 
         this._innerHTML(videoPlayer(this.getData()));
 

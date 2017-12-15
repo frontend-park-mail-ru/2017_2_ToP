@@ -13,7 +13,7 @@ import './Form.scss';
 
 export default class FormView extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'form-box'}, data);
+        super('div', {class: 'form-box'}, data);
 
         this.errors = {};
     }

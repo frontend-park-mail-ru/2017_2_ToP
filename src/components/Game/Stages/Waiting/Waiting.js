@@ -9,7 +9,7 @@ import './Waiting.scss';
 
 export default class Waiting extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'waiting-stage'}, data);
+        super('div', {class: 'waiting-stage'}, data);
         this.status = null;
         this._build();
     }

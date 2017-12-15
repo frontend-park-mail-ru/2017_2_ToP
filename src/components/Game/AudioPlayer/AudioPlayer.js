@@ -6,7 +6,7 @@ import './AudioPlayer.scss';
 
 export default class AudioPlayer extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'audio-player'}, data);
+        super('div', {class: 'audio-player'}, data);
     }
 
     render() {

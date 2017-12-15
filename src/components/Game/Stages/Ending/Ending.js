@@ -11,7 +11,7 @@ import './Ending.scss';
 
 export default class Ending extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'ending-stage'}, data);
+        super('div', {class: 'ending-stage'}, data);
         this._build();
     }
 
@@ -47,7 +47,7 @@ export default class Ending extends TopComponent {
             ];
         }
 
-        const content = new TopComponent('div', {'class': 'ending-stage__content'});
+        const content = new TopComponent('div', {class: 'ending-stage__content'});
         const backButton = new BackButton();
 
         this._components.forEach(element => {

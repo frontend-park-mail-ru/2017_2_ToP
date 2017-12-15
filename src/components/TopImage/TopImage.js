@@ -5,7 +5,7 @@ import './TopImage.scss';
 
 export default class TopImage extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'image'}, data);
+        super('div', {class: 'image'}, data);
     }
 
     render() {

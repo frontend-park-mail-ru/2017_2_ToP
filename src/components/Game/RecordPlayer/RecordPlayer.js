@@ -14,7 +14,7 @@ function pad0(value, count) {
 
 export default class RecordPlayer extends TopComponent {
     constructor(autoreverse = false) {
-        super('div', {'class': 'record-player'});
+        super('div', {class: 'record-player'});
         this.autoreverse = autoreverse;
         this.haveRecord = false;
     }
