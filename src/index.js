@@ -41,4 +41,4 @@ CreateTopRouter('main', [
         path: '/scoreboard',
         component: Scoreboard
     }
-], [new Header(), Loading, new TopComponent('div', {'class': 'content'})]);
+], [new Header(), Loading, new TopComponent('div', {class: 'content'})]);

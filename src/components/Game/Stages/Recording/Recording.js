@@ -10,7 +10,7 @@ import './Recording.scss';
 
 export default class Recording extends TopComponent {
     constructor(data, autoreverse = false) {
-        super('div', {'class': 'recording-stage'}, data);
+        super('div', {class: 'recording-stage'}, data);
         this.autoreverse = autoreverse;
         this._build();
     }

@@ -12,7 +12,7 @@ const preGameData = {
 
 export default class PreGame extends TopComponent {
     constructor() {
-        super('div', {'class': 'preGame-stage'}, preGameData);
+        super('div', {class: 'preGame-stage'}, preGameData);
         this._build();
     }
 

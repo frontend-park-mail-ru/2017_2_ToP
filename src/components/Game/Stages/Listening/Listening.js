@@ -14,7 +14,7 @@ const textData = {
 
 export default class Listening extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'listening-stage'}, data);
+        super('div', {class: 'listening-stage'}, data);
         this._textData = textData;
         this._build();
     }
