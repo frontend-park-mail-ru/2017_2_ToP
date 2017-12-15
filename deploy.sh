@@ -1,6 +1,8 @@
 #!/bin/bash
 
-rm -rf ./*
+rm -rf ./built
+rm -rf ./index.html
+rm -rf ./static
 
 tar -xzf package.tgz
 rm package.tgz
