@@ -29,27 +29,15 @@ export default class GameManager {
     }
 
     show() {
-        if (this.strategy) {
-            this.resume();
-        } else {
-            this.start();
-        }
+        return this.strategy ? this.resume() : this.start();
     }
 
     pause() {
-        if (this.strategy.isFinished()) {
-            this.finish();
-        } else {
-            this.strategy.pause();
-        }
+        return this.strategy.isFinished() ? this.finish() : this.strategy.pause();
     }
 
     resume() {
-        if (this.strategy.isFinished()) {
-            this.start();
-        } else {
-            this.strategy.resume();
-        }
+        return this.strategy.isFinished() ? this.start() : this.strategy.resume();
     }
 
     finish() {
