@@ -16,9 +16,9 @@ deploy:
   app: gametes
   on:
     repo: frontend-park-mail-ru/2017_2_ToP
-    branch: feature-different-vps
+    branch: develop
   skip_cleanup: true
 script:
   - npm run eslint
 after_success:
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then chmod +x ./master_deploy.sh; ./master_deploy.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "feature-different-vps" ]; then chmod +x ./master_deploy.sh; ./master_deploy.sh; fi
