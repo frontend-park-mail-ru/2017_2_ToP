@@ -17,6 +17,10 @@ footer {
   color: $white;
 }
 
+.footer__text::selection {
+  background: #eee17f;
+}
+
 @media screen and (max-height: 500px) {
   .footer__text {
     font-size: 25px;
