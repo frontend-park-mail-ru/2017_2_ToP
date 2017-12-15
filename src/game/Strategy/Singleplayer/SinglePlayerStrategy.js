@@ -7,7 +7,7 @@ import SinglePlayerOfflineStrategy from './SinglePlayerOfflineStrategy';
 import {BlobToB64} from '../../../modules/Base64Converter/Base64Converter';
 
 import {PREGAME_DATA, RECORDING, LISTENING, RESULT} from '../../Constants/WebsocketTypes';
-import {CONTINUE, NEWGAME} from '../../Constants/Game';
+import {CONTINUE, NEWGAME, NO_INTERNET_ERROR} from '../../Constants/Game';
 import {SINGLEPLAYER} from '../../../constants/Game';
 import UserService from '../../../services/UserService/UserService';
 
@@ -23,7 +23,7 @@ export default class SinglePlayerStrategy extends BaseStrategy {
 
         this._socket.onclose = event => {
             console.log('closed');
-            if (event.code === 1006) {
+            if (event.code === NO_INTERNET_ERROR) {
                 this._startOffline();
             }
         };
