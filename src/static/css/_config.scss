@@ -26,7 +26,7 @@ $cell-text-color: #333;
 //  Apoj colors
 $apoj-color: $show-red !default;
 $apoj-text-second-color: $pastel-red !default;
-$apoj-color-dark: $dark-red; //darken($apoj-color, 10%) !default;
+$apoj-color-dark: $dark-red;
 $apoj-color-light: lighten($apoj-color, 10%) !default;
 $apoj-color-second: $pink !default;
 $apoj-color-second-light: lighten($apoj-color-second, 10%) !default;
@@ -68,7 +68,7 @@ $main-background: url('../img/backgrounds/scene.png') !default;
 }
 
 @keyframes sparkleAnim {
-  0% { background-position:    0px 0; }
+  0% { background-position: 0 0; }
   100% { background-position: 900px 0; }
 }
 

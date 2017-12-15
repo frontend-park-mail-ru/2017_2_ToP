@@ -53,7 +53,6 @@ export default class SignIn extends TopComponent {
             this._components = [
                 new Form(this.getData())
             ];
-            // this._components.forEach(element => element.renderTo('content'));
             this._components.forEach(element => this.append(element.render()));
             this.renderTo('content');
         }

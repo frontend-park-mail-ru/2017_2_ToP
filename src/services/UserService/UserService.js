@@ -33,15 +33,15 @@ class UserService {
     }
 
     setScore(type, score) {
-        if (type === 'single') {
-            this.user.singleScore = score;
-        } else if (type === 'multi') {
-            this.user.multiScore = score;
+        if (type === 'singleplayer') {
+            this.user.sscore = score;
+        } else if (type === 'multiplayer') {
+            this.user.mscore = score;
         }
     }
 
     getScore(type) {
-        return type === 'single' ? this.user.singleScore : this.user.multiScore;
+        return type === 'singleplayer' ? this.user.sscore : this.user.mscore;
     }
 }
 
