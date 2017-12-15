@@ -1,11 +1,12 @@
 import audioPlayer from './AudioPlayer.xml';
 import TopComponent from '../../TopComponent/TopComponent';
+import {b64toBlob} from '../../../modules/Base64Converter/Base64Converter';
 
 import './AudioPlayer.scss';
 
 export default class AudioPlayer extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'audio-player'}, data);
+        super('div', {class: 'audio-player'}, data);
     }
 
     render() {
@@ -71,13 +72,19 @@ export default class AudioPlayer extends TopComponent {
         this.src = undefined;
 
         this.audio = new Audio();
+
+        if (!this.getData().musicSource) {
+            const blob = b64toBlob(this.getData().musicBase64, 'audio/wav');
+            this.getData().musicSource = (window.URL || window.webkitURL).createObjectURL(blob);
+        }
+
         this.audio.src = this.getData().musicSource;
 
         this._initAudio();
 
         this.isPlaying = false;
 
-        this.button.addEventListener('click', () => {
+        this.button.addMultiEvents('click touchend', () => {
             const analyser = this.audioContext.createAnalyser();
 
             const bufferLength = analyser.frequencyBinCount;

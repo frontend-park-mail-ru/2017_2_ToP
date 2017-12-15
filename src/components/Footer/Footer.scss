@@ -1,4 +1,4 @@
-@import "../../static/css/_theme.scss";
+@import '../../static/css/_config.scss';
 
 footer {
   margin-top: 50px;
@@ -9,9 +9,22 @@ footer {
   }
 }
 
-.footer__border {
-  width: 200px;
+.footer__text {
   margin: 0 auto;
   padding-bottom: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  font-family: $quote-font-family;
+  font-size: 5vh;
+  color: $white;
+}
+
+@media screen and (max-height: 500px) {
+  .footer__text {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 319px) and (max-device-aspect-ratio: 1/2){
+  .footer__text {
+    margin-left: 20vh;
+  }
 }

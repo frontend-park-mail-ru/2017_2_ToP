@@ -17,6 +17,7 @@ module.exports = {
         "class-methods-use-this": 0,
         "comma-dangle": [2, "never"],
         "no-console": 0,
+        "no-extend-native": ["error", { "exceptions": ["Object"] }],
         "no-useless-escape": 0,
         "quotes": ["error", "single", {"allowTemplateLiterals": true}],
         "import/no-unresolved": [2, {"commonjs": true, "amd": true}],

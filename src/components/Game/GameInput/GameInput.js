@@ -5,7 +5,7 @@ import './GameInput.scss';
 
 export default class GameInput extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'game-input'}, data);
+        super('div', {class: 'game-input'}, data);
 
         this.getElement().innerHTML = gameInput(this.getData());
     }

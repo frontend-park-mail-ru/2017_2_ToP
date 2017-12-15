@@ -5,34 +5,40 @@ import TopImage from '../../../TopImage/TopImage';
 import BackButton from '../../../BackButton/BackButton';
 import VideoPlayer from '../../VideoPlayer/VideoPlayer';
 
-import UserService from '../../../../services/UserService/UserService';
+import {WIN, WIN_OFFLINE, WIN_VIDEO, LOSE, NEW_SCORE} from '../../../../constants/Stages';
 
 import './Ending.scss';
 
 export default class Ending extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'ending-stage'}, data);
+        super('div', {class: 'ending-stage'}, data);
+        this._build();
+    }
+
+    getBackButton() {
+        return this.getElement().querySelector('.back-button');
     }
 
     render() {
+        return this.getElement();
+    }
+
+    _build() {
         if (this.getData().isWin) {
             this._components = [
                 new GameText({
-                    text: 'Победа!',
+                    text: WIN,
                     title: true
                 }),
-                new VideoPlayer({
-                    src: '/static/video/win.mp4',
-                    type: 'video/mp4'
-                }),
+                new VideoPlayer(WIN_VIDEO),
                 new GameText({
-                    text: `Ваш новый счет ${UserService.getScore('single')}`
+                    text: this.getData().isOffline ? WIN_OFFLINE : NEW_SCORE + this.getData().score
                 })
             ];
         } else {
             this._components = [
                 new GameText({
-                    text: 'Вы проиграли',
+                    text: LOSE,
                     title: true
                 }),
                 new TopImage({
@@ -41,7 +47,7 @@ export default class Ending extends TopComponent {
             ];
         }
 
-        const content = new TopComponent('div', {'class': 'ending-stage__content'});
+        const content = new TopComponent('div', {class: 'ending-stage__content'});
         const backButton = new BackButton();
 
         this._components.forEach(element => {
@@ -50,7 +56,5 @@ export default class Ending extends TopComponent {
 
         this.append(content.render());
         this.append(backButton.render());
-
-        return this.getElement();
     }
 }

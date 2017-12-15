@@ -1,7 +1,7 @@
-@import "../../../static/css/_theme.scss";
+@import '../../../static/css/_config.scss';
 
-$firstColor:       $blue;
-$secondColor: $dark-blue;
+$firstColor:       $apoj-color;
+$secondColor: $apoj-color-dark;
 
 .audio-player {
   margin: auto;
@@ -19,7 +19,7 @@ $secondColor: $dark-blue;
   box-shadow: 0 3px 20px 0 $light-black;
   text-align: center;
   font-size: 25px;
-  color: $blue;
+  color: $apoj-color;
   cursor: pointer;
   &:hover {
     opacity: 0.85;

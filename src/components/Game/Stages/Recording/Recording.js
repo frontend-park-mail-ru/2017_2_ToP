@@ -4,29 +4,23 @@ import AudioPlayer from '../../AudioPlayer/AudioPlayer';
 import RecordPlayer from '../../RecordPlayer/RecordPlayer';
 import Button from '../../../Button/Button';
 
+import {RECORDING_TEXT1, RECORDING_TEXT2, SEND_BUTTON} from '../../../../constants/Stages';
+
 import './Recording.scss';
 
-const textData = {
-    texts: [
-        'Прослушайте фрагмент песни и когда будете готовы, начните его запись.',
-        'Постарайтесь уложиться в 10 секунд.'
-    ],
-    buttons: [
-        {
-            url: '',
-            text: 'Отправить!'
-        }
-    ]
-};
-
 export default class Recording extends TopComponent {
-    constructor(data) {
-        super('div', {'class': 'recording-stage'}, data);
-        this._textData = textData;
+    constructor(data, autoreverse = false) {
+        super('div', {class: 'recording-stage'}, data);
+        this.autoreverse = autoreverse;
+        this._build();
     }
 
     getMusicURL() {
         return this._components[3].getMusicURL();
+    }
+
+    getMusicBlob() {
+        return this._components[3].getMusicBlob();
     }
 
     getSubmitButton() {
@@ -38,24 +32,25 @@ export default class Recording extends TopComponent {
         this._components[3].stop();
     }
 
+    haveRecord() {
+        return this._components[3].haveRecord;
+    }
+
     getMusic() {
-        this._components[1].setSource('/music');
+        this._components[1].setSource(this.getData().musicSource);
     }
 
     render() {
+        return this.getElement();
+    }
+
+    _build() {
         this._components = [
-            new GameText({
-                text: this._textData.texts[0]
-            }),
+            new GameText({text: RECORDING_TEXT1}),
             new AudioPlayer(this.getData()),
-            new GameText({
-                text: this._textData.texts[1]
-            }),
-            new RecordPlayer(),
-            new Button(
-                this._textData.buttons[0].text,
-                this._textData.buttons[0].url
-            )
+            new GameText({text: RECORDING_TEXT2}),
+            new RecordPlayer(this.autoreverse),
+            new Button(SEND_BUTTON)
         ];
 
         this._components.forEach(element => {
@@ -65,18 +60,17 @@ export default class Recording extends TopComponent {
 
         this._initPlayers();
 
-        return this.getElement();
     }
 
     _initPlayers() {
         const audioButton = this._components[1].getButton();
         const recordButton = this._components[3].getButton();
 
-        audioButton.addEventListener('click', () => {
+        audioButton.addMultiEvents('click touchend', () => {
             this._components[3].stop();
         });
 
-        recordButton.addEventListener('click', () => {
+        recordButton.addMultiEvents('click touchend', () => {
             this._components[1].stop();
         });
     }

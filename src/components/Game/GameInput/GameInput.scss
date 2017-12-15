@@ -1,4 +1,4 @@
-@import "../../../static/css/_theme.scss";
+@import '../../../static/css/_config.scss';
 
 form input {
   box-sizing: border-box;
@@ -9,7 +9,7 @@ form {
   position: relative;
 
   .input-error {
-    border-color: $red;
+    border-color: $error-color;
   }
   input {
     box-sizing: border-box;

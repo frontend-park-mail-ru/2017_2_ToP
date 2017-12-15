@@ -1,0 +1,76 @@
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+}
+
+//  Colors
+$blue:        #19b9e7;
+$pink:        #f008b7;
+$white:       #fff;
+$show-red:    #e71919;
+$dark-red:    #a00b3b;
+
+$gray:        #909090;
+$pastel-red:  rgb(171, 86, 75);
+$dark-gray:   darken($gray, 10%);
+$red:         #e71919;
+$black:       rgba(0, 0, 0, 0.5);
+$light-black: rgba(0, 0, 0, 0.4);
+
+$cell-odd:    #fdfdfd;
+$cell-even:   #eee;
+$cell-text-color: #333;
+
+//  Apoj colors
+$apoj-color: $show-red !default;
+$apoj-text-second-color: $pastel-red !default;
+$apoj-color-dark: $dark-red;
+$apoj-color-light: lighten($apoj-color, 10%) !default;
+$apoj-color-second: $pink !default;
+$apoj-color-second-light: lighten($apoj-color-second, 10%) !default;
+$error-color: $red !default;
+$error-background: darken($error-color, 20%) !default;
+
+//  Font
+$base-font-family: Montserrat !default;
+$quote-font-family: Pacifico !default;
+$header-font-family: BebasNeueBold !default;
+$table-font-family: Helvetica;
+
+$apoj-text-color: $gray !default;
+
+//  Background
+$main-background: url('../img/backgrounds/scene.png') !default;
+
+%form-element {
+  height: 50px;
+  padding: 0 20px;
+  vertical-align: middle;
+  border-radius: 4px;
+  box-shadow: none;
+  transition: all .3s;
+}
+
+%form-text {
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 50px;
+}
+
+%sparkle {
+  display: none;
+  position: absolute;
+  width: 8vw;
+  height: 16vh;
+  -webkit-animation: sparkleAnim 1s steps(6) infinite;
+}
+
+@keyframes sparkleAnim {
+  0% { background-position: 0 0; }
+  100% { background-position: 900px 0; }
+}
+
+
+

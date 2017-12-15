@@ -1,4 +1,5 @@
 import Form from '../../components/Form/Form';
+import Footer from '../../components/Footer/Footer';
 import TopComponent from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
 import router from '../../modules/Router/Router';
@@ -25,7 +26,7 @@ const data = {
     buttons: [
         {
             class: 'loginSubmit',
-            text: 'Войти!'
+            text: 'Войти'
         }
     ],
     back: {}
@@ -33,7 +34,7 @@ const data = {
 
 export default class SignIn extends TopComponent {
     constructor() {
-        super('div', {}, data);
+        super('div', {class: 'content__signin'}, data);
     }
 
     show() {
@@ -42,25 +43,18 @@ export default class SignIn extends TopComponent {
             return;
         }
 
-        if (this._components) {
-            this._components.forEach(element => element.show());
-        } else {
-            this.build();
-        }
-    }
-
-    hide() {
-        if (this._components) {
-            this._components.forEach(element => element.hide());
-        }
+        super.show();
     }
 
     build() {
         if (UserService.isLoggedIn()) {
             router.go('/');
         } else {
-            this._components = [new Form(this.getData())];
-            this._components.forEach(element => element.renderTo('content'));
+            this._components = [
+                new Form(this.getData())
+            ];
+            this._components.forEach(element => this.append(element.render()));
+            this.renderTo('content');
         }
     }
 }

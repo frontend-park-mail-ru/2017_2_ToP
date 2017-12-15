@@ -6,10 +6,14 @@ const fs = require('fs');
 
 const app = express();
 
-app.use('/', express.static('src'));
+app.use('/', express.static('src', {
+    maxage: '30min'
+}));
 app.use('/signIn', express.static('src'));
 app.use('/signUp', express.static('src'));
 app.use('/singleplayer', express.static('src'));
+app.use('/multiplayer', express.static('src'));
+app.use('/scoreboard', express.static('src'));
 
 app.use(body.json());
 app.use(cookie());
@@ -110,6 +114,9 @@ app.post('/logout', (req, res) => {
 
 app.get('/music', (req, res) => {
     const id = req.cookies.auth;
+    if (!isAuth(id)) {
+        return res.status(401).end();
+    }
 
     const fileId = Math.floor(Math.random() * Object.keys(music).length);
     const title = music[fileId];
@@ -131,6 +138,9 @@ app.get('/music', (req, res) => {
 
 app.post('/music', (req, res) => {
     const id = req.cookies.auth;
+    if (!isAuth(id)) {
+        return res.status(401).end();
+    }
 
     const fileId = ids[id].music;
     const title = req.body.title;
@@ -155,7 +165,7 @@ app.post('/music', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.send('404');
+    res.status(404).send('Sorry cant find that!');
 });
 
 app.listen(process.env.PORT || '8080', () => {

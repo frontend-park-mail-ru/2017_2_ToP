@@ -1,15 +1,20 @@
 import Main from './views/Main/Main';
-import About from './views/About/About';
-import SinglePlayer from './views/SinglePlayer/SinglePlayer';
 import SignUp from './views/SignUp/SignUp';
 import SignIn from './views/SignIn/SignIn';
+import Scoreboard from './views/Scoreboard/Scoreboard';
+import SinglePlayer from './views/SinglePlayer/SinglePlayer';
+import MultiPlayer from './views/MultiPlayer/MultiPlayer';
 
-import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Loading from './components/Loading/Loading';
 import TopComponent from './components/TopComponent/TopComponent';
 
 import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
+import MultiEventsRegister from './modules/MultiEvents/MultiEvents';
+import ServiceWorkerRegister from './services/ServiceWorker/ServiceWorker';
+
+ServiceWorkerRegister();
+MultiEventsRegister();
 
 CreateTopRouter('main', [
     {
@@ -27,5 +32,13 @@ CreateTopRouter('main', [
     {
         path: '/singleplayer',
         component: SinglePlayer
+    },
+    {
+        path: '/multiplayer',
+        component: MultiPlayer
+    },
+    {
+        path: '/scoreboard',
+        component: Scoreboard
     }
-], [new Header(), Loading, new TopComponent('div', {'class': 'content'}), new Footer()]);
+], [new Header(), Loading, new TopComponent('div', {class: 'content'})]);

@@ -1,17 +1,14 @@
-@import "../../static/css/_theme.scss";
+@import '../../static/css/_config.scss';
 
-.button {
-  @extend %form-text;
-  @extend %form-element;
-  margin: 10px 0px 0px 0px;
-  background: $blue;
-  border: 0;
-  color: $white;
-  text-align: center;
-  text-shadow: none;
+%button-base {
+  transition: all .3s;
   box-sizing: border-box;
-  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
   width: 100%;
+  background: transparent;
+  cursor: pointer;
 
   &:hover {
     opacity: 0.8;
@@ -23,5 +20,83 @@
   &:focus {
     outline: 0;
     opacity: 0.8;
+  }
+}
+
+.button {
+  @extend %button-base;
+  font-size: 65px;
+  margin-bottom: 40px;
+  color: $apoj-text-color;
+}
+
+.button-main {
+  @extend %button-base;
+  font-size: 9vh;
+  margin-bottom: 6vh;
+  font-family: $header-font-family;
+  color: $apoj-text-second-color;
+}
+
+.button-second {
+  @extend %button-base;
+  display: block;
+  width: fit-content;
+  line-height: 20px;
+  font-weight: 600;
+  margin: auto auto 1vh;
+  color: $apoj-text-color;
+  font-size: 3vh;
+}
+
+%button-more {
+  color: $cell-text-color;
+  font-weight: 500;
+
+  cursor: pointer;
+  padding: 5px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.button-more_odd {
+  @extend %button-more;
+  background: $cell-odd;
+}
+
+.button-more_even {
+  @extend %button-more;
+  background: $cell-even;
+}
+
+.button-form {
+  @extend %button-base;
+  font-size: 55px;
+  font-family: $header-font-family;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: $white;
+}
+
+@media screen and (max-width: 414px) {
+  .button-second {
+    font-size: 4vh;
+    margin-bottom: 2vh;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .button {
+
+  }
+  .button-main {
+    font-size: 50px;
+  }
+  .button-second {
+    font-size: 15px;
+    line-height: 20px;
+    margin: auto auto;
   }
 }

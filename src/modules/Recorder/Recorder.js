@@ -65,13 +65,17 @@ export default class Recorder {
 
         const interleaved = interleave(bufferL, bufferR);
         const dataview = encodeWAV(interleaved, null, this.sampleRate);
-        const audioBlob = new Blob([dataview], {'type': type});
 
-        this.url = callback(audioBlob);
+        this.audioBlob = new Blob([dataview], {'type': type});
+        this.url = callback(this.audioBlob);
     }
 
     getMusicURL() {
         return this.url;
+    }
+
+    getMusicBlob() {
+        return this.audioBlob;
     }
 
     setMusicURL(url) {

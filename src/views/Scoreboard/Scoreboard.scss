@@ -1,0 +1,46 @@
+@import '../../static/css/_config.scss';
+
+.content__scoreboard {
+  max-width: 600px;
+  margin: auto;
+}
+
+.content__scoreboard__table {
+  color: $cell-text-color;
+  font-family: $table-font-family;
+  margin-top: 10px;
+  width: 100%;
+
+  td, th {
+    padding: 5px 10px;
+  }
+
+  th {
+    background: linear-gradient($dark-red 0%, $show-red 50%);
+    color: $white;
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) td {
+    background: $cell-even;
+  }
+
+  tr:nth-child(odd) td {
+    background: $cell-odd;
+  }
+
+  tr td:first-child, tr th:first-child {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 14px;
+    padding-right: 10px;
+  }
+
+  tr:first-child th:first-child {
+    border-radius: 5px 0 0 0;
+  }
+
+  tr:first-child th:last-child {
+    border-radius: 0 5px 0 0;
+  }
+}

@@ -1,4 +1,5 @@
 import router from '../Router/Router';
+import Theming from '../Theming/Theming';
 import {appendChilds} from '../../components/TopComponent/TopComponent';
 import UserService from '../../services/UserService/UserService';
 import Loading from '../../components/Loading/Loading';
@@ -11,7 +12,7 @@ export default function CreateTopRouter(className, componentsRoutes, defaultComp
     UserService.getData()
         .catch(response => {})
         .then(() => {
-            router.start();
             Loading.hide();
+            router.start();
         });
 }

@@ -1,22 +1,14 @@
-/*@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500);*/
-@import "_reset.scss";
-@import "_theme.scss";
-
-@function randomNum($min, $max) {
-    $rand: random();
-    $randomNum: $min + floor($rand * (($max - $min) + 1));
-
-    @return $randomNum;
-}
+@import "reset";
+@import "config";
 
 body {
-    font-family: 'Roboto';
+    font-family: $base-font-family;
     font-size: 16px;
     font-weight: 300;
-    color: $primary-color;
+    color: $apoj-text-color;
     line-height: 30px;
     text-align: center;
-    background: url('../img/backgrounds/#{randomNum(0, 2)}.jpg') no-repeat center fixed;
+    background: $main-background no-repeat center fixed;
     background-size: cover;
 }
 
@@ -27,7 +19,6 @@ strong {
 %h-base {
   margin-top: 10px;
   font-weight: 100;
-  color: $white;
 }
 
 h1 {
@@ -51,7 +42,7 @@ h3 {
 
 ::selection {
   background: $blue;
-  color: $white;
+  color: $apoj-text-color;
   text-shadow: none;
 }
 
@@ -67,8 +58,4 @@ h3 {
 
 /***** Media queries *****/
 
-@media (min-width: 850px) {
-  .content {
-    width: 40%;
-  }
-}
+

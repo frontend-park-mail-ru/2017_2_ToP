@@ -9,6 +9,8 @@ class RecordService {
         this.node = null;
         this.source = null;
 
+        this.hasMedia = false;
+
         this.initAudio();
     }
 
@@ -20,10 +22,10 @@ class RecordService {
         this.audioRecorder.record();
     }
 
-    stop() {
+    stop(reverse) {
         this.audioRecorder.stop();
 
-        this.audioRecorder.exportWAV(Recorder.setupDownload, true);
+        this.audioRecorder.exportWAV(Recorder.setupDownload, reverse);
     }
 
     gotStream(stream) {
@@ -40,6 +42,10 @@ class RecordService {
                 navigator.msGetUserMedia;
         }
 
+        if (!navigator.getUserMedia) {
+            return;
+        }
+
         navigator.getUserMedia({
             'audio': {
                 'mandatory': {
@@ -53,10 +59,16 @@ class RecordService {
         }, this.gotStream.bind(this), e => {
             console.log(e);
         });
+
+        this.hasMedia = true;
     }
 
     getMusicURL() {
         return this.audioRecorder.getMusicURL();
+    }
+
+    getMusicBlob() {
+        return this.audioRecorder.getMusicBlob();
     }
 }
 

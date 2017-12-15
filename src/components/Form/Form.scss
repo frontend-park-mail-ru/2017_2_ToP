@@ -1,10 +1,11 @@
-@import "../../static/css/_theme.scss";
-@import "../Button/Button.scss";
+@import '../../static/css/_config.scss';
+@import '../Button/Button.scss';
 
 /**** Форма ****/
 
 .form-box {
-  margin-top: 20px;
+  width: 420px;
+  margin: auto;
 }
 
 .form-box__top {
@@ -22,6 +23,7 @@
   padding-top: 25px;
 
   h3 {
+    font-size: 1.5em;
     margin-top: 0;
     color: $white;
   }
@@ -43,7 +45,7 @@
 }
 
 .form-box__bottom {
-  padding: 25px 25px 30px 30px;
+  padding: 25px 25px 0px 30px;
   background: $light-black;
   text-align: left;
 
@@ -56,7 +58,7 @@
     position: relative;
 
     .input-error {
-      border-color: $red;
+      border-color: $error-color;
     }
     input {
       box-sizing: border-box;
@@ -81,22 +83,30 @@ input[type="email"] {
   @extend %form-text;
   background: $white;
   border: 3px solid $white;
-  color: $primary-color;
+  color: $dark-gray;
   &:focus {
     outline: 0;
   }
 }
 
-.button {
+.form__button {
   @extend %form-text;
   @extend %form-element;
-  margin: 10px 0px 0px 0px;
-  background: $blue;
-  border: 0;
-  color: $white;
-  text-align: center;
-  text-shadow: none;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 3em;
+  font-family: $header-font-family;
   box-sizing: border-box;
+  display: inline-block;
+  margin-top: 30px;
+  margin-bottom: 0;
+  text-align: center;
+  width: 100%;
+  color: $white;
+  background: transparent;
+  cursor: pointer;
+
   &:hover {
     opacity: 0.8;
   }
@@ -116,15 +126,37 @@ input[type="email"] {
   padding: 0;
 
   font-size: 85%;
+  font-weight: 700;
 
   color: $white;
-  background-color: $error-background;
-  margin-top: 4px;
+  margin-top: -7px;
   margin-bottom: 7px;
 
   border-radius: 4px;
   box-sizing: border-box;
   &.active {
     padding: 0.3em;
+  }
+}
+
+@media (min-width: 850px) {
+  .form-box {
+
+  }
+}
+
+// Мобилки!
+@media screen and (max-width: 414px) and (min-width: 319px) {
+  .form-box {
+    width: 100%;
+  }
+  .form-box__top-left {
+    h3 {
+      font-size: 25px;
+      margin-top: 20px;
+    }
+    p {
+      display: none;
+    }
   }
 }

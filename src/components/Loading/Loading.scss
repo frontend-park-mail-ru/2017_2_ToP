@@ -1,4 +1,4 @@
-@import "../../static/css/_theme.scss";
+@import '../../static/css/_config.scss';
 
 @keyframes rotate-loading {
   0% {  transform: rotate(0deg);  }
@@ -23,21 +23,21 @@
   margin: 40px auto;
 
   &:hover .loading__element{
-    border-color: transparent $blue transparent $blue;
+    border-color: transparent $apoj-color transparent $apoj-color;
   }
 }
 
 .loading__element {
   @extend %container;
   border: 2px solid;
-  border-color: transparent #fff transparent #FFF;
+  border-color: transparent $white transparent $white;
   animation: rotate-loading 1.5s linear 0s infinite normal;
   transition: all 0.5s ease-in-out;
 }
 
 .loading__text {
   animation: loading-text-opacity 2s linear 0s infinite normal;
-  color: #ffffff;
+  color: $white;
   font-size: 10px;
   font-weight: bold;
   position: absolute;

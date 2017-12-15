@@ -1,9 +1,108 @@
-@import "../../static/css/_theme.scss";
-@import "../Form/Form.scss";
+@import '../../static/css/_config.scss';
+@import '../Form/Form.scss';
+
+@keyframes rotate-sun {
+  0% {  transform: rotate(0deg);  }
+  100% {  transform: rotate(360deg);  }
+}
 
 .menu {
-  margin-top: 20px;
-  padding: 25px 25px 30px 30px;
-  background: $light-black;
-  border-radius: 4px;
+}
+
+.menu__circle {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  height: 65vh;
+  margin-top: -6vh;
+  background: url('../../static/img/circle.png') no-repeat center;
+  background-size: contain;
+}
+
+.menu__buttons {
+  width: fit-content;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 2;
+  margin: 25vh auto 0;
+  left: 0;
+  right: 0;
+}
+
+.menu__rotate {
+  z-index: -2;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.menu__rotate_image {
+  margin-top: -5vh;
+  height: 110vh;
+  background: url('../../static/img/sun.png') no-repeat center;
+  background-size: contain;
+  animation: rotate-sun 20s linear 0s infinite normal;
+}
+
+.menu__sparkle1 {
+  display: none;
+  @extend %sparkle;
+  margin-top: -21%;
+}
+
+.menu__sparkle2 {
+  display: none;
+  @extend %sparkle;
+  margin-top: -39%;
+  margin-left: 33%;
+}
+
+
+// Мобилки!
+@media screen and (max-width: 414px) and (min-width: 319px) and (min-device-aspect-ratio: 1/2){
+  .menu__rotate_image {
+    margin-top: 0;
+    height: 100vh;
+    margin-right: auto;
+    background-size: cover;
+    width: 100vh;
+    margin-left: calc(50vw - 50vh);
+  }
+  .menu__buttons {
+    line-height: 15px;
+  }
+}
+
+@media screen and (max-width: 319px) and (max-device-aspect-ratio: 1/2){
+  .menu__circle {
+    margin-top: -10vh;
+    width: 490px;
+    margin-left: -5vh;
+  }
+  .menu__rotate_image {
+    display: none;
+  }
+  .menu__buttons {
+    line-height: 15px;
+    margin-left: 17vh;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .menu__circle {
+    margin-top: -30px;
+    height: 325px;
+  }
+  .menu__rotate_image {
+    height: 550px;
+    background-size: contain;
+  }
+  .menu__buttons {
+    margin: 125px auto 0;
+  }
 }

@@ -3,36 +3,20 @@ import GameText from '../../GameText/GameText';
 import AudioPlayer from '../../AudioPlayer/AudioPlayer';
 import GameInput from '../../GameInput/GameInput';
 import Button from '../../../Button/Button';
-import Transport from '../../../../modules/Transport/Transport';
-import UserService from '../../../../services/UserService/UserService';
+
+import {LISTENING_TEXT1, LISTENING_TEXT2, TITLE_INPUT, SEND_BUTTON} from '../../../../constants/Stages';
 
 import './Listening.scss';
 
 const textData = {
-    method: 'post',
-    fields: [
-        {
-            type: 'text',
-            placeholder: 'Введите название песни...',
-            class: 'song-input'
-        }
-    ],
-    texts: [
-        'Записи склеены и перевернуты!',
-        'Сможете ли угадать оригинал?'
-    ],
-    buttons: [
-        {
-            url: '',
-            text: 'Отправить!'
-        }
-    ]
+    fields: [TITLE_INPUT]
 };
 
 export default class Listening extends TopComponent {
     constructor(data) {
-        super('div', {'class': 'listening-stage'}, data);
+        super('div', {class: 'listening-stage'}, data);
         this._textData = textData;
+        this._build();
     }
 
     getUserInput() {
@@ -47,31 +31,17 @@ export default class Listening extends TopComponent {
         this._components[1].remove();
     }
 
-    async check() {
-        const response = await Transport.post('/music', {'title': this.getUserInput()});
-
-        if (response.message === 'right') {
-            UserService.setScore('single', response.score);
-            return true;
-        }
-
-        return false;
+    render() {
+        return this.getElement();
     }
 
-    render() {
+    _build() {
         this._components = [
-            new GameText({
-                text: this._textData.texts[0]
-            }),
+            new GameText({text: LISTENING_TEXT1}),
             new AudioPlayer(this.getData()),
-            new GameText({
-                text: this._textData.texts[1]
-            }),
+            new GameText({text: LISTENING_TEXT2}),
             new GameInput(this._textData),
-            new Button(
-                this._textData.buttons[0].text,
-                this._textData.buttons[0].url
-            )
+            new Button(SEND_BUTTON)
         ];
 
         this._components.forEach(element => {
@@ -79,8 +49,6 @@ export default class Listening extends TopComponent {
         });
 
         this._initInput();
-
-        return this.getElement();
     }
 
     _initInput() {
