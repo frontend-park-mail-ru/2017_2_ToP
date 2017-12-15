@@ -22,7 +22,6 @@ export default class MultiPlayerStrategy extends BaseStrategy {
 
     onMessage({data: messageString}) {
         const message = JSON.parse(messageString);
-        console.log(message);
         switch (message.type) {
             case PREGAME_DATA:
                 return this._initPreGame(message);

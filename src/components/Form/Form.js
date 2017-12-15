@@ -125,8 +125,6 @@ export default class FormView extends TopComponent {
         if (this.getData().method === 'post') {
             Transport.post(url, data)
                 .then(response => {
-                    console.log(`login: ${response.login}\nemail: ${response.email}`);
-
                     UserService.user = response;
 
                     const route = router.getRoute('');
