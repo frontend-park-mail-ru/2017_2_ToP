@@ -9,14 +9,16 @@ addons:
   apt:
     packages:
       - sshpass
+deploy:
+  provider: heroku
+  api_key:
+    secure: $key
+  app: gametes
+  on:
+    repo: frontend-park-mail-ru/2017_2_ToP
+    branch: develop
+  skip_cleanup: true
 script:
   - npm run eslint
 after_success:
-  - mkdir archive
-  - mv ./src/built archive
-  - mv ./src/index.html archive
-  - mv ./src/static archive
-  - tar -czf package.tgz archive
-  - export SSHPASS=$DEPLOY_PASS
-  - sshpass -e scp -o StrictHostKeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-  - sshpass -e ssh -o StrictHostKeychecking=no $DEPLOY_USER@$DEPLOY_HOST "cd $DEPLOY_PATH && ./deploy.sh"
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then chmod +x ./master_deploy.sh; ./master_deploy.sh; fi
