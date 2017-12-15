@@ -14,8 +14,8 @@ script:
 after_success:
   - mkdir archive
   - mv ./src/built archive
-  - mv ./index.html archive
-  - mv ./src/static/index.html archive
+  - mv ./src/index.html archive
+  - mv ./src/static archive
   - tar -czf package.tgz archive
   - scp -o StrictHostKeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
   - sshpass ssh -o StrictHostKeychecking=no $DEPLOY_USER@$DEPLOY_HOST "cd $DEPLOY_PATH && ./deploy.sh"
