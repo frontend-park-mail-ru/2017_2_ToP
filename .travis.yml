@@ -8,13 +8,17 @@ branches:
 addons:
   apt:
     packages:
-      - sshpass
+    - sshpass
 script:
-  - npm i
-  - npm run eslint
-  - mkdir archive
-  - mv * archive
-  - tar -czf package.tgz archive
-  - export SSHPASS=$DEPLOY_PASS
-  - sshpass -e scp -o StrictHostKeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-  - sshpass -e ssh -o StrictHostKeychecking=no $DEPLOY_USER@$DEPLOY_HOST "cd $DEPLOY_PATH && ./deploy.sh"
+- npm i
+- npm run eslint
+- mkdir archive
+- mv * archive
+- tar -czf package.tgz archive
+- export SSHPASS=$DEPLOY_PASS
+- sshpass -e scp -o StrictHostKeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+- sshpass -e ssh -o StrictHostKeychecking=no $DEPLOY_USER@$DEPLOY_HOST "cd $DEPLOY_PATH
+  && ./deploy.sh"
+before_install:
+- openssl aes-256-cbc -K $encrypted_a5968e60f234_key -iv $encrypted_a5968e60f234_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
