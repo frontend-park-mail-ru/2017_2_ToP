@@ -1,13 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
-eval "$(ssh-agent -s)"
-ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
-chmod 600 $HOME/.ssh/server
-ssh-add $HOME/.ssh/server
+rm -rf ./*
 
-ssh $DEPLOY_USER@$DEPLOY_HOST "rm -rf $DIST_PATH/*"
+tar -xzf package.tgz
+rm package.tgz
 
-scp -r $DEPLOY_PATH/* $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+mv -f archive/* ./
 
-echo "Restarting..."
-ssh -p $PORT td@$SERVER_IP "supervisorctl restart td"
+rm -rf archive

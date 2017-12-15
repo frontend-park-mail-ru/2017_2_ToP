@@ -5,13 +5,17 @@ node_js:
 branches:
   only:
   - develop
-deploy:
-  provider: script
-  script: ./deploy.sh
-  skip_cleanup: true
-  on:
-    branch:
-    - develop
-before_install:
-- openssl aes-256-cbc -K $encrypted_a5968e60f234_key -iv $encrypted_a5968e60f234_iv
-  -in id_rsa.enc -out $HOME/.ssh/id_rsa -d
+addons:
+  apt:
+    packages:
+      - sshpass
+script:
+  - npm run eslint
+after_success:
+  - mkdir archive
+  - mv ./src/built archive
+  - mv ./index.html archive
+  - mv ./src/static/index.html archive
+  - tar -czf package.tgz archive
+  - scp -o StrictHostKeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  - sshpass ssh -o StrictHostKeychecking=no $DEPLOY_USER@$DEPLOY_HOST "cd $DEPLOY_PATH && ./deploy.sh"
