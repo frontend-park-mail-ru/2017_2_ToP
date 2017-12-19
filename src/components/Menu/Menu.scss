@@ -49,20 +49,6 @@
   animation: rotate-sun 20s linear 0s infinite normal;
 }
 
-.menu__sparkle1 {
-  display: none;
-  @extend %sparkle;
-  margin-top: -21%;
-}
-
-.menu__sparkle2 {
-  display: none;
-  @extend %sparkle;
-  margin-top: -39%;
-  margin-left: 33%;
-}
-
-
 // Мобилки!
 @media screen and (max-width: 414px) and (min-width: 319px){
   .menu__rotate_image {

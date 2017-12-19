@@ -4,6 +4,4 @@
     <div class="menu__rotate">
         <div class="menu__rotate_image"></div>
     </div>
-    <div class="menu__sparkle1"></div>
-    <div class="menu__sparkle2"></div>
 </fest:template>
