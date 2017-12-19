@@ -11,11 +11,14 @@
   background-size: contain;
   position: relative;
   z-index: 4;
+  width: 30vh;
+  cursor: pointer;
 }
 
 @media screen and (max-height: 500px) {
   .header__logo {
     height: 100px;
+    width: 200px;
   }
 }
 
