@@ -17,6 +17,8 @@ this.addEventListener('install', event => {
                 '/static/img/results/4.png',
                 '/static/img/results/5.png',
 
+                'static/img/icons/icon.ico',
+
                 '/static/video/win.mp4'
             ]);
         })

@@ -146,6 +146,7 @@ export default class FormView extends TopComponent {
                     formError.name = 'formError';
                     this.errors.formError = json.message;
                     this._errorOutput([formError], main.getElementsByClassName('error'));
+                    this.errors = [];
                 });
         }
     }

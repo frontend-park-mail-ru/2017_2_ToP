@@ -24,7 +24,7 @@
   box-sizing: border-box;
   position: absolute;
   z-index: 2;
-  margin: 25vh auto 0;
+  margin: 22vh auto 0;
   left: 0;
   right: 0;
 }
@@ -49,22 +49,8 @@
   animation: rotate-sun 20s linear 0s infinite normal;
 }
 
-.menu__sparkle1 {
-  display: none;
-  @extend %sparkle;
-  margin-top: -21%;
-}
-
-.menu__sparkle2 {
-  display: none;
-  @extend %sparkle;
-  margin-top: -39%;
-  margin-left: 33%;
-}
-
-
 // Мобилки!
-@media screen and (max-width: 414px) and (min-width: 319px) and (min-device-aspect-ratio: 1/2){
+@media screen and (max-width: 414px) and (min-width: 319px){
   .menu__rotate_image {
     margin-top: 0;
     height: 100vh;
@@ -74,7 +60,7 @@
     margin-left: calc(50vw - 50vh);
   }
   .menu__buttons {
-    line-height: 15px;
+    margin: 22vh auto 0;
   }
 }
 
@@ -93,16 +79,16 @@
   }
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 600px) {
   .menu__circle {
-    margin-top: -30px;
-    height: 325px;
+    margin-top: -36px;
+    height: 390px;
   }
   .menu__rotate_image {
-    height: 550px;
+    height: 600px;
     background-size: contain;
   }
   .menu__buttons {
-    margin: 125px auto 0;
+    margin: 132px auto 0;
   }
 }

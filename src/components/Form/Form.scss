@@ -11,8 +11,7 @@
 .form-box__top {
   overflow: hidden;
   padding: 0 20px 0px 25px;
-  background: $dark-gray;
-  background: $black;
+  background: rgba($form-background, 0.86);
   border-radius: 4px 4px 0 0;
   text-align: left;
 }
@@ -46,7 +45,7 @@
 
 .form-box__bottom {
   padding: 25px 25px 0px 30px;
-  background: $light-black;
+  background: rgba($form-background, 0.7);
   text-align: left;
 
   form input {
@@ -72,6 +71,7 @@
 .form-box__end {
   overflow: hidden;
   border-radius: 0 0 4px 4px;
+  background: rgba(1, 9, 31, 0.86);
 }
 
 /***** Элементы формы ******/
@@ -136,6 +136,7 @@ input[type="email"] {
   box-sizing: border-box;
   &.active {
     padding: 0.3em;
+    background: $error-background;
   }
 }
 
@@ -158,5 +159,9 @@ input[type="email"] {
     p {
       display: none;
     }
+  }
+  .form__button {
+    padding: 0;
+    font-size: 2.5em;
   }
 }
