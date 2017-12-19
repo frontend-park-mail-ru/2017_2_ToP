@@ -42,11 +42,11 @@
   @extend %button-base;
   display: block;
   width: fit-content;
-  line-height: 20px;
   font-weight: 600;
   margin: auto auto 1vh;
   color: $apoj-text-color;
   font-size: 3vh;
+  line-height: 3vh;
 }
 
 %button-more {
