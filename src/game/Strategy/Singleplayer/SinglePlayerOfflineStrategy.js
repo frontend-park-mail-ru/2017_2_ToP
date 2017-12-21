@@ -22,6 +22,10 @@ export default class SinglePlayerOfflineStrategy extends BaseStrategy {
     _initRecordingPage(data) {
         const recordingPage = new Recording({musicSource: data}, true);
         recordingPage.getSubmitButton().addMultiEvents('click touchend', () => {
+            if (!recordingPage.haveRecord()) {
+                return;
+            }
+
             recordingPage.hide();
             recordingPage.stopPlayer();
 
