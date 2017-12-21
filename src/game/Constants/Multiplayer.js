@@ -6,5 +6,5 @@ export const WAIT_ANSWER = 'Второй игрок отвечает';
 export const GOT_RESULT = 'Подведены итоги';
 
 // Roles
-export const SINGER = 'singer';
-export const LISTENER = 'listener';
+export const SINGER = 'SINGER';
+export const LISTENER = 'LISTENER';
