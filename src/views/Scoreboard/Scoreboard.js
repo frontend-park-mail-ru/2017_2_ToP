@@ -6,16 +6,7 @@ import Transport from '../../modules/Transport/Transport';
 import './Scoreboard.scss';
 import Button from '../../components/Button/Button';
 
-const TMP_DATA = {
-    head: [
-        'User',
-        'Singleplayer',
-        'Multiplayer'
-    ],
-    body: []
-};
-
-const SCORE_COUNT = 5;
+import {COUNT_PER_REQUEST, TABLE_DATA} from '../../game/Constants/Scoreboard';
 
 export default class Scoreboard extends TopComponent {
     constructor() {
@@ -33,7 +24,7 @@ export default class Scoreboard extends TopComponent {
     }
 
     build() {
-        this.table = new Table(TMP_DATA, 'content__scoreboard__table');
+        this.table = new Table(TABLE_DATA, 'content__scoreboard__table');
         this._buildMoreButton();
         this.addRows();
 
@@ -48,7 +39,7 @@ export default class Scoreboard extends TopComponent {
 
     async getRows() {
         const rows = [];
-        const result = await Transport.get(`/stop?limit=${SCORE_COUNT}&since=${this.count}`);
+        const result = await Transport.get(`/stop?limit=${COUNT_PER_REQUEST}&since=${this.count}`);
         result.forEach(({login, sscore, mscore}) => {
             rows.push([login, sscore, mscore]);
         });
