@@ -12,8 +12,7 @@ const TMP_DATA = {
         'Singleplayer',
         'Multiplayer'
     ],
-    body: [
-    ]
+    body: []
 };
 
 const SCORE_COUNT = 5;
@@ -60,6 +59,10 @@ export default class Scoreboard extends TopComponent {
 
     async addRows() {
         const rows = await this.getRows();
+        if (rows.length === 0) {
+            this._deleteMoreButton();
+            return;
+        }
         this.table.addRow(rows);
         this._rerenderMoreButton();
     }
@@ -83,5 +86,9 @@ export default class Scoreboard extends TopComponent {
             }
             this._rerenderMoreButton();
         }
+    }
+
+    _deleteMoreButton() {
+        this.moreButton.remove();
     }
 }
