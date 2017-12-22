@@ -60,6 +60,7 @@ export default class Recording extends TopComponent {
 
         this._initPlayers();
 
+        this._initButton();
     }
 
     _initPlayers() {
@@ -73,5 +74,19 @@ export default class Recording extends TopComponent {
         recordButton.addMultiEvents('click touchend', () => {
             this._components[1].stop();
         });
+    }
+
+    _initButton() {
+        const submitButton = this.getSubmitButton();
+        submitButton.addMultiEvents('click touchend', event => {
+            if (!this.haveRecord()) {
+                submitButton.classList.remove('button-error');
+                setTimeout(() => {
+                    submitButton.classList.add('button-error');
+                }, 10);
+
+                event.stopImmediatePropagation();
+            }
+        }, true);
     }
 }
