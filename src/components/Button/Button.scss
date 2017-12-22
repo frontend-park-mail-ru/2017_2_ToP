@@ -80,6 +80,10 @@
   color: $white;
 }
 
+.button-error {
+  animation: shake-error 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
 @media screen and (max-width: 414px) {
   .button-second {
     font-size: 2.5vh;
@@ -104,4 +108,24 @@
     line-height: 20px;
     margin: auto auto 6px;
   }
+}
+
+@keyframes shake-error {
+  0% { color: $red }
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+  100% { color: $white}
 }
