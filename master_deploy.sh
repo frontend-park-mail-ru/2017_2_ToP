@@ -4,6 +4,7 @@ mkdir archive
 
 mv ./src/built archive
 mv ./src/index.html archive
+mv ./src/ServiceWorker.js archive
 mv ./src/static archive
 
 tar -czf package.tgz archive
