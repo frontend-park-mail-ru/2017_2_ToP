@@ -11,27 +11,14 @@
   background-size: contain;
   position: relative;
   z-index: 4;
-}
-
-.header__sparkle {
-  @extend %sparkle;
-  margin-left: 52vw;
-  margin-top: -22vh;
-}
-
-.header__sparkle_sprite {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: url('../../static/img/sparkles.png') 0 0 no-repeat;
-  background-size: 100%;
+  width: 30vh;
+  cursor: pointer;
 }
 
 @media screen and (max-height: 500px) {
   .header__logo {
     height: 100px;
+    width: 200px;
   }
 }
 

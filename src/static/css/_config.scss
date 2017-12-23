@@ -6,7 +6,8 @@
 }
 
 //  Colors
-$blue:        #19b9e7;
+$yellow:      #ffe95f;
+$dark-blue:   #01091f;
 $pink:        #f008b7;
 $white:       #fff;
 $show-red:    #e71919;
@@ -24,6 +25,8 @@ $cell-even:   #eee;
 $cell-text-color: #333;
 
 //  Apoj colors
+$side-color: $yellow !default;
+$form-background: $dark-blue !default;
 $apoj-color: $show-red !default;
 $apoj-text-second-color: $pastel-red !default;
 $apoj-color-dark: $dark-red;
@@ -31,7 +34,7 @@ $apoj-color-light: lighten($apoj-color, 10%) !default;
 $apoj-color-second: $pink !default;
 $apoj-color-second-light: lighten($apoj-color-second, 10%) !default;
 $error-color: $red !default;
-$error-background: darken($error-color, 20%) !default;
+$error-background: rgba($error-color, 0.6) !default;
 
 //  Font
 $base-font-family: Montserrat !default;
@@ -42,7 +45,7 @@ $table-font-family: Helvetica;
 $apoj-text-color: $gray !default;
 
 //  Background
-$main-background: url('../img/backgrounds/scene.png') !default;
+$main-background: url('../img/backgrounds/scene.jpg') !default;
 
 %form-element {
   height: 50px;

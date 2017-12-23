@@ -9,14 +9,14 @@ import Header from './components/Header/Header';
 import Loading from './components/Loading/Loading';
 import TopComponent from './components/TopComponent/TopComponent';
 
-import CreateTopRouter from './modules/CreateTopRouter/CreateTopRouter';
+import RouterRegister from './modules/RouterRegister/RouterRegister';
 import MultiEventsRegister from './modules/MultiEvents/MultiEvents';
 import ServiceWorkerRegister from './services/ServiceWorker/ServiceWorker';
 
 ServiceWorkerRegister();
 MultiEventsRegister();
 
-CreateTopRouter('main', [
+RouterRegister('main', [
     {
         path: '',
         component: Main

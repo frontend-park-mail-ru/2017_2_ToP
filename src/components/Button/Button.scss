@@ -42,11 +42,11 @@
   @extend %button-base;
   display: block;
   width: fit-content;
-  line-height: 20px;
   font-weight: 600;
   margin: auto auto 1vh;
   color: $apoj-text-color;
   font-size: 3vh;
+  line-height: 3vh;
 }
 
 %button-more {
@@ -80,23 +80,52 @@
   color: $white;
 }
 
+.button-error {
+  animation: shake-error 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+
 @media screen and (max-width: 414px) {
   .button-second {
-    font-size: 4vh;
-    margin-bottom: 2vh;
+    font-size: 2.5vh;
+    line-height: 2.5vh;
+  }
+  .button-main {
+    font-size: 8vh;
+    margin-bottom: 0;
+    line-height: 8vh;
   }
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 600px) {
   .button {
 
   }
   .button-main {
-    font-size: 50px;
+    font-size: 54px;
   }
   .button-second {
-    font-size: 15px;
+    font-size: 18px;
     line-height: 20px;
-    margin: auto auto;
+    margin: auto auto 6px;
   }
+}
+
+@keyframes shake-error {
+  0% { color: $red }
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+  100% { color: $white}
 }

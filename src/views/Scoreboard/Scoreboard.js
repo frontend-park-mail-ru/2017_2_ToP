@@ -1,29 +1,19 @@
 import TopComponent from '../../components/TopComponent/TopComponent';
 import Table from '../../components/Table/Table';
 import BackButton from '../../components/BackButton/BackButton';
+import Transport from '../../modules/Transport/Transport';
 
 import './Scoreboard.scss';
 import Button from '../../components/Button/Button';
 
-const TMP_DATA = {
-    head: [
-        'User',
-        'Singleplayer',
-        'Multiplayer'
-    ],
-    body: [
-        ['test', 1000, 1000],
-        ['test2', 500, 500],
-        ['test3', 300, 300]
-    ]
-};
-
+import {COUNT_PER_REQUEST, TABLE_DATA} from '../../game/Constants/Scoreboard';
 
 export default class Scoreboard extends TopComponent {
     constructor() {
         super('div', {class: 'content__scoreboard'});
         this.isFull = false;
         this.moreButton = null;
+        this.count = 0;
     }
 
     rerender() {
@@ -34,8 +24,9 @@ export default class Scoreboard extends TopComponent {
     }
 
     build() {
-        this.table = new Table(TMP_DATA, 'content__scoreboard__table');
+        this.table = new Table(TABLE_DATA, 'content__scoreboard__table');
         this._buildMoreButton();
+        this.addRows();
 
         this._components = [
             this.table,
@@ -46,6 +37,27 @@ export default class Scoreboard extends TopComponent {
         this.renderTo('content');
     }
 
+    async getRows() {
+        const rows = [];
+        const result = await Transport.get(`/stop?limit=${COUNT_PER_REQUEST}&since=${this.count}`);
+        result.forEach(({login, sscore, mscore}) => {
+            rows.push([login, sscore, mscore]);
+        });
+
+        this.count += rows.length;
+        return rows;
+    }
+
+    async addRows() {
+        const rows = await this.getRows();
+        if (rows.length === 0) {
+            this._deleteMoreButton();
+            return;
+        }
+        this.table.addRow(rows);
+        this._rerenderMoreButton();
+    }
+
     _rerenderMoreButton() {
         const _table = this.table.getElement();
         this.moreButton.getElement().setAttribute('class', _table.rows.length % 2 ? 'button-more_odd' : 'button-more_even');
@@ -54,8 +66,7 @@ export default class Scoreboard extends TopComponent {
     _initButton() {
         this.moreButton = new Button({text: '. . .'});
         this.moreButton.getElement().addMultiEvents('click touchend', () => {
-            this.table.addRow(TMP_DATA.body);
-            this._rerenderMoreButton();
+            this.addRows();
         });
     }
 
@@ -66,5 +77,9 @@ export default class Scoreboard extends TopComponent {
             }
             this._rerenderMoreButton();
         }
+    }
+
+    _deleteMoreButton() {
+        this.moreButton.remove();
     }
 }

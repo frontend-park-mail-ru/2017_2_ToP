@@ -11,6 +11,11 @@ const unlogged = {
             url: '/singleplayer'
         },
         {
+            text: 'Об игре',
+            class: 'button-main',
+            url: '/about'
+        },
+        {
             text: 'Войти',
             class: 'button-second',
             url: '/signin'

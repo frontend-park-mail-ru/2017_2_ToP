@@ -1,2 +1,2 @@
-export const SINGLEPLAYER = 'singleplayer';
-export const MULTIPLAYER = 'multiplayer';
+export const SINGLEPLAYER = 'SINGLE';
+export const MULTIPLAYER = 'MULTI';

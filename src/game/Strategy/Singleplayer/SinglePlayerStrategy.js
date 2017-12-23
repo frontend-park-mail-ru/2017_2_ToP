@@ -49,9 +49,6 @@ export default class SinglePlayerStrategy extends BaseStrategy {
     _initRecordingPage(data) {
         const recordingPage = new Recording({musicBase64: data});
         recordingPage.getSubmitButton().addMultiEvents('click touchend', async () => {
-            if (!recordingPage.haveRecord()) {
-                return;
-            }
 
             recordingPage.stopPlayer();
             this.next();
